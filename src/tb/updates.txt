@@ -1,0 +1,48 @@
+Signup.java
+1) Show/Hide Password - https://stackoverflow.com/questions/19755259/hide-show-password-in-a-jtextfield-java-swing
+2) New Letter - 
+
+CLERK:
+	LOGIN
+	
+	INWARD REGISTER NO.
+	TIME RECEIVED
+	FROM
+	TO
+	TIME SENT
+	
+	LOGOUT
+
+BRANCHES (4):
+	LOGIN
+	||
+	VV
+_________________________________________________________
+|			    ||      ||			|
+|	INWARD REGISTER NO. || FROM || TIME RECEIVED    |
+|	{Need to go over  } || {   }|| {Date Picker}    |
+|	{Constraints      } ||      ||                  |
+|___________________________||______||__________________|
+|	Branch              || TO   || TIME RECEIVED    |
+|        {                } || {   }||   {Date Picker}	|
+|___________________________||______||__________________|							|
+|	COMPLETED IN DAYS      {   }                    |
+|_______________________________________________________|
+|	ACKNOWLEDGEMENT TO CLERK			|
+|_______________________________________________________|
+|	FEEDBACK (PENDING / COMPLETED)			|
+|_______________________________________________________|							|
+	
+	LOGOUT
+
+
+----------------------------------------------------------------------
+
+
+>> clerkLogin -> Admin Login
+>> adminLogin -> Show Password + Link all Java Classes
+>> Add Logos + Title TO Every Frame
+>> Sort Branches Ascending                                  dones
+>> Increase Width Of Table + Frame {View Directory}
+>> Increase Width Of Table + Frame {View Employee Stats}
+>> Add A Column for update date/time

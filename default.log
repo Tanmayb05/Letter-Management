@@ -1,0 +1,1363 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-14T17:29:43.348345400Z</date>
+  <millis>1626283783348</millis>
+  <nanos>345400</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-14T17:43:11.471420200Z</date>
+  <millis>1626284591471</millis>
+  <nanos>420200</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-14T17:44:48.671044900Z</date>
+  <millis>1626284688671</millis>
+  <nanos>44900</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-14T17:45:36.204810200Z</date>
+  <millis>1626284736204</millis>
+  <nanos>810200</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-14T17:46:47.897109400Z</date>
+  <millis>1626284807897</millis>
+  <nanos>109400</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-14T17:49:07.823640500Z</date>
+  <millis>1626284947823</millis>
+  <nanos>640500</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-14T17:49:33.707684700Z</date>
+  <millis>1626284973707</millis>
+  <nanos>684700</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-14T17:54:53.390551300Z</date>
+  <millis>1626285293390</millis>
+  <nanos>551300</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-14T17:58:01.772675300Z</date>
+  <millis>1626285481772</millis>
+  <nanos>675300</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-14T17:58:41.635548600Z</date>
+  <millis>1626285521635</millis>
+  <nanos>548600</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-14T18:01:15.756955600Z</date>
+  <millis>1626285675756</millis>
+  <nanos>955600</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-14T18:02:49.288768100Z</date>
+  <millis>1626285769288</millis>
+  <nanos>768100</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-14T18:05:03.336137500Z</date>
+  <millis>1626285903336</millis>
+  <nanos>137500</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T05:59:59.864916500Z</date>
+  <millis>1626328799864</millis>
+  <nanos>916500</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T06:01:22.195333200Z</date>
+  <millis>1626328882195</millis>
+  <nanos>333200</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T06:05:53.799268Z</date>
+  <millis>1626329153799</millis>
+  <nanos>268000</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T06:06:18.774958300Z</date>
+  <millis>1626329178774</millis>
+  <nanos>958300</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T06:08:40.272494200Z</date>
+  <millis>1626329320272</millis>
+  <nanos>494200</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T06:10:56.688715700Z</date>
+  <millis>1626329456688</millis>
+  <nanos>715700</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T06:11:37.389793100Z</date>
+  <millis>1626329497389</millis>
+  <nanos>793100</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T06:11:51.980699300Z</date>
+  <millis>1626329511980</millis>
+  <nanos>699300</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T06:31:36.989728700Z</date>
+  <millis>1626330696989</millis>
+  <nanos>728700</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T06:39:08.624174900Z</date>
+  <millis>1626331148624</millis>
+  <nanos>174900</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T06:50:05.186253Z</date>
+  <millis>1626331805186</millis>
+  <nanos>253000</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T06:54:32.075352100Z</date>
+  <millis>1626332072075</millis>
+  <nanos>352100</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T06:55:26.079370700Z</date>
+  <millis>1626332126079</millis>
+  <nanos>370700</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T06:56:41.347597600Z</date>
+  <millis>1626332201347</millis>
+  <nanos>597600</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T06:57:03.282678400Z</date>
+  <millis>1626332223282</millis>
+  <nanos>678400</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T06:57:20.532772300Z</date>
+  <millis>1626332240532</millis>
+  <nanos>772300</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T06:57:34.339485800Z</date>
+  <millis>1626332254339</millis>
+  <nanos>485800</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T06:59:58.105918600Z</date>
+  <millis>1626332398105</millis>
+  <nanos>918600</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T07:03:13.285831500Z</date>
+  <millis>1626332593285</millis>
+  <nanos>831500</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T07:04:15.758668600Z</date>
+  <millis>1626332655758</millis>
+  <nanos>668600</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T11:02:41.829482Z</date>
+  <millis>1626346961829</millis>
+  <nanos>482000</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T11:03:54.694905300Z</date>
+  <millis>1626347034694</millis>
+  <nanos>905300</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T11:06:01.763931800Z</date>
+  <millis>1626347161763</millis>
+  <nanos>931800</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T11:07:05.539750400Z</date>
+  <millis>1626347225539</millis>
+  <nanos>750400</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T11:10:40.414257200Z</date>
+  <millis>1626347440414</millis>
+  <nanos>257200</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<record>
+  <date>2021-07-15T11:10:40.560244200Z</date>
+  <millis>1626347440560</millis>
+  <nanos>244200</nanos>
+  <sequence>1</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T11:11:35.099333700Z</date>
+  <millis>1626347495099</millis>
+  <nanos>333700</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T11:22:19.252884600Z</date>
+  <millis>1626348139252</millis>
+  <nanos>884600</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T11:26:28.822446800Z</date>
+  <millis>1626348388822</millis>
+  <nanos>446800</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T11:28:14.045129800Z</date>
+  <millis>1626348494045</millis>
+  <nanos>129800</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T11:28:25.798990600Z</date>
+  <millis>1626348505798</millis>
+  <nanos>990600</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T11:28:33.514954Z</date>
+  <millis>1626348513514</millis>
+  <nanos>954000</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T11:54:07.330795400Z</date>
+  <millis>1626350047330</millis>
+  <nanos>795400</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T11:54:42.316685Z</date>
+  <millis>1626350082316</millis>
+  <nanos>685000</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T11:56:24.002800200Z</date>
+  <millis>1626350184002</millis>
+  <nanos>800200</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T12:01:43.539237200Z</date>
+  <millis>1626350503539</millis>
+  <nanos>237200</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T12:10:44.612268Z</date>
+  <millis>1626351044612</millis>
+  <nanos>268000</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T12:25:44.514450100Z</date>
+  <millis>1626351944514</millis>
+  <nanos>450100</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T12:26:04.699140200Z</date>
+  <millis>1626351964699</millis>
+  <nanos>140200</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T12:27:20.784815900Z</date>
+  <millis>1626352040784</millis>
+  <nanos>815900</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T12:33:58.199309200Z</date>
+  <millis>1626352438199</millis>
+  <nanos>309200</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T12:34:24.771043300Z</date>
+  <millis>1626352464771</millis>
+  <nanos>43300</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T12:37:09.422786700Z</date>
+  <millis>1626352629422</millis>
+  <nanos>786700</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T12:42:34.889351200Z</date>
+  <millis>1626352954889</millis>
+  <nanos>351200</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-15T12:43:40.528760900Z</date>
+  <millis>1626353020528</millis>
+  <nanos>760900</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-16T03:15:41.597728500Z</date>
+  <millis>1626405341597</millis>
+  <nanos>728500</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-16T07:38:47.828079800Z</date>
+  <millis>1626421127828</millis>
+  <nanos>79800</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-17T04:55:41.320839300Z</date>
+  <millis>1626497741320</millis>
+  <nanos>839300</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-17T04:57:58.349715200Z</date>
+  <millis>1626497878349</millis>
+  <nanos>715200</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-19T07:19:44.609681100Z</date>
+  <millis>1626679184609</millis>
+  <nanos>681100</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-19T07:36:51.193140100Z</date>
+  <millis>1626680211193</millis>
+  <nanos>140100</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-19T07:36:58.333425300Z</date>
+  <millis>1626680218333</millis>
+  <nanos>425300</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-19T11:35:44.682449200Z</date>
+  <millis>1626694544682</millis>
+  <nanos>449200</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-20T10:35:55.333909600Z</date>
+  <millis>1626777355333</millis>
+  <nanos>909600</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-20T10:58:23.402672900Z</date>
+  <millis>1626778703402</millis>
+  <nanos>672900</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-20T11:07:30.981011300Z</date>
+  <millis>1626779250981</millis>
+  <nanos>11300</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-20T11:14:20.590511900Z</date>
+  <millis>1626779660590</millis>
+  <nanos>511900</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-20T20:14:56.324924900Z</date>
+  <millis>1626812096324</millis>
+  <nanos>924900</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-20T20:21:04.236782500Z</date>
+  <millis>1626812464236</millis>
+  <nanos>782500</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-20T20:22:12.741407Z</date>
+  <millis>1626812532741</millis>
+  <nanos>407000</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-20T20:26:31.502920600Z</date>
+  <millis>1626812791502</millis>
+  <nanos>920600</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-21T05:58:46.837838900Z</date>
+  <millis>1626847126837</millis>
+  <nanos>838900</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>21</thread>
+  <message>Initializing...</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-21T06:04:54.313735600Z</date>
+  <millis>1626847494313</millis>
+  <nanos>735600</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-21T06:06:28.416295400Z</date>
+  <millis>1626847588416</millis>
+  <nanos>295400</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-21T06:06:48.884987500Z</date>
+  <millis>1626847608884</millis>
+  <nanos>987500</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-21T06:07:28.716808100Z</date>
+  <millis>1626847648716</millis>
+  <nanos>808100</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-21T06:07:35.903044600Z</date>
+  <millis>1626847655903</millis>
+  <nanos>44600</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-21T06:08:27.471429900Z</date>
+  <millis>1626847707471</millis>
+  <nanos>429900</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-21T06:10:10.437045800Z</date>
+  <millis>1626847810437</millis>
+  <nanos>45800</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-23T16:54:35.160458900Z</date>
+  <millis>1627059275160</millis>
+  <nanos>458900</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<record>
+  <date>2021-07-23T16:55:16.272285300Z</date>
+  <millis>1627059316272</millis>
+  <nanos>285300</nanos>
+  <sequence>1</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-24T10:35:45.944159100Z</date>
+  <millis>1627122945944</millis>
+  <nanos>159100</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-25T05:43:34.156121800Z</date>
+  <millis>1627191814156</millis>
+  <nanos>121800</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<record>
+  <date>2021-07-25T05:43:42.999272200Z</date>
+  <millis>1627191822999</millis>
+  <nanos>272200</nanos>
+  <sequence>1</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchNewLetter</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-26T13:22:56.749928800Z</date>
+  <millis>1627305776749</millis>
+  <nanos>928800</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>22</thread>
+  <message>Initializing...</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-26T13:24:13.011026100Z</date>
+  <millis>1627305853011</millis>
+  <nanos>26100</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-26T13:51:55.093485600Z</date>
+  <millis>1627307515093</millis>
+  <nanos>485600</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-26T13:53:37.569663900Z</date>
+  <millis>1627307617569</millis>
+  <nanos>663900</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>19</thread>
+  <message>Initializing...</message>
+</record>
