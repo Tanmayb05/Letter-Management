@@ -28,25 +28,33 @@ public class ClerkHome extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Clerk Home");
-        setBounds(new java.awt.Rectangle(550, 225, 500, 400));
+        setBounds(new java.awt.Rectangle(300, 150, 700, 500));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
+        setMaximumSize(new java.awt.Dimension(700, 500));
+        setMinimumSize(new java.awt.Dimension(700, 500));
         setName("ClerkHomeFrame"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(500, 400));
+        setPreferredSize(new java.awt.Dimension(700, 500));
         setResizable(false);
-        setSize(new java.awt.Dimension(500, 400));
+        setSize(new java.awt.Dimension(700, 500));
 
         ClerkHomePanel.setBackground(new java.awt.Color(232, 246, 239));
         ClerkHomePanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        WelcomeLabel.setFont(new java.awt.Font("Arial", 0, 22)); // NOI18N
-        WelcomeLabel.setText("Welcome ");
+        WelcomeLabel.setBackground(new java.awt.Color(204, 204, 204));
+        WelcomeLabel.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
+        WelcomeLabel.setForeground(new java.awt.Color(0, 102, 153));
+        WelcomeLabel.setText("WELCOME");
+        WelcomeLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        ClerkHomeSeparator.setForeground(new java.awt.Color(0, 153, 153));
         ClerkHomeSeparator.setToolTipText("");
 
         AddToDirectoryButton.setBackground(new java.awt.Color(0, 102, 153));
+        AddToDirectoryButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         AddToDirectoryButton.setForeground(new java.awt.Color(255, 255, 255));
         AddToDirectoryButton.setText("Add To Directory");
-        AddToDirectoryButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.black, null, java.awt.Color.pink));
+        AddToDirectoryButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         AddToDirectoryButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddToDirectoryActionPerformed(evt);
@@ -54,9 +62,10 @@ public class ClerkHome extends javax.swing.JFrame {
         });
 
         ViewDirectoryButton.setBackground(new java.awt.Color(0, 102, 153));
+        ViewDirectoryButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         ViewDirectoryButton.setForeground(new java.awt.Color(255, 255, 255));
         ViewDirectoryButton.setText("View Directory");
-        ViewDirectoryButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.black, null, java.awt.Color.pink));
+        ViewDirectoryButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         ViewDirectoryButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ViewDirectoryButtonActionPerformed(evt);
@@ -64,19 +73,21 @@ public class ClerkHome extends javax.swing.JFrame {
         });
 
         ViewEmployeeButton.setBackground(new java.awt.Color(0, 102, 153));
+        ViewEmployeeButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         ViewEmployeeButton.setForeground(new java.awt.Color(255, 255, 255));
         ViewEmployeeButton.setText("View Employees");
-        ViewEmployeeButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.black, null, java.awt.Color.pink));
+        ViewEmployeeButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         ViewEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ViewEmployeeButtonActionPerformed(evt);
             }
         });
 
-        SignOutButton.setBackground(new java.awt.Color(0, 102, 153));
+        SignOutButton.setBackground(new java.awt.Color(255, 51, 51));
         SignOutButton.setForeground(new java.awt.Color(255, 255, 255));
-        SignOutButton.setText("Sign Out");
-        SignOutButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.black, null, java.awt.Color.pink));
+        SignOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img-src/logo-white.png"))); // NOI18N
+        SignOutButton.setToolTipText("बाहेर पडावे ");
+        SignOutButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         SignOutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SignOutButtonActionPerformed(evt);
@@ -90,48 +101,51 @@ public class ClerkHome extends javax.swing.JFrame {
             .addGroup(ClerkHomePanelLayout.createSequentialGroup()
                 .addGroup(ClerkHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ClerkHomePanelLayout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(ClerkHomeSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addComponent(SignOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ClerkHomePanelLayout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addGroup(ClerkHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(AddToDirectoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(ClerkHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(SignOutButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(ViewEmployeeButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(ViewDirectoryButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(ClerkHomePanelLayout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(WelcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(75, 75, 75))
+                        .addContainerGap(122, Short.MAX_VALUE)
+                        .addComponent(ClerkHomeSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(122, Short.MAX_VALUE))
+            .addGroup(ClerkHomePanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(ClerkHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ViewEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ViewDirectoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AddToDirectoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ClerkHomePanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(WelcomeLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ClerkHomePanelLayout.setVerticalGroup(
             ClerkHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ClerkHomePanelLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(32, 32, 32)
                 .addComponent(WelcomeLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(ClerkHomeSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(AddToDirectoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ViewDirectoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(ViewEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(SignOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(88, 88, 88))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(AddToDirectoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(ViewDirectoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(ViewEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(SignOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ClerkHomePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(ClerkHomePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ClerkHomePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(ClerkHomePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         ClerkHomePanel.getAccessibleContext().setAccessibleName("ClerkHomePanel");
