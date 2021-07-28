@@ -220,7 +220,7 @@ public class BranchLogin extends JFrame implements ActionListener{
                     if (rs.next()) {
                         
                         String branchArgument = (String)BranchNo.getSelectedItem();
-                        String toArgument = rs.getString("FirstName")+" "+rs.getString("LastName");
+                        String toArgument = rs.getString("Name");
                         create(branchArgument, toArgument);
                         
                         this.setVisible(false);
