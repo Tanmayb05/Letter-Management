@@ -44,12 +44,12 @@ public class ClerkViewDirectory extends javax.swing.JFrame {
         BackButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBounds(new java.awt.Rectangle(300, 100, 1000, 700));
-        setMaximumSize(new java.awt.Dimension(1000, 700));
-        setMinimumSize(new java.awt.Dimension(1000, 700));
+        setBounds(new java.awt.Rectangle(300, 80, 1000, 725));
+        setMaximumSize(new java.awt.Dimension(1000, 725));
+        setMinimumSize(new java.awt.Dimension(1000, 725));
         setName("ViewDirectory"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(1000, 700));
-        setSize(new java.awt.Dimension(1000, 700));
+        setPreferredSize(new java.awt.Dimension(1000, 725));
+        setSize(new java.awt.Dimension(1000, 725));
 
         HeaderPanel.setBackground(new java.awt.Color(232, 246, 239));
         HeaderPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -111,10 +111,10 @@ public class ClerkViewDirectory extends javax.swing.JFrame {
         BodyPanel.setLayout(BodyPanelLayout);
         BodyPanelLayout.setHorizontalGroup(
             BodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BodyPanelLayout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
-                .addComponent(ClerkViewDirectoryTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 897, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BodyPanelLayout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(ClerkViewDirectoryTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 950, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         BodyPanelLayout.setVerticalGroup(
             BodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,16 +179,23 @@ public class ClerkViewDirectory extends javax.swing.JFrame {
         
         DefaultTableModel ClerkViewDatabaseTableModel  = new DefaultTableModel();
         ClerkViewDirectoryTable.setModel(ClerkViewDatabaseTableModel);
-        ClerkViewDatabaseTableModel.addColumn("LetterID");
+        ClerkViewDatabaseTableModel.addColumn("ID");
         ClerkViewDatabaseTableModel.addColumn("From");
         ClerkViewDatabaseTableModel.addColumn("Subject");
         ClerkViewDatabaseTableModel.addColumn("Branch");
         ClerkViewDatabaseTableModel.addColumn("To");
         ClerkViewDatabaseTableModel.addColumn("Received");
         ClerkViewDatabaseTableModel.addColumn("Sent");
-        ClerkViewDatabaseTableModel.addColumn("Received By Branch");
-        ClerkViewDatabaseTableModel.addColumn("Completed");
+        ClerkViewDatabaseTableModel.addColumn("Branch Received");
+        ClerkViewDatabaseTableModel.addColumn("Branch Completed");
         ClerkViewDatabaseTableModel.addColumn("Pending");
+        
+        ClerkViewDirectoryTable.getColumnModel().getColumn(0).setPreferredWidth(25);
+        ClerkViewDirectoryTable.getColumnModel().getColumn(3).setPreferredWidth(45);
+        ClerkViewDirectoryTable.getColumnModel().getColumn(5).setPreferredWidth(65);
+        ClerkViewDirectoryTable.getColumnModel().getColumn(6).setPreferredWidth(65);
+        ClerkViewDirectoryTable.getColumnModel().getColumn(7).setPreferredWidth(65);
+        ClerkViewDirectoryTable.getColumnModel().getColumn(8).setPreferredWidth(65);
         
         try {
             
@@ -238,7 +245,7 @@ public class ClerkViewDirectory extends javax.swing.JFrame {
         ImageIcon icon = new ImageIcon(iconURL);
         setIconImage(icon.getImage());
         setTitle("Water Resources Department, Government of Maharashtra, India");
-        setBounds(100, 100, 1000, 700);
+        setBounds(100, 100, 1000, 750);
     }
     
     public static void main(String args[]) {
