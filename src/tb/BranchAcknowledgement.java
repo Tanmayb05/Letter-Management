@@ -224,7 +224,8 @@ public class BranchAcknowledgement extends javax.swing.JFrame {
             
 //          >>  2. UPDATING THE ACKNOWLEDGEMENT TO 1 AND DATE RECEIVED FIELDS IN THE SQL DB  
             String sql = "UPDATE inwardregister SET Acknowledgement='1', "
-                    + "eDateReceived='"+date+"' WHERE LetterID IN ("+sqlQuery+")";
+                    + "eDateReceived='"+date+"' "
+                    + "Progress = 'Incomplete' WHERE LetterID IN ("+sqlQuery+")";
             PreparedStatement st = con.c.prepareStatement(sql);
 
 //          >>  3. IF THE QUERY IS EXECUTED THEN REFRESHING THE WINDOW  
