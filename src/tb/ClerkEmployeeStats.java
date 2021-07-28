@@ -1,8 +1,10 @@
 package tb;
 
+import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -15,6 +17,7 @@ public class ClerkEmployeeStats extends javax.swing.JFrame {
      * Creates new form EmployeeStats
      */
     public ClerkEmployeeStats() {
+        setFrame();
         initComponents();
         initBranchComboBox();
     }
@@ -36,6 +39,10 @@ public class ClerkEmployeeStats extends javax.swing.JFrame {
         BackButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1000, 550));
+        setMinimumSize(new java.awt.Dimension(1000, 550));
+        setPreferredSize(new java.awt.Dimension(1000, 550));
+        setSize(new java.awt.Dimension(1000, 550));
 
         HeaderPanel.setBackground(new java.awt.Color(232, 246, 239));
         HeaderPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -92,7 +99,7 @@ public class ClerkEmployeeStats extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Letterid", "Subject", "From", "Branch", "To", "Received", "Completed", "Progress", "Feedback", "Days"
+                "ID", "Subject", "From", "Branch", "To", "Received", "Completed", "Progress", "Feedback", "Days"
             }
         ));
         ClerkEmployeeStatsTableScrollPane.setViewportView(ClerkEmployeeStatsTable);
@@ -107,10 +114,11 @@ public class ClerkEmployeeStats extends javax.swing.JFrame {
         ));
         LetterTableScrollPane.setViewportView(LetterTable);
 
-        BackButton.setBackground(new java.awt.Color(35, 62, 139));
-        BackButton.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        BackButton.setBackground(new java.awt.Color(204, 204, 204));
+        BackButton.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         BackButton.setForeground(new java.awt.Color(255, 255, 255));
-        BackButton.setText("Back");
+        BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img-src/back2.png"))); // NOI18N
+        BackButton.setToolTipText("मागे जा ");
         BackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BackButtonActionPerformed(evt);
@@ -131,8 +139,8 @@ public class ClerkEmployeeStats extends javax.swing.JFrame {
                         .addGap(60, 60, 60)
                         .addComponent(ShowButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(BodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, BodyPanelLayout.createSequentialGroup()
-                            .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(BodyPanelLayout.createSequentialGroup()
+                            .addComponent(BackButton)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(LetterTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(ClerkEmployeeStatsTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 930, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -147,12 +155,12 @@ public class ClerkEmployeeStats extends javax.swing.JFrame {
                     .addComponent(ShowButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(ClerkEmployeeStatsTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(ClerkEmployeeStatsTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(BodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LetterTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BackButton))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addComponent(LetterTableScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BackButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -198,6 +206,17 @@ public class ClerkEmployeeStats extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    
+    
+    private void setFrame(){
+        
+        URL iconURL = getClass().getResource("/img-src/logo.png");
+        // iconURL is null when not found
+        ImageIcon icon = new ImageIcon(iconURL);
+        setIconImage(icon.getImage());
+        setTitle("Water Resources Department, Government of Maharashtra, India");
+        setBounds(300, 150, 1000, 550);
+    }
     
     
     private void initBranchComboBox() {
@@ -262,7 +281,7 @@ public class ClerkEmployeeStats extends javax.swing.JFrame {
         
         DefaultTableModel ClerkEmployeeStatsTableModel  = new DefaultTableModel();
         ClerkEmployeeStatsTable.setModel(ClerkEmployeeStatsTableModel);
-        ClerkEmployeeStatsTableModel.addColumn("LetterID");
+        ClerkEmployeeStatsTableModel.addColumn("ID");
         ClerkEmployeeStatsTableModel.addColumn("From");
         ClerkEmployeeStatsTableModel.addColumn("Subject");
         ClerkEmployeeStatsTableModel.addColumn("Branch");
@@ -272,6 +291,12 @@ public class ClerkEmployeeStats extends javax.swing.JFrame {
         ClerkEmployeeStatsTableModel.addColumn("Progress");
         ClerkEmployeeStatsTableModel.addColumn("Feedback");
         ClerkEmployeeStatsTableModel.addColumn("Days");
+        
+        ClerkEmployeeStatsTable.getColumnModel().getColumn(0).setPreferredWidth(10);
+        ClerkEmployeeStatsTable.getColumnModel().getColumn(5).setPreferredWidth(50);
+        ClerkEmployeeStatsTable.getColumnModel().getColumn(6).setPreferredWidth(50);
+        ClerkEmployeeStatsTable.getColumnModel().getColumn(9).setPreferredWidth(10);
+        ClerkEmployeeStatsTable.getColumnModel().getColumn(0).setPreferredWidth(20);
         
         
         try {
