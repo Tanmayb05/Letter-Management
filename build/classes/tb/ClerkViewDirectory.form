@@ -155,21 +155,22 @@
                   <Font name="Tahoma" size="14" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="9" rowCount="4">
-                    <Column editable="true" title="Letter ID" type="java.lang.Integer"/>
+                  <Table columnCount="10" rowCount="4">
+                    <Column editable="true" title="ID" type="java.lang.Integer"/>
                     <Column editable="true" title="From" type="java.lang.String"/>
                     <Column editable="true" title="Subject" type="java.lang.String"/>
                     <Column editable="true" title="Branch" type="java.lang.String"/>
                     <Column editable="true" title="To" type="java.lang.String"/>
-                    <Column editable="true" title="Recieved" type="java.lang.String"/>
-                    <Column editable="true" title="Sent" type="java.lang.String"/>
-                    <Column editable="true" title="Completed" type="java.lang.String"/>
+                    <Column editable="true" title="cRecieved" type="java.lang.String"/>
+                    <Column editable="true" title="cSent" type="java.lang.String"/>
+                    <Column editable="true" title="eReceived" type="java.lang.String"/>
+                    <Column editable="true" title="eCompleted" type="java.lang.String"/>
                     <Column editable="true" title="Pending" type="java.lang.Integer"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="25" minWidth="25" prefWidth="25" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
@@ -184,7 +185,7 @@
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="45" minWidth="45" prefWidth="45" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
@@ -194,17 +195,22 @@
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="65" minWidth="65" prefWidth="65" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="65" minWidth="65" prefWidth="65" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="65" minWidth="65" prefWidth="65" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="65" minWidth="65" prefWidth="65" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
