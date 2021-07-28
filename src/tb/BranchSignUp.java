@@ -242,17 +242,21 @@ public class BranchSignUp extends JFrame implements ActionListener{
                     JOptionPane.showMessageDialog(null, "Invalid Password");
                 }
                 else {
-                    String sql = "INSERT INTO employee(EmpID, FirstName, LastName, Branch, Username, Password, emailID) "
-                                    + "values(?, ?, ?, ?, ?, ?, ?)";
+                    String sql = "INSERT INTO employee(EmpID, FirstName, LastName, Name, Branch, "
+                            + "Username, Password, emailID, PendingTasks, CompletedTasks) "
+                            + "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                     PreparedStatement st = con.c.prepareStatement(sql);
 
                     st.setString(1, EmpIDField.getText());
                     st.setString(2, FirstNameField.getText());
                     st.setString(3, LastNameField.getText());
-                    st.setString(4, (String) BranchField.getSelectedItem());
-                    st.setString(5, UsernameField.getText());
-                    st.setString(6, PasswordField.getText()); 
-                    st.setString(7, emailIDField.getText());
+                    st.setString(4, FirstNameField.getText() + " " + LastNameField.getText());
+                    st.setString(5, (String) BranchField.getSelectedItem());
+                    st.setString(6, UsernameField.getText());
+                    st.setString(7, PasswordField.getText()); 
+                    st.setString(8, emailIDField.getText());
+                    st.setString(9, Integer.toString(0));
+                    st.setString(10, Integer.toString(0));
 
 
                     int i = st.executeUpdate();
