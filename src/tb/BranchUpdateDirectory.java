@@ -2,6 +2,7 @@ package tb;
 
 import java.awt.HeadlessException;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
@@ -12,6 +13,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -246,7 +249,7 @@ public class BranchUpdateDirectory extends javax.swing.JFrame {
     }//GEN-LAST:event_FeedbackButtonActionPerformed
 
     private void CompleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompleteButtonActionPerformed
-        
+               
 //  letterArray
 //      >>  CREATING AN EMPTY ARRAYLIST
 
@@ -286,15 +289,13 @@ public class BranchUpdateDirectory extends javax.swing.JFrame {
         
 //      >> STORING THE COUNT OF CHECKED BOXES     
         int checkedBoxesSize = letterArray.size();
-        
 
-        
         for(int j=0; j<checkedBoxesSize; j++) {
             
-            try {
-                
-//              >>  1.  ESTABLISHING CONNECTION WITH SQL DATABASE
+//          >>  1.  ESTABLISHING CONNECTION WITH SQL DATABASE
                 ConnectionEstablish con = new ConnectionEstablish();
+            
+            try {                         
 //              >>  2.  SQL STATEMENT   
                 String sql = "UPDATE inwardregister "
                         + "SET Progress = 'Completed', "
@@ -309,6 +310,35 @@ public class BranchUpdateDirectory extends javax.swing.JFrame {
                 if (i > 0){
                     JOptionPane.showMessageDialog(null, "Successfully Updated. LetterID = "+letterArray.get(j));
                 }
+                else{}
+                
+                //  >>  READING THE BRANCH AND STORING IT IN BRANCH AND TOEMPLOYEE VARIABLES  
+                BufferedReader br;
+                String branch;
+                String name;
+                try {
+                    br = new BufferedReader(new FileReader("login.txt"));
+                    String text = br.readLine();
+                    //  branch:          
+                    branch = text.split(",")[0];
+                    //  Name Of Employee:          
+                    name = text.split(",")[1]; 
+                    String sql2= "UPDATE letter.employee "
+                        + "SET PendingTasks = PendingTasks - 1, "
+                        + "CompletedTasks = CompletedTasks + 1 WHERE "
+                        + "branch='"+branch+"' AND name='"+name+"'";
+                    PreparedStatement st2 = con.c.prepareStatement(sql2);
+                    int z = st2.executeUpdate();
+                    if (z > 0){
+                        JOptionPane.showMessageDialog(null, "Successfully Added Pending");
+                    }
+                    else{}
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                
+                
+
                 
             } catch (HeadlessException | SQLException e) {
                 e.printStackTrace();
