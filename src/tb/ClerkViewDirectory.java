@@ -83,17 +83,17 @@ public class ClerkViewDirectory extends javax.swing.JFrame {
         ClerkViewDirectoryTable.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         ClerkViewDirectoryTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Letter ID", "From", "Subject", "Branch", "To", "Recieved", "Sent", "Completed", "Pending"
+                "ID", "From", "Subject", "Branch", "To", "cRecieved", "cSent", "eReceived", "eCompleted", "Pending"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -103,8 +103,26 @@ public class ClerkViewDirectory extends javax.swing.JFrame {
         ClerkViewDirectoryTable.setEnabled(false);
         ClerkViewDirectoryTableScrollPane.setViewportView(ClerkViewDirectoryTable);
         if (ClerkViewDirectoryTable.getColumnModel().getColumnCount() > 0) {
-            ClerkViewDirectoryTable.getColumnModel().getColumn(8).setMinWidth(30);
-            ClerkViewDirectoryTable.getColumnModel().getColumn(8).setMaxWidth(35);
+            ClerkViewDirectoryTable.getColumnModel().getColumn(0).setMinWidth(25);
+            ClerkViewDirectoryTable.getColumnModel().getColumn(0).setPreferredWidth(25);
+            ClerkViewDirectoryTable.getColumnModel().getColumn(0).setMaxWidth(25);
+            ClerkViewDirectoryTable.getColumnModel().getColumn(3).setMinWidth(45);
+            ClerkViewDirectoryTable.getColumnModel().getColumn(3).setPreferredWidth(45);
+            ClerkViewDirectoryTable.getColumnModel().getColumn(3).setMaxWidth(45);
+            ClerkViewDirectoryTable.getColumnModel().getColumn(5).setMinWidth(65);
+            ClerkViewDirectoryTable.getColumnModel().getColumn(5).setPreferredWidth(65);
+            ClerkViewDirectoryTable.getColumnModel().getColumn(5).setMaxWidth(65);
+            ClerkViewDirectoryTable.getColumnModel().getColumn(6).setMinWidth(65);
+            ClerkViewDirectoryTable.getColumnModel().getColumn(6).setPreferredWidth(65);
+            ClerkViewDirectoryTable.getColumnModel().getColumn(6).setMaxWidth(65);
+            ClerkViewDirectoryTable.getColumnModel().getColumn(7).setMinWidth(65);
+            ClerkViewDirectoryTable.getColumnModel().getColumn(7).setPreferredWidth(65);
+            ClerkViewDirectoryTable.getColumnModel().getColumn(7).setMaxWidth(65);
+            ClerkViewDirectoryTable.getColumnModel().getColumn(8).setMinWidth(65);
+            ClerkViewDirectoryTable.getColumnModel().getColumn(8).setPreferredWidth(65);
+            ClerkViewDirectoryTable.getColumnModel().getColumn(8).setMaxWidth(65);
+            ClerkViewDirectoryTable.getColumnModel().getColumn(9).setMinWidth(30);
+            ClerkViewDirectoryTable.getColumnModel().getColumn(9).setMaxWidth(35);
         }
 
         javax.swing.GroupLayout BodyPanelLayout = new javax.swing.GroupLayout(BodyPanel);
@@ -184,18 +202,18 @@ public class ClerkViewDirectory extends javax.swing.JFrame {
         ClerkViewDatabaseTableModel.addColumn("Subject");
         ClerkViewDatabaseTableModel.addColumn("Branch");
         ClerkViewDatabaseTableModel.addColumn("To");
-        ClerkViewDatabaseTableModel.addColumn("Received");
-        ClerkViewDatabaseTableModel.addColumn("Sent");
-        ClerkViewDatabaseTableModel.addColumn("Branch Received");
-        ClerkViewDatabaseTableModel.addColumn("Branch Completed");
+        ClerkViewDatabaseTableModel.addColumn("cReceived");
+        ClerkViewDatabaseTableModel.addColumn("cSent");
+        ClerkViewDatabaseTableModel.addColumn("eReceived");
+        ClerkViewDatabaseTableModel.addColumn("eCompleted");
         ClerkViewDatabaseTableModel.addColumn("Pending");
         
-        ClerkViewDirectoryTable.getColumnModel().getColumn(0).setPreferredWidth(25);
+        ClerkViewDirectoryTable.getColumnModel().getColumn(0).setPreferredWidth(20);
         ClerkViewDirectoryTable.getColumnModel().getColumn(3).setPreferredWidth(45);
-        ClerkViewDirectoryTable.getColumnModel().getColumn(5).setPreferredWidth(65);
-        ClerkViewDirectoryTable.getColumnModel().getColumn(6).setPreferredWidth(65);
-        ClerkViewDirectoryTable.getColumnModel().getColumn(7).setPreferredWidth(65);
-        ClerkViewDirectoryTable.getColumnModel().getColumn(8).setPreferredWidth(65);
+        ClerkViewDirectoryTable.getColumnModel().getColumn(5).setPreferredWidth(60);
+        ClerkViewDirectoryTable.getColumnModel().getColumn(6).setPreferredWidth(60);
+        ClerkViewDirectoryTable.getColumnModel().getColumn(7).setPreferredWidth(60);
+        ClerkViewDirectoryTable.getColumnModel().getColumn(8).setPreferredWidth(60);
         
         try {
             
