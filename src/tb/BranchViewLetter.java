@@ -79,20 +79,20 @@ public class BranchViewLetter extends javax.swing.JFrame {
 
         BranchViewLetterTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "LetterID", "From", "Subject", "Received", "Completed", "Acknowledgement", "Feedback"
+                "ID", "From", "Subject", "Received", "Completed", "Acknowledgement", "Progress", "Feedback", "Days"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -106,15 +106,35 @@ public class BranchViewLetter extends javax.swing.JFrame {
         BranchViewLetterTable.setEnabled(false);
         BranchViewLetterTable.setGridColor(new java.awt.Color(102, 255, 255));
         BranchViewLetterTableScrollPane.setViewportView(BranchViewLetterTable);
+        if (BranchViewLetterTable.getColumnModel().getColumnCount() > 0) {
+            BranchViewLetterTable.getColumnModel().getColumn(0).setMinWidth(25);
+            BranchViewLetterTable.getColumnModel().getColumn(0).setPreferredWidth(25);
+            BranchViewLetterTable.getColumnModel().getColumn(0).setMaxWidth(25);
+            BranchViewLetterTable.getColumnModel().getColumn(3).setMinWidth(50);
+            BranchViewLetterTable.getColumnModel().getColumn(3).setPreferredWidth(50);
+            BranchViewLetterTable.getColumnModel().getColumn(3).setMaxWidth(50);
+            BranchViewLetterTable.getColumnModel().getColumn(4).setMinWidth(50);
+            BranchViewLetterTable.getColumnModel().getColumn(4).setPreferredWidth(50);
+            BranchViewLetterTable.getColumnModel().getColumn(4).setMaxWidth(50);
+            BranchViewLetterTable.getColumnModel().getColumn(6).setMinWidth(50);
+            BranchViewLetterTable.getColumnModel().getColumn(6).setPreferredWidth(50);
+            BranchViewLetterTable.getColumnModel().getColumn(6).setMaxWidth(50);
+            BranchViewLetterTable.getColumnModel().getColumn(7).setMinWidth(80);
+            BranchViewLetterTable.getColumnModel().getColumn(7).setPreferredWidth(80);
+            BranchViewLetterTable.getColumnModel().getColumn(7).setMaxWidth(80);
+            BranchViewLetterTable.getColumnModel().getColumn(8).setMinWidth(10);
+            BranchViewLetterTable.getColumnModel().getColumn(8).setPreferredWidth(10);
+            BranchViewLetterTable.getColumnModel().getColumn(8).setMaxWidth(10);
+        }
 
         javax.swing.GroupLayout BodyPanelLayout = new javax.swing.GroupLayout(BodyPanel);
         BodyPanel.setLayout(BodyPanelLayout);
         BodyPanelLayout.setHorizontalGroup(
             BodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BodyPanelLayout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
-                .addComponent(BranchViewLetterTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(BranchViewLetterTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
+                .addContainerGap())
         );
         BodyPanelLayout.setVerticalGroup(
             BodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,7 +210,7 @@ public class BranchViewLetter extends javax.swing.JFrame {
         
         DefaultTableModel BranchViewLetterTableModel  = new DefaultTableModel();
         BranchViewLetterTable.setModel(BranchViewLetterTableModel);
-        BranchViewLetterTableModel.addColumn("LetterID");
+        BranchViewLetterTableModel.addColumn("ID");
         BranchViewLetterTableModel.addColumn("From");
         BranchViewLetterTableModel.addColumn("Subject");
         BranchViewLetterTableModel.addColumn("Received");
@@ -199,6 +219,12 @@ public class BranchViewLetter extends javax.swing.JFrame {
         BranchViewLetterTableModel.addColumn("Progress");
         BranchViewLetterTableModel.addColumn("Feedback");
         BranchViewLetterTableModel.addColumn("Days");
+        
+        BranchViewLetterTable.getColumnModel().getColumn(0).setPreferredWidth(20);
+        BranchViewLetterTable.getColumnModel().getColumn(3).setPreferredWidth(50);
+        BranchViewLetterTable.getColumnModel().getColumn(4).setPreferredWidth(50);
+        BranchViewLetterTable.getColumnModel().getColumn(6).setPreferredWidth(50);
+        BranchViewLetterTable.getColumnModel().getColumn(8).setPreferredWidth(10);
         
         try {
            
@@ -209,6 +235,7 @@ public class BranchViewLetter extends javax.swing.JFrame {
             String branch = text.split(",")[0];
 //  toEmployee:          
             String toEmployee = text.split(",")[1];     
+            System.out.println(toEmployee);
             
             ConnectionEstablish con = new ConnectionEstablish();            
             String sql = "SELECT * FROM inwardregister WHERE "
