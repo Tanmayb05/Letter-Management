@@ -1392,3 +1392,18 @@
   <thread>19</thread>
   <message>Initializing...</message>
 </record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-28T12:42:32.167170600Z</date>
+  <millis>1627476152167</millis>
+  <nanos>170600</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>20</thread>
+  <message>Initializing...</message>
+</record>

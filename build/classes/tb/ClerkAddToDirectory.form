@@ -175,7 +175,7 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace pref="28" max="32767" attributes="0"/>
+                  <EmptySpace pref="25" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="LetterIDLabel" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="LetterIDField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -202,13 +202,13 @@
                       <Component id="DateReceivedShowTodayButton" alignment="0" max="32767" attributes="0"/>
                       <Component id="DateReceivedLabel" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="42" max="32767" attributes="0"/>
+                  <EmptySpace pref="33" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="DateSentLabel" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="DateSentField" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="DateSentShowTodayButton" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="41" max="32767" attributes="0"/>
+                  <EmptySpace pref="38" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -310,7 +310,7 @@
         <Component class="javax.swing.JTextField" name="LetterIDField">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Calibri" size="18" style="0"/>
+              <Font name="SansSerif" size="18" style="0"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -322,7 +322,7 @@
         <Component class="javax.swing.JTextField" name="FromField">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Calibri" size="18" style="0"/>
+              <Font name="SansSerif" size="18" style="0"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
@@ -334,7 +334,7 @@
         <Component class="javax.swing.JTextField" name="SubjectField">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Calibri" size="18" style="0"/>
+              <Font name="SansSerif" size="18" style="0"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">

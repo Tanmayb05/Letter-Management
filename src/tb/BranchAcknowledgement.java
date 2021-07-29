@@ -70,6 +70,7 @@ public class BranchAcknowledgement extends javax.swing.JFrame {
         BodyPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         BodyPanel.setPreferredSize(new java.awt.Dimension(900, 600));
 
+        AcknowledgementTable.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         AcknowledgementTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -190,16 +191,15 @@ public class BranchAcknowledgement extends javax.swing.JFrame {
         
 //  letterArray
 //      >>  CREATING AN EMPTY ARRAYLIST
-        ArrayList<Integer> letterArray = new ArrayList<>();
+        ArrayList<String> letterArray = new ArrayList<>();
         
 //      >>  ENTERING THE CHECKED ACKNOWLEDGED LETTERS INTO THE EMPTY ARRAYLIST CREATED
         for(int i=0;i<AcknowledgementTable.getRowCount();i++) {
           Boolean checked=Boolean.valueOf(AcknowledgementTable.getValueAt(i, 3).toString());
           //DISPLAY
           if(checked) {
-              String AcknowledgedLetterIDstring = AcknowledgementTable.getValueAt(i, 0).toString();
-              int AcknowledgedLetterIDinteger = Integer.parseInt(AcknowledgedLetterIDstring);
-              letterArray.add(AcknowledgedLetterIDinteger);
+              String AcknowledgedLetterID = AcknowledgementTable.getValueAt(i, 0).toString();
+              letterArray.add(AcknowledgedLetterID);
           }
         }
         
@@ -207,7 +207,7 @@ public class BranchAcknowledgement extends javax.swing.JFrame {
 //      >>  (a, b, c, d) CREATING A STRING OF ARRAYLIST IN THIS FORMAT FOR THE SQL QUERY
         String sqlQuery = "'";
         for(int i = 0; i < letterArray.size(); i++) {
-            sqlQuery = sqlQuery.concat(letterArray.get(i).toString());
+            sqlQuery = sqlQuery.concat(letterArray.get(i));
             sqlQuery = sqlQuery.concat("','");
         }  
         sqlQuery = sqlQuery.substring(0, sqlQuery.length()-2);
@@ -224,7 +224,7 @@ public class BranchAcknowledgement extends javax.swing.JFrame {
             
 //          >>  2. UPDATING THE ACKNOWLEDGEMENT TO 1 AND DATE RECEIVED FIELDS IN THE SQL DB  
             String sql = "UPDATE inwardregister SET Acknowledgement='1', "
-                    + "eDateReceived='"+date+"' "
+                    + "eDateReceived='"+date+"' ,"
                     + "Progress = 'Incomplete' WHERE LetterID IN ("+sqlQuery+")";
             PreparedStatement st = con.c.prepareStatement(sql);
 
@@ -302,7 +302,7 @@ public class BranchAcknowledgement extends javax.swing.JFrame {
 //          >>  3. ENTERING THE VALUES IN THE TABLE
             int i=0;
             while(rs.next()){
-                String LetterID = String.valueOf(rs.getInt("LetterID"));
+                String LetterID = rs.getString("LetterID");
                 String From = rs.getString("Fr");
                 String Subject = rs.getString("Subject");
                 

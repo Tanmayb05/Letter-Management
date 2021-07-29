@@ -80,7 +80,7 @@ public class ClerkViewDirectory extends javax.swing.JFrame {
         BodyPanel.setMinimumSize(new java.awt.Dimension(800, 434));
         BodyPanel.setPreferredSize(new java.awt.Dimension(800, 434));
 
-        ClerkViewDirectoryTable.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ClerkViewDirectoryTable.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         ClerkViewDirectoryTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
@@ -223,7 +223,7 @@ public class ClerkViewDirectory extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery(sql);
             
             while(rs.next()){
-                String LetterID = String.valueOf(rs.getInt("LetterID"));
+                String LetterID = rs.getString("LetterID");
                 String From = rs.getString("Fr");
                 String Subject = rs.getString("Subject");
                 String Branch = rs.getString("Branch");                

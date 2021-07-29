@@ -41,7 +41,6 @@ public class ClerkEmployeeStats extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1000, 550));
         setMinimumSize(new java.awt.Dimension(1000, 550));
-        setPreferredSize(new java.awt.Dimension(1000, 550));
         setSize(new java.awt.Dimension(1000, 550));
 
         HeaderPanel.setBackground(new java.awt.Color(232, 246, 239));
@@ -311,7 +310,7 @@ public class ClerkEmployeeStats extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery(sql);
             
             while(rs.next()){
-                String LetterID = String.valueOf(rs.getInt("LetterID"));
+                String LetterID = rs.getString("LetterID");
                 String From = rs.getString("Fr");
                 String Subject = rs.getString("Subject");
                 String Branch = rs.getString("Branch");                

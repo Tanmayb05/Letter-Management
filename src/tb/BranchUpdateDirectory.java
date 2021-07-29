@@ -88,6 +88,7 @@ public class BranchUpdateDirectory extends javax.swing.JFrame {
         BodyPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         BodyPanel.setPreferredSize(new java.awt.Dimension(0, 480));
 
+        UpdateDirectoryTable.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         UpdateDirectoryTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -426,7 +427,7 @@ public class BranchUpdateDirectory extends javax.swing.JFrame {
             
 //          >>  2. DISPLAYING PENDING/NEW LETTERS ASSIGNED TO THE EMPLOYEE
             String sql = "SELECT * FROM inwardregister WHERE "
-                    + "Branch='"+branch+"' AND ToEmployee='"+toEmployee+"'"
+                    + "Branch='"+branch+"' AND ToEmployee='"+toEmployee+"' "
                     + "AND Acknowledgement=1 ORDER BY cDateSent DESC";
             PreparedStatement st = con.c.prepareStatement(sql);
             ResultSet rs = st.executeQuery(sql);
@@ -434,7 +435,7 @@ public class BranchUpdateDirectory extends javax.swing.JFrame {
 //          >>  3. ENTERING THE VALUES IN THE TABLE
             int i=0;
             while(rs.next()){
-                String LetterID = String.valueOf(rs.getInt("LetterID"));
+                String LetterID = rs.getString("LetterID");
                 String From = rs.getString("Fr");
                 String Subject = rs.getString("Subject");
                 String Received = rs.getString("eDateReceived");

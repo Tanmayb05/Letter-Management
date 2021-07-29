@@ -122,13 +122,13 @@ public class ClerkAddToDirectory extends javax.swing.JFrame {
         DateSentLabel.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         DateSentLabel.setText("Date Sent:");
 
-        LetterIDField.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        LetterIDField.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         LetterIDField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        FromField.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        FromField.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         FromField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        SubjectField.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        SubjectField.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         SubjectField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         DateReceivedField.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
@@ -227,7 +227,7 @@ public class ClerkAddToDirectory extends javax.swing.JFrame {
         BodyPanelLayout.setVerticalGroup(
             BodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BodyPanelLayout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addGroup(BodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LetterIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LetterIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -249,12 +249,12 @@ public class ClerkAddToDirectory extends javax.swing.JFrame {
                     .addComponent(DateReceivedField, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(DateReceivedShowTodayButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(DateReceivedLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(BodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DateSentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DateSentField, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DateSentShowTodayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         FooterPanel.setBackground(new java.awt.Color(232, 246, 239));

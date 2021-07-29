@@ -77,6 +77,7 @@ public class BranchViewLetter extends javax.swing.JFrame {
         BodyPanel.setBackground(new java.awt.Color(232, 246, 239));
         BodyPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        BranchViewLetterTable.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         BranchViewLetterTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
@@ -245,7 +246,7 @@ public class BranchViewLetter extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery(sql);            
             
             while(rs.next()){
-                String LetterID = String.valueOf(rs.getInt("LetterID"));
+                String LetterID = rs.getString("LetterID");
                 String From = rs.getString("Fr");
                 String Subject = rs.getString("Subject");
                 String Received = rs.getString("eDateReceived");
