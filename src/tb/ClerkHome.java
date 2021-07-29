@@ -1,11 +1,15 @@
 package tb;
 
+import java.net.URL;
+import javax.swing.ImageIcon;
+
 public class ClerkHome extends javax.swing.JFrame {
 
     /**
      * Creates new form ClerkHome
      */
     public ClerkHome() {
+        setFrame();
         initComponents();
     }
 
@@ -28,7 +32,7 @@ public class ClerkHome extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Clerk Home");
-        setBounds(new java.awt.Rectangle(300, 150, 700, 500));
+        setBounds(new java.awt.Rectangle(400, 150, 700, 500));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMaximizedBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setMaximumSize(new java.awt.Dimension(700, 500));
@@ -108,20 +112,21 @@ public class ClerkHome extends javax.swing.JFrame {
                 .addContainerGap(122, Short.MAX_VALUE))
             .addGroup(ClerkHomePanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(ClerkHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ClerkHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(ViewEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(ViewDirectoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(AddToDirectoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(WelcomeLabel))
+                .addGroup(ClerkHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ViewEmployeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ViewDirectoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AddToDirectoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(ClerkHomePanelLayout.createSequentialGroup()
+                        .addComponent(WelcomeLabel)
+                        .addGap(61, 61, 61)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ClerkHomePanelLayout.setVerticalGroup(
             ClerkHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ClerkHomePanelLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(22, 22, 22)
                 .addComponent(WelcomeLabel)
-                .addGap(18, 18, 18)
+                .addGap(28, 28, 28)
                 .addComponent(ClerkHomeSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(AddToDirectoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -174,6 +179,15 @@ public class ClerkHome extends javax.swing.JFrame {
         new ClerkLogin().setVisible(true);
     }//GEN-LAST:event_SignOutButtonActionPerformed
 
+    private void setFrame(){
+        
+        URL iconURL = getClass().getResource("/img-src/logo.png");
+        // iconURL is null when not found
+        ImageIcon icon = new ImageIcon(iconURL);
+        setIconImage(icon.getImage());
+        setTitle("Water Resources Department, Government of Maharashtra, India");
+        setBounds(400, 150, 700, 550);
+    }
     /**
      * @param args the command line arguments
      */

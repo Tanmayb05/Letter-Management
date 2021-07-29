@@ -46,3 +46,7 @@ _________________________________________________________
 >> Increase Width Of Table + Frame {View Directory}
 >> Increase Width Of Table + Frame {View Employee Stats}
 >> Add A Column for update date/time
+
+
+
+>> ClerkAddToDirectory -> Remove Pending JOptionPane

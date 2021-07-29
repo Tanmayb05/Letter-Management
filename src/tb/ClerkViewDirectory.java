@@ -21,7 +21,7 @@ public class ClerkViewDirectory extends javax.swing.JFrame {
      * Creates new form ViewDatabase
      */
     public ClerkViewDirectory() {
-        
+        setFrame();
         initComponents();
         Display();
     }
@@ -109,6 +109,7 @@ public class ClerkViewDirectory extends javax.swing.JFrame {
             ClerkViewDirectoryTable.getColumnModel().getColumn(3).setMinWidth(45);
             ClerkViewDirectoryTable.getColumnModel().getColumn(3).setPreferredWidth(45);
             ClerkViewDirectoryTable.getColumnModel().getColumn(3).setMaxWidth(45);
+            ClerkViewDirectoryTable.getColumnModel().getColumn(3).setHeaderValue("Branch");
             ClerkViewDirectoryTable.getColumnModel().getColumn(5).setMinWidth(65);
             ClerkViewDirectoryTable.getColumnModel().getColumn(5).setPreferredWidth(65);
             ClerkViewDirectoryTable.getColumnModel().getColumn(5).setMaxWidth(65);

@@ -80,20 +80,20 @@ public class BranchViewLetter extends javax.swing.JFrame {
         BranchViewLetterTable.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         BranchViewLetterTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "From", "Subject", "Received", "Completed", "Acknowledgement", "Progress", "Feedback", "Days"
+                "ID", "From", "Subject", "Received", "Completed", "Progress", "Feedback", "Days"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -108,24 +108,7 @@ public class BranchViewLetter extends javax.swing.JFrame {
         BranchViewLetterTable.setGridColor(new java.awt.Color(102, 255, 255));
         BranchViewLetterTableScrollPane.setViewportView(BranchViewLetterTable);
         if (BranchViewLetterTable.getColumnModel().getColumnCount() > 0) {
-            BranchViewLetterTable.getColumnModel().getColumn(0).setMinWidth(25);
-            BranchViewLetterTable.getColumnModel().getColumn(0).setPreferredWidth(25);
             BranchViewLetterTable.getColumnModel().getColumn(0).setMaxWidth(25);
-            BranchViewLetterTable.getColumnModel().getColumn(3).setMinWidth(50);
-            BranchViewLetterTable.getColumnModel().getColumn(3).setPreferredWidth(50);
-            BranchViewLetterTable.getColumnModel().getColumn(3).setMaxWidth(50);
-            BranchViewLetterTable.getColumnModel().getColumn(4).setMinWidth(50);
-            BranchViewLetterTable.getColumnModel().getColumn(4).setPreferredWidth(50);
-            BranchViewLetterTable.getColumnModel().getColumn(4).setMaxWidth(50);
-            BranchViewLetterTable.getColumnModel().getColumn(6).setMinWidth(50);
-            BranchViewLetterTable.getColumnModel().getColumn(6).setPreferredWidth(50);
-            BranchViewLetterTable.getColumnModel().getColumn(6).setMaxWidth(50);
-            BranchViewLetterTable.getColumnModel().getColumn(7).setMinWidth(80);
-            BranchViewLetterTable.getColumnModel().getColumn(7).setPreferredWidth(80);
-            BranchViewLetterTable.getColumnModel().getColumn(7).setMaxWidth(80);
-            BranchViewLetterTable.getColumnModel().getColumn(8).setMinWidth(10);
-            BranchViewLetterTable.getColumnModel().getColumn(8).setPreferredWidth(10);
-            BranchViewLetterTable.getColumnModel().getColumn(8).setMaxWidth(10);
         }
 
         javax.swing.GroupLayout BodyPanelLayout = new javax.swing.GroupLayout(BodyPanel);
@@ -216,7 +199,6 @@ public class BranchViewLetter extends javax.swing.JFrame {
         BranchViewLetterTableModel.addColumn("Subject");
         BranchViewLetterTableModel.addColumn("Received");
         BranchViewLetterTableModel.addColumn("Completed");
-        BranchViewLetterTableModel.addColumn("Acknowledgement");
         BranchViewLetterTableModel.addColumn("Progress");
         BranchViewLetterTableModel.addColumn("Feedback");
         BranchViewLetterTableModel.addColumn("Days");
@@ -224,8 +206,8 @@ public class BranchViewLetter extends javax.swing.JFrame {
         BranchViewLetterTable.getColumnModel().getColumn(0).setPreferredWidth(20);
         BranchViewLetterTable.getColumnModel().getColumn(3).setPreferredWidth(50);
         BranchViewLetterTable.getColumnModel().getColumn(4).setPreferredWidth(50);
-        BranchViewLetterTable.getColumnModel().getColumn(6).setPreferredWidth(50);
-        BranchViewLetterTable.getColumnModel().getColumn(8).setPreferredWidth(10);
+        BranchViewLetterTable.getColumnModel().getColumn(5).setPreferredWidth(50);
+        BranchViewLetterTable.getColumnModel().getColumn(7).setPreferredWidth(10);
         
         try {
            
@@ -251,12 +233,11 @@ public class BranchViewLetter extends javax.swing.JFrame {
                 String Subject = rs.getString("Subject");
                 String Received = rs.getString("eDateReceived");
                 String Completed = rs.getString("eDateCompleted");
-                String Acknowledgement = String.valueOf(rs.getInt("Acknowledgement"));
                 String Progress = rs.getString("Progress");
                 String Feedback = rs.getString("Feedback");
                 String Days = rs.getString("CompletedInDays");
                 
-                String tbdata[] = {LetterID, From, Subject, Received, Completed, Acknowledgement, Progress, Feedback, Days};
+                String tbdata[] = {LetterID, From, Subject, Received, Completed, Progress, Feedback, Days};
             
                 BranchViewLetterTableModel.addRow(tbdata);
                 

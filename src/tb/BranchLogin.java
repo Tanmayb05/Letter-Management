@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -40,7 +41,7 @@ public class BranchLogin extends JFrame implements ActionListener{
     
     public BranchLogin() {
         
-        setBounds(100, 100, 700, 500);
+        setFrame();
         
         //        --------------------------------------------------------------
         
@@ -193,6 +194,17 @@ public class BranchLogin extends JFrame implements ActionListener{
 
       
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    
+    
+    private void setFrame(){
+        
+        URL iconURL = getClass().getResource("/img-src/logo.png");
+        // iconURL is null when not found
+        ImageIcon icon = new ImageIcon(iconURL);
+        setIconImage(icon.getImage());
+        setTitle("Water Resources Department, Government of Maharashtra, India");
+        setBounds(300, 150, 700, 550);
     }
     
     //***     ------------------------------------------------------------------

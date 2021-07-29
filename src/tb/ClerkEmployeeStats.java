@@ -98,7 +98,7 @@ public class ClerkEmployeeStats extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Subject", "From", "Branch", "To", "Received", "Completed", "Progress", "Feedback", "Days"
+                "ID", "Subject", "From", "Received", "Completed", "Progress", "Feedback", "Days"
             }
         ));
         ClerkEmployeeStatsTableScrollPane.setViewportView(ClerkEmployeeStatsTable);
@@ -283,8 +283,6 @@ public class ClerkEmployeeStats extends javax.swing.JFrame {
         ClerkEmployeeStatsTableModel.addColumn("ID");
         ClerkEmployeeStatsTableModel.addColumn("From");
         ClerkEmployeeStatsTableModel.addColumn("Subject");
-        ClerkEmployeeStatsTableModel.addColumn("Branch");
-        ClerkEmployeeStatsTableModel.addColumn("To");
         ClerkEmployeeStatsTableModel.addColumn("Received");
         ClerkEmployeeStatsTableModel.addColumn("Completed");
         ClerkEmployeeStatsTableModel.addColumn("Progress");
@@ -292,10 +290,10 @@ public class ClerkEmployeeStats extends javax.swing.JFrame {
         ClerkEmployeeStatsTableModel.addColumn("Days");
         
         ClerkEmployeeStatsTable.getColumnModel().getColumn(0).setPreferredWidth(10);
-        ClerkEmployeeStatsTable.getColumnModel().getColumn(5).setPreferredWidth(50);
-        ClerkEmployeeStatsTable.getColumnModel().getColumn(6).setPreferredWidth(50);
-        ClerkEmployeeStatsTable.getColumnModel().getColumn(9).setPreferredWidth(10);
-        ClerkEmployeeStatsTable.getColumnModel().getColumn(0).setPreferredWidth(20);
+        ClerkEmployeeStatsTable.getColumnModel().getColumn(3).setPreferredWidth(50);
+        ClerkEmployeeStatsTable.getColumnModel().getColumn(4).setPreferredWidth(50);
+        ClerkEmployeeStatsTable.getColumnModel().getColumn(7).setPreferredWidth(10);
+//        ClerkEmployeeStatsTable.getColumnModel().getColumn(0).setPreferredWidth(20);
         
         
         try {
@@ -313,15 +311,13 @@ public class ClerkEmployeeStats extends javax.swing.JFrame {
                 String LetterID = rs.getString("LetterID");
                 String From = rs.getString("Fr");
                 String Subject = rs.getString("Subject");
-                String Branch = rs.getString("Branch");                
-                String To = rs.getString("ToEmployee");
                 String Received = rs.getString("eDateReceived");
                 String Completed  = rs.getString("eDateCompleted");
                 String Progress = rs.getString("Progress");
                 String Feedback  = rs.getString("Feedback");
                 String CompletedInDays = String.valueOf(rs.getInt("CompletedInDays"));
                 
-                String tableData[] = {LetterID, From, Subject, Branch, To, Received, Completed, Progress, Feedback, CompletedInDays};
+                String tableData[] = {LetterID, From, Subject, Received, Completed, Progress, Feedback, CompletedInDays};
             
                 ClerkEmployeeStatsTableModel.addRow(tableData);
                 
