@@ -46,10 +46,11 @@ public class BranchViewLetter extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(232, 246, 239));
-        setMaximumSize(new java.awt.Dimension(900, 600));
+        setBounds(new java.awt.Rectangle(300, 125, 900, 700));
+        setMaximumSize(new java.awt.Dimension(900, 650));
         setMinimumSize(new java.awt.Dimension(900, 600));
-        setPreferredSize(new java.awt.Dimension(900, 600));
-        setSize(new java.awt.Dimension(900, 600));
+        setPreferredSize(new java.awt.Dimension(900, 650));
+        setSize(new java.awt.Dimension(900, 650));
 
         HeaderPanel.setBackground(new java.awt.Color(232, 246, 239));
         HeaderPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -153,9 +154,9 @@ public class BranchViewLetter extends javax.swing.JFrame {
         FooterPanelLayout.setVerticalGroup(
             FooterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FooterPanelLayout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap(56, Short.MAX_VALUE)
                 .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -1407,3 +1407,33 @@
   <thread>20</thread>
   <message>Initializing...</message>
 </record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-29T11:24:11.747582200Z</date>
+  <millis>1627557851747</millis>
+  <nanos>582200</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>20</thread>
+  <message>Initializing...</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2021-07-29T12:32:41.457520600Z</date>
+  <millis>1627561961457</millis>
+  <nanos>520600</nanos>
+  <sequence>0</sequence>
+  <logger>tb</logger>
+  <level>INFO</level>
+  <class>tb.BranchUpdate</class>
+  <method>logFiles</method>
+  <thread>20</thread>
+  <message>Initializing...</message>
+</record>

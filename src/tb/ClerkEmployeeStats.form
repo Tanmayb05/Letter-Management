@@ -142,7 +142,7 @@
                   <EmptySpace pref="38" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="LetterTableScrollPane" alignment="1" min="-2" pref="55" max="-2" attributes="0"/>
-                      <Component id="BackButton" alignment="1" min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="BackButton" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
@@ -323,7 +323,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img-src/back2.png"/>
+              <Image iconType="3" name="/img-src/back-arrow.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="&#x92e;&#x93e;&#x917;&#x947; &#x91c;&#x93e; "/>
           </Properties>

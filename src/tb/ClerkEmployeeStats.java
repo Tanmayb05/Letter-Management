@@ -116,7 +116,7 @@ public class ClerkEmployeeStats extends javax.swing.JFrame {
         BackButton.setBackground(new java.awt.Color(204, 204, 204));
         BackButton.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         BackButton.setForeground(new java.awt.Color(255, 255, 255));
-        BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img-src/back2.png"))); // NOI18N
+        BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img-src/back-arrow.png"))); // NOI18N
         BackButton.setToolTipText("मागे जा ");
         BackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,7 +158,7 @@ public class ClerkEmployeeStats extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(BodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LetterTableScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BackButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BackButton, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(50, 50, 50))
         );
 

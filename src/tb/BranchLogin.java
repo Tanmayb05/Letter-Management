@@ -25,12 +25,12 @@ public class BranchLogin extends JFrame implements ActionListener{
     private JComboBox BranchNo;
     
     private JLabel UsernameLabel;
-    private ImageIcon usernameIcon = new ImageIcon("C:\\Users\\Lenovo\\Documents\\Dropbox\\Java\\Letter Management\\src\\img-src\\UsernameBranch.png","Username");
+    private ImageIcon usernameIcon = new ImageIcon(getClass().getResource("/img-src/UsernameBranch.png"),"Username");
     private JTextField UsernameTextField;
     private JLabel PasswordLabel;
-    private ImageIcon passwordIcon = new ImageIcon("C:\\Users\\Lenovo\\Documents\\Dropbox\\Java\\Letter Management\\src\\img-src\\PasswordBranch.png","Password");
+    private ImageIcon passwordIcon = new ImageIcon(getClass().getResource("/img-src/PasswordBranch.png"),"Password");
     private JPasswordField PasswordField;
-    ImageIcon ShowPasswordIcon = new ImageIcon("C:\\Users\\Lenovo\\Documents\\Dropbox\\Java\\Letter Management\\src\\img-src\\eye.png","Show Password");
+    ImageIcon ShowPasswordIcon = new ImageIcon(getClass().getResource("/img-src/eye.png"),"Show Password");
     private JLabel ShowPassword;
     
     private Border raisedbevel = BorderFactory.createRaisedBevelBorder();

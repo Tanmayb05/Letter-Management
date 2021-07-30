@@ -364,7 +364,6 @@ public class ClerkAddToDirectory extends javax.swing.JFrame {
                         st.setString(9, "0");
                         st.setString(10, "Added To Database");
                         
-                        
                         int i = st.executeUpdate();
                         if (i > 0){
                             JOptionPane.showMessageDialog(null, "Successfully Created");
@@ -375,11 +374,8 @@ public class ClerkAddToDirectory extends javax.swing.JFrame {
                         + "SET PendingTasks = PendingTasks + 1 WHERE EmpID='"+EmpID+"'";
                         PreparedStatement stPending = con.c.prepareStatement(sqlPending);
                         int j = stPending.executeUpdate();
-                        if (j > 0){
-                            JOptionPane.showMessageDialog(null, "Successfully Added Pending");
-                        }
 
-                        clearInputs();
+            clearInputs();
                         
         } catch(SQLException esql){
             esql.printStackTrace();

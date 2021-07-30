@@ -255,7 +255,7 @@ public class BranchUpdateDirectory extends javax.swing.JFrame {
 //      >>  CREATING AN EMPTY ARRAYLIST
 
 //      >>  letterArray: TO STORE LETTER IDS
-        ArrayList<Integer> letterArray = new ArrayList<>();
+        ArrayList<String> letterArray = new ArrayList<>();
 //      >>  countDays: TO STORE THE DAYS TAKEN TO COMPLETE THE WORK
         ArrayList<Integer> countDays = new ArrayList<>();
         
@@ -273,11 +273,8 @@ public class BranchUpdateDirectory extends javax.swing.JFrame {
             if(checked) {
                 
 //              >>  a.  Getting Letter ID of checked box  
-                String FeedbackLetterIDstring = UpdateDirectoryTable.getValueAt(i, 0).toString();
-//              >>  b.  Converting the String Letter ID to Integer Letter ID
-                int FeedbackLetterIDinteger = Integer.parseInt(FeedbackLetterIDstring);
-//              >>  c.  Adding the Integer Letter ID to letterArray  
-                letterArray.add(FeedbackLetterIDinteger);
+                String FeedbackLetterIDstring = UpdateDirectoryTable.getValueAt(i, 0).toString(); 
+                letterArray.add(FeedbackLetterIDstring);
 //              >>  d.  Getting DateReceived from the table
                 String received = (String) UpdateDirectoryTable.getModel().getValueAt(i, 3);
 //              >>  e.  Counting the days it required to complete the work using
@@ -331,7 +328,6 @@ public class BranchUpdateDirectory extends javax.swing.JFrame {
                     PreparedStatement st2 = con.c.prepareStatement(sql2);
                     int z = st2.executeUpdate();
                     if (z > 0){
-                        JOptionPane.showMessageDialog(null, "Successfully Added Pending");
                     }
                     else{}
                 } catch (Exception e) {
