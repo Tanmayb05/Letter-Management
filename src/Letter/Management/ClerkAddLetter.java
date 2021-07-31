@@ -32,18 +32,10 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         HeaderPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         AddLetterPanel = new javax.swing.JPanel();
-        AddLetterButton = new javax.swing.JButton();
-        ToPanel = new javax.swing.JPanel();
-        ToNameLabel = new javax.swing.JLabel();
-        ToBranchField = new javax.swing.JTextField();
-        ToNameField = new javax.swing.JTextField();
-        ToBranchLabel = new javax.swing.JLabel();
-        ToDateReceivedLabel = new javax.swing.JLabel();
-        ToDateReceivedField = new javax.swing.JTextField();
-        DateReceivedShowTodayButton = new javax.swing.JButton();
         InwardRegisterNumberPanel = new javax.swing.JPanel();
         InwardRegisterNoLabel = new javax.swing.JLabel();
         InwardRegsiterNumberField = new javax.swing.JLabel();
+        FromParentPanel = new javax.swing.JPanel();
         FromPanel = new javax.swing.JPanel();
         FromLetterNoLabel = new javax.swing.JLabel();
         FromLetterNoField = new javax.swing.JTextField();
@@ -56,6 +48,17 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         SubjectPanel = new javax.swing.JPanel();
         SubjectLabel = new javax.swing.JLabel();
         SubjectField = new javax.swing.JTextField();
+        ToParentPanel = new javax.swing.JPanel();
+        ToPanel = new javax.swing.JPanel();
+        ToNameLabel = new javax.swing.JLabel();
+        ToBranchField = new javax.swing.JTextField();
+        ToNameField = new javax.swing.JTextField();
+        ToBranchLabel = new javax.swing.JLabel();
+        ToDateReceivedLabel = new javax.swing.JLabel();
+        ToDateReceivedField = new javax.swing.JTextField();
+        DateReceivedShowTodayButton = new javax.swing.JButton();
+        BackButton = new javax.swing.JButton();
+        AddLetterButton = new javax.swing.JButton();
         ShowRegisterButton = new javax.swing.JButton();
         TablePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -93,12 +96,178 @@ public class ClerkAddLetter extends javax.swing.JFrame {
 
         AddLetterPanel.setBackground(new java.awt.Color(225, 250, 225));
 
-        AddLetterButton.setText("Add Letter");
-        AddLetterButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddLetterButtonActionPerformed(evt);
-            }
-        });
+        InwardRegisterNumberPanel.setBackground(new java.awt.Color(204, 255, 204));
+        InwardRegisterNumberPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        InwardRegisterNoLabel.setBackground(new java.awt.Color(102, 255, 102));
+        InwardRegisterNoLabel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        InwardRegisterNoLabel.setText("Inward Register Number ");
+
+        InwardRegsiterNumberField.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        InwardRegsiterNumberField.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        InwardRegsiterNumberField.setText("01");
+        InwardRegsiterNumberField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+
+        javax.swing.GroupLayout InwardRegisterNumberPanelLayout = new javax.swing.GroupLayout(InwardRegisterNumberPanel);
+        InwardRegisterNumberPanel.setLayout(InwardRegisterNumberPanelLayout);
+        InwardRegisterNumberPanelLayout.setHorizontalGroup(
+            InwardRegisterNumberPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InwardRegisterNumberPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(InwardRegisterNoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(InwardRegsiterNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        InwardRegisterNumberPanelLayout.setVerticalGroup(
+            InwardRegisterNumberPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InwardRegisterNumberPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(InwardRegisterNumberPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(InwardRegisterNoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(InwardRegsiterNumberField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        FromParentPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        FromPanel.setBackground(new java.awt.Color(204, 255, 204));
+        FromPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "From"));
+
+        FromLetterNoLabel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        FromLetterNoLabel.setText("Number:");
+        FromLetterNoLabel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        FromLetterNoLabel.setMinimumSize(new java.awt.Dimension(100, 26));
+        FromLetterNoLabel.setPreferredSize(new java.awt.Dimension(100, 26));
+
+        FromLetterNoField.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        FromLetterNoField.setMinimumSize(new java.awt.Dimension(150, 26));
+        FromLetterNoField.setPreferredSize(new java.awt.Dimension(150, 26));
+
+        FromDateLabel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        FromDateLabel.setText("Date");
+        FromDateLabel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        FromDateLabel.setMinimumSize(new java.awt.Dimension(100, 26));
+        FromDateLabel.setPreferredSize(new java.awt.Dimension(100, 26));
+
+        FromDateField.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        FromDateField.setMinimumSize(new java.awt.Dimension(150, 26));
+        FromDateField.setPreferredSize(new java.awt.Dimension(150, 26));
+
+        FromNameLabel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        FromNameLabel.setText("Name");
+        FromNameLabel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        FromNameLabel.setMinimumSize(new java.awt.Dimension(100, 26));
+        FromNameLabel.setPreferredSize(new java.awt.Dimension(100, 26));
+
+        DateSentShowTodayButton.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        DateSentShowTodayButton.setText("Today");
+        DateSentShowTodayButton.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        DateSentShowTodayButton.setMinimumSize(new java.awt.Dimension(63, 26));
+        DateSentShowTodayButton.setPreferredSize(new java.awt.Dimension(107, 26));
+
+        FromNameComboBox.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        FromNameComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        FromNameComboBox.setMinimumSize(new java.awt.Dimension(150, 26));
+        FromNameComboBox.setPreferredSize(new java.awt.Dimension(150, 26));
+
+        FromNameField.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        FromNameField.setMinimumSize(new java.awt.Dimension(150, 26));
+        FromNameField.setPreferredSize(new java.awt.Dimension(150, 26));
+
+        javax.swing.GroupLayout FromPanelLayout = new javax.swing.GroupLayout(FromPanel);
+        FromPanel.setLayout(FromPanelLayout);
+        FromPanelLayout.setHorizontalGroup(
+            FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FromPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(FromDateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(FromNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(FromLetterNoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(FromPanelLayout.createSequentialGroup()
+                        .addComponent(FromDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(DateSentShowTodayButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(FromLetterNoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FromNameComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(FromNameField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        FromPanelLayout.setVerticalGroup(
+            FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FromPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FromLetterNoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FromLetterNoField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(FromDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(FromDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(DateSentShowTodayButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(FromNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(FromPanelLayout.createSequentialGroup()
+                        .addComponent(FromNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(FromNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout FromParentPanelLayout = new javax.swing.GroupLayout(FromParentPanel);
+        FromParentPanel.setLayout(FromParentPanelLayout);
+        FromParentPanelLayout.setHorizontalGroup(
+            FromParentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FromParentPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(FromPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        FromParentPanelLayout.setVerticalGroup(
+            FromParentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FromParentPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(FromPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+
+        SubjectPanel.setBackground(new java.awt.Color(204, 255, 204));
+        SubjectPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        SubjectPanel.setMinimumSize(new java.awt.Dimension(340, 48));
+        SubjectPanel.setPreferredSize(new java.awt.Dimension(340, 48));
+
+        SubjectLabel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+        SubjectLabel.setText("Subject");
+
+        SubjectField.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
+
+        javax.swing.GroupLayout SubjectPanelLayout = new javax.swing.GroupLayout(SubjectPanel);
+        SubjectPanel.setLayout(SubjectPanelLayout);
+        SubjectPanelLayout.setHorizontalGroup(
+            SubjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SubjectPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(SubjectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(SubjectField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        SubjectPanelLayout.setVerticalGroup(
+            SubjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SubjectPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(SubjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(SubjectField)
+                    .addComponent(SubjectLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        ToParentPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         ToPanel.setBackground(new java.awt.Color(204, 255, 204));
         ToPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "To"));
@@ -188,152 +357,38 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        InwardRegisterNumberPanel.setBackground(new java.awt.Color(204, 255, 204));
-        InwardRegisterNumberPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        InwardRegisterNoLabel.setBackground(new java.awt.Color(102, 255, 102));
-        InwardRegisterNoLabel.setText("Inward Register Number ");
-
-        InwardRegsiterNumberField.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        InwardRegsiterNumberField.setText("01");
-        InwardRegsiterNumberField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout InwardRegisterNumberPanelLayout = new javax.swing.GroupLayout(InwardRegisterNumberPanel);
-        InwardRegisterNumberPanel.setLayout(InwardRegisterNumberPanelLayout);
-        InwardRegisterNumberPanelLayout.setHorizontalGroup(
-            InwardRegisterNumberPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(InwardRegisterNumberPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(InwardRegisterNoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(InwardRegsiterNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        javax.swing.GroupLayout ToParentPanelLayout = new javax.swing.GroupLayout(ToParentPanel);
+        ToParentPanel.setLayout(ToParentPanelLayout);
+        ToParentPanelLayout.setHorizontalGroup(
+            ToParentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(ToPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        InwardRegisterNumberPanelLayout.setVerticalGroup(
-            InwardRegisterNumberPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InwardRegisterNumberPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(InwardRegisterNumberPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(InwardRegisterNoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(InwardRegsiterNumberField, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE))
-                .addContainerGap())
+        ToParentPanelLayout.setVerticalGroup(
+            ToParentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ToParentPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(ToPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
-        FromPanel.setBackground(new java.awt.Color(204, 255, 204));
-        FromPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "From"));
+        BackButton.setBackground(new java.awt.Color(255, 102, 102));
+        BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img-src/back-arrow.png"))); // NOI18N
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
 
-        FromLetterNoLabel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        FromLetterNoLabel.setText("Number:");
-        FromLetterNoLabel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
-        FromLetterNoLabel.setMinimumSize(new java.awt.Dimension(100, 26));
-        FromLetterNoLabel.setPreferredSize(new java.awt.Dimension(100, 26));
+        AddLetterButton.setBackground(new java.awt.Color(102, 255, 102));
+        AddLetterButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img-src/Add24.png"))); // NOI18N
+        AddLetterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddLetterButtonActionPerformed(evt);
+            }
+        });
 
-        FromLetterNoField.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        FromLetterNoField.setMinimumSize(new java.awt.Dimension(150, 26));
-        FromLetterNoField.setPreferredSize(new java.awt.Dimension(150, 26));
-
-        FromDateLabel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        FromDateLabel.setText("Date");
-        FromDateLabel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
-        FromDateLabel.setMinimumSize(new java.awt.Dimension(100, 26));
-        FromDateLabel.setPreferredSize(new java.awt.Dimension(100, 26));
-
-        FromDateField.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        FromDateField.setMinimumSize(new java.awt.Dimension(150, 26));
-        FromDateField.setPreferredSize(new java.awt.Dimension(150, 26));
-
-        FromNameLabel.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        FromNameLabel.setText("Name");
-        FromNameLabel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
-        FromNameLabel.setMinimumSize(new java.awt.Dimension(100, 26));
-        FromNameLabel.setPreferredSize(new java.awt.Dimension(100, 26));
-
-        DateSentShowTodayButton.setText("Today");
-        DateSentShowTodayButton.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
-        DateSentShowTodayButton.setMinimumSize(new java.awt.Dimension(63, 26));
-        DateSentShowTodayButton.setPreferredSize(new java.awt.Dimension(107, 26));
-
-        FromNameComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        FromNameComboBox.setMinimumSize(new java.awt.Dimension(150, 26));
-        FromNameComboBox.setPreferredSize(new java.awt.Dimension(150, 26));
-
-        FromNameField.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
-        FromNameField.setMinimumSize(new java.awt.Dimension(150, 26));
-        FromNameField.setPreferredSize(new java.awt.Dimension(150, 26));
-
-        javax.swing.GroupLayout FromPanelLayout = new javax.swing.GroupLayout(FromPanel);
-        FromPanel.setLayout(FromPanelLayout);
-        FromPanelLayout.setHorizontalGroup(
-            FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FromPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(FromDateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(FromNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(FromLetterNoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(FromPanelLayout.createSequentialGroup()
-                        .addComponent(FromDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(DateSentShowTodayButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(FromLetterNoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(FromNameComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(FromNameField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        FromPanelLayout.setVerticalGroup(
-            FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FromPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FromLetterNoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(FromLetterNoField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(FromDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(FromDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(DateSentShowTodayButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(FromNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(FromPanelLayout.createSequentialGroup()
-                        .addComponent(FromNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(FromNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        SubjectPanel.setBackground(new java.awt.Color(204, 255, 204));
-        SubjectPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        SubjectPanel.setMinimumSize(new java.awt.Dimension(340, 48));
-        SubjectPanel.setPreferredSize(new java.awt.Dimension(340, 48));
-
-        SubjectLabel.setText("Subject");
-
-        javax.swing.GroupLayout SubjectPanelLayout = new javax.swing.GroupLayout(SubjectPanel);
-        SubjectPanel.setLayout(SubjectPanelLayout);
-        SubjectPanelLayout.setHorizontalGroup(
-            SubjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SubjectPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(SubjectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(SubjectField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        SubjectPanelLayout.setVerticalGroup(
-            SubjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SubjectPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(SubjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(SubjectField)
-                    .addComponent(SubjectLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
+        ShowRegisterButton.setBackground(new java.awt.Color(255, 255, 153));
+        ShowRegisterButton.setFont(new java.awt.Font("SansSerif", 0, 11)); // NOI18N
         ShowRegisterButton.setText("Show Register");
         ShowRegisterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -347,32 +402,35 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddLetterPanelLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(ToPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(SubjectPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
-                    .addComponent(InwardRegisterNumberPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AddLetterPanelLayout.createSequentialGroup()
+                .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ToParentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(FromParentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(AddLetterPanelLayout.createSequentialGroup()
+                        .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(AddLetterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(ShowRegisterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(FromPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(SubjectPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                    .addComponent(InwardRegisterNumberPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(25, 25, 25))
         );
         AddLetterPanelLayout.setVerticalGroup(
             AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddLetterPanelLayout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addGap(25, 25, 25)
                 .addComponent(InwardRegisterNumberPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
-                .addComponent(FromPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(FromParentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(SubjectPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(ToPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ToParentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AddLetterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ShowRegisterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BackButton)
+                    .addComponent(ShowRegisterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AddLetterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -397,7 +455,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TablePanelLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
                 .addGap(40, 40, 40))
         );
         TablePanelLayout.setVerticalGroup(
@@ -443,6 +501,10 @@ public class ClerkAddLetter extends javax.swing.JFrame {
     private void ShowRegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowRegisterButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ShowRegisterButtonActionPerformed
+
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BackButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -497,6 +559,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddLetterButton;
     private javax.swing.JPanel AddLetterPanel;
+    private javax.swing.JButton BackButton;
     private javax.swing.JButton DateReceivedShowTodayButton;
     private javax.swing.JButton DateSentShowTodayButton;
     private javax.swing.JTextField FromDateField;
@@ -507,6 +570,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
     private javax.swing.JTextField FromNameField;
     private javax.swing.JLabel FromNameLabel;
     private javax.swing.JPanel FromPanel;
+    private javax.swing.JPanel FromParentPanel;
     private javax.swing.JPanel HeaderPanel;
     private javax.swing.JLabel InwardRegisterNoLabel;
     private javax.swing.JPanel InwardRegisterNumberPanel;
@@ -523,6 +587,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
     private javax.swing.JTextField ToNameField;
     private javax.swing.JLabel ToNameLabel;
     private javax.swing.JPanel ToPanel;
+    private javax.swing.JPanel ToParentPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
