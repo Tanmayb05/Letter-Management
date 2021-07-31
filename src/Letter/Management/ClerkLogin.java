@@ -35,7 +35,7 @@ public class ClerkLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        BodyPanel = new javax.swing.JPanel();
         LanguagePanel = new javax.swing.JPanel();
         LanguageLabel = new javax.swing.JLabel();
         LanguageComboBox = new javax.swing.JComboBox<>();
@@ -53,10 +53,10 @@ public class ClerkLogin extends javax.swing.JFrame {
         setName("ClerkLogin"); // NOI18N
         setSize(new java.awt.Dimension(525, 425));
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel1.setMaximumSize(new java.awt.Dimension(500, 400));
-        jPanel1.setMinimumSize(new java.awt.Dimension(500, 400));
-        jPanel1.setPreferredSize(new java.awt.Dimension(500, 400));
+        BodyPanel.setBackground(new java.awt.Color(204, 204, 255));
+        BodyPanel.setMaximumSize(new java.awt.Dimension(500, 400));
+        BodyPanel.setMinimumSize(new java.awt.Dimension(500, 400));
+        BodyPanel.setPreferredSize(new java.awt.Dimension(500, 400));
 
         LanguagePanel.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -103,22 +103,12 @@ public class ClerkLogin extends javax.swing.JFrame {
                 PasswordFieldFocusGained(evt);
             }
         });
-        PasswordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PasswordFieldActionPerformed(evt);
-            }
-        });
 
         ShowPasswordToggle.setBackground(new java.awt.Color(229, 251, 184));
         ShowPasswordToggle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img-src/eye.png"))); // NOI18N
         ShowPasswordToggle.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 ShowPasswordToggleStateChanged(evt);
-            }
-        });
-        ShowPasswordToggle.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ShowPasswordToggleActionPerformed(evt);
             }
         });
 
@@ -169,21 +159,21 @@ public class ClerkLogin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout BodyPanelLayout = new javax.swing.GroupLayout(BodyPanel);
+        BodyPanel.setLayout(BodyPanelLayout);
+        BodyPanelLayout.setHorizontalGroup(
+            BodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BodyPanelLayout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(BodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(LoginButtonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(LanguagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(PasswordPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        BodyPanelLayout.setVerticalGroup(
+            BodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BodyPanelLayout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
                 .addComponent(LanguagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
@@ -197,11 +187,11 @@ public class ClerkLogin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
+            .addComponent(BodyPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+            .addComponent(BodyPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
         );
 
         pack();
@@ -232,23 +222,12 @@ public class ClerkLogin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_LanguageComboBoxActionPerformed
 
-    private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PasswordFieldActionPerformed
-
     private void PasswordFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PasswordFieldFocusGained
         // TODO add your handling code here:
         if(PasswordField.getText().equals("password") == true) {
             PasswordField.setText("");
         }
-        
     }//GEN-LAST:event_PasswordFieldFocusGained
-
-    private void ShowPasswordToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPasswordToggleActionPerformed
-        // TODO add your handling code here:
-        
-        
-    }//GEN-LAST:event_ShowPasswordToggleActionPerformed
 
     private void ShowPasswordToggleStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ShowPasswordToggleStateChanged
         // TODO add your handling code here:
@@ -317,6 +296,7 @@ public class ClerkLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel BodyPanel;
     private javax.swing.JComboBox<String> LanguageComboBox;
     private javax.swing.JLabel LanguageLabel;
     private javax.swing.JPanel LanguagePanel;
@@ -326,6 +306,5 @@ public class ClerkLogin extends javax.swing.JFrame {
     private javax.swing.JLabel PasswordLabel;
     private javax.swing.JPanel PasswordPanel;
     private javax.swing.JToggleButton ShowPasswordToggle;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

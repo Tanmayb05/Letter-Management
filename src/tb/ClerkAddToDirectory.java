@@ -9,6 +9,7 @@ import java.sql.*;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
+//import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class ClerkAddToDirectory extends javax.swing.JFrame {
 
@@ -19,6 +20,7 @@ public class ClerkAddToDirectory extends javax.swing.JFrame {
         setFrame();
         initComponents();
         initBranchComboBox();
+//        AutoCompleteDecorator.decorate(BranchComboBox);
     }
 
     /**
