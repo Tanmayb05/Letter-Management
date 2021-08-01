@@ -1,5 +1,6 @@
 package Letter.Management;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.net.URL;
 import java.util.Locale;
@@ -7,9 +8,11 @@ import java.util.ResourceBundle;
 import javax.swing.BorderFactory;
 import static javax.swing.BorderFactory.createEtchedBorder;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;import javax.swing.JOptionPane;
+import tb.ClerkHome;
 
 /**
  *
@@ -98,6 +101,7 @@ public class ClerkLogin extends javax.swing.JFrame {
 
         PasswordField.setText("password");
         PasswordField.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        PasswordField.setNextFocusableComponent(LoginButton);
         PasswordField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 PasswordFieldFocusGained(evt);
@@ -106,9 +110,15 @@ public class ClerkLogin extends javax.swing.JFrame {
 
         ShowPasswordToggle.setBackground(new java.awt.Color(229, 251, 184));
         ShowPasswordToggle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img-src/eye.png"))); // NOI18N
+        ShowPasswordToggle.setNextFocusableComponent(LanguageComboBox);
         ShowPasswordToggle.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 ShowPasswordToggleStateChanged(evt);
+            }
+        });
+        ShowPasswordToggle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowPasswordToggleActionPerformed(evt);
             }
         });
 
@@ -141,6 +151,12 @@ public class ClerkLogin extends javax.swing.JFrame {
 
         LoginButton.setBackground(new java.awt.Color(254, 152, 152));
         LoginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img-src/login.png"))); // NOI18N
+        LoginButton.setNextFocusableComponent(ShowPasswordToggle);
+        LoginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout LoginButtonPanelLayout = new javax.swing.GroupLayout(LoginButtonPanel);
         LoginButtonPanel.setLayout(LoginButtonPanelLayout);
@@ -233,11 +249,44 @@ public class ClerkLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (ShowPasswordToggle.isSelected()) {
             PasswordField.setEchoChar((char)0);
+            ShowPasswordToggle.setBackground(new Color(51,255,51));
         }
         else {
             PasswordField.setEchoChar('*');
+            ShowPasswordToggle.setBackground(new Color(229,251,184));
         }
     }//GEN-LAST:event_ShowPasswordToggleStateChanged
+
+    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
+        // TODO add your handling code here:
+        int flag = 0;
+        
+        try {
+            
+            String password = (String) PasswordField.getText();
+            ConnectionEstablish con = new ConnectionEstablish();
+            String sql = "SELECT * from clerk WHERE Password = '"+password+"'";
+            PreparedStatement st = con.c.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            
+            while(rs.next()) {
+                flag = 1;
+                JOptionPane.showMessageDialog(null,"Welcome");
+                this.setVisible(false);
+                new ClerkAddLetter().setVisible(true);
+            }
+            
+            if (flag == 0)
+                JOptionPane.showMessageDialog(null,"Invalid Password");
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_LoginButtonActionPerformed
+
+    private void ShowPasswordToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPasswordToggleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ShowPasswordToggleActionPerformed
 
     private void init() {
 //        setExtendedState(MAXIMIZED_BOTH);

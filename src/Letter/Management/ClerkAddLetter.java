@@ -1,9 +1,18 @@
 package Letter.Management;
 
 import static Letter.Management.ClerkLogin.setUIFont;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
  *
@@ -16,8 +25,11 @@ public class ClerkAddLetter extends javax.swing.JFrame {
      */
     public ClerkAddLetter() {
         initComponents();
-//        FromNameField.setVisible(false);
-        init();
+        initFrame();
+        initFromNameComboBox();
+        initToBranchComboBox();
+        initShowRegister();
+        AutoCompleteDecorator.decorate(FromNameComboBox);
     }
 
     /**
@@ -33,10 +45,10 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         HeadingPanel = new javax.swing.JPanel();
         HeadingLabel = new javax.swing.JLabel();
         AddLetterPanel = new javax.swing.JPanel();
+        AddLetterFormPanel = new javax.swing.JPanel();
         InwardRegisterNumberPanel = new javax.swing.JPanel();
         InwardRegisterNoLabel = new javax.swing.JLabel();
         InwardRegsiterNumberField = new javax.swing.JLabel();
-        FromParentPanel = new javax.swing.JPanel();
         FromPanel = new javax.swing.JPanel();
         FromLetterNoLabel = new javax.swing.JLabel();
         FromLetterNoField = new javax.swing.JTextField();
@@ -46,36 +58,42 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         DateSentShowTodayButton = new javax.swing.JButton();
         FromNameComboBox = new javax.swing.JComboBox<>();
         FromNameField = new javax.swing.JTextField();
+        ToDateReceivedLabel2 = new javax.swing.JLabel();
         SubjectPanel = new javax.swing.JPanel();
         SubjectLabel = new javax.swing.JLabel();
         SubjectField = new javax.swing.JTextField();
-        ToParentPanel = new javax.swing.JPanel();
         ToPanel = new javax.swing.JPanel();
         ToNameLabel = new javax.swing.JLabel();
-        ToBranchField = new javax.swing.JTextField();
-        ToNameField = new javax.swing.JTextField();
         ToBranchLabel = new javax.swing.JLabel();
         ToDateReceivedLabel = new javax.swing.JLabel();
         ToDateReceivedField = new javax.swing.JTextField();
         DateReceivedShowTodayButton = new javax.swing.JButton();
-        BackButton = new javax.swing.JButton();
+        ToDateReceivedLabel1 = new javax.swing.JLabel();
+        ToBranchComboBox = new javax.swing.JComboBox<>();
+        ToNameComboBox = new javax.swing.JComboBox<>();
+        ActionButtonsPanel = new javax.swing.JPanel();
+        SignoutButton = new javax.swing.JButton();
         AddLetterButton = new javax.swing.JButton();
         ShowRegisterButton = new javax.swing.JButton();
         EmployeeStatsButton = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        ShowButton = new javax.swing.JButton();
+        ShowRegisterPanel = new javax.swing.JPanel();
+        ShowRegisterSortByLabel = new javax.swing.JLabel();
+        ShowRegisterSortByComboBox = new javax.swing.JComboBox<>();
+        EmployeeStatsOptions = new javax.swing.JPanel();
+        NameEmployeeStatsComboBox = new javax.swing.JComboBox<>();
+        BranchEmployeeStatsComboBox = new javax.swing.JComboBox<>();
         SortByEmployeeStatsLabel = new javax.swing.JLabel();
         SortByEmployeeStatsComboBox = new javax.swing.JComboBox<>();
+        EmployeeStatsFilterPeriodPanel = new javax.swing.JPanel();
         FromPeriodLabel = new javax.swing.JLabel();
         FromPeriodField = new javax.swing.JTextField();
-        ToPeriodLabel = new javax.swing.JLabel();
         ToPeriodField = new javax.swing.JTextField();
-        BranchEmployeeStatsComboBox = new javax.swing.JComboBox<>();
-        NameEmployeeStatsComboBox = new javax.swing.JComboBox<>();
+        ToPeriodLabel = new javax.swing.JLabel();
         TablePanel = new javax.swing.JPanel();
         TablesPane = new javax.swing.JTabbedPane();
         ShowDirectoryScrollPane = new javax.swing.JScrollPane();
-        ShowDirectoryPane = new javax.swing.JTable();
+        ShowRegisterTable = new javax.swing.JTable();
         EmployeeStatsPane = new javax.swing.JPanel();
         EmployeeStatsScrollPane = new javax.swing.JScrollPane();
         EmployeeStatsTable = new javax.swing.JTable();
@@ -84,7 +102,6 @@ public class ClerkAddLetter extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 0, 1000, 640));
-        setMaximumSize(new java.awt.Dimension(1000, 640));
         setMinimumSize(new java.awt.Dimension(1000, 640));
         setName("Clerk Home"); // NOI18N
         setSize(new java.awt.Dimension(1000, 640));
@@ -140,7 +157,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
 
         InwardRegsiterNumberField.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         InwardRegsiterNumberField.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        InwardRegsiterNumberField.setText("01");
+        InwardRegsiterNumberField.setText("00");
         InwardRegsiterNumberField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
         javax.swing.GroupLayout InwardRegisterNumberPanelLayout = new javax.swing.GroupLayout(InwardRegisterNumberPanel);
@@ -157,53 +174,57 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         InwardRegisterNumberPanelLayout.setVerticalGroup(
             InwardRegisterNumberPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InwardRegisterNumberPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(5, 5, 5)
                 .addGroup(InwardRegisterNumberPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(InwardRegisterNoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(InwardRegsiterNumberField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(5, 5, 5))
         );
 
-        FromParentPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
         FromPanel.setBackground(new java.awt.Color(147, 217, 163));
-        FromPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "From"));
+        FromPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         FromLetterNoLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        FromLetterNoLabel.setText("Number:");
+        FromLetterNoLabel.setText("Number");
         FromLetterNoLabel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
-        FromLetterNoLabel.setMinimumSize(null);
-        FromLetterNoLabel.setPreferredSize(new java.awt.Dimension(90, 26));
+        FromLetterNoLabel.setMinimumSize(new java.awt.Dimension(100, 30));
+        FromLetterNoLabel.setPreferredSize(new java.awt.Dimension(100, 30));
 
         FromLetterNoField.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        FromLetterNoField.setMinimumSize(new java.awt.Dimension(110, 34));
-        FromLetterNoField.setPreferredSize(new java.awt.Dimension(110, 34));
+        FromLetterNoField.setMinimumSize(new java.awt.Dimension(150, 30));
+        FromLetterNoField.setPreferredSize(new java.awt.Dimension(150, 30));
 
         FromDateLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        FromDateLabel.setText("Date:");
+        FromDateLabel.setText("Date Sent");
         FromDateLabel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
-        FromDateLabel.setMinimumSize(null);
-        FromDateLabel.setPreferredSize(new java.awt.Dimension(90, 34));
+        FromDateLabel.setMinimumSize(new java.awt.Dimension(100, 30));
+        FromDateLabel.setPreferredSize(new java.awt.Dimension(100, 30));
 
         FromDateField.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        FromDateField.setMinimumSize(new java.awt.Dimension(110, 34));
-        FromDateField.setPreferredSize(new java.awt.Dimension(110, 34));
+        FromDateField.setMinimumSize(new java.awt.Dimension(150, 30));
+        FromDateField.setPreferredSize(new java.awt.Dimension(150, 30));
 
         FromNameLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        FromNameLabel.setText("Name:");
+        FromNameLabel.setText("Name");
         FromNameLabel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
-        FromNameLabel.setMinimumSize(null);
-        FromNameLabel.setPreferredSize(new java.awt.Dimension(90, 34));
+        FromNameLabel.setMinimumSize(new java.awt.Dimension(100, 30));
+        FromNameLabel.setPreferredSize(new java.awt.Dimension(100, 30));
 
         DateSentShowTodayButton.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         DateSentShowTodayButton.setText("Today");
         DateSentShowTodayButton.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         DateSentShowTodayButton.setMinimumSize(new java.awt.Dimension(80, 34));
         DateSentShowTodayButton.setPreferredSize(new java.awt.Dimension(80, 34));
+        DateSentShowTodayButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DateSentShowTodayButtonActionPerformed(evt);
+            }
+        });
 
         FromNameComboBox.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        FromNameComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        FromNameComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Name" }));
         FromNameComboBox.setMinimumSize(new java.awt.Dimension(196, 32));
+        FromNameComboBox.setNextFocusableComponent(SubjectField);
         FromNameComboBox.setPreferredSize(new java.awt.Dimension(196, 32));
         FromNameComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,63 +239,59 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         FromNameField.setNextFocusableComponent(SubjectField);
         FromNameField.setPreferredSize(new java.awt.Dimension(196, 34));
 
+        ToDateReceivedLabel2.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        ToDateReceivedLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ToDateReceivedLabel2.setText("FROM");
+        ToDateReceivedLabel2.setMaximumSize(new java.awt.Dimension(100, 262626));
+        ToDateReceivedLabel2.setMinimumSize(new java.awt.Dimension(100, 30));
+        ToDateReceivedLabel2.setPreferredSize(new java.awt.Dimension(110, 30));
+
         javax.swing.GroupLayout FromPanelLayout = new javax.swing.GroupLayout(FromPanel);
         FromPanel.setLayout(FromPanelLayout);
         FromPanelLayout.setHorizontalGroup(
             FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FromPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FromPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(FromDateLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                    .addComponent(FromLetterNoLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(FromNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addComponent(ToDateReceivedLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(FromDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                    .addComponent(FromLetterNoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FromNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(FromLetterNoField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(FromDateField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(FromNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(FromPanelLayout.createSequentialGroup()
-                        .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(FromPanelLayout.createSequentialGroup()
-                                .addComponent(FromDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(DateSentShowTodayButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(FromLetterNoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(FromPanelLayout.createSequentialGroup()
-                        .addComponent(FromNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(FromNameField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addComponent(DateSentShowTodayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(FromNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                .addContainerGap())
         );
         FromPanelLayout.setVerticalGroup(
             FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FromPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(FromLetterNoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(FromLetterNoField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FromDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(FromDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DateSentShowTodayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(FromNameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(FromNameComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(FromNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ToDateReceivedLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(FromPanelLayout.createSequentialGroup()
+                        .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(FromLetterNoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FromLetterNoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(FromDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FromDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DateSentShowTodayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(FromNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FromNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FromNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
-        );
-
-        javax.swing.GroupLayout FromParentPanelLayout = new javax.swing.GroupLayout(FromParentPanel);
-        FromParentPanel.setLayout(FromParentPanelLayout);
-        FromParentPanelLayout.setHorizontalGroup(
-            FromParentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FromParentPanelLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(FromPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        FromParentPanelLayout.setVerticalGroup(
-            FromParentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(FromPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         SubjectPanel.setBackground(new java.awt.Color(147, 217, 163));
@@ -286,133 +303,164 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         SubjectLabel.setText("Subject");
 
         SubjectField.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        SubjectField.setNextFocusableComponent(ToDateReceivedField);
 
         javax.swing.GroupLayout SubjectPanelLayout = new javax.swing.GroupLayout(SubjectPanel);
         SubjectPanel.setLayout(SubjectPanelLayout);
         SubjectPanelLayout.setHorizontalGroup(
             SubjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SubjectPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(SubjectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(SubjectField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(SubjectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SubjectField, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         SubjectPanelLayout.setVerticalGroup(
             SubjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SubjectPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(SubjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(SubjectField)
-                    .addComponent(SubjectLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(44, Short.MAX_VALUE)
+                .addGroup(SubjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SubjectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SubjectField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        ToParentPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
         ToPanel.setBackground(new java.awt.Color(147, 217, 163));
-        ToPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "To"));
+        ToPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         ToNameLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         ToNameLabel.setText("Name");
-        ToNameLabel.setMinimumSize(new java.awt.Dimension(100, 26));
-        ToNameLabel.setPreferredSize(new java.awt.Dimension(100, 26));
-
-        ToBranchField.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ToBranchField.setMinimumSize(new java.awt.Dimension(150, 26));
-        ToBranchField.setName(""); // NOI18N
-        ToBranchField.setPreferredSize(new java.awt.Dimension(150, 26));
-
-        ToNameField.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ToNameField.setMinimumSize(new java.awt.Dimension(150, 26));
-        ToNameField.setName(""); // NOI18N
-        ToNameField.setPreferredSize(new java.awt.Dimension(150, 26));
+        ToNameLabel.setMinimumSize(new java.awt.Dimension(100, 30));
+        ToNameLabel.setPreferredSize(new java.awt.Dimension(110, 30));
 
         ToBranchLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         ToBranchLabel.setText("Branch");
-        ToBranchLabel.setMinimumSize(new java.awt.Dimension(100, 26));
-        ToBranchLabel.setPreferredSize(new java.awt.Dimension(100, 26));
+        ToBranchLabel.setMinimumSize(new java.awt.Dimension(100, 30));
+        ToBranchLabel.setPreferredSize(new java.awt.Dimension(110, 30));
 
         ToDateReceivedLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         ToDateReceivedLabel.setText("Date Received");
         ToDateReceivedLabel.setMaximumSize(new java.awt.Dimension(100, 262626));
-        ToDateReceivedLabel.setMinimumSize(new java.awt.Dimension(100, 26));
-        ToDateReceivedLabel.setPreferredSize(new java.awt.Dimension(100, 26));
+        ToDateReceivedLabel.setMinimumSize(new java.awt.Dimension(100, 30));
+        ToDateReceivedLabel.setPreferredSize(new java.awt.Dimension(110, 30));
 
         ToDateReceivedField.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ToDateReceivedField.setMinimumSize(new java.awt.Dimension(150, 26));
+        ToDateReceivedField.setMinimumSize(new java.awt.Dimension(150, 30));
         ToDateReceivedField.setName(""); // NOI18N
-        ToDateReceivedField.setPreferredSize(new java.awt.Dimension(150, 26));
-        ToDateReceivedField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ToDateReceivedFieldActionPerformed(evt);
-            }
-        });
+        ToDateReceivedField.setPreferredSize(new java.awt.Dimension(150, 30));
 
         DateReceivedShowTodayButton.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         DateReceivedShowTodayButton.setText("Today");
         DateReceivedShowTodayButton.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
-        DateReceivedShowTodayButton.setMinimumSize(new java.awt.Dimension(107, 26));
-        DateReceivedShowTodayButton.setPreferredSize(new java.awt.Dimension(107, 26));
+        DateReceivedShowTodayButton.setMinimumSize(new java.awt.Dimension(100, 30));
+        DateReceivedShowTodayButton.setPreferredSize(new java.awt.Dimension(100, 30));
+        DateReceivedShowTodayButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DateReceivedShowTodayButtonActionPerformed(evt);
+            }
+        });
+
+        ToDateReceivedLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        ToDateReceivedLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ToDateReceivedLabel1.setText("TO");
+        ToDateReceivedLabel1.setMaximumSize(new java.awt.Dimension(100, 262626));
+        ToDateReceivedLabel1.setMinimumSize(new java.awt.Dimension(100, 30));
+        ToDateReceivedLabel1.setPreferredSize(new java.awt.Dimension(110, 30));
+
+        ToBranchComboBox.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        ToBranchComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Branch" }));
+        ToBranchComboBox.setMinimumSize(new java.awt.Dimension(196, 32));
+        ToBranchComboBox.setPreferredSize(new java.awt.Dimension(196, 32));
+        ToBranchComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ToBranchComboBoxActionPerformed(evt);
+            }
+        });
+
+        ToNameComboBox.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        ToNameComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Name" }));
+        ToNameComboBox.setMinimumSize(new java.awt.Dimension(196, 32));
+        ToNameComboBox.setPreferredSize(new java.awt.Dimension(196, 32));
 
         javax.swing.GroupLayout ToPanelLayout = new javax.swing.GroupLayout(ToPanel);
         ToPanel.setLayout(ToPanelLayout);
         ToPanelLayout.setHorizontalGroup(
             ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ToPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ToPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ToNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                    .addComponent(ToDateReceivedLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ToBranchLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(ToDateReceivedLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ToBranchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ToNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ToDateReceivedLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ToBranchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(ToPanelLayout.createSequentialGroup()
                         .addComponent(ToDateReceivedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(DateReceivedShowTodayButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(ToNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ToBranchComboBox, 0, 1, Short.MAX_VALUE)
+                    .addComponent(ToNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         ToPanelLayout.setVerticalGroup(
             ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ToPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ToDateReceivedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ToDateReceivedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DateReceivedShowTodayButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ToBranchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ToBranchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ToNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ToNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ToPanelLayout.createSequentialGroup()
+                        .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ToDateReceivedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ToDateReceivedLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(DateReceivedShowTodayButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ToBranchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ToBranchComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ToNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ToNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(ToDateReceivedLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout ToParentPanelLayout = new javax.swing.GroupLayout(ToParentPanel);
-        ToParentPanel.setLayout(ToParentPanelLayout);
-        ToParentPanelLayout.setHorizontalGroup(
-            ToParentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ToPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout AddLetterFormPanelLayout = new javax.swing.GroupLayout(AddLetterFormPanel);
+        AddLetterFormPanel.setLayout(AddLetterFormPanelLayout);
+        AddLetterFormPanelLayout.setHorizontalGroup(
+            AddLetterFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AddLetterFormPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(AddLetterFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(SubjectPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
+                    .addComponent(InwardRegisterNumberPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(FromPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ToPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
-        ToParentPanelLayout.setVerticalGroup(
-            ToParentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ToParentPanelLayout.createSequentialGroup()
+        AddLetterFormPanelLayout.setVerticalGroup(
+            AddLetterFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AddLetterFormPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(InwardRegisterNumberPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(FromPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(SubjectPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(ToPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
-        BackButton.setBackground(new java.awt.Color(255, 102, 102));
-        BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img-src/back-arrow.png"))); // NOI18N
-        BackButton.addActionListener(new java.awt.event.ActionListener() {
+        ActionButtonsPanel.setBackground(new java.awt.Color(225, 250, 225));
+
+        SignoutButton.setBackground(new java.awt.Color(255, 102, 102));
+        SignoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img-src/logout24.png"))); // NOI18N
+        SignoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackButtonActionPerformed(evt);
+                SignoutButtonActionPerformed(evt);
             }
         });
 
@@ -424,7 +472,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             }
         });
 
-        ShowRegisterButton.setBackground(new java.awt.Color(255, 255, 153));
+        ShowRegisterButton.setBackground(new java.awt.Color(204, 204, 204));
         ShowRegisterButton.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         ShowRegisterButton.setText("Show Register");
         ShowRegisterButton.addActionListener(new java.awt.event.ActionListener() {
@@ -433,7 +481,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             }
         });
 
-        EmployeeStatsButton.setBackground(new java.awt.Color(153, 153, 255));
+        EmployeeStatsButton.setBackground(new java.awt.Color(204, 204, 204));
         EmployeeStatsButton.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         EmployeeStatsButton.setText("Employee Stats");
         EmployeeStatsButton.addActionListener(new java.awt.event.ActionListener() {
@@ -442,120 +490,187 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        jLabel2.setText("Sort by");
+        ShowButton.setBackground(new java.awt.Color(255, 255, 255));
+        ShowButton.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        ShowButton.setText("Show");
 
-        jComboBox1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        javax.swing.GroupLayout ActionButtonsPanelLayout = new javax.swing.GroupLayout(ActionButtonsPanel);
+        ActionButtonsPanel.setLayout(ActionButtonsPanelLayout);
+        ActionButtonsPanelLayout.setHorizontalGroup(
+            ActionButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ActionButtonsPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(SignoutButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(AddLetterButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ShowRegisterButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(EmployeeStatsButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ShowButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+        ActionButtonsPanelLayout.setVerticalGroup(
+            ActionButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ActionButtonsPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(ActionButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(SignoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(EmployeeStatsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ShowRegisterButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(AddLetterButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ShowButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
 
-        SortByEmployeeStatsLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        SortByEmployeeStatsLabel.setText("Sort by");
+        ShowRegisterPanel.setBackground(new java.awt.Color(225, 250, 225));
 
-        SortByEmployeeStatsComboBox.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        SortByEmployeeStatsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ShowRegisterSortByLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        ShowRegisterSortByLabel.setText("Sort by");
 
-        FromPeriodLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        FromPeriodLabel.setText("From");
+        ShowRegisterSortByComboBox.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        ShowRegisterSortByComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        FromPeriodField.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        FromPeriodField.setMinimumSize(new java.awt.Dimension(110, 34));
-        FromPeriodField.setPreferredSize(new java.awt.Dimension(110, 34));
+        javax.swing.GroupLayout ShowRegisterPanelLayout = new javax.swing.GroupLayout(ShowRegisterPanel);
+        ShowRegisterPanel.setLayout(ShowRegisterPanelLayout);
+        ShowRegisterPanelLayout.setHorizontalGroup(
+            ShowRegisterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ShowRegisterPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(ShowRegisterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ShowRegisterSortByComboBox, 0, 179, Short.MAX_VALUE)
+                    .addComponent(ShowRegisterSortByLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        ShowRegisterPanelLayout.setVerticalGroup(
+            ShowRegisterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ShowRegisterPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(ShowRegisterSortByLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ShowRegisterSortByComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
 
-        ToPeriodLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ToPeriodLabel.setText("To");
+        EmployeeStatsOptions.setBackground(new java.awt.Color(225, 250, 225));
 
-        ToPeriodField.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ToPeriodField.setMinimumSize(new java.awt.Dimension(110, 34));
-        ToPeriodField.setPreferredSize(new java.awt.Dimension(110, 34));
+        NameEmployeeStatsComboBox.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        NameEmployeeStatsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        BranchEmployeeStatsComboBox.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         BranchEmployeeStatsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        NameEmployeeStatsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        SortByEmployeeStatsLabel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        SortByEmployeeStatsLabel.setText("Filter");
+
+        SortByEmployeeStatsComboBox.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        SortByEmployeeStatsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        javax.swing.GroupLayout EmployeeStatsOptionsLayout = new javax.swing.GroupLayout(EmployeeStatsOptions);
+        EmployeeStatsOptions.setLayout(EmployeeStatsOptionsLayout);
+        EmployeeStatsOptionsLayout.setHorizontalGroup(
+            EmployeeStatsOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EmployeeStatsOptionsLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(SortByEmployeeStatsLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(SortByEmployeeStatsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EmployeeStatsOptionsLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(EmployeeStatsOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BranchEmployeeStatsComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NameEmployeeStatsComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+        EmployeeStatsOptionsLayout.setVerticalGroup(
+            EmployeeStatsOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EmployeeStatsOptionsLayout.createSequentialGroup()
+                .addComponent(BranchEmployeeStatsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(NameEmployeeStatsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(EmployeeStatsOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SortByEmployeeStatsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SortByEmployeeStatsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        EmployeeStatsFilterPeriodPanel.setBackground(new java.awt.Color(225, 250, 225));
+
+        FromPeriodLabel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        FromPeriodLabel.setText("From");
+
+        FromPeriodField.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        FromPeriodField.setMinimumSize(new java.awt.Dimension(110, 30));
+        FromPeriodField.setPreferredSize(new java.awt.Dimension(110, 30));
+
+        ToPeriodField.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        ToPeriodField.setMinimumSize(new java.awt.Dimension(110, 30));
+        ToPeriodField.setPreferredSize(new java.awt.Dimension(110, 30));
+
+        ToPeriodLabel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        ToPeriodLabel.setText("To");
+
+        javax.swing.GroupLayout EmployeeStatsFilterPeriodPanelLayout = new javax.swing.GroupLayout(EmployeeStatsFilterPeriodPanel);
+        EmployeeStatsFilterPeriodPanel.setLayout(EmployeeStatsFilterPeriodPanelLayout);
+        EmployeeStatsFilterPeriodPanelLayout.setHorizontalGroup(
+            EmployeeStatsFilterPeriodPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EmployeeStatsFilterPeriodPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(FromPeriodLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(FromPeriodField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(ToPeriodLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(ToPeriodField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
+        EmployeeStatsFilterPeriodPanelLayout.setVerticalGroup(
+            EmployeeStatsFilterPeriodPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EmployeeStatsFilterPeriodPanelLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(EmployeeStatsFilterPeriodPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FromPeriodLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FromPeriodField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ToPeriodLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ToPeriodField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         javax.swing.GroupLayout AddLetterPanelLayout = new javax.swing.GroupLayout(AddLetterPanel);
         AddLetterPanel.setLayout(AddLetterPanelLayout);
         AddLetterPanelLayout.setHorizontalGroup(
             AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AddLetterPanelLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddLetterPanelLayout.createSequentialGroup()
+                .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(AddLetterPanelLayout.createSequentialGroup()
-                        .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ToParentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(FromParentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(SubjectPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
-                            .addComponent(InwardRegisterNumberPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(AddLetterPanelLayout.createSequentialGroup()
-                                .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(AddLetterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(25, 25, 25))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(EmployeeStatsFilterPeriodPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(AddLetterPanelLayout.createSequentialGroup()
-                        .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(25, 25, 25)
+                        .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(AddLetterPanelLayout.createSequentialGroup()
-                                .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(ShowRegisterButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(EmployeeStatsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(AddLetterFormPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AddLetterPanelLayout.createSequentialGroup()
+                                .addComponent(ShowRegisterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(AddLetterPanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(AddLetterPanelLayout.createSequentialGroup()
-                                        .addComponent(BranchEmployeeStatsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(NameEmployeeStatsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(AddLetterPanelLayout.createSequentialGroup()
-                                .addComponent(SortByEmployeeStatsLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(SortByEmployeeStatsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(FromPeriodLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(FromPeriodField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(ToPeriodLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ToPeriodField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(59, Short.MAX_VALUE))))
+                                .addComponent(EmployeeStatsOptions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(ActionButtonsPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(25, 25, 25))
         );
         AddLetterPanelLayout.setVerticalGroup(
             AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddLetterPanelLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(InwardRegisterNumberPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(FromParentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(SubjectPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ToParentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addComponent(AddLetterFormPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ActionButtonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(AddLetterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BackButton))
-                .addGap(18, 18, 18)
-                .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ShowRegisterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(EmployeeStatsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(AddLetterPanelLayout.createSequentialGroup()
-                        .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(BranchEmployeeStatsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NameEmployeeStatsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(2, 2, 2)))
-                .addGap(18, 18, 18)
-                .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SortByEmployeeStatsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SortByEmployeeStatsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(FromPeriodLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(FromPeriodField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ToPeriodLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ToPeriodField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ShowRegisterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EmployeeStatsOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(EmployeeStatsFilterPeriodPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -564,22 +679,31 @@ public class ClerkAddLetter extends javax.swing.JFrame {
 
         TablesPane.setBackground(new java.awt.Color(147, 217, 163));
         TablesPane.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
+        TablesPane.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        TablesPane.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         TablesPane.setOpaque(true);
 
-        ShowDirectoryPane.setModel(new javax.swing.table.DefaultTableModel(
+        ShowRegisterTable.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        ShowRegisterTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Inward Register", "From - Number", "From - Date", "From - Name", "Subject", "To - Date", "To - Branch", "To - Name"
+                "Inward Register", "Worksheet No", "From - Number", "From - Date", "From - Name", "Subject", "To - Date", "To - Branch", "To - Name", "Out Date", "Remark", "Progress"
             }
         ));
-        ShowDirectoryScrollPane.setViewportView(ShowDirectoryPane);
+        ShowRegisterTable.setFillsViewportHeight(true);
+        ShowRegisterTable.setInheritsPopupMenu(true);
+        ShowRegisterTable.setNextFocusableComponent(SubjectField);
+        ShowRegisterTable.setRowHeight(25);
+        ShowRegisterTable.setShowGrid(true);
+        ShowRegisterTable.getTableHeader().setReorderingAllowed(false);
+        ShowDirectoryScrollPane.setViewportView(ShowRegisterTable);
 
-        TablesPane.addTab("Show Directory", ShowDirectoryScrollPane);
+        TablesPane.addTab("Show Register", ShowDirectoryScrollPane);
 
         EmployeeStatsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -615,14 +739,14 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             .addGroup(EmployeeStatsPaneLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(EmployeeStatsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EmployeeStatsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+                    .addComponent(EmployeeStatsScrollPane)
                     .addComponent(TasksScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
         );
         EmployeeStatsPaneLayout.setVerticalGroup(
             EmployeeStatsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EmployeeStatsPaneLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(EmployeeStatsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 619, Short.MAX_VALUE)
+                .addComponent(EmployeeStatsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(TasksScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
@@ -635,9 +759,9 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         TablePanelLayout.setHorizontalGroup(
             TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TablePanelLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(TablesPane, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
-                .addGap(40, 40, 40))
+                .addGap(30, 30, 30)
+                .addComponent(TablesPane)
+                .addGap(30, 30, 30))
         );
         TablePanelLayout.setVerticalGroup(
             TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -653,7 +777,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(AddLetterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(HeaderPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -673,34 +797,157 @@ public class ClerkAddLetter extends javax.swing.JFrame {
 
     private void AddLetterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddLetterButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_AddLetterButtonActionPerformed
+        
+        String InwardRegisterNo = InwardRegsiterNumberField.getText();
+        
+        String FromLetterNo = FromLetterNoField.getText();
+        String FromDate = FromDateField.getText();
+        String FromName;
+        if (FromNameComboBox.getSelectedItem() == "Other") {
+            FromName = FromNameField.getText();
+        }
+        else {
+            FromName = FromNameComboBox.getSelectedItem().toString();
+        }
+        
+        String Subject = SubjectField.getText();
+        
+        String ToDateReceived = ToDateReceivedField.getText();
+        String ToBranch = ToBranchComboBox.getSelectedItem().toString();
+        String ToName = ToNameComboBox.getSelectedItem().toString();
+        
+        String EmpID = getEmployeeID();
+        String Progress = "Added";
+        
+        try {
+            ConnectionEstablish con = new ConnectionEstablish();
+            String sql = "INSERT INTO letterinwardregister"
+                        + "(InwardNo, "
+                        + "FromNo, FromDateSent, FromName, "
+                        + "Subject, "
+                        + "ToDateReceived, ToBranch, ToName, "
+                        + "EmpID, Progress) "
+                        + "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                        PreparedStatement st = con.c.prepareStatement(sql);
+                        
+                        st.setString(1, InwardRegisterNo);
+                        st.setString(2, FromLetterNo);
+                        st.setString(3, FromDate);
+                        st.setString(4, FromName);
+                        st.setString(5, Subject);
+                        st.setString(6, ToDateReceived);
+                        st.setString(7, ToBranch);
+                        st.setString(8, ToName);
+                        st.setString(9, EmpID);
+                        st.setString(10, Progress);
+                        
+                        
+                        
+                        int i = st.executeUpdate();
+                        if (i > 0){
+                            JOptionPane.showMessageDialog(null, "Successfully Created");
+                        }
+            
+                        
+            String sqlPending= "UPDATE letteremployee "
+                        + "SET Pending = Pending + 1,"
+                        + "Total = Total + 1 "
+                        + "WHERE ID='"+EmpID+"'";
+                        PreparedStatement stPending = con.c.prepareStatement(sqlPending);
+                        stPending.executeUpdate();
 
-    private void ToDateReceivedFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ToDateReceivedFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ToDateReceivedFieldActionPerformed
+            this.setVisible(false);
+            new ClerkAddLetter().setVisible(true);
+                        
+        } catch(SQLException esql){
+            esql.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Please Enter Inward Register Number.");
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_AddLetterButtonActionPerformed
 
     private void ShowRegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowRegisterButtonActionPerformed
         // TODO add your handling code here:
+        TablesPane.setSelectedIndex(0);
     }//GEN-LAST:event_ShowRegisterButtonActionPerformed
 
-    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+    private void SignoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignoutButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BackButtonActionPerformed
+        int a = JOptionPane.showConfirmDialog(null,"Are you sure?","Sign Out",JOptionPane.YES_NO_OPTION);  
+        if(a == JOptionPane.YES_OPTION){  
+            this.setVisible(false);
+            new ClerkLogin().setVisible(true); 
+        }  
+    }//GEN-LAST:event_SignoutButtonActionPerformed
 
     private void EmployeeStatsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmployeeStatsButtonActionPerformed
         // TODO add your handling code here:
+        TablesPane.setSelectedIndex(1);
     }//GEN-LAST:event_EmployeeStatsButtonActionPerformed
 
     private void FromNameComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FromNameComboBoxActionPerformed
         // TODO add your handling code here:
+        System.out.println(FromNameComboBox.getSelectedItem());
+        if (FromNameComboBox.getSelectedItem().equals("Other") && FromNameField.isVisible() == false) {
+            FromNameField.setVisible(true);
+//            FromNameComboBoxFocusLost(evt);
+        }
+        else {
+            FromNameField.setVisible(false);
+        }
+        
     }//GEN-LAST:event_FromNameComboBoxActionPerformed
 
+    private void DateSentShowTodayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DateSentShowTodayButtonActionPerformed
+        // TODO add your handling code here:
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String date = LocalDate.now().format(formatter);
+        
+        FromDateField.setText(date);
+    }//GEN-LAST:event_DateSentShowTodayButtonActionPerformed
+
+    private void ToBranchComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ToBranchComboBoxActionPerformed
+        // TODO add your handling code here:
+        initToNameComboBox();
+    }//GEN-LAST:event_ToBranchComboBoxActionPerformed
+
+    private void DateReceivedShowTodayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DateReceivedShowTodayButtonActionPerformed
+        // TODO add your handling code here:
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String date = LocalDate.now().format(formatter);
+        
+        ToDateReceivedField.setText(date);
+    }//GEN-LAST:event_DateReceivedShowTodayButtonActionPerformed
+    
+    private String getEmployeeID(){
+        
+        String branch = ToBranchComboBox.getSelectedItem().toString();
+        String name = ToNameComboBox.getSelectedItem().toString();
+        try{
+            ConnectionEstablish con = new ConnectionEstablish();
+            String sql = "SELECT ID FROM letteremployee WHERE "
+                        + "Branch='"+branch+"' AND Name='"+name+"';";
+            PreparedStatement st = con.c.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                String EmpID = rs.getString("ID");
+                return EmpID;
+            }
+            
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return "null";
+    }
+    
     /**
      * @param args the command line arguments
      */
     
     
-    private void init() {
+    private void initFrame() {
         setExtendedState(MAXIMIZED_BOTH);
         setUIFont (new javax.swing.plaf.FontUIResource("SansSerif",Font.PLAIN,12));
         
@@ -709,7 +956,161 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         ImageIcon icon = new ImageIcon(iconURL);
         setIconImage(icon.getImage());
         setTitle("Water Resources Department, Government of Maharashtra, India");
+        
+        initInwardRegisterNumber();
                 
+    }
+    
+    private void initInwardRegisterNumber() {
+        try {
+            ConnectionEstablish con = new ConnectionEstablish();
+            String sql = "SELECT Count(*) FROM letterinwardregister";
+            PreparedStatement st = con.c.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            
+            while (rs.next()) {
+                int no = rs.getInt(1)+1;
+                InwardRegsiterNumberField.setText(Integer.toString(no));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void initFromNameComboBox() {
+
+        FromNameField.setVisible(false);
+        try {
+
+            // SQL command data stored in String datatype
+            ConnectionEstablish con = new ConnectionEstablish();
+            String sql = "select * from fromtable";
+//            String sql = "select * from fromtable ORDER BY FromLetterTotal";
+            PreparedStatement st = con.c.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+
+            // Condition check
+            while (rs.next()) {
+                FromNameComboBox.addItem(rs.getString("Name"));
+            }
+            FromNameComboBox.addItem("Other");
+            
+        }   catch (SQLException e) {
+            // Print exception pop-up on screen
+            System.out.println(e);
+            }
+    }
+    
+    private void initToBranchComboBox() {
+        
+        try {
+
+            // SQL command data stored in String datatype
+            ConnectionEstablish con = new ConnectionEstablish();
+            String sql = "select DISTINCT Branch from letteremployee";
+            PreparedStatement st = con.c.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+
+            // Condition check
+            while (rs.next()) {
+                ToBranchComboBox.addItem(rs.getString("Branch"));
+            }
+            
+        }   catch (SQLException e) {
+            // Print exception pop-up on screen
+            System.out.println(e);
+            }
+    }
+    
+    private void initToNameComboBox() {
+        
+        ToNameComboBox.removeAllItems();
+        ToNameComboBox.addItem("Select Name");
+        
+        try {
+
+            ConnectionEstablish con = new ConnectionEstablish();
+            // SQL command data stored in String datatype
+            String sql = "select * from letteremployee WHERE Branch=? ORDER BY Name";
+            PreparedStatement st = con.c.prepareStatement(sql);
+            st.setString(1,(String) ToBranchComboBox.getSelectedItem());
+            ResultSet rs = st.executeQuery();
+            
+
+            // Condiion check
+            while (rs.next()) {
+                String name = rs.getString("Name");                
+                ToNameComboBox.addItem(name);
+            }
+            
+        }   catch (SQLException e) {
+            // Print exception pop-up on screen
+            System.out.println(e);
+            }
+    }
+    
+    private void initShowRegister() {
+        
+        DefaultTableModel ShowRegisterTableModel  = new DefaultTableModel();
+        ShowRegisterTable.setModel(ShowRegisterTableModel);
+        ShowRegisterTableModel.addColumn("No");
+        ShowRegisterTableModel.addColumn("Worksheet");
+        ShowRegisterTableModel.addColumn("From No");
+        ShowRegisterTableModel.addColumn("From Date");
+        ShowRegisterTableModel.addColumn("From Name");
+        ShowRegisterTableModel.addColumn("Subject");
+        ShowRegisterTableModel.addColumn("To Date");
+        ShowRegisterTableModel.addColumn("To Branch");
+        ShowRegisterTableModel.addColumn("To Name");
+        ShowRegisterTableModel.addColumn("Out Date");
+        ShowRegisterTableModel.addColumn("Remark");
+        ShowRegisterTableModel.addColumn("Progress");
+        
+        ShowRegisterTable.getTableHeader().setPreferredSize(
+            new Dimension(ShowRegisterTable.getColumnModel().getTotalColumnWidth(), 28));
+        
+        ShowRegisterTable.getColumnModel().getColumn(0).setPreferredWidth(30);
+        ShowRegisterTable.getColumnModel().getColumn(2).setPreferredWidth(50);
+        
+//        DATES
+        ShowRegisterTable.getColumnModel().getColumn(3).setPreferredWidth(60);
+        ShowRegisterTable.getColumnModel().getColumn(6).setPreferredWidth(60);
+        ShowRegisterTable.getColumnModel().getColumn(9).setPreferredWidth(60);
+        
+        ShowRegisterTable.getColumnModel().getColumn(11).setPreferredWidth(50);
+        
+        try {
+            
+            ConnectionEstablish con = new ConnectionEstablish();
+            String sql = "SELECT * FROM letterinwardregister";
+            PreparedStatement st = con.c.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            
+            while(rs.next()) {
+                String InwardNo = rs.getString("InwardNo");
+                String WorksheetNo = rs.getString("WorksheetNo");
+                String FromNo = rs.getString("FromNo");
+                String FromDateSent = rs.getString("FromDateSent");
+                String FromName = rs.getString("FromName");
+                String Subject = rs.getString("Subject");
+                String ToDateReceived = rs.getString("ToDateReceived");
+                String ToBranch = rs.getString("ToBranch");
+                String ToName = rs.getString("ToName");
+                String OutDate = rs.getString("OutDate");
+                String Remark = rs.getString("Remark");
+                String Progress = rs.getString("Progress");
+                
+                String tableData[] = {InwardNo, WorksheetNo, FromNo, FromDateSent, 
+                    FromName, Subject, ToDateReceived, ToBranch, ToName, OutDate, Remark, Progress};
+            
+                ShowRegisterTableModel.addRow(tableData);
+                
+            }
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
     
@@ -736,6 +1137,9 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ClerkAddLetter.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -746,13 +1150,16 @@ public class ClerkAddLetter extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel ActionButtonsPanel;
     private javax.swing.JButton AddLetterButton;
+    private javax.swing.JPanel AddLetterFormPanel;
     private javax.swing.JPanel AddLetterPanel;
-    private javax.swing.JButton BackButton;
     private javax.swing.JComboBox<String> BranchEmployeeStatsComboBox;
     private javax.swing.JButton DateReceivedShowTodayButton;
     private javax.swing.JButton DateSentShowTodayButton;
     private javax.swing.JButton EmployeeStatsButton;
+    private javax.swing.JPanel EmployeeStatsFilterPeriodPanel;
+    private javax.swing.JPanel EmployeeStatsOptions;
     private javax.swing.JPanel EmployeeStatsPane;
     private javax.swing.JScrollPane EmployeeStatsScrollPane;
     private javax.swing.JTable EmployeeStatsTable;
@@ -764,7 +1171,6 @@ public class ClerkAddLetter extends javax.swing.JFrame {
     private javax.swing.JTextField FromNameField;
     private javax.swing.JLabel FromNameLabel;
     private javax.swing.JPanel FromPanel;
-    private javax.swing.JPanel FromParentPanel;
     private javax.swing.JTextField FromPeriodField;
     private javax.swing.JLabel FromPeriodLabel;
     private javax.swing.JPanel HeaderPanel;
@@ -774,9 +1180,14 @@ public class ClerkAddLetter extends javax.swing.JFrame {
     private javax.swing.JPanel InwardRegisterNumberPanel;
     private javax.swing.JLabel InwardRegsiterNumberField;
     private javax.swing.JComboBox<String> NameEmployeeStatsComboBox;
-    private javax.swing.JTable ShowDirectoryPane;
+    private javax.swing.JButton ShowButton;
     private javax.swing.JScrollPane ShowDirectoryScrollPane;
     private javax.swing.JButton ShowRegisterButton;
+    private javax.swing.JPanel ShowRegisterPanel;
+    private javax.swing.JComboBox<String> ShowRegisterSortByComboBox;
+    private javax.swing.JLabel ShowRegisterSortByLabel;
+    private javax.swing.JTable ShowRegisterTable;
+    private javax.swing.JButton SignoutButton;
     private javax.swing.JComboBox<String> SortByEmployeeStatsComboBox;
     private javax.swing.JLabel SortByEmployeeStatsLabel;
     private javax.swing.JTextField SubjectField;
@@ -786,17 +1197,16 @@ public class ClerkAddLetter extends javax.swing.JFrame {
     private javax.swing.JTabbedPane TablesPane;
     private javax.swing.JScrollPane TasksScrollPane;
     private javax.swing.JTable TasksTable;
-    private javax.swing.JTextField ToBranchField;
+    private javax.swing.JComboBox<String> ToBranchComboBox;
     private javax.swing.JLabel ToBranchLabel;
     private javax.swing.JTextField ToDateReceivedField;
     private javax.swing.JLabel ToDateReceivedLabel;
-    private javax.swing.JTextField ToNameField;
+    private javax.swing.JLabel ToDateReceivedLabel1;
+    private javax.swing.JLabel ToDateReceivedLabel2;
+    private javax.swing.JComboBox<String> ToNameComboBox;
     private javax.swing.JLabel ToNameLabel;
     private javax.swing.JPanel ToPanel;
-    private javax.swing.JPanel ToParentPanel;
     private javax.swing.JTextField ToPeriodField;
     private javax.swing.JLabel ToPeriodLabel;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

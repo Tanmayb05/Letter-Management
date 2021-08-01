@@ -377,7 +377,8 @@ public class ClerkAddToDirectory extends javax.swing.JFrame {
                         PreparedStatement stPending = con.c.prepareStatement(sqlPending);
                         int j = stPending.executeUpdate();
 
-            clearInputs();
+            this.setVisible(false);
+            new ClerkAddToDirectory().setVisible(true);
                         
         } catch(SQLException esql){
             esql.printStackTrace();
