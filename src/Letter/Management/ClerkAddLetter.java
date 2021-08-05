@@ -29,6 +29,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         initFromNameComboBox();
         initToBranchComboBox();
         initShowRegister();
+        
         AutoCompleteDecorator.decorate(FromNameComboBox);
     }
 
@@ -78,15 +79,12 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         EmployeeStatsButton = new javax.swing.JButton();
         ShowButton = new javax.swing.JButton();
         ShowRegisterPanel = new javax.swing.JPanel();
-        ShowRegisterSortByLabel = new javax.swing.JLabel();
         ShowRegisterSortByComboBox = new javax.swing.JComboBox<>();
         EmployeeStatsOptions = new javax.swing.JPanel();
         NameEmployeeStatsComboBox = new javax.swing.JComboBox<>();
         BranchEmployeeStatsComboBox = new javax.swing.JComboBox<>();
-        SortByEmployeeStatsLabel = new javax.swing.JLabel();
         SortByEmployeeStatsComboBox = new javax.swing.JComboBox<>();
         EmployeeStatsFilterPeriodPanel = new javax.swing.JPanel();
-        FromPeriodLabel = new javax.swing.JLabel();
         FromPeriodField = new javax.swing.JTextField();
         ToPeriodField = new javax.swing.JTextField();
         ToPeriodLabel = new javax.swing.JLabel();
@@ -186,11 +184,14 @@ public class ClerkAddLetter extends javax.swing.JFrame {
 
         FromLetterNoLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         FromLetterNoLabel.setText("Number");
+        FromLetterNoLabel.setToolTipText("From Number");
         FromLetterNoLabel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         FromLetterNoLabel.setMinimumSize(new java.awt.Dimension(100, 30));
         FromLetterNoLabel.setPreferredSize(new java.awt.Dimension(100, 30));
 
         FromLetterNoField.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        FromLetterNoField.setText("Number");
+        FromLetterNoField.setToolTipText("From Number");
         FromLetterNoField.setMinimumSize(new java.awt.Dimension(150, 30));
         FromLetterNoField.setPreferredSize(new java.awt.Dimension(150, 30));
 
@@ -302,7 +303,6 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         SubjectLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         SubjectLabel.setText("Subject");
 
-        SubjectField.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         SubjectField.setNextFocusableComponent(ToDateReceivedField);
 
         javax.swing.GroupLayout SubjectPanelLayout = new javax.swing.GroupLayout(SubjectPanel);
@@ -310,7 +310,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         SubjectPanelLayout.setHorizontalGroup(
             SubjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SubjectPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(73, Short.MAX_VALUE)
                 .addComponent(SubjectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SubjectField, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -319,10 +319,10 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         SubjectPanelLayout.setVerticalGroup(
             SubjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SubjectPanelLayout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
+                .addContainerGap(42, Short.MAX_VALUE)
                 .addGroup(SubjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SubjectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SubjectField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SubjectField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -493,6 +493,11 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         ShowButton.setBackground(new java.awt.Color(255, 255, 255));
         ShowButton.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         ShowButton.setText("Show");
+        ShowButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ActionButtonsPanelLayout = new javax.swing.GroupLayout(ActionButtonsPanel);
         ActionButtonsPanel.setLayout(ActionButtonsPanelLayout);
@@ -526,11 +531,13 @@ public class ClerkAddLetter extends javax.swing.JFrame {
 
         ShowRegisterPanel.setBackground(new java.awt.Color(225, 250, 225));
 
-        ShowRegisterSortByLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ShowRegisterSortByLabel.setText("Sort by");
-
         ShowRegisterSortByComboBox.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ShowRegisterSortByComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ShowRegisterSortByComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sort By", "" }));
+        ShowRegisterSortByComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowRegisterSortByComboBoxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ShowRegisterPanelLayout = new javax.swing.GroupLayout(ShowRegisterPanel);
         ShowRegisterPanel.setLayout(ShowRegisterPanelLayout);
@@ -538,49 +545,58 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             ShowRegisterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ShowRegisterPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addGroup(ShowRegisterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ShowRegisterSortByComboBox, 0, 179, Short.MAX_VALUE)
-                    .addComponent(ShowRegisterSortByLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addComponent(ShowRegisterSortByComboBox, 0, 201, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         ShowRegisterPanelLayout.setVerticalGroup(
             ShowRegisterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ShowRegisterPanelLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(ShowRegisterSortByLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ShowRegisterSortByComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         EmployeeStatsOptions.setBackground(new java.awt.Color(225, 250, 225));
 
         NameEmployeeStatsComboBox.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        NameEmployeeStatsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        NameEmployeeStatsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Name" }));
+        NameEmployeeStatsComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                NameEmployeeStatsComboBoxItemStateChanged(evt);
+            }
+        });
+        NameEmployeeStatsComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NameEmployeeStatsComboBoxActionPerformed(evt);
+            }
+        });
 
         BranchEmployeeStatsComboBox.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        BranchEmployeeStatsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        SortByEmployeeStatsLabel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        SortByEmployeeStatsLabel.setText("Filter");
+        BranchEmployeeStatsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Branch" }));
+        BranchEmployeeStatsComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BranchEmployeeStatsComboBoxActionPerformed(evt);
+            }
+        });
 
         SortByEmployeeStatsComboBox.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        SortByEmployeeStatsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        SortByEmployeeStatsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Period", "Last Week", "Last Month", "Last Year" }));
+        SortByEmployeeStatsComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SortByEmployeeStatsComboBoxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout EmployeeStatsOptionsLayout = new javax.swing.GroupLayout(EmployeeStatsOptions);
         EmployeeStatsOptions.setLayout(EmployeeStatsOptionsLayout);
         EmployeeStatsOptionsLayout.setHorizontalGroup(
             EmployeeStatsOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(EmployeeStatsOptionsLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(SortByEmployeeStatsLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(SortByEmployeeStatsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EmployeeStatsOptionsLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(EmployeeStatsOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BranchEmployeeStatsComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NameEmployeeStatsComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 20, 20)
+                .addGroup(EmployeeStatsOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(SortByEmployeeStatsComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BranchEmployeeStatsComboBox, 0, 250, Short.MAX_VALUE)
+                    .addComponent(NameEmployeeStatsComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         EmployeeStatsOptionsLayout.setVerticalGroup(
             EmployeeStatsOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -589,15 +605,10 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(NameEmployeeStatsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(EmployeeStatsOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SortByEmployeeStatsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SortByEmployeeStatsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(SortByEmployeeStatsComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         EmployeeStatsFilterPeriodPanel.setBackground(new java.awt.Color(225, 250, 225));
-
-        FromPeriodLabel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        FromPeriodLabel.setText("From");
 
         FromPeriodField.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         FromPeriodField.setMinimumSize(new java.awt.Dimension(110, 30));
@@ -608,29 +619,25 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         ToPeriodField.setPreferredSize(new java.awt.Dimension(110, 30));
 
         ToPeriodLabel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        ToPeriodLabel.setText("To");
+        ToPeriodLabel.setText("--");
 
         javax.swing.GroupLayout EmployeeStatsFilterPeriodPanelLayout = new javax.swing.GroupLayout(EmployeeStatsFilterPeriodPanel);
         EmployeeStatsFilterPeriodPanel.setLayout(EmployeeStatsFilterPeriodPanelLayout);
         EmployeeStatsFilterPeriodPanelLayout.setHorizontalGroup(
             EmployeeStatsFilterPeriodPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EmployeeStatsFilterPeriodPanelLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(FromPeriodLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGap(0, 20, Short.MAX_VALUE)
                 .addComponent(FromPeriodField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ToPeriodLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addComponent(ToPeriodField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ToPeriodField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         EmployeeStatsFilterPeriodPanelLayout.setVerticalGroup(
             EmployeeStatsFilterPeriodPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EmployeeStatsFilterPeriodPanelLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(EmployeeStatsFilterPeriodPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FromPeriodLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(FromPeriodField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ToPeriodLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ToPeriodField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -641,21 +648,18 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         AddLetterPanelLayout.setHorizontalGroup(
             AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddLetterPanelLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
                 .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(AddLetterPanelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(EmployeeStatsFilterPeriodPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(AddLetterPanelLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(AddLetterPanelLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(AddLetterFormPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AddLetterPanelLayout.createSequentialGroup()
-                                .addComponent(ShowRegisterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(EmployeeStatsOptions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(ActionButtonsPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(AddLetterFormPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AddLetterPanelLayout.createSequentialGroup()
+                        .addComponent(ShowRegisterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(EmployeeStatsOptions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EmployeeStatsFilterPeriodPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(ActionButtonsPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(25, 25, 25))
         );
         AddLetterPanelLayout.setVerticalGroup(
@@ -669,7 +673,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                 .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ShowRegisterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(EmployeeStatsOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(EmployeeStatsFilterPeriodPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -701,6 +705,11 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         ShowRegisterTable.setRowHeight(25);
         ShowRegisterTable.setShowGrid(true);
         ShowRegisterTable.getTableHeader().setReorderingAllowed(false);
+        ShowRegisterTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ShowRegisterTableMouseClicked(evt);
+            }
+        });
         ShowDirectoryScrollPane.setViewportView(ShowRegisterTable);
 
         TablesPane.addTab("Show Register", ShowDirectoryScrollPane);
@@ -716,20 +725,22 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        EmployeeStatsTable.setRowHeight(25);
         EmployeeStatsScrollPane.setViewportView(EmployeeStatsTable);
 
-        TasksTable.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+        TasksTable.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         TasksTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Total Letters", "Pending Letters", "Completed Letters"
+                "Employee ID", "Name", "Email", "Pending Letters", "Completed Letters", "Total Letters"
             }
         ));
+        TasksTable.setRowHeight(25);
         TasksScrollPane.setViewportView(TasksTable);
 
         javax.swing.GroupLayout EmployeeStatsPaneLayout = new javax.swing.GroupLayout(EmployeeStatsPane);
@@ -746,7 +757,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             EmployeeStatsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EmployeeStatsPaneLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(EmployeeStatsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
+                .addComponent(EmployeeStatsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 846, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(TasksScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
@@ -827,7 +838,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                         + "Subject, "
                         + "ToDateReceived, ToBranch, ToName, "
                         + "EmpID, Progress) "
-                        + "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                        + "values(?, ?, STR_TO_DATE(?,'%d-%m-%Y'), ?, ?, STR_TO_DATE(?,'%d-%m-%Y'), ?, ?, ?, ?)";
                         PreparedStatement st = con.c.prepareStatement(sql);
                         
                         st.setString(1, InwardRegisterNo);
@@ -870,6 +881,9 @@ public class ClerkAddLetter extends javax.swing.JFrame {
     private void ShowRegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowRegisterButtonActionPerformed
         // TODO add your handling code here:
         TablesPane.setSelectedIndex(0);
+        EmployeeStatsOptions.setVisible(false);
+        EmployeeStatsFilterPeriodPanel.setVisible(false);
+        ShowRegisterPanel.setVisible(true);
     }//GEN-LAST:event_ShowRegisterButtonActionPerformed
 
     private void SignoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignoutButtonActionPerformed
@@ -884,6 +898,10 @@ public class ClerkAddLetter extends javax.swing.JFrame {
     private void EmployeeStatsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmployeeStatsButtonActionPerformed
         // TODO add your handling code here:
         TablesPane.setSelectedIndex(1);
+        ShowRegisterPanel.setVisible(false);
+        EmployeeStatsOptions.setVisible(true);
+        EmployeeStatsFilterPeriodPanel.setVisible(true);
+//        initPeriod();
     }//GEN-LAST:event_EmployeeStatsButtonActionPerformed
 
     private void FromNameComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FromNameComboBoxActionPerformed
@@ -919,6 +937,213 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         
         ToDateReceivedField.setText(date);
     }//GEN-LAST:event_DateReceivedShowTodayButtonActionPerformed
+
+    private void ShowRegisterTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowRegisterTableMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ShowRegisterTableMouseClicked
+
+    private void BranchEmployeeStatsComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BranchEmployeeStatsComboBoxActionPerformed
+        // TODO add your handling code here:
+        initNameEmployeeStatsComboBox();
+        
+    }//GEN-LAST:event_BranchEmployeeStatsComboBoxActionPerformed
+
+    private void ShowButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowButtonActionPerformed
+        // TODO add your handling code here:
+        
+        if (BranchEmployeeStatsComboBox.getSelectedItem() == "Select Branch") {
+            
+        }
+        else {
+            initEmployeeStats();
+            initTasks();
+        }
+        
+    }//GEN-LAST:event_ShowButtonActionPerformed
+
+    private void NameEmployeeStatsComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NameEmployeeStatsComboBoxItemStateChanged
+        // TODO add your handling code here:
+//        initEmployeeStats();
+//        initTasks();
+    }//GEN-LAST:event_NameEmployeeStatsComboBoxItemStateChanged
+
+    private void SortByEmployeeStatsComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortByEmployeeStatsComboBoxActionPerformed
+        // TODO add your handling code here:
+        String period = SortByEmployeeStatsComboBox.getSelectedItem().toString();
+        
+        if (period.equals("Last Week")) {
+            DefaultTableModel EmployeeStatsTableModel  = new DefaultTableModel();
+            EmployeeStatsTable.setModel(EmployeeStatsTableModel);
+            EmployeeStatsTableModel.addColumn("Inward No");
+            EmployeeStatsTableModel.addColumn("Worksheet");        
+            EmployeeStatsTableModel.addColumn("From No");
+            EmployeeStatsTableModel.addColumn("From Date");
+            EmployeeStatsTableModel.addColumn("From Name");
+            EmployeeStatsTableModel.addColumn("Subject");
+            EmployeeStatsTableModel.addColumn("To Date");
+            EmployeeStatsTableModel.addColumn("Out Date");
+            EmployeeStatsTableModel.addColumn("Remark");
+            EmployeeStatsTableModel.addColumn("Progress");
+    //        EmployeeStatsTableModel.addColumn("Days");
+
+            ShowRegisterTable.getTableHeader().setPreferredSize(
+                new Dimension(ShowRegisterTable.getColumnModel().getTotalColumnWidth(), 28));
+
+            String branch = BranchEmployeeStatsComboBox.getSelectedItem().toString();
+            String toName = NameEmployeeStatsComboBox.getSelectedItem().toString();
+
+            try {
+
+
+                ConnectionEstablish con = new ConnectionEstablish();
+                String sql = "SELECT * FROM letterinwardregister "
+                        + "WHERE ToBranch = '"+branch+"' AND "
+                        + "ToName = '"+toName+"' AND "
+                        + "ToDateReceived> now() -  interval 7 day";
+                PreparedStatement st = con.c.prepareStatement(sql);
+                ResultSet rs = st.executeQuery();
+
+                while(rs.next()) {
+                    String InwardNo = rs.getString("InwardNo");
+                    String WorksheetNo = rs.getString("WorksheetNo");
+                    String FromNo = rs.getString("FromNo");
+                    String FromDateSent = rs.getString("FromDateSent");
+                    String FromName = rs.getString("FromName");
+                    String Subject = rs.getString("Subject");
+                    String ToDateReceived = rs.getString("ToDateReceived");
+                    String OutDate = rs.getString("OutDate");
+                    String Remark = rs.getString("Remark");
+                    String Progress = rs.getString("Progress");
+    //                String Days = rs.getString("Days");
+
+                    String tableData[] = {InwardNo, WorksheetNo, FromNo, FromDateSent, FromName, 
+                        Subject, ToDateReceived, OutDate, Remark, Progress};
+
+                    EmployeeStatsTableModel.addRow(tableData);
+                }
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else if (period.equals("Last Month")) {
+            DefaultTableModel EmployeeStatsTableModel  = new DefaultTableModel();
+            EmployeeStatsTable.setModel(EmployeeStatsTableModel);
+            EmployeeStatsTableModel.addColumn("Inward No");
+            EmployeeStatsTableModel.addColumn("Worksheet");        
+            EmployeeStatsTableModel.addColumn("From No");
+            EmployeeStatsTableModel.addColumn("From Date");
+            EmployeeStatsTableModel.addColumn("From Name");
+            EmployeeStatsTableModel.addColumn("Subject");
+            EmployeeStatsTableModel.addColumn("To Date");
+            EmployeeStatsTableModel.addColumn("Out Date");
+            EmployeeStatsTableModel.addColumn("Remark");
+            EmployeeStatsTableModel.addColumn("Progress");
+    //        EmployeeStatsTableModel.addColumn("Days");
+
+            ShowRegisterTable.getTableHeader().setPreferredSize(
+                new Dimension(ShowRegisterTable.getColumnModel().getTotalColumnWidth(), 28));
+
+            String branch = BranchEmployeeStatsComboBox.getSelectedItem().toString();
+            String toName = NameEmployeeStatsComboBox.getSelectedItem().toString();
+
+            try {
+
+
+                ConnectionEstablish con = new ConnectionEstablish();
+                String sql = "SELECT * FROM letterinwardregister "
+                        + "WHERE ToBranch = '"+branch+"' AND "
+                        + "ToName = '"+toName+"' AND "
+                        + "ToDateReceived> now() -  interval 31 day";
+                PreparedStatement st = con.c.prepareStatement(sql);
+                ResultSet rs = st.executeQuery();
+
+                while(rs.next()) {
+                    String InwardNo = rs.getString("InwardNo");
+                    String WorksheetNo = rs.getString("WorksheetNo");
+                    String FromNo = rs.getString("FromNo");
+                    String FromDateSent = rs.getString("FromDateSent");
+                    String FromName = rs.getString("FromName");
+                    String Subject = rs.getString("Subject");
+                    String ToDateReceived = rs.getString("ToDateReceived");
+                    String OutDate = rs.getString("OutDate");
+                    String Remark = rs.getString("Remark");
+                    String Progress = rs.getString("Progress");
+    //                String Days = rs.getString("Days");
+
+                    String tableData[] = {InwardNo, WorksheetNo, FromNo, FromDateSent, FromName, 
+                        Subject, ToDateReceived, OutDate, Remark, Progress};
+
+                    EmployeeStatsTableModel.addRow(tableData);
+                }
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else if (period.equals("Last Year")) {
+            DefaultTableModel EmployeeStatsTableModel  = new DefaultTableModel();
+            EmployeeStatsTable.setModel(EmployeeStatsTableModel);
+            EmployeeStatsTableModel.addColumn("Inward No");
+            EmployeeStatsTableModel.addColumn("Worksheet");        
+            EmployeeStatsTableModel.addColumn("From No");
+            EmployeeStatsTableModel.addColumn("From Date");
+            EmployeeStatsTableModel.addColumn("From Name");
+            EmployeeStatsTableModel.addColumn("Subject");
+            EmployeeStatsTableModel.addColumn("To Date");
+            EmployeeStatsTableModel.addColumn("Out Date");
+            EmployeeStatsTableModel.addColumn("Remark");
+            EmployeeStatsTableModel.addColumn("Progress");
+    //        EmployeeStatsTableModel.addColumn("Days");
+
+            ShowRegisterTable.getTableHeader().setPreferredSize(
+                new Dimension(ShowRegisterTable.getColumnModel().getTotalColumnWidth(), 28));
+
+            String branch = BranchEmployeeStatsComboBox.getSelectedItem().toString();
+            String toName = NameEmployeeStatsComboBox.getSelectedItem().toString();
+
+            try {
+
+
+                ConnectionEstablish con = new ConnectionEstablish();
+                String sql = "SELECT * FROM letterinwardregister "
+                        + "WHERE ToBranch = '"+branch+"' AND "
+                        + "ToName = '"+toName+"' AND "
+                        + "ToDateReceived> now() -  interval 365 day";
+                PreparedStatement st = con.c.prepareStatement(sql);
+                ResultSet rs = st.executeQuery();
+
+                while(rs.next()) {
+                    String InwardNo = rs.getString("InwardNo");
+                    String WorksheetNo = rs.getString("WorksheetNo");
+                    String FromNo = rs.getString("FromNo");
+                    String FromDateSent = rs.getString("FromDateSent");
+                    String FromName = rs.getString("FromName");
+                    String Subject = rs.getString("Subject");
+                    String ToDateReceived = rs.getString("ToDateReceived");
+                    String OutDate = rs.getString("OutDate");
+                    String Remark = rs.getString("Remark");
+                    String Progress = rs.getString("Progress");
+    //                String Days = rs.getString("Days");
+
+                    String tableData[] = {InwardNo, WorksheetNo, FromNo, FromDateSent, FromName, 
+                        Subject, ToDateReceived, OutDate, Remark, Progress};
+
+                    EmployeeStatsTableModel.addRow(tableData);
+                }
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_SortByEmployeeStatsComboBoxActionPerformed
+
+    private void NameEmployeeStatsComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameEmployeeStatsComboBoxActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_NameEmployeeStatsComboBoxActionPerformed
+
+    private void ShowRegisterSortByComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowRegisterSortByComboBoxActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_ShowRegisterSortByComboBoxActionPerformed
     
     private String getEmployeeID(){
         
@@ -958,6 +1183,9 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         setTitle("Water Resources Department, Government of Maharashtra, India");
         
         initInwardRegisterNumber();
+        EmployeeStatsOptions.setVisible(false);
+        EmployeeStatsFilterPeriodPanel.setVisible(false);
+        ShowRegisterPanel.setVisible(false);
                 
     }
     
@@ -1014,6 +1242,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             // Condition check
             while (rs.next()) {
                 ToBranchComboBox.addItem(rs.getString("Branch"));
+                BranchEmployeeStatsComboBox.addItem(rs.getString("Branch"));
             }
             
         }   catch (SQLException e) {
@@ -1041,6 +1270,33 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             while (rs.next()) {
                 String name = rs.getString("Name");                
                 ToNameComboBox.addItem(name);
+            }
+            
+        }   catch (SQLException e) {
+            // Print exception pop-up on screen
+            System.out.println(e);
+            }
+    }
+    
+    private void initNameEmployeeStatsComboBox() {
+        
+        NameEmployeeStatsComboBox.removeAllItems();
+        NameEmployeeStatsComboBox.addItem("Select Name");
+        
+        try {
+
+            ConnectionEstablish con = new ConnectionEstablish();
+            // SQL command data stored in String datatype
+            String sql = "select * from letteremployee WHERE Branch=? ORDER BY Name";
+            PreparedStatement st = con.c.prepareStatement(sql);
+            st.setString(1,(String) BranchEmployeeStatsComboBox.getSelectedItem());
+            ResultSet rs = st.executeQuery();
+            
+
+            // Condiion check
+            while (rs.next()) {
+                String name = rs.getString("Name");                
+                NameEmployeeStatsComboBox.addItem(name);
             }
             
         }   catch (SQLException e) {
@@ -1082,7 +1338,8 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         try {
             
             ConnectionEstablish con = new ConnectionEstablish();
-            String sql = "SELECT * FROM letterinwardregister";
+            String sql = "SELECT *,date_format(FromDateSent,'%d-%m-%y') AS FDS, "
+                    + "date_format(ToDateReceived,'%d-%m-%y') AS TDR FROM letterinwardregister";
             PreparedStatement st = con.c.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             
@@ -1090,10 +1347,10 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                 String InwardNo = rs.getString("InwardNo");
                 String WorksheetNo = rs.getString("WorksheetNo");
                 String FromNo = rs.getString("FromNo");
-                String FromDateSent = rs.getString("FromDateSent");
+                String FromDateSent = rs.getString("FDS");
                 String FromName = rs.getString("FromName");
                 String Subject = rs.getString("Subject");
-                String ToDateReceived = rs.getString("ToDateReceived");
+                String ToDateReceived = rs.getString("TDR");
                 String ToBranch = rs.getString("ToBranch");
                 String ToName = rs.getString("ToName");
                 String OutDate = rs.getString("OutDate");
@@ -1107,13 +1364,119 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                 
             }
             
+//            ShowRegisterTable.setAutoCreateRowSorter(true);
             
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
     
+    private void initEmployeeStats() {
+        
+        DefaultTableModel EmployeeStatsTableModel  = new DefaultTableModel();
+        EmployeeStatsTable.setModel(EmployeeStatsTableModel);
+        EmployeeStatsTableModel.addColumn("Inward No");
+        EmployeeStatsTableModel.addColumn("Worksheet");        
+        EmployeeStatsTableModel.addColumn("From No");
+        EmployeeStatsTableModel.addColumn("From Date");
+        EmployeeStatsTableModel.addColumn("From Name");
+        EmployeeStatsTableModel.addColumn("Subject");
+        EmployeeStatsTableModel.addColumn("To Date");
+        EmployeeStatsTableModel.addColumn("Out Date");
+        EmployeeStatsTableModel.addColumn("Remark");
+        EmployeeStatsTableModel.addColumn("Progress");
+//        EmployeeStatsTableModel.addColumn("Days");
+        
+        ShowRegisterTable.getTableHeader().setPreferredSize(
+            new Dimension(ShowRegisterTable.getColumnModel().getTotalColumnWidth(), 28));
+        
+        String branch = BranchEmployeeStatsComboBox.getSelectedItem().toString();
+        String toName = NameEmployeeStatsComboBox.getSelectedItem().toString();
+        
+        try {
+            
+            
+            ConnectionEstablish con = new ConnectionEstablish();
+            String sql = "SELECT * FROM letterinwardregister "
+                    + "WHERE ToBranch = '"+branch+"' AND "
+                    + "ToName = '"+toName+"'";
+            PreparedStatement st = con.c.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            
+            while(rs.next()) {
+                String InwardNo = rs.getString("InwardNo");
+                String WorksheetNo = rs.getString("WorksheetNo");
+                String FromNo = rs.getString("FromNo");
+                String FromDateSent = rs.getString("FromDateSent");
+                String FromName = rs.getString("FromName");
+                String Subject = rs.getString("Subject");
+                String ToDateReceived = rs.getString("ToDateReceived");
+                String OutDate = rs.getString("OutDate");
+                String Remark = rs.getString("Remark");
+                String Progress = rs.getString("Progress");
+//                String Days = rs.getString("Days");
+                
+                String tableData[] = {InwardNo, WorksheetNo, FromNo, FromDateSent, FromName, 
+                    Subject, ToDateReceived, OutDate, Remark, Progress};
+            
+                EmployeeStatsTableModel.addRow(tableData);
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
     
+    private void initTasks() {
+        
+        DefaultTableModel TasksTableModel  = new DefaultTableModel();
+        TasksTable.setModel(TasksTableModel);
+        TasksTableModel.addColumn("Employee ID");
+        TasksTableModel.addColumn("Name");
+        TasksTableModel.addColumn("Email");
+        TasksTableModel.addColumn("Pending");
+        TasksTableModel.addColumn("Completed");
+        TasksTableModel.addColumn("Total");
+        
+        TasksTable.getTableHeader().setPreferredSize(
+            new Dimension(TasksTable.getColumnModel().getTotalColumnWidth(), 28));
+        
+        String branch = BranchEmployeeStatsComboBox.getSelectedItem().toString();
+        String toName = NameEmployeeStatsComboBox.getSelectedItem().toString();
+        
+        try {
+            ConnectionEstablish con = new ConnectionEstablish();
+            String sql = "SELECT * FROM letteremployee "
+                    + "WHERE Branch = '"+branch+"' AND "
+                    + "Name = '"+toName+"'";
+            PreparedStatement st = con.c.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            
+            while(rs.next()) {
+                String ID = rs.getString("ID");
+                String Name = rs.getString("Name");
+                String Email = rs.getString("Email");
+                String Pending = rs.getString("Pending");
+                String Completed = rs.getString("Completed");
+                String Total = rs.getString("Total");
+                
+                String tableData[] = {ID, Name, Email, Pending, Completed, Total};
+            
+                TasksTableModel.addRow(tableData);
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void initPeriod() {
+        SortByEmployeeStatsComboBox.removeAllItems();
+        SortByEmployeeStatsComboBox.addItem("'Select Period'");
+        SortByEmployeeStatsComboBox.addItem("Last Week");
+        SortByEmployeeStatsComboBox.addItem("Last Month");
+        SortByEmployeeStatsComboBox.addItem("Last Year");
+    }
+        
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1172,7 +1535,6 @@ public class ClerkAddLetter extends javax.swing.JFrame {
     private javax.swing.JLabel FromNameLabel;
     private javax.swing.JPanel FromPanel;
     private javax.swing.JTextField FromPeriodField;
-    private javax.swing.JLabel FromPeriodLabel;
     private javax.swing.JPanel HeaderPanel;
     private javax.swing.JLabel HeadingLabel;
     private javax.swing.JPanel HeadingPanel;
@@ -1185,11 +1547,9 @@ public class ClerkAddLetter extends javax.swing.JFrame {
     private javax.swing.JButton ShowRegisterButton;
     private javax.swing.JPanel ShowRegisterPanel;
     private javax.swing.JComboBox<String> ShowRegisterSortByComboBox;
-    private javax.swing.JLabel ShowRegisterSortByLabel;
     private javax.swing.JTable ShowRegisterTable;
     private javax.swing.JButton SignoutButton;
     private javax.swing.JComboBox<String> SortByEmployeeStatsComboBox;
-    private javax.swing.JLabel SortByEmployeeStatsLabel;
     private javax.swing.JTextField SubjectField;
     private javax.swing.JLabel SubjectLabel;
     private javax.swing.JPanel SubjectPanel;
