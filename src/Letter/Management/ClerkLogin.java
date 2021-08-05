@@ -116,11 +116,6 @@ public class ClerkLogin extends javax.swing.JFrame {
                 ShowPasswordToggleStateChanged(evt);
             }
         });
-        ShowPasswordToggle.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ShowPasswordToggleActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout PasswordPanelLayout = new javax.swing.GroupLayout(PasswordPanel);
         PasswordPanel.setLayout(PasswordPanelLayout);
@@ -283,10 +278,6 @@ public class ClerkLogin extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_LoginButtonActionPerformed
-
-    private void ShowPasswordToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPasswordToggleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ShowPasswordToggleActionPerformed
 
     private void init() {
 //        setExtendedState(MAXIMIZED_BOTH);

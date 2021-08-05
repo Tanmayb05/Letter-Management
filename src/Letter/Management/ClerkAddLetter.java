@@ -80,6 +80,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         ShowButton = new javax.swing.JButton();
         ShowRegisterPanel = new javax.swing.JPanel();
         ShowRegisterSortByComboBox = new javax.swing.JComboBox<>();
+        updownArrowToggleButton = new javax.swing.JToggleButton();
         EmployeeStatsOptions = new javax.swing.JPanel();
         NameEmployeeStatsComboBox = new javax.swing.JComboBox<>();
         BranchEmployeeStatsComboBox = new javax.swing.JComboBox<>();
@@ -532,10 +533,22 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         ShowRegisterPanel.setBackground(new java.awt.Color(225, 250, 225));
 
         ShowRegisterSortByComboBox.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ShowRegisterSortByComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sort By", "" }));
+        ShowRegisterSortByComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sort By", "Inward No", "From No", "From Date", "From Name", "Subject", "To Date", "To Branch", "To Name", "Out Date", "Progress" }));
         ShowRegisterSortByComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ShowRegisterSortByComboBoxActionPerformed(evt);
+            }
+        });
+
+        updownArrowToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img-src/arrow-down.png"))); // NOI18N
+        updownArrowToggleButton.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                updownArrowToggleButtonStateChanged(evt);
+            }
+        });
+        updownArrowToggleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updownArrowToggleButtonActionPerformed(evt);
             }
         });
 
@@ -544,15 +557,19 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         ShowRegisterPanelLayout.setHorizontalGroup(
             ShowRegisterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ShowRegisterPanelLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(ShowRegisterSortByComboBox, 0, 201, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addContainerGap()
+                .addComponent(ShowRegisterSortByComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(updownArrowToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ShowRegisterPanelLayout.setVerticalGroup(
             ShowRegisterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ShowRegisterPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ShowRegisterSortByComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(ShowRegisterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ShowRegisterSortByComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(updownArrowToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -592,7 +609,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         EmployeeStatsOptionsLayout.setHorizontalGroup(
             EmployeeStatsOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EmployeeStatsOptionsLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(EmployeeStatsOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(SortByEmployeeStatsComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BranchEmployeeStatsComboBox, 0, 250, Short.MAX_VALUE)
@@ -651,11 +668,11 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(AddLetterPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 10, Short.MAX_VALUE)
                         .addComponent(AddLetterFormPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AddLetterPanelLayout.createSequentialGroup()
-                        .addComponent(ShowRegisterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ShowRegisterPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, Short.MAX_VALUE)
                         .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(EmployeeStatsOptions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(EmployeeStatsFilterPeriodPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -750,7 +767,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             .addGroup(EmployeeStatsPaneLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(EmployeeStatsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EmployeeStatsScrollPane)
+                    .addComponent(EmployeeStatsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
                     .addComponent(TasksScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
         );
         EmployeeStatsPaneLayout.setVerticalGroup(
@@ -771,7 +788,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TablePanelLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(TablesPane)
+                .addComponent(TablesPane, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
                 .addGap(30, 30, 30))
         );
         TablePanelLayout.setVerticalGroup(
@@ -884,6 +901,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         EmployeeStatsOptions.setVisible(false);
         EmployeeStatsFilterPeriodPanel.setVisible(false);
         ShowRegisterPanel.setVisible(true);
+        updownArrowToggleButton.setVisible(false);
     }//GEN-LAST:event_ShowRegisterButtonActionPerformed
 
     private void SignoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignoutButtonActionPerformed
@@ -1142,8 +1160,186 @@ public class ClerkAddLetter extends javax.swing.JFrame {
 
     private void ShowRegisterSortByComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowRegisterSortByComboBoxActionPerformed
         // TODO add your handling code here:
+        String sortBy = ShowRegisterSortByComboBox.getSelectedItem().toString();
+        updownArrowToggleButton.setVisible(true);
         
+        if (sortBy.equals("Inward No")) {
+            sortRegister("InwardNo", "DESC");
+        }
+        else if (sortBy.equals("From No")) {
+            sortRegister("FromNo", "DESC");
+        }
+        else if (sortBy.equals("From Date")) {
+            sortRegister("FromDateSent", "DESC");
+        }
+        else if (sortBy.equals("From Name")) {
+            sortRegister("FromName", "DESC");
+        }
+        else if (sortBy.equals("Subject")) {
+            sortRegister("Subject", "DESC");
+        }
+        else if (sortBy.equals("To Date")) {
+            sortRegister("ToDateReceived", "DESC");
+        }
+        else if (sortBy.equals("To Branch")) {
+            sortRegister("ToBranch", "DESC");
+        }
+        else if (sortBy.equals("To Name")) {
+            sortRegister("ToName", "DESC");
+        }
+        else if (sortBy.equals("Out Date")) {
+            sortRegister("OutDate", "DESC");
+        }
+        else if (sortBy.equals("Progress")) {
+            sortRegister("Progress", "DESC");
+        }
     }//GEN-LAST:event_ShowRegisterSortByComboBoxActionPerformed
+
+    private void updownArrowToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updownArrowToggleButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updownArrowToggleButtonActionPerformed
+
+    private void updownArrowToggleButtonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_updownArrowToggleButtonStateChanged
+        // TODO add your handling code here:
+        if (updownArrowToggleButton.isSelected()) {
+            updownArrowToggleButton.setIcon(new ImageIcon(getClass().getResource("/img-src/arrow-up.png")));
+            
+            String sortBy = ShowRegisterSortByComboBox.getSelectedItem().toString();
+            
+            if (sortBy.equals("Inward No")) {
+                sortRegister("InwardNo", "ASC");
+            }
+            else if (sortBy.equals("From No")) {
+                sortRegister("FromNo", "ASC");
+            }
+            else if (sortBy.equals("From Date")) {
+                sortRegister("FromDateSent", "ASC");
+            }
+            else if (sortBy.equals("From Name")) {
+                sortRegister("FromName", "ASC");
+            }
+            else if (sortBy.equals("Subject")) {
+                sortRegister("Subject", "ASC");
+            }
+            else if (sortBy.equals("To Date")) {
+                sortRegister("ToDateReceived", "ASC");
+            }
+            else if (sortBy.equals("To Branch")) {
+                sortRegister("ToBranch", "ASC");
+            }
+            else if (sortBy.equals("To Name")) {
+                sortRegister("ToName", "ASC");
+            }
+            else if (sortBy.equals("Out Date")) {
+                sortRegister("OutDate", "ASC");
+            }
+            else if (sortBy.equals("Progress")) {
+                sortRegister("Progress", "ASC");
+            }
+        }
+        else {
+            updownArrowToggleButton.setIcon(new ImageIcon(getClass().getResource("/img-src/arrow-down.png")));
+            
+            String sortBy = ShowRegisterSortByComboBox.getSelectedItem().toString();
+
+            if (sortBy.equals("Inward No")) {
+                sortRegister("InwardNo", "DESC");
+            }
+            else if (sortBy.equals("From No")) {
+                sortRegister("FromNo", "DESC");
+            }
+            else if (sortBy.equals("From Date")) {
+                sortRegister("FromDateSent", "DESC");
+            }
+            else if (sortBy.equals("From Name")) {
+                sortRegister("FromName", "DESC");
+            }
+            else if (sortBy.equals("Subject")) {
+                sortRegister("Subject", "DESC");
+            }
+            else if (sortBy.equals("To Date")) {
+                sortRegister("ToDateReceived", "DESC");
+            }
+            else if (sortBy.equals("To Branch")) {
+                sortRegister("ToBranch", "DESC");
+            }
+            else if (sortBy.equals("To Name")) {
+                sortRegister("ToName", "DESC");
+            }
+            else if (sortBy.equals("Out Date")) {
+                sortRegister("OutDate", "DESC");
+            }
+            else if (sortBy.equals("Progress")) {
+                sortRegister("Progress", "DESC");
+            }
+        }
+    }//GEN-LAST:event_updownArrowToggleButtonStateChanged
+    
+    private void sortRegister(String parameter, String order) {
+        DefaultTableModel ShowRegisterTableModel  = new DefaultTableModel();
+        ShowRegisterTable.setModel(ShowRegisterTableModel);
+        ShowRegisterTableModel.addColumn("No");
+        ShowRegisterTableModel.addColumn("Worksheet");
+        ShowRegisterTableModel.addColumn("From No");
+        ShowRegisterTableModel.addColumn("From Date");
+        ShowRegisterTableModel.addColumn("From Name");
+        ShowRegisterTableModel.addColumn("Subject");
+        ShowRegisterTableModel.addColumn("To Date");
+        ShowRegisterTableModel.addColumn("To Branch");
+        ShowRegisterTableModel.addColumn("To Name");
+        ShowRegisterTableModel.addColumn("Out Date");
+        ShowRegisterTableModel.addColumn("Remark");
+        ShowRegisterTableModel.addColumn("Progress");
+        
+        ShowRegisterTable.getTableHeader().setPreferredSize(
+            new Dimension(ShowRegisterTable.getColumnModel().getTotalColumnWidth(), 28));
+        
+        ShowRegisterTable.getColumnModel().getColumn(0).setPreferredWidth(30);
+        ShowRegisterTable.getColumnModel().getColumn(2).setPreferredWidth(50);
+        
+//        DATES
+        ShowRegisterTable.getColumnModel().getColumn(3).setPreferredWidth(60);
+        ShowRegisterTable.getColumnModel().getColumn(6).setPreferredWidth(60);
+        ShowRegisterTable.getColumnModel().getColumn(9).setPreferredWidth(60);
+        
+        ShowRegisterTable.getColumnModel().getColumn(11).setPreferredWidth(50);
+        
+        try {
+            
+            ConnectionEstablish con = new ConnectionEstablish();
+            String sql = "SELECT *,date_format(FromDateSent,'%d-%m-%y') AS FDS, "
+                    + "date_format(ToDateReceived,'%d-%m-%y') AS TDR FROM letterinwardregister "
+                    + "ORDER BY "+parameter+" "+order;
+            PreparedStatement st = con.c.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            
+            while(rs.next()) {
+                String InwardNo = rs.getString("InwardNo");
+                String WorksheetNo = rs.getString("WorksheetNo");
+                String FromNo = rs.getString("FromNo");
+                String FromDateSent = rs.getString("FDS");
+                String FromName = rs.getString("FromName");
+                String Subject = rs.getString("Subject");
+                String ToDateReceived = rs.getString("TDR");
+                String ToBranch = rs.getString("ToBranch");
+                String ToName = rs.getString("ToName");
+                String OutDate = rs.getString("OutDate");
+                String Remark = rs.getString("Remark");
+                String Progress = rs.getString("Progress");
+                
+                String tableData[] = {InwardNo, WorksheetNo, FromNo, FromDateSent, 
+                    FromName, Subject, ToDateReceived, ToBranch, ToName, OutDate, Remark, Progress};
+            
+                ShowRegisterTableModel.addRow(tableData);
+                
+            }
+            
+//            ShowRegisterTable.setAutoCreateRowSorter(true);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     
     private String getEmployeeID(){
         
@@ -1186,6 +1382,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         EmployeeStatsOptions.setVisible(false);
         EmployeeStatsFilterPeriodPanel.setVisible(false);
         ShowRegisterPanel.setVisible(false);
+        updownArrowToggleButton.setVisible(true);
                 
     }
     
@@ -1568,5 +1765,6 @@ public class ClerkAddLetter extends javax.swing.JFrame {
     private javax.swing.JPanel ToPanel;
     private javax.swing.JTextField ToPeriodField;
     private javax.swing.JLabel ToPeriodLabel;
+    private javax.swing.JToggleButton updownArrowToggleButton;
     // End of variables declaration//GEN-END:variables
 }

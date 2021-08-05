@@ -148,12 +148,12 @@
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                           <Component id="AddLetterFormPanel" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="ShowRegisterPanel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="ShowRegisterPanel" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="EmployeeStatsOptions" max="32767" attributes="0"/>
                               <Component id="EmployeeStatsFilterPeriodPanel" max="32767" attributes="0"/>
@@ -922,9 +922,11 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="ShowRegisterSortByComboBox" pref="201" max="32767" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="ShowRegisterSortByComboBox" min="-2" pref="150" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="updownArrowToggleButton" min="-2" pref="34" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -932,7 +934,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="ShowRegisterSortByComboBox" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="ShowRegisterSortByComboBox" pref="30" max="32767" attributes="0"/>
+                          <Component id="updownArrowToggleButton" pref="0" max="32767" attributes="0"/>
+                      </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -945,9 +950,18 @@
                   <Font name="SansSerif" size="16" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
+                  <StringArray count="11">
                     <StringItem index="0" value="Sort By"/>
-                    <StringItem index="1" value=""/>
+                    <StringItem index="1" value="Inward No"/>
+                    <StringItem index="2" value="From No"/>
+                    <StringItem index="3" value="From Date"/>
+                    <StringItem index="4" value="From Name"/>
+                    <StringItem index="5" value="Subject"/>
+                    <StringItem index="6" value="To Date"/>
+                    <StringItem index="7" value="To Branch"/>
+                    <StringItem index="8" value="To Name"/>
+                    <StringItem index="9" value="Out Date"/>
+                    <StringItem index="10" value="Progress"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -957,6 +971,17 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
+            </Component>
+            <Component class="javax.swing.JToggleButton" name="updownArrowToggleButton">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/img-src/arrow-down.png"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="updownArrowToggleButtonStateChanged"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updownArrowToggleButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -971,7 +996,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <EmptySpace pref="20" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="SortByEmployeeStatsComboBox" alignment="1" max="32767" attributes="0"/>
                           <Component id="BranchEmployeeStatsComboBox" pref="250" max="32767" attributes="0"/>
@@ -1142,7 +1167,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="TablesPane" max="32767" attributes="0"/>
+                  <Component id="TablesPane" pref="457" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -1320,7 +1345,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="EmployeeStatsScrollPane" max="32767" attributes="0"/>
+                              <Component id="EmployeeStatsScrollPane" pref="442" max="32767" attributes="0"/>
                               <Component id="TasksScrollPane" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
