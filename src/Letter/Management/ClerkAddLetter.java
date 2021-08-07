@@ -3,16 +3,30 @@ package Letter.Management;
 import static Letter.Management.ClerkLogin.setUIFont;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 
 /**
  *
@@ -75,9 +89,9 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         ActionButtonsPanel = new javax.swing.JPanel();
         SignoutButton = new javax.swing.JButton();
         AddLetterButton = new javax.swing.JButton();
-        ShowRegisterButton = new javax.swing.JButton();
-        EmployeeStatsButton = new javax.swing.JButton();
         ShowButton = new javax.swing.JButton();
+        ShowRegisterButton = new javax.swing.JToggleButton();
+        EmployeeStatsButton = new javax.swing.JToggleButton();
         ShowRegisterPanel = new javax.swing.JPanel();
         ShowRegisterSortByComboBox = new javax.swing.JComboBox<>();
         updownArrowToggleButton = new javax.swing.JToggleButton();
@@ -89,6 +103,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         FromPeriodField = new javax.swing.JTextField();
         ToPeriodField = new javax.swing.JTextField();
         ToPeriodLabel = new javax.swing.JLabel();
+        ExportButton = new javax.swing.JButton();
         TablePanel = new javax.swing.JPanel();
         TablesPane = new javax.swing.JTabbedPane();
         ShowDirectoryScrollPane = new javax.swing.JScrollPane();
@@ -473,30 +488,49 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             }
         });
 
-        ShowRegisterButton.setBackground(new java.awt.Color(204, 204, 204));
-        ShowRegisterButton.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ShowRegisterButton.setText("Show Register");
-        ShowRegisterButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ShowRegisterButtonActionPerformed(evt);
-            }
-        });
-
-        EmployeeStatsButton.setBackground(new java.awt.Color(204, 204, 204));
-        EmployeeStatsButton.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        EmployeeStatsButton.setText("Employee Stats");
-        EmployeeStatsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmployeeStatsButtonActionPerformed(evt);
-            }
-        });
-
         ShowButton.setBackground(new java.awt.Color(255, 255, 255));
         ShowButton.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         ShowButton.setText("Show");
         ShowButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ShowButtonActionPerformed(evt);
+            }
+        });
+
+        ShowRegisterButton.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        ShowRegisterButton.setText("Show Register");
+        ShowRegisterButton.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ShowRegisterButtonStateChanged(evt);
+            }
+        });
+        ShowRegisterButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ShowRegisterButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ShowRegisterButtonMouseExited(evt);
+            }
+        });
+        ShowRegisterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowRegisterButtonActionPerformed(evt);
+            }
+        });
+
+        EmployeeStatsButton.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        EmployeeStatsButton.setText("EmployeeStats");
+        EmployeeStatsButton.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                EmployeeStatsButtonStateChanged(evt);
+            }
+        });
+        EmployeeStatsButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                EmployeeStatsButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                EmployeeStatsButtonMouseExited(evt);
             }
         });
 
@@ -510,24 +544,23 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(AddLetterButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ShowRegisterButton)
+                .addComponent(ShowRegisterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(EmployeeStatsButton)
+                .addComponent(EmployeeStatsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ShowButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
         ActionButtonsPanelLayout.setVerticalGroup(
             ActionButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ActionButtonsPanelLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(ActionButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(SignoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(EmployeeStatsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ActionButtonsPanelLayout.createSequentialGroup()
+                .addGroup(ActionButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(EmployeeStatsButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(SignoutButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(AddLetterButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ShowRegisterButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AddLetterButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ShowButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
+                    .addComponent(ShowButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 5, 5))
         );
 
         ShowRegisterPanel.setBackground(new java.awt.Color(225, 250, 225));
@@ -609,7 +642,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         EmployeeStatsOptionsLayout.setHorizontalGroup(
             EmployeeStatsOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EmployeeStatsOptionsLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(EmployeeStatsOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(SortByEmployeeStatsComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BranchEmployeeStatsComboBox, 0, 250, Short.MAX_VALUE)
@@ -628,12 +661,32 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         EmployeeStatsFilterPeriodPanel.setBackground(new java.awt.Color(225, 250, 225));
 
         FromPeriodField.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        FromPeriodField.setText("dd-MM-yyyy");
+        FromPeriodField.setToolTipText("From Date");
         FromPeriodField.setMinimumSize(new java.awt.Dimension(110, 30));
         FromPeriodField.setPreferredSize(new java.awt.Dimension(110, 30));
+        FromPeriodField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                FromPeriodFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                FromPeriodFieldFocusLost(evt);
+            }
+        });
 
         ToPeriodField.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        ToPeriodField.setText("dd-MM-yyyy");
+        ToPeriodField.setToolTipText("To Date");
         ToPeriodField.setMinimumSize(new java.awt.Dimension(110, 30));
         ToPeriodField.setPreferredSize(new java.awt.Dimension(110, 30));
+        ToPeriodField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                ToPeriodFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                ToPeriodFieldFocusLost(evt);
+            }
+        });
 
         ToPeriodLabel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         ToPeriodLabel.setText("--");
@@ -660,6 +713,13 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                     .addComponent(ToPeriodField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
+        ExportButton.setText("Export");
+        ExportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExportButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout AddLetterPanelLayout = new javax.swing.GroupLayout(AddLetterPanel);
         AddLetterPanel.setLayout(AddLetterPanelLayout);
         AddLetterPanelLayout.setHorizontalGroup(
@@ -671,8 +731,13 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                         .addGap(0, 10, Short.MAX_VALUE)
                         .addComponent(AddLetterFormPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AddLetterPanelLayout.createSequentialGroup()
-                        .addComponent(ShowRegisterPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(AddLetterPanelLayout.createSequentialGroup()
+                                .addComponent(ShowRegisterPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, Short.MAX_VALUE))
+                            .addGroup(AddLetterPanelLayout.createSequentialGroup()
+                                .addComponent(ExportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(EmployeeStatsOptions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(EmployeeStatsFilterPeriodPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -690,8 +755,10 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                 .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ShowRegisterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(EmployeeStatsOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(EmployeeStatsFilterPeriodPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(AddLetterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(EmployeeStatsFilterPeriodPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ExportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -895,15 +962,6 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_AddLetterButtonActionPerformed
 
-    private void ShowRegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowRegisterButtonActionPerformed
-        // TODO add your handling code here:
-        TablesPane.setSelectedIndex(0);
-        EmployeeStatsOptions.setVisible(false);
-        EmployeeStatsFilterPeriodPanel.setVisible(false);
-        ShowRegisterPanel.setVisible(true);
-        updownArrowToggleButton.setVisible(false);
-    }//GEN-LAST:event_ShowRegisterButtonActionPerformed
-
     private void SignoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignoutButtonActionPerformed
         // TODO add your handling code here:
         int a = JOptionPane.showConfirmDialog(null,"Are you sure?","Sign Out",JOptionPane.YES_NO_OPTION);  
@@ -912,15 +970,6 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             new ClerkLogin().setVisible(true); 
         }  
     }//GEN-LAST:event_SignoutButtonActionPerformed
-
-    private void EmployeeStatsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmployeeStatsButtonActionPerformed
-        // TODO add your handling code here:
-        TablesPane.setSelectedIndex(1);
-        ShowRegisterPanel.setVisible(false);
-        EmployeeStatsOptions.setVisible(true);
-        EmployeeStatsFilterPeriodPanel.setVisible(true);
-//        initPeriod();
-    }//GEN-LAST:event_EmployeeStatsButtonActionPerformed
 
     private void FromNameComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FromNameComboBoxActionPerformed
         // TODO add your handling code here:
@@ -969,16 +1018,58 @@ public class ClerkAddLetter extends javax.swing.JFrame {
     private void ShowButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowButtonActionPerformed
         // TODO add your handling code here:
         
-        if (BranchEmployeeStatsComboBox.getSelectedItem() == "Select Branch") {
+        if (ShowRegisterButton.isSelected()) {
             
         }
-        else {
+        else if (EmployeeStatsButton.isSelected()) {
             initEmployeeStats();
             initTasks();
+            
+            if (!BranchEmployeeStatsComboBox.getSelectedItem().equals("Select Branch") 
+                    && !NameEmployeeStatsComboBox.getSelectedItem().equals("Select Name")) {
+                
+                if (SortByEmployeeStatsComboBox.getSelectedItem().equals("Select Period")) {
+                    
+                    if (FromPeriodField.getText().equals("dd-MM-yyyy") || ToPeriodField.getText().equals("dd-MM-yyyy")) {
+                        initEmployeeStats();
+                        initTasks();
+                    }
+                    else {
+                        
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                        SimpleDateFormat sdfNew = new SimpleDateFormat("yyyy-MM-dd");
+                        String from = null;
+                        String to = null;
+
+                        try {
+                            Date fromDate = sdf.parse(FromPeriodField.getText());
+                            Date toDate = sdf.parse(ToPeriodField.getText());
+                            from = sdfNew.format(fromDate);
+                            to = sdfNew.format(toDate);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+
+                        initEmployeeStatsPeriodTable(from, to);
+                        initTasks();
+                    } 
+                }
+                else {
+                    initEmployeeStats();
+                    initTasks();
+                }
+            }
+            else {
+                initEmployeeStats();
+                initTasks();
+            }
+            
         }
         
     }//GEN-LAST:event_ShowButtonActionPerformed
 
+    
     private void NameEmployeeStatsComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NameEmployeeStatsComboBoxItemStateChanged
         // TODO add your handling code here:
 //        initEmployeeStats();
@@ -990,6 +1081,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         String period = SortByEmployeeStatsComboBox.getSelectedItem().toString();
         
         if (period.equals("Last Week")) {
+            EmployeeStatsFilterPeriodPanel.setVisible(false);
             DefaultTableModel EmployeeStatsTableModel  = new DefaultTableModel();
             EmployeeStatsTable.setModel(EmployeeStatsTableModel);
             EmployeeStatsTableModel.addColumn("Inward No");
@@ -1044,6 +1136,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             }
         }
         else if (period.equals("Last Month")) {
+            EmployeeStatsFilterPeriodPanel.setVisible(false);
             DefaultTableModel EmployeeStatsTableModel  = new DefaultTableModel();
             EmployeeStatsTable.setModel(EmployeeStatsTableModel);
             EmployeeStatsTableModel.addColumn("Inward No");
@@ -1098,6 +1191,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             }
         }
         else if (period.equals("Last Year")) {
+            EmployeeStatsFilterPeriodPanel.setVisible(false);
             DefaultTableModel EmployeeStatsTableModel  = new DefaultTableModel();
             EmployeeStatsTable.setModel(EmployeeStatsTableModel);
             EmployeeStatsTableModel.addColumn("Inward No");
@@ -1151,6 +1245,9 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
+        else if (period.equals("Select Period")) {
+            EmployeeStatsFilterPeriodPanel.setVisible(true);
+        }
     }//GEN-LAST:event_SortByEmployeeStatsComboBoxActionPerformed
 
     private void NameEmployeeStatsComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameEmployeeStatsComboBoxActionPerformed
@@ -1203,7 +1300,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (updownArrowToggleButton.isSelected()) {
             updownArrowToggleButton.setIcon(new ImageIcon(getClass().getResource("/img-src/arrow-up.png")));
-            
+            updownArrowToggleButton.setToolTipText("Ascending");
             String sortBy = ShowRegisterSortByComboBox.getSelectedItem().toString();
             
             if (sortBy.equals("Inward No")) {
@@ -1239,7 +1336,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         }
         else {
             updownArrowToggleButton.setIcon(new ImageIcon(getClass().getResource("/img-src/arrow-down.png")));
-            
+            updownArrowToggleButton.setToolTipText("Descending");
             String sortBy = ShowRegisterSortByComboBox.getSelectedItem().toString();
 
             if (sortBy.equals("Inward No")) {
@@ -1274,6 +1371,141 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_updownArrowToggleButtonStateChanged
+
+    private void ShowRegisterButtonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ShowRegisterButtonStateChanged
+        // TODO add your handling code here:
+        showRegisterToggleSwitch();
+    }//GEN-LAST:event_ShowRegisterButtonStateChanged
+
+    private void EmployeeStatsButtonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_EmployeeStatsButtonStateChanged
+        // TODO add your handling code here:
+        employeeStatsToggleSwitch();
+    }//GEN-LAST:event_EmployeeStatsButtonStateChanged
+
+    private void EmployeeStatsButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EmployeeStatsButtonMouseEntered
+        // TODO add your handling code here:
+        employeeStatsToggleSwitchMouse();
+    }//GEN-LAST:event_EmployeeStatsButtonMouseEntered
+
+    private void EmployeeStatsButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EmployeeStatsButtonMouseExited
+        // TODO add your handling code here:
+        employeeStatsToggleSwitchMouse();
+    }//GEN-LAST:event_EmployeeStatsButtonMouseExited
+
+    private void ShowRegisterButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowRegisterButtonMouseEntered
+        // TODO add your handling code here:
+        showRegisterToggleSwitchMouse();
+    }//GEN-LAST:event_ShowRegisterButtonMouseEntered
+
+    private void ShowRegisterButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowRegisterButtonMouseExited
+        // TODO add your handling code here:
+        showRegisterToggleSwitchMouse();
+    }//GEN-LAST:event_ShowRegisterButtonMouseExited
+
+    private void FromPeriodFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FromPeriodFieldFocusGained
+        // TODO add your handling code here:
+        if (FromPeriodField.getText().equals("dd-MM-yyyy")) {
+            FromPeriodField.setText("");
+        }
+        
+    }//GEN-LAST:event_FromPeriodFieldFocusGained
+
+    private void FromPeriodFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FromPeriodFieldFocusLost
+        // TODO add your handling code here:
+        if (FromPeriodField.getText().equals("")) {
+            FromPeriodField.setText("dd-MM-yyyy");
+        }
+    }//GEN-LAST:event_FromPeriodFieldFocusLost
+
+    private void ToPeriodFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ToPeriodFieldFocusGained
+        // TODO add your handling code here:
+        if (ToPeriodField.getText().equals("dd-MM-yyyy")) {
+            ToPeriodField.setText("");
+        }
+    }//GEN-LAST:event_ToPeriodFieldFocusGained
+
+    private void ToPeriodFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ToPeriodFieldFocusLost
+        // TODO add your handling code here:
+        if (ToPeriodField.getText().equals("")) {
+            ToPeriodField.setText("dd-MM-yyyy");
+        }
+    }//GEN-LAST:event_ToPeriodFieldFocusLost
+
+    private void ShowRegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowRegisterButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ShowRegisterButtonActionPerformed
+
+    private void ExportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportButtonActionPerformed
+        // TODO add your handling code here:
+//                //First Download Apache POI Library For Dealing with excel files.
+//        //Then add the library to the current project
+//        FileOutputStream excelFos = null;
+//        XSSFWorkbook excelJTableExport = null;
+//        BufferedOutputStream excelBos = null;
+//        try {
+// 
+//            //Choosing Saving Location
+//            //Set default location to C:\Users\Authentic\Desktop or your preferred location
+//            JFileChooser excelFileChooser = new JFileChooser("C:\\Users\\Authentic\\Desktop");
+//            //Dialog box title
+//            excelFileChooser.setDialogTitle("Save As ..");
+//            //Filter only xls, xlsx, xlsm files
+//            FileNameExtensionFilter fnef = new FileNameExtensionFilter("Files", "xls", "xlsx", "xlsm");
+//            //Setting extension for selected file names
+//            excelFileChooser.setFileFilter(fnef);
+//            int chooser = excelFileChooser.showSaveDialog(null);
+//            //Check if save button has been clicked
+//            if (chooser == JFileChooser.APPROVE_OPTION) {
+//                //If button is clicked execute this code
+//                excelJTableExport = new XSSFWorkbook();
+//                XSSFSheet excelSheet = excelJTableExport.createSheet("Jtable Export");
+//                //Loop through the jtable columns and rows to get its values
+//                for (int i = 0; i &lt; model.getRowCount(); i++) {
+//                    XSSFRow excelRow = excelSheet.createRow(i);
+//                    for (int j = 0; j &lt; model.getColumnCount(); j++) {
+//                        XSSFCell excelCell = excelRow.createCell(j);
+// 
+//                        //Change the image column to output image path
+//                        //Fourth column contains images
+//                        if (j == model.getColumnCount() - 1) {
+//                            JLabel excelJL = (JLabel) model.getValueAt(i, j);
+//                            ImageIcon excelImageIcon = (ImageIcon) excelJL.getIcon();
+//                            //Image Name Is Stored In ImageIcons Description first set it when saving image in the jtable cell and then retrieve it.
+//                            excelImagePath = excelImageIcon.getDescription();
+//                        }
+// 
+//                        excelCell.setCellValue(model.getValueAt(i, j).toString());
+//                        if (excelCell.getColumnIndex() == model.getColumnCount() - 1) {
+//                            excelCell.setCellValue(excelImagePath);
+//                        }
+//                    }
+//                }
+//                excelFos = new FileOutputStream(excelFileChooser.getSelectedFile() + ".xlsx");
+//                excelBos = new BufferedOutputStream(excelFos);
+//                excelJTableExport.write(excelBos);
+//                JOptionPane.showMessageDialog(null, "Exported Successfully");
+//            }
+// 
+//        } catch (FileNotFoundException ex) {
+//            JOptionPane.showMessageDialog(null, ex);
+//        } catch (IOException ex) {
+//            JOptionPane.showMessageDialog(null, ex);
+//        } finally {
+//            try {
+//                if (excelFos != null) {
+//                    excelFos.close();
+//                }
+//                if (excelBos != null) {
+//                    excelBos.close();
+//                }
+//                if (excelJTableExport != null) {
+//                    excelJTableExport.close();
+//                }
+//            } catch (IOException ex) {
+//                JOptionPane.showMessageDialog(null, ex);
+//            }
+//        }
+    }//GEN-LAST:event_ExportButtonActionPerformed
     
     private void sortRegister(String parameter, String order) {
         DefaultTableModel ShowRegisterTableModel  = new DefaultTableModel();
@@ -1379,10 +1611,10 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         setTitle("Water Resources Department, Government of Maharashtra, India");
         
         initInwardRegisterNumber();
+        TablesPane.setVisible(false);
         EmployeeStatsOptions.setVisible(false);
         EmployeeStatsFilterPeriodPanel.setVisible(false);
         ShowRegisterPanel.setVisible(false);
-        updownArrowToggleButton.setVisible(true);
                 
     }
     
@@ -1570,6 +1802,47 @@ public class ClerkAddLetter extends javax.swing.JFrame {
     
     private void initEmployeeStats() {
         
+        DefaultTableModel EmployeeStatsTableModel = initEmployeeStatsTableModel();
+        
+        String branch = BranchEmployeeStatsComboBox.getSelectedItem().toString();
+        String toName = NameEmployeeStatsComboBox.getSelectedItem().toString();
+        
+        try {
+            
+            
+            ConnectionEstablish con = new ConnectionEstablish();
+            String sql = "SELECT *,date_format(FromDateSent,'%d-%m-%y') AS FDS, "
+                    + "date_format(ToDateReceived,'%d-%m-%y') AS TDR "
+                    + "FROM letterinwardregister "
+                    + "WHERE ToBranch = '"+branch+"' AND "
+                    + "ToName = '"+toName+"'";
+            PreparedStatement st = con.c.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            
+            while(rs.next()) {
+                String InwardNo = rs.getString("InwardNo");
+                String WorksheetNo = rs.getString("WorksheetNo");
+                String FromNo = rs.getString("FromNo");
+                String FromDateSent = rs.getString("FDS");
+                String FromName = rs.getString("FromName");
+                String Subject = rs.getString("Subject");
+                String ToDateReceived = rs.getString("TDR");
+                String OutDate = rs.getString("OutDate");
+                String Remark = rs.getString("Remark");
+                String Progress = rs.getString("Progress");
+//                String Days = rs.getString("Days");
+                
+                String tableData[] = {InwardNo, WorksheetNo, FromNo, FromDateSent, FromName, 
+                    Subject, ToDateReceived, OutDate, Remark, Progress};
+            
+                EmployeeStatsTableModel.addRow(tableData);
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private DefaultTableModel initEmployeeStatsTableModel() {
         DefaultTableModel EmployeeStatsTableModel  = new DefaultTableModel();
         EmployeeStatsTable.setModel(EmployeeStatsTableModel);
         EmployeeStatsTableModel.addColumn("Inward No");
@@ -1584,8 +1857,15 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         EmployeeStatsTableModel.addColumn("Progress");
 //        EmployeeStatsTableModel.addColumn("Days");
         
-        ShowRegisterTable.getTableHeader().setPreferredSize(
-            new Dimension(ShowRegisterTable.getColumnModel().getTotalColumnWidth(), 28));
+        EmployeeStatsTable.getTableHeader().setPreferredSize(
+            new Dimension(EmployeeStatsTable.getColumnModel().getTotalColumnWidth(), 28));
+        
+        return EmployeeStatsTableModel;
+    }
+    
+    private void initEmployeeStatsPeriodTable (String from, String to) {
+        
+        DefaultTableModel EmployeeStatsTableModel = initEmployeeStatsTableModel();
         
         String branch = BranchEmployeeStatsComboBox.getSelectedItem().toString();
         String toName = NameEmployeeStatsComboBox.getSelectedItem().toString();
@@ -1594,9 +1874,13 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             
             
             ConnectionEstablish con = new ConnectionEstablish();
-            String sql = "SELECT * FROM letterinwardregister "
+            
+            String sql = "SELECT *,date_format(FromDateSent,'%d-%m-%y') AS FDS, "
+                    + "date_format(ToDateReceived,'%d-%m-%y') AS TDR "
+                    + "FROM letterinwardregister "
                     + "WHERE ToBranch = '"+branch+"' AND "
-                    + "ToName = '"+toName+"'";
+                    + "ToName = '"+toName+"' AND "
+                    + "ToDateReceived BETWEEN '"+from+"' AND '"+to+"'";
             PreparedStatement st = con.c.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             
@@ -1604,10 +1888,10 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                 String InwardNo = rs.getString("InwardNo");
                 String WorksheetNo = rs.getString("WorksheetNo");
                 String FromNo = rs.getString("FromNo");
-                String FromDateSent = rs.getString("FromDateSent");
+                String FromDateSent = rs.getString("FDS");
                 String FromName = rs.getString("FromName");
                 String Subject = rs.getString("Subject");
-                String ToDateReceived = rs.getString("ToDateReceived");
+                String ToDateReceived = rs.getString("TDR");
                 String OutDate = rs.getString("OutDate");
                 String Remark = rs.getString("Remark");
                 String Progress = rs.getString("Progress");
@@ -1666,14 +1950,103 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         }
     }
     
-    private void initPeriod() {
-        SortByEmployeeStatsComboBox.removeAllItems();
-        SortByEmployeeStatsComboBox.addItem("'Select Period'");
-        SortByEmployeeStatsComboBox.addItem("Last Week");
-        SortByEmployeeStatsComboBox.addItem("Last Month");
-        SortByEmployeeStatsComboBox.addItem("Last Year");
+    private void showRegisterToggleSwitch() {
+        
+        TablesPane.setSelectedIndex(0);
+        updownArrowToggleButton.setVisible(false);
+        EmployeeStatsFilterPeriodPanel.setVisible(false);
+        EmployeeStatsOptions.setVisible(false);
+        
+        if (ShowRegisterButton.isSelected()) {
+            TablesPane.setVisible(true);
+            ShowRegisterPanel.setVisible(true);
+            EmployeeStatsButton.setSelected(false);
+            updownArrowToggleButton.setVisible(true);
+        }
+        else {
+            TablesPane.setVisible(false);
+            ShowRegisterPanel.setVisible(false);
+        }
     }
         
+    private void employeeStatsToggleSwitch() { 
+        TablesPane.setSelectedIndex(1);
+        updownArrowToggleButton.setVisible(false);
+        ShowRegisterPanel.setVisible(false);
+        
+        if (EmployeeStatsButton.isSelected()) {
+            TablesPane.setVisible(true);
+            EmployeeStatsOptions.setVisible(true);
+            EmployeeStatsFilterPeriodPanel.setVisible(true);
+            ShowRegisterButton.setSelected(false);
+        }
+        else {
+            TablesPane.setVisible(false);
+            EmployeeStatsOptions.setVisible(false);
+            EmployeeStatsFilterPeriodPanel.setVisible(false);
+        }
+    }
+    
+    private void employeeStatsToggleSwitchMouse() {
+        
+        
+        if (ShowRegisterButton.isSelected()) {
+            TablesPane.setVisible(true);
+            ShowRegisterPanel.setVisible(true);
+            EmployeeStatsButton.setSelected(false);
+            TablesPane.setSelectedIndex(0);
+            updownArrowToggleButton.setVisible(true);
+            EmployeeStatsFilterPeriodPanel.setVisible(false);
+            EmployeeStatsOptions.setVisible(false);
+        }        
+        else if (EmployeeStatsButton.isSelected()) {
+            TablesPane.setVisible(true);
+            EmployeeStatsOptions.setVisible(true);
+            EmployeeStatsFilterPeriodPanel.setVisible(true);
+            ShowRegisterButton.setSelected(false);
+            TablesPane.setSelectedIndex(1);
+            updownArrowToggleButton.setVisible(true);
+            ShowRegisterPanel.setVisible(false);
+        }
+        else {
+            TablesPane.setVisible(false);
+            updownArrowToggleButton.setVisible(false);
+            ShowRegisterPanel.setVisible(false);
+            EmployeeStatsFilterPeriodPanel.setVisible(false);
+            EmployeeStatsOptions.setVisible(false);
+        }
+    }
+    
+    private void showRegisterToggleSwitchMouse() {
+        
+        
+        if (EmployeeStatsButton.isSelected()) {
+            TablesPane.setVisible(true);
+            EmployeeStatsOptions.setVisible(true);
+            EmployeeStatsFilterPeriodPanel.setVisible(true);
+            ShowRegisterButton.setSelected(false);
+            TablesPane.setSelectedIndex(1);
+            updownArrowToggleButton.setVisible(false);
+            ShowRegisterPanel.setVisible(false);
+        }
+        else if (ShowRegisterButton.isSelected()) {
+            TablesPane.setVisible(true);
+            ShowRegisterPanel.setVisible(true);
+            EmployeeStatsButton.setSelected(false);
+            TablesPane.setSelectedIndex(0);
+            updownArrowToggleButton.setVisible(true);
+            EmployeeStatsFilterPeriodPanel.setVisible(false);
+            EmployeeStatsOptions.setVisible(false);
+        }        
+        else {
+            TablesPane.setVisible(false);
+            updownArrowToggleButton.setVisible(false);
+            ShowRegisterPanel.setVisible(false);
+            EmployeeStatsFilterPeriodPanel.setVisible(false);
+            EmployeeStatsOptions.setVisible(false);
+        }
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1717,12 +2090,13 @@ public class ClerkAddLetter extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> BranchEmployeeStatsComboBox;
     private javax.swing.JButton DateReceivedShowTodayButton;
     private javax.swing.JButton DateSentShowTodayButton;
-    private javax.swing.JButton EmployeeStatsButton;
+    private javax.swing.JToggleButton EmployeeStatsButton;
     private javax.swing.JPanel EmployeeStatsFilterPeriodPanel;
     private javax.swing.JPanel EmployeeStatsOptions;
     private javax.swing.JPanel EmployeeStatsPane;
     private javax.swing.JScrollPane EmployeeStatsScrollPane;
     private javax.swing.JTable EmployeeStatsTable;
+    private javax.swing.JButton ExportButton;
     private javax.swing.JTextField FromDateField;
     private javax.swing.JLabel FromDateLabel;
     private javax.swing.JTextField FromLetterNoField;
@@ -1741,7 +2115,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> NameEmployeeStatsComboBox;
     private javax.swing.JButton ShowButton;
     private javax.swing.JScrollPane ShowDirectoryScrollPane;
-    private javax.swing.JButton ShowRegisterButton;
+    private javax.swing.JToggleButton ShowRegisterButton;
     private javax.swing.JPanel ShowRegisterPanel;
     private javax.swing.JComboBox<String> ShowRegisterSortByComboBox;
     private javax.swing.JTable ShowRegisterTable;

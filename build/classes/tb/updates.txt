@@ -47,6 +47,7 @@ _________________________________________________________
 >> Increase Width Of Table + Frame {View Employee Stats}
 >> Add A Column for update date/time
 
-
+>> Ascending / Descending Button setVisible 
+>> Select Period Date
 
 >> ClerkAddToDirectory -> Remove Pending JOptionPane
