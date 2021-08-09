@@ -1551,7 +1551,7 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                  <Component id="AddLetterFormPanel1" min="-2" pref="629" max="-2" attributes="0"/>
+                  <Component id="AddLetterFormPanel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -1585,7 +1585,7 @@
                           <Component id="SubjectPanel1" alignment="0" max="32767" attributes="0"/>
                           <Component id="FeedbakTextField" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

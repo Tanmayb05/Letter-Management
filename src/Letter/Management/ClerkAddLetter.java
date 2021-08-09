@@ -206,7 +206,6 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         FromLetterNoLabel.setPreferredSize(new java.awt.Dimension(100, 30));
 
         FromLetterNoField.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        FromLetterNoField.setText("Number");
         FromLetterNoField.setToolTipText("From Number");
         FromLetterNoField.setMinimumSize(new java.awt.Dimension(150, 30));
         FromLetterNoField.setPreferredSize(new java.awt.Dimension(150, 30));
@@ -1540,7 +1539,9 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             
             ConnectionEstablish con = new ConnectionEstablish();
             String sql = "SELECT *,date_format(FromDateSent,'%d-%m-%y') AS FDS, "
-                    + "date_format(ToDateReceived,'%d-%m-%y') AS TDR FROM letterinwardregister "
+                    + "date_format(ToDateReceived,'%d-%m-%y') AS TDR, "
+                    + "date_format(OutDate,'%d-%m-%y') AS OD "
+                    + "FROM letterinwardregister "
                     + "ORDER BY "+parameter+" "+order;
             PreparedStatement st = con.c.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
@@ -1555,7 +1556,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                 String ToDateReceived = rs.getString("TDR");
                 String ToBranch = rs.getString("ToBranch");
                 String ToName = rs.getString("ToName");
-                String OutDate = rs.getString("OutDate");
+                String OutDate = rs.getString("OD");
                 String Remark = rs.getString("Remark");
                 String Progress = rs.getString("Progress");
                 
@@ -1768,7 +1769,9 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             
             ConnectionEstablish con = new ConnectionEstablish();
             String sql = "SELECT *,date_format(FromDateSent,'%d-%m-%y') AS FDS, "
-                    + "date_format(ToDateReceived,'%d-%m-%y') AS TDR FROM letterinwardregister";
+                    + "date_format(ToDateReceived,'%d-%m-%y') AS TDR, "
+                    + "date_format(OutDate,'%d-%m-%y') AS OD "
+                    + "FROM letterinwardregister";
             PreparedStatement st = con.c.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             
@@ -1782,7 +1785,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                 String ToDateReceived = rs.getString("TDR");
                 String ToBranch = rs.getString("ToBranch");
                 String ToName = rs.getString("ToName");
-                String OutDate = rs.getString("OutDate");
+                String OutDate = rs.getString("OD");
                 String Remark = rs.getString("Remark");
                 String Progress = rs.getString("Progress");
                 

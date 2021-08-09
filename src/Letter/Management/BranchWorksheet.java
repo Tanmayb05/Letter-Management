@@ -3,12 +3,17 @@ package Letter.Management;
 import static Letter.Management.ClerkLogin.setUIFont;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -24,6 +29,7 @@ public class BranchWorksheet extends javax.swing.JFrame {
      */
     public BranchWorksheet() {
         initComponents();
+        initFrame();
     }
 
     /**
@@ -91,54 +97,50 @@ public class BranchWorksheet extends javax.swing.JFrame {
         TasksScrollPane = new javax.swing.JScrollPane();
         TasksTable = new javax.swing.JTable();
         TablePanel1 = new javax.swing.JPanel();
-        TablesPane1 = new javax.swing.JTabbedPane();
-        ShowDirectoryScrollPane1 = new javax.swing.JScrollPane();
-        ShowRegisterTable1 = new javax.swing.JTable();
-        EmployeeStatsPane1 = new javax.swing.JPanel();
-        EmployeeStatsScrollPane1 = new javax.swing.JScrollPane();
-        EmployeeStatsTable1 = new javax.swing.JTable();
-        TasksScrollPane1 = new javax.swing.JScrollPane();
-        TasksTable1 = new javax.swing.JTable();
+        WorksheetPanel = new javax.swing.JPanel();
+        WorksheetScrollPane = new javax.swing.JScrollPane();
+        WorksheetTable = new javax.swing.JTable();
+        NewLettersPanel = new javax.swing.JPanel();
+        NewReceivedLettersLabel = new javax.swing.JLabel();
+        NewReceivedLettersTablePanel = new javax.swing.JPanel();
+        NewReceivedLettersTableScroll = new javax.swing.JScrollPane();
+        NewReceivedLettersTable = new javax.swing.JTable();
         AddLetterPanel1 = new javax.swing.JPanel();
         AddLetterFormPanel1 = new javax.swing.JPanel();
         InwardRegisterNumberPanel1 = new javax.swing.JPanel();
         InwardRegisterNoLabel1 = new javax.swing.JLabel();
-        InwardRegsiterNumberField1 = new javax.swing.JLabel();
+        InwardRegisterNoField = new javax.swing.JTextField();
+        ShowLetterInfoButton = new javax.swing.JButton();
         FromPanel1 = new javax.swing.JPanel();
-        FromLetterNoField1 = new javax.swing.JTextField();
         FromDateLabel1 = new javax.swing.JLabel();
-        FromDateField1 = new javax.swing.JTextField();
         FromNameLabel1 = new javax.swing.JLabel();
-        DateSentShowTodayButton1 = new javax.swing.JButton();
-        FromNameComboBox1 = new javax.swing.JComboBox<>();
-        FromNameField1 = new javax.swing.JTextField();
-        ToDateReceivedLabel3 = new javax.swing.JLabel();
+        FromLabel1 = new javax.swing.JLabel();
+        FromNumberLabel1 = new javax.swing.JLabel();
+        FromDateField1 = new javax.swing.JLabel();
+        FromNumberField1 = new javax.swing.JLabel();
+        FromNameField1 = new javax.swing.JLabel();
         SubjectPanel1 = new javax.swing.JPanel();
         SubjectLabel1 = new javax.swing.JLabel();
-        SubjectField1 = new javax.swing.JTextField();
+        SubjectField1 = new javax.swing.JLabel();
         ToPanel1 = new javax.swing.JPanel();
-        ToNameLabel1 = new javax.swing.JLabel();
-        ToBranchLabel1 = new javax.swing.JLabel();
-        ToDateReceivedLabel4 = new javax.swing.JLabel();
-        ToDateReceivedField1 = new javax.swing.JTextField();
-        DateReceivedShowTodayButton1 = new javax.swing.JButton();
-        ToDateReceivedLabel5 = new javax.swing.JLabel();
-        ToBranchComboBox1 = new javax.swing.JComboBox<>();
-        ToNameComboBox1 = new javax.swing.JComboBox<>();
+        ToDateReceivedLabel3 = new javax.swing.JLabel();
+        ToLabel1 = new javax.swing.JLabel();
+        ToDatReceivedField1 = new javax.swing.JLabel();
+        RemarkPanel = new javax.swing.JPanel();
+        RemarkLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        RemarkTextArea = new javax.swing.JTextArea();
         ActionButtonsPanel1 = new javax.swing.JPanel();
         SignoutButton1 = new javax.swing.JButton();
-        AddLetterButton1 = new javax.swing.JButton();
-        ShowRegisterButton1 = new javax.swing.JButton();
-        EmployeeStatsButton1 = new javax.swing.JButton();
+        AcknowledgeButton = new javax.swing.JButton();
         ShowButton1 = new javax.swing.JButton();
-        ShowRegisterPanel1 = new javax.swing.JPanel();
-        ShowRegisterSortByLabel1 = new javax.swing.JLabel();
-        ShowRegisterSortByComboBox1 = new javax.swing.JComboBox<>();
+        CompleteButton = new javax.swing.JButton();
         EmployeeStatsOptions1 = new javax.swing.JPanel();
-        NameEmployeeStatsComboBox1 = new javax.swing.JComboBox<>();
-        BranchEmployeeStatsComboBox1 = new javax.swing.JComboBox<>();
         SortByEmployeeStatsLabel1 = new javax.swing.JLabel();
         SortByEmployeeStatsComboBox1 = new javax.swing.JComboBox<>();
+        ShowRegisterSortByLabel1 = new javax.swing.JLabel();
+        WorksheetSortComboBox = new javax.swing.JComboBox<>();
+        updownArrowToggleButton = new javax.swing.JToggleButton();
         EmployeeStatsFilterPeriodPanel1 = new javax.swing.JPanel();
         FromPeriodLabel1 = new javax.swing.JLabel();
         FromPeriodField1 = new javax.swing.JTextField();
@@ -799,104 +801,108 @@ public class BranchWorksheet extends javax.swing.JFrame {
         TablePanel1.setBackground(new java.awt.Color(225, 250, 225));
         TablePanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        TablesPane1.setBackground(new java.awt.Color(147, 217, 163));
-        TablesPane1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createEtchedBorder(), new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED)));
-        TablesPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        TablesPane1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        TablesPane1.setOpaque(true);
+        WorksheetPanel.setBackground(new java.awt.Color(225, 250, 225));
 
-        ShowRegisterTable1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        ShowRegisterTable1.setModel(new javax.swing.table.DefaultTableModel(
+        WorksheetScrollPane.setBackground(new java.awt.Color(102, 255, 102));
+
+        WorksheetTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Inward Register", "Worksheet No", "From - Number", "From - Date", "From - Name", "Subject", "To - Date", "To - Branch", "To - Name", "Out Date", "Remark", "Progress"
+                "Inward No", "Worksheet", "From No", "From Date", "From Name", "Subject", "To Date", "Out Date", "Remark", "Progress"
             }
         ));
-        ShowRegisterTable1.setFillsViewportHeight(true);
-        ShowRegisterTable1.setInheritsPopupMenu(true);
-        ShowRegisterTable1.setRowHeight(25);
-        ShowRegisterTable1.setShowGrid(true);
-        ShowRegisterTable1.getTableHeader().setReorderingAllowed(false);
-        ShowRegisterTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ShowRegisterTable1MouseClicked(evt);
-            }
-        });
-        ShowDirectoryScrollPane1.setViewportView(ShowRegisterTable1);
+        WorksheetScrollPane.setViewportView(WorksheetTable);
 
-        TablesPane1.addTab("Show Register", ShowDirectoryScrollPane1);
-
-        EmployeeStatsTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        EmployeeStatsTable1.setRowHeight(25);
-        EmployeeStatsScrollPane1.setViewportView(EmployeeStatsTable1);
-
-        TasksTable1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        TasksTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Employee ID", "Name", "Email", "Pending Letters", "Completed Letters", "Total Letters"
-            }
-        ));
-        TasksTable1.setRowHeight(25);
-        TasksScrollPane1.setViewportView(TasksTable1);
-
-        javax.swing.GroupLayout EmployeeStatsPane1Layout = new javax.swing.GroupLayout(EmployeeStatsPane1);
-        EmployeeStatsPane1.setLayout(EmployeeStatsPane1Layout);
-        EmployeeStatsPane1Layout.setHorizontalGroup(
-            EmployeeStatsPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(EmployeeStatsPane1Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(EmployeeStatsPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EmployeeStatsScrollPane1)
-                    .addComponent(TasksScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+        javax.swing.GroupLayout WorksheetPanelLayout = new javax.swing.GroupLayout(WorksheetPanel);
+        WorksheetPanel.setLayout(WorksheetPanelLayout);
+        WorksheetPanelLayout.setHorizontalGroup(
+            WorksheetPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(WorksheetPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(WorksheetScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
         );
-        EmployeeStatsPane1Layout.setVerticalGroup(
-            EmployeeStatsPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(EmployeeStatsPane1Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(EmployeeStatsScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(TasksScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+        WorksheetPanelLayout.setVerticalGroup(
+            WorksheetPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(WorksheetPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(WorksheetScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        TablesPane1.addTab("Employee Stats", EmployeeStatsPane1);
+        NewLettersPanel.setBackground(new java.awt.Color(225, 250, 225));
+
+        NewReceivedLettersLabel.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        NewReceivedLettersLabel.setText("New Received Letters");
+
+        NewReceivedLettersTablePanel.setBackground(new java.awt.Color(102, 255, 102));
+
+        NewReceivedLettersTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Inward Number", "From Number", "From Date", "From Name", "Subject", "To Date", "Progress"
+            }
+        ));
+        NewReceivedLettersTableScroll.setViewportView(NewReceivedLettersTable);
+
+        javax.swing.GroupLayout NewReceivedLettersTablePanelLayout = new javax.swing.GroupLayout(NewReceivedLettersTablePanel);
+        NewReceivedLettersTablePanel.setLayout(NewReceivedLettersTablePanelLayout);
+        NewReceivedLettersTablePanelLayout.setHorizontalGroup(
+            NewReceivedLettersTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(NewReceivedLettersTableScroll)
+        );
+        NewReceivedLettersTablePanelLayout.setVerticalGroup(
+            NewReceivedLettersTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(NewReceivedLettersTableScroll, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout NewLettersPanelLayout = new javax.swing.GroupLayout(NewLettersPanel);
+        NewLettersPanel.setLayout(NewLettersPanelLayout);
+        NewLettersPanelLayout.setHorizontalGroup(
+            NewLettersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(NewLettersPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(NewReceivedLettersLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(NewLettersPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(NewReceivedLettersTablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
+        );
+        NewLettersPanelLayout.setVerticalGroup(
+            NewLettersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NewLettersPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(NewReceivedLettersLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(NewReceivedLettersTablePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout TablePanel1Layout = new javax.swing.GroupLayout(TablePanel1);
         TablePanel1.setLayout(TablePanel1Layout);
         TablePanel1Layout.setHorizontalGroup(
             TablePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TablePanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(TablesPane1)
-                .addGap(30, 30, 30))
+            .addComponent(WorksheetPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(NewLettersPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         TablePanel1Layout.setVerticalGroup(
             TablePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TablePanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(TablesPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(28, 28, 28))
+                .addComponent(WorksheetPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(NewLettersPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         AddLetterPanel1.setBackground(new java.awt.Color(225, 250, 225));
@@ -909,10 +915,12 @@ public class BranchWorksheet extends javax.swing.JFrame {
         InwardRegisterNoLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         InwardRegisterNoLabel1.setText("Inward Register Number ");
 
-        InwardRegsiterNumberField1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        InwardRegsiterNumberField1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        InwardRegsiterNumberField1.setText("00");
-        InwardRegsiterNumberField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        ShowLetterInfoButton.setText("Show");
+        ShowLetterInfoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowLetterInfoButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout InwardRegisterNumberPanel1Layout = new javax.swing.GroupLayout(InwardRegisterNumberPanel1);
         InwardRegisterNumberPanel1.setLayout(InwardRegisterNumberPanel1Layout);
@@ -920,29 +928,31 @@ public class BranchWorksheet extends javax.swing.JFrame {
             InwardRegisterNumberPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(InwardRegisterNumberPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(InwardRegisterNoLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(InwardRegsiterNumberField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(InwardRegisterNoLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(InwardRegisterNoField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ShowLetterInfoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         InwardRegisterNumberPanel1Layout.setVerticalGroup(
             InwardRegisterNumberPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InwardRegisterNumberPanel1Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(InwardRegisterNumberPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(InwardRegisterNoLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(InwardRegsiterNumberField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(5, 5, 5))
+                .addGroup(InwardRegisterNumberPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(InwardRegisterNumberPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(ShowLetterInfoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(6, 6, 6))
+                    .addGroup(InwardRegisterNumberPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(InwardRegisterNumberPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(InwardRegisterNoLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(InwardRegisterNoField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(4, 4, 4))
         );
 
         FromPanel1.setBackground(new java.awt.Color(147, 217, 163));
         FromPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        FromLetterNoField1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        FromLetterNoField1.setText("Number");
-        FromLetterNoField1.setToolTipText("From Number");
-        FromLetterNoField1.setMinimumSize(new java.awt.Dimension(150, 30));
-        FromLetterNoField1.setPreferredSize(new java.awt.Dimension(150, 30));
 
         FromDateLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         FromDateLabel1.setText("Date Sent");
@@ -950,49 +960,39 @@ public class BranchWorksheet extends javax.swing.JFrame {
         FromDateLabel1.setMinimumSize(new java.awt.Dimension(100, 30));
         FromDateLabel1.setPreferredSize(new java.awt.Dimension(100, 30));
 
-        FromDateField1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        FromDateField1.setMinimumSize(new java.awt.Dimension(150, 30));
-        FromDateField1.setPreferredSize(new java.awt.Dimension(150, 30));
-
         FromNameLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         FromNameLabel1.setText("Name");
         FromNameLabel1.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         FromNameLabel1.setMinimumSize(new java.awt.Dimension(100, 30));
         FromNameLabel1.setPreferredSize(new java.awt.Dimension(100, 30));
 
-        DateSentShowTodayButton1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        DateSentShowTodayButton1.setText("Today");
-        DateSentShowTodayButton1.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
-        DateSentShowTodayButton1.setMinimumSize(new java.awt.Dimension(80, 34));
-        DateSentShowTodayButton1.setPreferredSize(new java.awt.Dimension(80, 34));
-        DateSentShowTodayButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DateSentShowTodayButton1ActionPerformed(evt);
-            }
-        });
+        FromLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        FromLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        FromLabel1.setText("FROM");
+        FromLabel1.setMaximumSize(new java.awt.Dimension(100, 262626));
+        FromLabel1.setMinimumSize(new java.awt.Dimension(100, 30));
+        FromLabel1.setPreferredSize(new java.awt.Dimension(110, 30));
 
-        FromNameComboBox1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        FromNameComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Name" }));
-        FromNameComboBox1.setMinimumSize(new java.awt.Dimension(196, 32));
-        FromNameComboBox1.setPreferredSize(new java.awt.Dimension(196, 32));
-        FromNameComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FromNameComboBox1ActionPerformed(evt);
-            }
-        });
+        FromNumberLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        FromNumberLabel1.setText("Number");
+        FromNumberLabel1.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        FromNumberLabel1.setMinimumSize(new java.awt.Dimension(100, 30));
+        FromNumberLabel1.setPreferredSize(new java.awt.Dimension(100, 30));
 
+        FromDateField1.setBackground(new java.awt.Color(220, 219, 219));
+        FromDateField1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        FromDateField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        FromDateField1.setOpaque(true);
+
+        FromNumberField1.setBackground(new java.awt.Color(220, 219, 219));
+        FromNumberField1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        FromNumberField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        FromNumberField1.setOpaque(true);
+
+        FromNameField1.setBackground(new java.awt.Color(220, 219, 219));
         FromNameField1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        FromNameField1.setDragEnabled(true);
-        FromNameField1.setMargin(new java.awt.Insets(1, 1, 1, 1));
-        FromNameField1.setMinimumSize(new java.awt.Dimension(196, 34));
-        FromNameField1.setPreferredSize(new java.awt.Dimension(196, 34));
-
-        ToDateReceivedLabel3.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ToDateReceivedLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ToDateReceivedLabel3.setText("FROM");
-        ToDateReceivedLabel3.setMaximumSize(new java.awt.Dimension(100, 262626));
-        ToDateReceivedLabel3.setMinimumSize(new java.awt.Dimension(100, 30));
-        ToDateReceivedLabel3.setPreferredSize(new java.awt.Dimension(110, 30));
+        FromNameField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        FromNameField1.setOpaque(true);
 
         javax.swing.GroupLayout FromPanel1Layout = new javax.swing.GroupLayout(FromPanel1);
         FromPanel1.setLayout(FromPanel1Layout);
@@ -1000,42 +1000,38 @@ public class BranchWorksheet extends javax.swing.JFrame {
             FromPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FromPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ToDateReceivedLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(FromLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(FromPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(FromDateLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(FromNameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                    .addComponent(FromLetterNoField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(FromPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(FromDateLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(FromNumberLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FromNameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(FromPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(FromDateField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(FromNameComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(FromPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(FromPanel1Layout.createSequentialGroup()
-                        .addComponent(DateSentShowTodayButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 81, Short.MAX_VALUE))
-                    .addComponent(FromNameField1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(FromDateField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FromNameField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FromNumberField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         FromPanel1Layout.setVerticalGroup(
             FromPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FromPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(FromPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(ToDateReceivedLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(FromPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(FromLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(FromPanel1Layout.createSequentialGroup()
-                        .addComponent(FromLetterNoField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(FromPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(FromDateField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(FromDateLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DateSentShowTodayButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(FromPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FromNumberLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FromNumberField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(FromPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(FromNameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(FromNameComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(FromNameField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(FromPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FromPanel1Layout.createSequentialGroup()
+                                .addGroup(FromPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(FromDateLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(FromDateField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(FromNameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(FromNameField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
 
@@ -1046,127 +1042,116 @@ public class BranchWorksheet extends javax.swing.JFrame {
         SubjectLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         SubjectLabel1.setText("Subject");
 
+        SubjectField1.setBackground(new java.awt.Color(220, 219, 219));
         SubjectField1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        SubjectField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        SubjectField1.setOpaque(true);
 
         javax.swing.GroupLayout SubjectPanel1Layout = new javax.swing.GroupLayout(SubjectPanel1);
         SubjectPanel1.setLayout(SubjectPanel1Layout);
         SubjectPanel1Layout.setHorizontalGroup(
             SubjectPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SubjectPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(SubjectLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SubjectField1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(73, 73, 73)
+                .addComponent(SubjectLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(SubjectField1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         SubjectPanel1Layout.setVerticalGroup(
             SubjectPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SubjectPanel1Layout.createSequentialGroup()
                 .addContainerGap(44, Short.MAX_VALUE)
-                .addGroup(SubjectPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SubjectLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SubjectField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(SubjectPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(SubjectField1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SubjectLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         ToPanel1.setBackground(new java.awt.Color(147, 217, 163));
         ToPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        ToNameLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ToNameLabel1.setText("Name");
-        ToNameLabel1.setMinimumSize(new java.awt.Dimension(100, 30));
-        ToNameLabel1.setPreferredSize(new java.awt.Dimension(110, 30));
+        ToDateReceivedLabel3.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        ToDateReceivedLabel3.setText("Date");
+        ToDateReceivedLabel3.setMaximumSize(new java.awt.Dimension(100, 262626));
+        ToDateReceivedLabel3.setMinimumSize(new java.awt.Dimension(100, 30));
+        ToDateReceivedLabel3.setPreferredSize(new java.awt.Dimension(110, 30));
 
-        ToBranchLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ToBranchLabel1.setText("Branch");
-        ToBranchLabel1.setMinimumSize(new java.awt.Dimension(100, 30));
-        ToBranchLabel1.setPreferredSize(new java.awt.Dimension(110, 30));
+        ToLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        ToLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ToLabel1.setText("TO");
+        ToLabel1.setMaximumSize(new java.awt.Dimension(100, 262626));
+        ToLabel1.setMinimumSize(new java.awt.Dimension(100, 30));
+        ToLabel1.setPreferredSize(new java.awt.Dimension(110, 30));
 
-        ToDateReceivedLabel4.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ToDateReceivedLabel4.setText("Date Received");
-        ToDateReceivedLabel4.setMaximumSize(new java.awt.Dimension(100, 262626));
-        ToDateReceivedLabel4.setMinimumSize(new java.awt.Dimension(100, 30));
-        ToDateReceivedLabel4.setPreferredSize(new java.awt.Dimension(110, 30));
+        ToDatReceivedField1.setBackground(new java.awt.Color(220, 219, 219));
+        ToDatReceivedField1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        ToDatReceivedField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ToDatReceivedField1.setOpaque(true);
 
-        ToDateReceivedField1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ToDateReceivedField1.setMinimumSize(new java.awt.Dimension(150, 30));
-        ToDateReceivedField1.setName(""); // NOI18N
-        ToDateReceivedField1.setPreferredSize(new java.awt.Dimension(150, 30));
+        RemarkPanel.setBackground(new java.awt.Color(147, 217, 163));
 
-        DateReceivedShowTodayButton1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        DateReceivedShowTodayButton1.setText("Today");
-        DateReceivedShowTodayButton1.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
-        DateReceivedShowTodayButton1.setMinimumSize(new java.awt.Dimension(100, 30));
-        DateReceivedShowTodayButton1.setPreferredSize(new java.awt.Dimension(100, 30));
-        DateReceivedShowTodayButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DateReceivedShowTodayButton1ActionPerformed(evt);
-            }
-        });
+        RemarkLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        RemarkLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        RemarkLabel.setText("Feedback");
+        RemarkLabel.setMaximumSize(new java.awt.Dimension(100, 262626));
+        RemarkLabel.setMinimumSize(new java.awt.Dimension(100, 30));
+        RemarkLabel.setPreferredSize(new java.awt.Dimension(110, 30));
 
-        ToDateReceivedLabel5.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ToDateReceivedLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ToDateReceivedLabel5.setText("TO");
-        ToDateReceivedLabel5.setMaximumSize(new java.awt.Dimension(100, 262626));
-        ToDateReceivedLabel5.setMinimumSize(new java.awt.Dimension(100, 30));
-        ToDateReceivedLabel5.setPreferredSize(new java.awt.Dimension(110, 30));
+        RemarkTextArea.setColumns(20);
+        RemarkTextArea.setRows(5);
+        jScrollPane1.setViewportView(RemarkTextArea);
 
-        ToBranchComboBox1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ToBranchComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Branch" }));
-        ToBranchComboBox1.setMinimumSize(new java.awt.Dimension(196, 32));
-        ToBranchComboBox1.setPreferredSize(new java.awt.Dimension(196, 32));
-        ToBranchComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ToBranchComboBox1ActionPerformed(evt);
-            }
-        });
-
-        ToNameComboBox1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ToNameComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Name" }));
-        ToNameComboBox1.setMinimumSize(new java.awt.Dimension(196, 32));
-        ToNameComboBox1.setPreferredSize(new java.awt.Dimension(196, 32));
+        javax.swing.GroupLayout RemarkPanelLayout = new javax.swing.GroupLayout(RemarkPanel);
+        RemarkPanel.setLayout(RemarkPanelLayout);
+        RemarkPanelLayout.setHorizontalGroup(
+            RemarkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RemarkPanelLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(RemarkLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+        );
+        RemarkPanelLayout.setVerticalGroup(
+            RemarkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RemarkPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(RemarkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(RemarkPanelLayout.createSequentialGroup()
+                        .addComponent(RemarkLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(59, 59, 59))))
+        );
 
         javax.swing.GroupLayout ToPanel1Layout = new javax.swing.GroupLayout(ToPanel1);
         ToPanel1.setLayout(ToPanel1Layout);
         ToPanel1Layout.setHorizontalGroup(
             ToPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ToPanel1Layout.createSequentialGroup()
+            .addGroup(ToPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ToDateReceivedLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(ToPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ToNameLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ToDateReceivedLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ToBranchLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(ToPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(ToPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(RemarkPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(ToPanel1Layout.createSequentialGroup()
-                        .addComponent(ToDateReceivedField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DateReceivedShowTodayButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(ToBranchComboBox1, 0, 1, Short.MAX_VALUE)
-                    .addComponent(ToNameComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(131, Short.MAX_VALUE))
+                        .addComponent(ToLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(ToDateReceivedLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ToDatReceivedField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         ToPanel1Layout.setVerticalGroup(
             ToPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ToPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(ToPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ToPanel1Layout.createSequentialGroup()
-                        .addGroup(ToPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(ToDateReceivedField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ToDateReceivedLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(DateReceivedShowTodayButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(ToPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ToBranchLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ToBranchComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(ToPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ToNameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ToNameComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(ToDateReceivedLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ToDatReceivedField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(ToPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(ToLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ToDateReceivedLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(RemarkPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -1177,10 +1162,10 @@ public class BranchWorksheet extends javax.swing.JFrame {
             .addGroup(AddLetterFormPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(AddLetterFormPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(SubjectPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(InwardRegisterNumberPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(FromPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ToPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ToPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(SubjectPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(InwardRegisterNumberPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, 0))
         );
         AddLetterFormPanel1Layout.setVerticalGroup(
@@ -1193,8 +1178,7 @@ public class BranchWorksheet extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(SubjectPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(ToPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addComponent(ToPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         ActionButtonsPanel1.setBackground(new java.awt.Color(225, 250, 225));
@@ -1207,38 +1191,25 @@ public class BranchWorksheet extends javax.swing.JFrame {
             }
         });
 
-        AddLetterButton1.setBackground(new java.awt.Color(102, 255, 102));
-        AddLetterButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img-src/Add24.png"))); // NOI18N
-        AddLetterButton1.addActionListener(new java.awt.event.ActionListener() {
+        AcknowledgeButton.setBackground(new java.awt.Color(204, 204, 204));
+        AcknowledgeButton.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        AcknowledgeButton.setText("Acknowledge");
+        AcknowledgeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddLetterButton1ActionPerformed(evt);
-            }
-        });
-
-        ShowRegisterButton1.setBackground(new java.awt.Color(204, 204, 204));
-        ShowRegisterButton1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ShowRegisterButton1.setText("Show Register");
-        ShowRegisterButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ShowRegisterButton1ActionPerformed(evt);
-            }
-        });
-
-        EmployeeStatsButton1.setBackground(new java.awt.Color(204, 204, 204));
-        EmployeeStatsButton1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        EmployeeStatsButton1.setText("Employee Stats");
-        EmployeeStatsButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmployeeStatsButton1ActionPerformed(evt);
+                AcknowledgeButtonActionPerformed(evt);
             }
         });
 
         ShowButton1.setBackground(new java.awt.Color(255, 255, 255));
         ShowButton1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         ShowButton1.setText("Show");
-        ShowButton1.addActionListener(new java.awt.event.ActionListener() {
+
+        CompleteButton.setBackground(new java.awt.Color(102, 255, 102));
+        CompleteButton.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        CompleteButton.setText("Complete");
+        CompleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ShowButton1ActionPerformed(evt);
+                CompleteButtonActionPerformed(evt);
             }
         });
 
@@ -1250,11 +1221,9 @@ public class BranchWorksheet extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(SignoutButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(AddLetterButton1)
+                .addComponent(AcknowledgeButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ShowRegisterButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(EmployeeStatsButton1)
+                .addComponent(CompleteButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ShowButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
@@ -1265,87 +1234,68 @@ public class BranchWorksheet extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addGroup(ActionButtonsPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(SignoutButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(EmployeeStatsButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ShowRegisterButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AddLetterButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ShowButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
-        );
-
-        ShowRegisterPanel1.setBackground(new java.awt.Color(225, 250, 225));
-
-        ShowRegisterSortByLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ShowRegisterSortByLabel1.setText("Sort by");
-
-        ShowRegisterSortByComboBox1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ShowRegisterSortByComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        javax.swing.GroupLayout ShowRegisterPanel1Layout = new javax.swing.GroupLayout(ShowRegisterPanel1);
-        ShowRegisterPanel1.setLayout(ShowRegisterPanel1Layout);
-        ShowRegisterPanel1Layout.setHorizontalGroup(
-            ShowRegisterPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ShowRegisterPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(ShowRegisterPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ShowRegisterSortByComboBox1, 0, 179, Short.MAX_VALUE)
-                    .addComponent(ShowRegisterSortByLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        ShowRegisterPanel1Layout.setVerticalGroup(
-            ShowRegisterPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ShowRegisterPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(ShowRegisterSortByLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ShowRegisterSortByComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                    .addComponent(ShowButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(AcknowledgeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(CompleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 5, Short.MAX_VALUE))
         );
 
         EmployeeStatsOptions1.setBackground(new java.awt.Color(225, 250, 225));
 
-        NameEmployeeStatsComboBox1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        NameEmployeeStatsComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Name" }));
-        NameEmployeeStatsComboBox1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                NameEmployeeStatsComboBox1ItemStateChanged(evt);
-            }
-        });
-
-        BranchEmployeeStatsComboBox1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        BranchEmployeeStatsComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Branch" }));
-        BranchEmployeeStatsComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BranchEmployeeStatsComboBox1ActionPerformed(evt);
-            }
-        });
-
-        SortByEmployeeStatsLabel1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        SortByEmployeeStatsLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         SortByEmployeeStatsLabel1.setText("Filter");
 
-        SortByEmployeeStatsComboBox1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        SortByEmployeeStatsComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        SortByEmployeeStatsComboBox1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        SortByEmployeeStatsComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Period", "Last Week", "Last Month", "Last Year" }));
+
+        ShowRegisterSortByLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        ShowRegisterSortByLabel1.setText("Sort by");
+
+        WorksheetSortComboBox.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        WorksheetSortComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sort By", "Inward No", "Worksheet No", "From No", "From Date", "From Name", "Subject", "To Date", "To Branch", "To Name", "Out Date", "Remark", "Progress" }));
+        WorksheetSortComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                WorksheetSortComboBoxActionPerformed(evt);
+            }
+        });
+
+        updownArrowToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img-src/arrow-down.png"))); // NOI18N
+        updownArrowToggleButton.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                updownArrowToggleButtonStateChanged(evt);
+            }
+        });
+        updownArrowToggleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updownArrowToggleButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout EmployeeStatsOptions1Layout = new javax.swing.GroupLayout(EmployeeStatsOptions1);
         EmployeeStatsOptions1.setLayout(EmployeeStatsOptions1Layout);
         EmployeeStatsOptions1Layout.setHorizontalGroup(
             EmployeeStatsOptions1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EmployeeStatsOptions1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(SortByEmployeeStatsLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(SortByEmployeeStatsComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EmployeeStatsOptions1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(EmployeeStatsOptions1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BranchEmployeeStatsComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NameEmployeeStatsComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(ShowRegisterSortByLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+                    .addComponent(SortByEmployeeStatsLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(EmployeeStatsOptions1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(SortByEmployeeStatsComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(EmployeeStatsOptions1Layout.createSequentialGroup()
+                        .addComponent(WorksheetSortComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(updownArrowToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         EmployeeStatsOptions1Layout.setVerticalGroup(
             EmployeeStatsOptions1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EmployeeStatsOptions1Layout.createSequentialGroup()
-                .addComponent(BranchEmployeeStatsComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(NameEmployeeStatsComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(EmployeeStatsOptions1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(EmployeeStatsOptions1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(ShowRegisterSortByLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(WorksheetSortComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(updownArrowToggleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(EmployeeStatsOptions1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SortByEmployeeStatsLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1375,11 +1325,11 @@ public class BranchWorksheet extends javax.swing.JFrame {
             .addGroup(EmployeeStatsFilterPeriodPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(FromPeriodLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(FromPeriodField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ToPeriodLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ToPeriodField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
@@ -1399,21 +1349,16 @@ public class BranchWorksheet extends javax.swing.JFrame {
         AddLetterPanel1Layout.setHorizontalGroup(
             AddLetterPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddLetterPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
                 .addGroup(AddLetterPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ActionButtonsPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(AddLetterPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(EmployeeStatsFilterPeriodPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(AddLetterPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(AddLetterPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(AddLetterPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(AddLetterFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AddLetterPanel1Layout.createSequentialGroup()
-                                .addComponent(ShowRegisterPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(EmployeeStatsOptions1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(ActionButtonsPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(AddLetterFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(AddLetterPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(EmployeeStatsFilterPeriodPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(EmployeeStatsOptions1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(25, 25, 25))
         );
         AddLetterPanel1Layout.setVerticalGroup(
@@ -1421,12 +1366,10 @@ public class BranchWorksheet extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddLetterPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(AddLetterFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ActionButtonsPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(AddLetterPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ShowRegisterPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(EmployeeStatsOptions1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(EmployeeStatsOptions1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(EmployeeStatsFilterPeriodPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1525,7 +1468,6 @@ public class BranchWorksheet extends javax.swing.JFrame {
 
     private void ToBranchComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ToBranchComboBoxActionPerformed
         // TODO add your handling code here:
-        initToNameComboBox();
     }//GEN-LAST:event_ToBranchComboBoxActionPerformed
 
     private void SignoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignoutButtonActionPerformed
@@ -1540,70 +1482,6 @@ public class BranchWorksheet extends javax.swing.JFrame {
     private void AddLetterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddLetterButtonActionPerformed
         // TODO add your handling code here:
 
-        String InwardRegisterNo = InwardRegsiterNumberField.getText();
-
-        String FromLetterNo = FromLetterNoField.getText();
-        String FromDate = FromDateField.getText();
-        String FromName;
-        if (FromNameComboBox.getSelectedItem() == "Other") {
-            FromName = FromNameField.getText();
-        }
-        else {
-            FromName = FromNameComboBox.getSelectedItem().toString();
-        }
-
-        String Subject = SubjectField.getText();
-
-        String ToDateReceived = ToDateReceivedField.getText();
-        String ToBranch = ToBranchComboBox.getSelectedItem().toString();
-        String ToName = ToNameComboBox.getSelectedItem().toString();
-
-        String EmpID = getEmployeeID();
-        String Progress = "Added";
-
-        try {
-            ConnectionEstablish con = new ConnectionEstablish();
-            String sql = "INSERT INTO letterinwardregister"
-            + "(InwardNo, "
-            + "FromNo, FromDateSent, FromName, "
-            + "Subject, "
-            + "ToDateReceived, ToBranch, ToName, "
-            + "EmpID, Progress) "
-            + "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement st = con.c.prepareStatement(sql);
-
-            st.setString(1, InwardRegisterNo);
-            st.setString(2, FromLetterNo);
-            st.setString(3, FromDate);
-            st.setString(4, FromName);
-            st.setString(5, Subject);
-            st.setString(6, ToDateReceived);
-            st.setString(7, ToBranch);
-            st.setString(8, ToName);
-            st.setString(9, EmpID);
-            st.setString(10, Progress);
-
-            int i = st.executeUpdate();
-            if (i > 0){
-                JOptionPane.showMessageDialog(null, "Successfully Created");
-            }
-
-            String sqlPending= "UPDATE letteremployee "
-            + "SET Pending = Pending + 1,"
-            + "Total = Total + 1 "
-            + "WHERE ID='"+EmpID+"'";
-            PreparedStatement stPending = con.c.prepareStatement(sqlPending);
-            stPending.executeUpdate();
-
-            this.setVisible(false);
-            new ClerkAddLetter().setVisible(true);
-
-        } catch(SQLException esql){
-            esql.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Please Enter Inward Register Number.");
-        } catch(Exception e){
-            e.printStackTrace();
-        }
     }//GEN-LAST:event_AddLetterButtonActionPerformed
 
     private void ShowRegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowRegisterButtonActionPerformed
@@ -1624,69 +1502,20 @@ public class BranchWorksheet extends javax.swing.JFrame {
 
     private void ShowButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowButtonActionPerformed
         // TODO add your handling code here:
-
-        if (BranchEmployeeStatsComboBox.getSelectedItem().toString() == "Select Branch") {
-
-        }
-        else {
-            initEmployeeStats();
-            initTasks();
-        }
-
+        
     }//GEN-LAST:event_ShowButtonActionPerformed
 
     private void NameEmployeeStatsComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NameEmployeeStatsComboBoxItemStateChanged
         // TODO add your handling code here:
-        initEmployeeStats();
-        initTasks();
     }//GEN-LAST:event_NameEmployeeStatsComboBoxItemStateChanged
 
     private void BranchEmployeeStatsComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BranchEmployeeStatsComboBoxActionPerformed
         // TODO add your handling code here:
-        initNameEmployeeStatsComboBox();
     }//GEN-LAST:event_BranchEmployeeStatsComboBoxActionPerformed
 
     private void ShowRegisterTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowRegisterTableMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_ShowRegisterTableMouseClicked
-
-    private void ShowRegisterTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowRegisterTable1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ShowRegisterTable1MouseClicked
-
-    private void DateSentShowTodayButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DateSentShowTodayButton1ActionPerformed
-        // TODO add your handling code here:
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        String date = LocalDate.now().format(formatter);
-
-        FromDateField.setText(date);
-    }//GEN-LAST:event_DateSentShowTodayButton1ActionPerformed
-
-    private void FromNameComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FromNameComboBox1ActionPerformed
-        // TODO add your handling code here:
-        System.out.println(FromNameComboBox.getSelectedItem());
-        if (FromNameComboBox.getSelectedItem().equals("Other") && FromNameField.isVisible() == false) {
-            FromNameField.setVisible(true);
-            //            FromNameComboBoxFocusLost(evt);
-        }
-        else {
-            FromNameField.setVisible(false);
-        }
-
-    }//GEN-LAST:event_FromNameComboBox1ActionPerformed
-
-    private void DateReceivedShowTodayButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DateReceivedShowTodayButton1ActionPerformed
-        // TODO add your handling code here:
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        String date = LocalDate.now().format(formatter);
-
-        ToDateReceivedField.setText(date);
-    }//GEN-LAST:event_DateReceivedShowTodayButton1ActionPerformed
-
-    private void ToBranchComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ToBranchComboBox1ActionPerformed
-        // TODO add your handling code here:
-        initToNameComboBox();
-    }//GEN-LAST:event_ToBranchComboBox1ActionPerformed
 
     private void SignoutButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignoutButton1ActionPerformed
         // TODO add your handling code here:
@@ -1697,118 +1526,505 @@ public class BranchWorksheet extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_SignoutButton1ActionPerformed
 
-    private void AddLetterButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddLetterButton1ActionPerformed
+    private void ShowLetterInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowLetterInfoButtonActionPerformed
         // TODO add your handling code here:
-
-        String InwardRegisterNo = InwardRegsiterNumberField.getText();
-
-        String FromLetterNo = FromLetterNoField.getText();
-        String FromDate = FromDateField.getText();
-        String FromName;
-        if (FromNameComboBox.getSelectedItem() == "Other") {
-            FromName = FromNameField.getText();
-        }
-        else {
-            FromName = FromNameComboBox.getSelectedItem().toString();
-        }
-
-        String Subject = SubjectField.getText();
-
-        String ToDateReceived = ToDateReceivedField.getText();
-        String ToBranch = ToBranchComboBox.getSelectedItem().toString();
-        String ToName = ToNameComboBox.getSelectedItem().toString();
-
-        String EmpID = getEmployeeID();
-        String Progress = "Added";
-
+        AcknowledgeButton.setVisible(false);
+        CompleteButton.setVisible(false);
         try {
+            // TODO add your handling code here:
+
+            String InwardNo = InwardRegisterNoField.getText();
             ConnectionEstablish con = new ConnectionEstablish();
-            String sql = "INSERT INTO letterinwardregister"
-            + "(InwardNo, "
-            + "FromNo, FromDateSent, FromName, "
-            + "Subject, "
-            + "ToDateReceived, ToBranch, ToName, "
-            + "EmpID, Progress) "
-            + "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "SELECT *,date_format(FromDateSent,'%d-%m-%y') AS FDS, "
+                    + "date_format(ToDateReceived,'%d-%m-%y') AS TDR "
+                    + "FROM letterinwardregister WHERE InwardNo='"+InwardNo+"'";
             PreparedStatement st = con.c.prepareStatement(sql);
-
-            st.setString(1, InwardRegisterNo);
-            st.setString(2, FromLetterNo);
-            st.setString(3, FromDate);
-            st.setString(4, FromName);
-            st.setString(5, Subject);
-            st.setString(6, ToDateReceived);
-            st.setString(7, ToBranch);
-            st.setString(8, ToName);
-            st.setString(9, EmpID);
-            st.setString(10, Progress);
-
-            int i = st.executeUpdate();
-            if (i > 0){
-                JOptionPane.showMessageDialog(null, "Successfully Created");
+            ResultSet rs = st.executeQuery();
+            
+            System.out.println(InwardNo);
+            
+            while(rs.next()){
+                
+                String FromNo = rs.getString("FromNo");
+                String FromDateSent = rs.getString("FDS");
+                String FromName = rs.getString("FromName");
+                String Subject = rs.getString("Subject");
+                String ToDateReceived = rs.getString("TDR");
+                String Remark = rs.getString("Remark");
+                String Progress = rs.getString("Progress");
+                
+                FromNumberField1.setText(FromNo);
+                FromDateField1.setText(FromDateSent);
+                FromNameField1.setText(FromName);
+                SubjectField1.setText(Subject);
+                ToDatReceivedField1.setText(ToDateReceived);
+                RemarkTextArea.setText(Remark);
+               
+                if (Progress.equals("Added")) {
+                    AcknowledgeButton.setVisible(true);
+                }
+                else if (Progress.equals("Incomplete")) {
+                    CompleteButton.setVisible(true);
+                }
+                
             }
+          
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_ShowLetterInfoButtonActionPerformed
 
-            String sqlPending= "UPDATE letteremployee "
-            + "SET Pending = Pending + 1,"
-            + "Total = Total + 1 "
-            + "WHERE ID='"+EmpID+"'";
-            PreparedStatement stPending = con.c.prepareStatement(sqlPending);
-            stPending.executeUpdate();
-
-            this.setVisible(false);
-            new ClerkAddLetter().setVisible(true);
-
-        } catch(SQLException esql){
-            esql.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Please Enter Inward Register Number.");
-        } catch(Exception e){
+    private void AcknowledgeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AcknowledgeButtonActionPerformed
+        // TODO add your handling code here:
+        int WorksheetNo = 0;
+        String InwardNo = InwardRegisterNoField.getText();
+        
+        try {
+            
+//          >>  READING THE BRANCH AND STORING IT IN BRANCH AND TOEMPLOYEE VARIABLES  
+            BufferedReader br = new BufferedReader(new FileReader("login.txt"));
+            String text = br.readLine();
+//  branch:          
+            String branch = text.split(",")[0];
+//  toName:          
+            String toName = text.split(",")[1];
+            
+            ConnectionEstablish con = new ConnectionEstablish();
+            String sqlworksheet = "SELECT COUNT(*) FROM letter.letterinwardregister WHERE "
+                    + "ToBranch = '"+branch+"' AND "
+                    + "ToName='"+toName+"' AND "
+                    + "WorksheetNo IS NOT NULL "
+                    + "ORDER BY WorksheetNo"; 
+            
+            PreparedStatement stworksheet = con.c.prepareStatement(sqlworksheet);
+            ResultSet rsworksheet = stworksheet.executeQuery();
+            
+            while(rsworksheet.next()){
+                WorksheetNo = rsworksheet.getInt("COUNT(*)") + 1;
+            }
+            
+            
+            String sql = "UPDATE letterinwardregister SET Progress ='Incomplete', "
+                    + "WorksheetNo = '"+WorksheetNo+"' "
+                    + "WHERE InwardNo ='"+InwardNo+"'";
+            
+//            System.out.println(WorksheetNo);
+            PreparedStatement st = con.c.prepareStatement(sql);
+            int i = st.executeUpdate();
+            
+            
+        } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_AddLetterButton1ActionPerformed
+        
+        AcknowledgeButton.setVisible(false);
+        initNewReceivedLetterTable();
+        initWorksheetTable();
+        
+        FromNumberField1.setText("");
+        FromDateField1.setText("");
+        FromNameField1.setText("");
+        SubjectField1.setText("");
+        ToDatReceivedField1.setText("");
+        RemarkTextArea.setText("");
+    }//GEN-LAST:event_AcknowledgeButtonActionPerformed
 
-    private void ShowRegisterButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowRegisterButton1ActionPerformed
+    private void CompleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompleteButtonActionPerformed
         // TODO add your handling code here:
-        TablesPane.setSelectedIndex(0);
-        EmployeeStatsOptions.setVisible(false);
-        EmployeeStatsFilterPeriodPanel.setVisible(false);
-        ShowRegisterPanel.setVisible(true);
-    }//GEN-LAST:event_ShowRegisterButton1ActionPerformed
+        
+        String InwardNo = InwardRegisterNoField.getText();
+        String Remark = RemarkTextArea.getText();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String OutDate = LocalDate.now().format(formatter);
+        
+        try {
+                        
+//          >>  READING THE BRANCH AND STORING IT IN BRANCH AND TOEMPLOYEE VARIABLES  
+            BufferedReader br = new BufferedReader(new FileReader("login.txt"));
+            String text = br.readLine();
+//  branch:          
+            String branch = text.split(",")[0];
+//  toName:          
+            String toName = text.split(",")[1];
+            
+            
+            ConnectionEstablish con = new ConnectionEstablish();
+            String sql = "UPDATE letterinwardregister SET Progress ='Complete', "
+                    + "Remark = '"+Remark+"', "
+                    + "OutDate = STR_TO_DATE('"+OutDate+"','%d-%m-%Y')"
+                    + "WHERE InwardNo ='"+InwardNo+"'";
+            
+//            System.out.println(WorksheetNo);
+            PreparedStatement st = con.c.prepareStatement(sql);
+            int i = st.executeUpdate();
+            
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+        }
+        
+        AcknowledgeButton.setVisible(false);
+        CompleteButton.setVisible(false);
+        initNewReceivedLetterTable();
+        initWorksheetTable();
+        
+        FromNumberField1.setText("");
+        FromDateField1.setText("");
+        FromNameField1.setText("");
+        SubjectField1.setText("");
+        ToDatReceivedField1.setText("");
+        RemarkTextArea.setText("");
+    }//GEN-LAST:event_CompleteButtonActionPerformed
 
-    private void EmployeeStatsButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmployeeStatsButton1ActionPerformed
+    private void updownArrowToggleButtonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_updownArrowToggleButtonStateChanged
         // TODO add your handling code here:
-        TablesPane.setSelectedIndex(1);
-        ShowRegisterPanel.setVisible(false);
-        EmployeeStatsOptions.setVisible(true);
-        EmployeeStatsFilterPeriodPanel.setVisible(true);
-    }//GEN-LAST:event_EmployeeStatsButton1ActionPerformed
+        if (updownArrowToggleButton.isSelected()) {
+            updownArrowToggleButton.setIcon(new ImageIcon(getClass().getResource("/img-src/arrow-up.png")));
+            updownArrowToggleButton.setToolTipText("Ascending");
+            String sortBy = WorksheetSortComboBox.getSelectedItem().toString();
 
-    private void ShowButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowButton1ActionPerformed
-        // TODO add your handling code here:
-
-        if (BranchEmployeeStatsComboBox.getSelectedItem().toString() == "Select Branch") {
-
+            if (sortBy.equals("Inward No")) {
+                sortWorksheet("InwardNo", "ASC");
+            }
+            else if (sortBy.equals("From No")) {
+                sortWorksheet("FromNo", "ASC");
+            }
+            else if (sortBy.equals("From Date")) {
+                sortWorksheet("FromDateSent", "ASC");
+            }
+            else if (sortBy.equals("From Name")) {
+                sortWorksheet("FromName", "ASC");
+            }
+            else if (sortBy.equals("Subject")) {
+                sortWorksheet("Subject", "ASC");
+            }
+            else if (sortBy.equals("To Date")) {
+                sortWorksheet("ToDateReceived", "ASC");
+            }
+            else if (sortBy.equals("To Branch")) {
+                sortWorksheet("ToBranch", "ASC");
+            }
+            else if (sortBy.equals("To Name")) {
+                sortWorksheet("ToName", "ASC");
+            }
+            else if (sortBy.equals("Out Date")) {
+                sortWorksheet("OutDate", "ASC");
+            }
+            else if (sortBy.equals("Remark")) {
+                sortWorksheet("Remark", "DESC");
+            }
+            else if (sortBy.equals("Progress")) {
+                sortWorksheet("Progress", "ASC");
+            }
         }
         else {
-            initEmployeeStats();
-            initTasks();
+            updownArrowToggleButton.setIcon(new ImageIcon(getClass().getResource("/img-src/arrow-down.png")));
+            updownArrowToggleButton.setToolTipText("Descending");
+            String sortBy = ShowRegisterSortByComboBox.getSelectedItem().toString();
+
+            if (sortBy.equals("Inward No")) {
+                sortWorksheet("InwardNo", "DESC");
+            }
+            else if (sortBy.equals("From No")) {
+                sortWorksheet("FromNo", "DESC");
+            }
+            else if (sortBy.equals("From Date")) {
+                sortWorksheet("FromDateSent", "DESC");
+            }
+            else if (sortBy.equals("From Name")) {
+                sortWorksheet("FromName", "DESC");
+            }
+            else if (sortBy.equals("Subject")) {
+                sortWorksheet("Subject", "DESC");
+            }
+            else if (sortBy.equals("To Date")) {
+                sortWorksheet("ToDateReceived", "DESC");
+            }
+            else if (sortBy.equals("To Branch")) {
+                sortWorksheet("ToBranch", "DESC");
+            }
+            else if (sortBy.equals("To Name")) {
+                sortWorksheet("ToName", "DESC");
+            }
+            else if (sortBy.equals("Out Date")) {
+                sortWorksheet("OutDate", "DESC");
+            }
+            else if (sortBy.equals("Remark")) {
+                sortWorksheet("Remark", "DESC");
+            }
+            else if (sortBy.equals("Progress")) {
+                sortWorksheet("Progress", "DESC");
+            }
         }
+    }//GEN-LAST:event_updownArrowToggleButtonStateChanged
 
-    }//GEN-LAST:event_ShowButton1ActionPerformed
-
-    private void NameEmployeeStatsComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_NameEmployeeStatsComboBox1ItemStateChanged
+    
+    private void sortWorksheet(String parameter, String order) {
+        
+        DefaultTableModel WorksheetTableModel  = new DefaultTableModel();
+        WorksheetTable.setModel(WorksheetTableModel);
+        WorksheetTableModel.addColumn("No");
+        WorksheetTableModel.addColumn("Worksheet");
+        WorksheetTableModel.addColumn("From No");
+        WorksheetTableModel.addColumn("From Date");
+        WorksheetTableModel.addColumn("From Name");
+        WorksheetTableModel.addColumn("Subject");
+        WorksheetTableModel.addColumn("To Date");
+        WorksheetTableModel.addColumn("To Branch");
+        WorksheetTableModel.addColumn("To Name");
+        WorksheetTableModel.addColumn("Out Date");
+        WorksheetTableModel.addColumn("Remark");
+        WorksheetTableModel.addColumn("Progress");
+        
+        WorksheetTable.getTableHeader().setPreferredSize(
+            new Dimension(WorksheetTable.getColumnModel().getTotalColumnWidth(), 28));
+        
+        WorksheetTable.getColumnModel().getColumn(0).setPreferredWidth(30);
+        WorksheetTable.getColumnModel().getColumn(2).setPreferredWidth(50);
+        
+//        DATES
+        WorksheetTable.getColumnModel().getColumn(3).setPreferredWidth(60);
+        WorksheetTable.getColumnModel().getColumn(6).setPreferredWidth(60);
+        WorksheetTable.getColumnModel().getColumn(9).setPreferredWidth(60);
+        
+        WorksheetTable.getColumnModel().getColumn(11).setPreferredWidth(50);
+        
+        try {
+            
+            ConnectionEstablish con = new ConnectionEstablish();
+            String sql = "SELECT *,date_format(FromDateSent,'%d-%m-%y') AS FDS, "
+                    + "date_format(ToDateReceived,'%d-%m-%y') AS TDR, "
+                    + "date_format(OutDate,'%d-%m-%y') AS OD "
+                    + "FROM letterinwardregister "
+                    + "WHERE Progress = 'Incomplete' OR Progress = 'Complete' "
+                    + "ORDER BY "+parameter+" "+order;
+            PreparedStatement st = con.c.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            
+            while(rs.next()) {
+                String InwardNo = rs.getString("InwardNo");
+                String WorksheetNo = rs.getString("WorksheetNo");
+                String FromNo = rs.getString("FromNo");
+                String FromDateSent = rs.getString("FDS");
+                String FromName = rs.getString("FromName");
+                String Subject = rs.getString("Subject");
+                String ToDateReceived = rs.getString("TDR");
+                String ToBranch = rs.getString("ToBranch");
+                String ToName = rs.getString("ToName");
+                String OutDate = rs.getString("OD");
+                String Remark = rs.getString("Remark");
+                String Progress = rs.getString("Progress");
+                
+                String tableData[] = {InwardNo, WorksheetNo, FromNo, FromDateSent, 
+                    FromName, Subject, ToDateReceived, ToBranch, ToName, OutDate, Remark, Progress};
+            
+                WorksheetTableModel.addRow(tableData);
+                
+            }
+            
+//            ShowRegisterTable.setAutoCreateRowSorter(true);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void updownArrowToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updownArrowToggleButtonActionPerformed
         // TODO add your handling code here:
-        initEmployeeStats();
-        initTasks();
-    }//GEN-LAST:event_NameEmployeeStatsComboBox1ItemStateChanged
+    }//GEN-LAST:event_updownArrowToggleButtonActionPerformed
 
-    private void BranchEmployeeStatsComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BranchEmployeeStatsComboBox1ActionPerformed
+    private void WorksheetSortComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WorksheetSortComboBoxActionPerformed
         // TODO add your handling code here:
-        initNameEmployeeStatsComboBox();
-    }//GEN-LAST:event_BranchEmployeeStatsComboBox1ActionPerformed
+        String sortBy = WorksheetSortComboBox.getSelectedItem().toString();
+        
+        if (sortBy.equals("Inward No")) {
+            sortWorksheet("InwardNo", "DESC");
+        }
+        else if (sortBy.equals("Worksheet No")) {
+            sortWorksheet("WorksheetNo", "DESC");
+        }        
+        else if (sortBy.equals("From No")) {
+            sortWorksheet("FromNo", "DESC");
+        }
+        else if (sortBy.equals("From Date")) {
+            sortWorksheet("FromDateSent", "DESC");
+        }
+        else if (sortBy.equals("From Name")) {
+            sortWorksheet("FromName", "DESC");
+        }
+        else if (sortBy.equals("Subject")) {
+            sortWorksheet("Subject", "DESC");
+        }
+        else if (sortBy.equals("To Date")) {
+            sortWorksheet("ToDateReceived", "DESC");
+        }
+        else if (sortBy.equals("To Branch")) {
+            sortWorksheet("ToBranch", "DESC");
+        }
+        else if (sortBy.equals("To Name")) {
+            sortWorksheet("ToName", "DESC");
+        }
+        else if (sortBy.equals("Out Date")) {
+            sortWorksheet("OutDate", "DESC");
+        }
+        else if (sortBy.equals("Progress")) {
+            sortWorksheet("Progress", "DESC");
+        }
+    }//GEN-LAST:event_WorksheetSortComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
      */
+    
+    private void initFrame() {
+        setExtendedState(MAXIMIZED_BOTH);
+        setUIFont (new javax.swing.plaf.FontUIResource("SansSerif",Font.PLAIN,12));
+        
+        URL iconURL = getClass().getResource("/img-src/logo.png");
+        // iconURL is null when not found
+        ImageIcon icon = new ImageIcon(iconURL);
+        setIconImage(icon.getImage());
+        setTitle("Water Resources Department, Government of Maharashtra, India");
+        
+        initNewReceivedLetterTable();
+        initWorksheetTable();
+        AcknowledgeButton.setVisible(false);
+        CompleteButton.setVisible(false);
+                
+    }
+    
+    private void initNewReceivedLetterTable() {
+        
+//      >>  CREATING DEFAULT TABLE MODEL -> {STRING, STRING, STRING, BOOLEAN}
+        DefaultTableModel NewReceivedLettersTableModel  = new DefaultTableModel();
+//      >>  ADDING THE TABLE MODEL TO THE TABLE
+        NewReceivedLettersTable.setModel(NewReceivedLettersTableModel);
+        
+//      >>  ADDING THE COLUMNS
+        NewReceivedLettersTableModel.addColumn("Inward No");
+        NewReceivedLettersTableModel.addColumn("From No");
+        NewReceivedLettersTableModel.addColumn("From Date");
+        NewReceivedLettersTableModel.addColumn("From Name");
+        NewReceivedLettersTableModel.addColumn("Subject");
+        NewReceivedLettersTableModel.addColumn("To Date");
+        NewReceivedLettersTableModel.addColumn("Progress");
+        
+        
+        NewReceivedLettersTable.getTableHeader().setPreferredSize(
+            new Dimension(NewReceivedLettersTable.getColumnModel().getTotalColumnWidth(), 28));
+        
+        try{
+//          >>  READING THE BRANCH AND STORING IT IN BRANCH AND TOEMPLOYEE VARIABLES  
+            BufferedReader br = new BufferedReader(new FileReader("login.txt"));
+            String text = br.readLine();
+//  branch:          
+            String branch = text.split(",")[0];
+//  toEmployee:          
+            String toName = text.split(",")[1];
+            
+//          >>  1. ESTABLISHING CONNECTION WITH SQL DATABASE
+            ConnectionEstablish con = new ConnectionEstablish();
+            
+//          >>  2. DISPLAYING PENDING/NEW LETTERS ASSIGNED TO THE EMPLOYEE
+            String sql = "SELECT *,date_format(FromDateSent,'%d-%m-%y') AS FDS, "
+                    + "date_format(ToDateReceived,'%d-%m-%y') AS TDR "
+                    + "FROM letterinwardregister "
+                    + "WHERE ToBranch = '"+branch+"' AND "
+                    + "ToName = '"+toName+"' AND "
+                    + "Progress = 'Added'";
+            PreparedStatement st = con.c.prepareStatement(sql);
+            ResultSet rs = st.executeQuery(sql);
+            
+//          >>  3. ENTERING THE VALUES IN THE TABLE
+            while(rs.next()){
+                String InwardNo = rs.getString("InwardNo");
+                String FromNo = rs.getString("FromNo");
+                String FromDate = rs.getString("FDS");
+                String FromName = rs.getString("FromName");
+                String Subject = rs.getString("Subject");
+                String ToDate = rs.getString("TDR");
+                String Progress = rs.getString("Progress");
+                
+                String tableData[] = {InwardNo, FromNo, FromDate, 
+                    FromName, Subject, ToDate, Progress};
+            
+                NewReceivedLettersTableModel.addRow(tableData);
+            }
+            
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void initWorksheetTable() {
+        
+//      >>  CREATING DEFAULT TABLE MODEL -> {STRING, STRING, STRING, BOOLEAN}
+        DefaultTableModel WorksheetTableModel  = new DefaultTableModel();
+//      >>  ADDING THE TABLE MODEL TO THE TABLE
+        WorksheetTable.setModel(WorksheetTableModel);
+        
+//      >>  ADDING THE COLUMNS
+        WorksheetTableModel.addColumn("Inward No");
+        WorksheetTableModel.addColumn("Worksheet No");
+        WorksheetTableModel.addColumn("From No");
+        WorksheetTableModel.addColumn("From Date");
+        WorksheetTableModel.addColumn("From Name");
+        WorksheetTableModel.addColumn("Subject");
+        WorksheetTableModel.addColumn("To Date");
+        WorksheetTableModel.addColumn("Out Date");
+        WorksheetTableModel.addColumn("Remark");
+        WorksheetTableModel.addColumn("Progress");
+        
+        
+        WorksheetTable.getTableHeader().setPreferredSize(
+            new Dimension(WorksheetTable.getColumnModel().getTotalColumnWidth(), 28));
+        
+        try{
+//          >>  READING THE BRANCH AND STORING IT IN BRANCH AND TOEMPLOYEE VARIABLES  
+            BufferedReader br = new BufferedReader(new FileReader("login.txt"));
+            String text = br.readLine();
+//  branch:          
+            String branch = text.split(",")[0];
+//  toEmployee:          
+            String toName = text.split(",")[1];
+            
+//          >>  1. ESTABLISHING CONNECTION WITH SQL DATABASE
+            ConnectionEstablish con = new ConnectionEstablish();
+            
+//          >>  2. DISPLAYING PENDING/NEW LETTERS ASSIGNED TO THE EMPLOYEE
+            String sql = "SELECT *,date_format(FromDateSent,'%d-%m-%y') AS FDS, "
+                    + "date_format(ToDateReceived,'%d-%m-%y') AS TDR, "
+                    + "date_format(OutDate,'%d-%m-%y') AS OD "
+                    + "FROM letterinwardregister "
+                    + "WHERE ToBranch = '"+branch+"' AND "
+                    + "ToName = '"+toName+"' AND "
+                    + "Progress = 'Complete' OR Progress = 'Incomplete'";
+            PreparedStatement st = con.c.prepareStatement(sql);
+            ResultSet rs = st.executeQuery(sql);
+            
+//          >>  3. ENTERING THE VALUES IN THE TABLE
+            while(rs.next()){
+                String InwardNo = rs.getString("InwardNo");
+                String WorksheetNo = rs.getString("WorksheetNo");
+                String FromNo = rs.getString("FromNo");
+                String FromDate = rs.getString("FDS");
+                String FromName = rs.getString("FromName");
+                String Subject = rs.getString("Subject");
+                String ToDate = rs.getString("TDR");
+                String OutDate = rs.getString("OD");
+                String Remark = rs.getString("Remark");
+                String Progress = rs.getString("Progress");
+                
+                String tableData[] = {InwardNo, WorksheetNo, FromNo, FromDate, 
+                    FromName, Subject, ToDate, OutDate, Remark, Progress};
+            
+                WorksheetTableModel.addRow(tableData);
+            }
+            
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+        }
+    }   
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1842,45 +2058,40 @@ public class BranchWorksheet extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AcknowledgeButton;
     private javax.swing.JPanel ActionButtonsPanel;
     private javax.swing.JPanel ActionButtonsPanel1;
     private javax.swing.JButton AddLetterButton;
-    private javax.swing.JButton AddLetterButton1;
     private javax.swing.JPanel AddLetterFormPanel;
     private javax.swing.JPanel AddLetterFormPanel1;
     private javax.swing.JPanel AddLetterPanel;
     private javax.swing.JPanel AddLetterPanel1;
     private javax.swing.JComboBox<String> BranchEmployeeStatsComboBox;
-    private javax.swing.JComboBox<String> BranchEmployeeStatsComboBox1;
+    private javax.swing.JButton CompleteButton;
     private javax.swing.JButton DateReceivedShowTodayButton;
-    private javax.swing.JButton DateReceivedShowTodayButton1;
     private javax.swing.JButton DateSentShowTodayButton;
-    private javax.swing.JButton DateSentShowTodayButton1;
     private javax.swing.JButton EmployeeStatsButton;
-    private javax.swing.JButton EmployeeStatsButton1;
     private javax.swing.JPanel EmployeeStatsFilterPeriodPanel;
     private javax.swing.JPanel EmployeeStatsFilterPeriodPanel1;
     private javax.swing.JPanel EmployeeStatsOptions;
     private javax.swing.JPanel EmployeeStatsOptions1;
     private javax.swing.JPanel EmployeeStatsPane;
-    private javax.swing.JPanel EmployeeStatsPane1;
     private javax.swing.JScrollPane EmployeeStatsScrollPane;
-    private javax.swing.JScrollPane EmployeeStatsScrollPane1;
     private javax.swing.JTable EmployeeStatsTable;
-    private javax.swing.JTable EmployeeStatsTable1;
     private javax.swing.JTextField FromDateField;
-    private javax.swing.JTextField FromDateField1;
+    private javax.swing.JLabel FromDateField1;
     private javax.swing.JLabel FromDateLabel;
     private javax.swing.JLabel FromDateLabel1;
+    private javax.swing.JLabel FromLabel1;
     private javax.swing.JTextField FromLetterNoField;
-    private javax.swing.JTextField FromLetterNoField1;
     private javax.swing.JLabel FromLetterNoLabel;
     private javax.swing.JComboBox<String> FromNameComboBox;
-    private javax.swing.JComboBox<String> FromNameComboBox1;
     private javax.swing.JTextField FromNameField;
-    private javax.swing.JTextField FromNameField1;
+    private javax.swing.JLabel FromNameField1;
     private javax.swing.JLabel FromNameLabel;
     private javax.swing.JLabel FromNameLabel1;
+    private javax.swing.JLabel FromNumberField1;
+    private javax.swing.JLabel FromNumberLabel1;
     private javax.swing.JPanel FromPanel;
     private javax.swing.JPanel FromPanel1;
     private javax.swing.JTextField FromPeriodField;
@@ -1890,28 +2101,31 @@ public class BranchWorksheet extends javax.swing.JFrame {
     private javax.swing.JPanel HeaderPanel;
     private javax.swing.JLabel HeadingLabel;
     private javax.swing.JPanel HeadingPanel;
+    private javax.swing.JTextField InwardRegisterNoField;
     private javax.swing.JLabel InwardRegisterNoLabel;
     private javax.swing.JLabel InwardRegisterNoLabel1;
     private javax.swing.JPanel InwardRegisterNumberPanel;
     private javax.swing.JPanel InwardRegisterNumberPanel1;
     private javax.swing.JLabel InwardRegsiterNumberField;
-    private javax.swing.JLabel InwardRegsiterNumberField1;
     private javax.swing.JComboBox<String> NameEmployeeStatsComboBox;
-    private javax.swing.JComboBox<String> NameEmployeeStatsComboBox1;
+    private javax.swing.JPanel NewLettersPanel;
+    private javax.swing.JLabel NewReceivedLettersLabel;
+    private javax.swing.JTable NewReceivedLettersTable;
+    private javax.swing.JPanel NewReceivedLettersTablePanel;
+    private javax.swing.JScrollPane NewReceivedLettersTableScroll;
+    private javax.swing.JLabel RemarkLabel;
+    private javax.swing.JPanel RemarkPanel;
+    private javax.swing.JTextArea RemarkTextArea;
     private javax.swing.JButton ShowButton;
     private javax.swing.JButton ShowButton1;
     private javax.swing.JScrollPane ShowDirectoryScrollPane;
-    private javax.swing.JScrollPane ShowDirectoryScrollPane1;
+    private javax.swing.JButton ShowLetterInfoButton;
     private javax.swing.JButton ShowRegisterButton;
-    private javax.swing.JButton ShowRegisterButton1;
     private javax.swing.JPanel ShowRegisterPanel;
-    private javax.swing.JPanel ShowRegisterPanel1;
     private javax.swing.JComboBox<String> ShowRegisterSortByComboBox;
-    private javax.swing.JComboBox<String> ShowRegisterSortByComboBox1;
     private javax.swing.JLabel ShowRegisterSortByLabel;
     private javax.swing.JLabel ShowRegisterSortByLabel1;
     private javax.swing.JTable ShowRegisterTable;
-    private javax.swing.JTable ShowRegisterTable1;
     private javax.swing.JButton SignoutButton;
     private javax.swing.JButton SignoutButton1;
     private javax.swing.JComboBox<String> SortByEmployeeStatsComboBox;
@@ -1919,7 +2133,7 @@ public class BranchWorksheet extends javax.swing.JFrame {
     private javax.swing.JLabel SortByEmployeeStatsLabel;
     private javax.swing.JLabel SortByEmployeeStatsLabel1;
     private javax.swing.JTextField SubjectField;
-    private javax.swing.JTextField SubjectField1;
+    private javax.swing.JLabel SubjectField1;
     private javax.swing.JLabel SubjectLabel;
     private javax.swing.JLabel SubjectLabel1;
     private javax.swing.JPanel SubjectPanel;
@@ -1927,32 +2141,30 @@ public class BranchWorksheet extends javax.swing.JFrame {
     private javax.swing.JPanel TablePanel;
     private javax.swing.JPanel TablePanel1;
     private javax.swing.JTabbedPane TablesPane;
-    private javax.swing.JTabbedPane TablesPane1;
     private javax.swing.JScrollPane TasksScrollPane;
-    private javax.swing.JScrollPane TasksScrollPane1;
     private javax.swing.JTable TasksTable;
-    private javax.swing.JTable TasksTable1;
     private javax.swing.JComboBox<String> ToBranchComboBox;
-    private javax.swing.JComboBox<String> ToBranchComboBox1;
     private javax.swing.JLabel ToBranchLabel;
-    private javax.swing.JLabel ToBranchLabel1;
+    private javax.swing.JLabel ToDatReceivedField1;
     private javax.swing.JTextField ToDateReceivedField;
-    private javax.swing.JTextField ToDateReceivedField1;
     private javax.swing.JLabel ToDateReceivedLabel;
     private javax.swing.JLabel ToDateReceivedLabel1;
     private javax.swing.JLabel ToDateReceivedLabel2;
     private javax.swing.JLabel ToDateReceivedLabel3;
-    private javax.swing.JLabel ToDateReceivedLabel4;
-    private javax.swing.JLabel ToDateReceivedLabel5;
+    private javax.swing.JLabel ToLabel1;
     private javax.swing.JComboBox<String> ToNameComboBox;
-    private javax.swing.JComboBox<String> ToNameComboBox1;
     private javax.swing.JLabel ToNameLabel;
-    private javax.swing.JLabel ToNameLabel1;
     private javax.swing.JPanel ToPanel;
     private javax.swing.JPanel ToPanel1;
     private javax.swing.JTextField ToPeriodField;
     private javax.swing.JTextField ToPeriodField1;
     private javax.swing.JLabel ToPeriodLabel;
     private javax.swing.JLabel ToPeriodLabel1;
+    private javax.swing.JPanel WorksheetPanel;
+    private javax.swing.JScrollPane WorksheetScrollPane;
+    private javax.swing.JComboBox<String> WorksheetSortComboBox;
+    private javax.swing.JTable WorksheetTable;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToggleButton updownArrowToggleButton;
     // End of variables declaration//GEN-END:variables
 }
