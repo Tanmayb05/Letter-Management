@@ -167,7 +167,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
 
         InwardRegisterNoLabel.setBackground(new java.awt.Color(102, 255, 102));
         InwardRegisterNoLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        InwardRegisterNoLabel.setText("Inward Register Number ");
+        InwardRegisterNoLabel.setText("कार्यालयीन क्रमांक");
 
         InwardRegsiterNumberField.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         InwardRegsiterNumberField.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -199,7 +199,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         FromPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         FromLetterNoLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        FromLetterNoLabel.setText("Number");
+        FromLetterNoLabel.setText("पत्र क्रमांक");
         FromLetterNoLabel.setToolTipText("From Number");
         FromLetterNoLabel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         FromLetterNoLabel.setMinimumSize(new java.awt.Dimension(100, 30));
@@ -211,7 +211,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         FromLetterNoField.setPreferredSize(new java.awt.Dimension(150, 30));
 
         FromDateLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        FromDateLabel.setText("Date Sent");
+        FromDateLabel.setText("आवक दिनांक");
         FromDateLabel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         FromDateLabel.setMinimumSize(new java.awt.Dimension(100, 30));
         FromDateLabel.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -221,13 +221,13 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         FromDateField.setPreferredSize(new java.awt.Dimension(150, 30));
 
         FromNameLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        FromNameLabel.setText("Name");
+        FromNameLabel.setText("कोणाकडून आले");
         FromNameLabel.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         FromNameLabel.setMinimumSize(new java.awt.Dimension(100, 30));
         FromNameLabel.setPreferredSize(new java.awt.Dimension(100, 30));
 
         DateSentShowTodayButton.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        DateSentShowTodayButton.setText("Today");
+        DateSentShowTodayButton.setText("आजचा दिवस ");
         DateSentShowTodayButton.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         DateSentShowTodayButton.setMinimumSize(new java.awt.Dimension(80, 34));
         DateSentShowTodayButton.setPreferredSize(new java.awt.Dimension(80, 34));
@@ -238,7 +238,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         });
 
         FromNameComboBox.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        FromNameComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Name" }));
+        FromNameComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "नाव निवडा" }));
         FromNameComboBox.setMinimumSize(new java.awt.Dimension(196, 32));
         FromNameComboBox.setNextFocusableComponent(SubjectField);
         FromNameComboBox.setPreferredSize(new java.awt.Dimension(196, 32));
@@ -257,7 +257,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
 
         ToDateReceivedLabel2.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         ToDateReceivedLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ToDateReceivedLabel2.setText("FROM");
+        ToDateReceivedLabel2.setText("आवक");
         ToDateReceivedLabel2.setMaximumSize(new java.awt.Dimension(100, 262626));
         ToDateReceivedLabel2.setMinimumSize(new java.awt.Dimension(100, 30));
         ToDateReceivedLabel2.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -268,23 +268,23 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FromPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ToDateReceivedLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(FromDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                    .addComponent(FromLetterNoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(FromNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(FromLetterNoField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(FromDateField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(FromNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(ToDateReceivedLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(FromLetterNoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FromDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FromNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(FromDateField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(FromNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FromLetterNoField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(FromPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(FromNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
                     .addGroup(FromPanelLayout.createSequentialGroup()
-                        .addComponent(DateSentShowTodayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(FromNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                        .addComponent(DateSentShowTodayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         FromPanelLayout.setVerticalGroup(
@@ -316,7 +316,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         SubjectPanel.setPreferredSize(new java.awt.Dimension(340, 48));
 
         SubjectLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        SubjectLabel.setText("Subject");
+        SubjectLabel.setText("विषय");
 
         SubjectField.setNextFocusableComponent(ToDateReceivedField);
 
@@ -325,7 +325,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         SubjectPanelLayout.setHorizontalGroup(
             SubjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SubjectPanelLayout.createSequentialGroup()
-                .addContainerGap(73, Short.MAX_VALUE)
+                .addContainerGap(98, Short.MAX_VALUE)
                 .addComponent(SubjectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SubjectField, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -345,17 +345,17 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         ToPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         ToNameLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ToNameLabel.setText("Name");
+        ToNameLabel.setText("नाव");
         ToNameLabel.setMinimumSize(new java.awt.Dimension(100, 30));
         ToNameLabel.setPreferredSize(new java.awt.Dimension(110, 30));
 
         ToBranchLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ToBranchLabel.setText("Branch");
+        ToBranchLabel.setText("शाखा");
         ToBranchLabel.setMinimumSize(new java.awt.Dimension(100, 30));
         ToBranchLabel.setPreferredSize(new java.awt.Dimension(110, 30));
 
         ToDateReceivedLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ToDateReceivedLabel.setText("Date Received");
+        ToDateReceivedLabel.setText("पाठवल्याचा दिनांक");
         ToDateReceivedLabel.setMaximumSize(new java.awt.Dimension(100, 262626));
         ToDateReceivedLabel.setMinimumSize(new java.awt.Dimension(100, 30));
         ToDateReceivedLabel.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -366,7 +366,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         ToDateReceivedField.setPreferredSize(new java.awt.Dimension(150, 30));
 
         DateReceivedShowTodayButton.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        DateReceivedShowTodayButton.setText("Today");
+        DateReceivedShowTodayButton.setText("आजचा दिवस");
         DateReceivedShowTodayButton.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         DateReceivedShowTodayButton.setMinimumSize(new java.awt.Dimension(100, 30));
         DateReceivedShowTodayButton.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -384,7 +384,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         ToDateReceivedLabel1.setPreferredSize(new java.awt.Dimension(110, 30));
 
         ToBranchComboBox.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ToBranchComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Branch" }));
+        ToBranchComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "शाखा निवडा" }));
         ToBranchComboBox.setMinimumSize(new java.awt.Dimension(196, 32));
         ToBranchComboBox.setPreferredSize(new java.awt.Dimension(196, 32));
         ToBranchComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -394,7 +394,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         });
 
         ToNameComboBox.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ToNameComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Name" }));
+        ToNameComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "नाव निवडा" }));
         ToNameComboBox.setMinimumSize(new java.awt.Dimension(196, 32));
         ToNameComboBox.setPreferredSize(new java.awt.Dimension(196, 32));
 
@@ -404,21 +404,22 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ToPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ToDateReceivedLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ToNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ToDateReceivedLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ToBranchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(ToDateReceivedLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(ToNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ToBranchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ToDateReceivedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(ToPanelLayout.createSequentialGroup()
                         .addComponent(ToDateReceivedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DateReceivedShowTodayButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(ToBranchComboBox, 0, 1, Short.MAX_VALUE)
-                    .addComponent(ToNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(58, Short.MAX_VALUE))
+                        .addComponent(DateReceivedShowTodayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ToBranchComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ToNameComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ToPanelLayout.setVerticalGroup(
             ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -449,7 +450,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             .addGroup(AddLetterFormPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(AddLetterFormPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(SubjectPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
+                    .addComponent(SubjectPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
                     .addComponent(InwardRegisterNumberPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(FromPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ToPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -489,7 +490,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
 
         ShowButton.setBackground(new java.awt.Color(255, 255, 255));
         ShowButton.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ShowButton.setText("Show");
+        ShowButton.setText("दाखवा");
         ShowButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ShowButtonActionPerformed(evt);
@@ -497,7 +498,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         });
 
         ShowRegisterButton.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        ShowRegisterButton.setText("Show Register");
+        ShowRegisterButton.setText("वही दाखवा");
         ShowRegisterButton.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 ShowRegisterButtonStateChanged(evt);
@@ -518,7 +519,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         });
 
         EmployeeStatsButton.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        EmployeeStatsButton.setText("EmployeeStats");
+        EmployeeStatsButton.setText("कर्मचारी आकडेवारी");
         EmployeeStatsButton.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 EmployeeStatsButtonStateChanged(evt);
@@ -532,6 +533,11 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                 EmployeeStatsButtonMouseExited(evt);
             }
         });
+        EmployeeStatsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmployeeStatsButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ActionButtonsPanelLayout = new javax.swing.GroupLayout(ActionButtonsPanel);
         ActionButtonsPanel.setLayout(ActionButtonsPanelLayout);
@@ -540,13 +546,13 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             .addGroup(ActionButtonsPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(SignoutButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(AddLetterButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(ShowRegisterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(EmployeeStatsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(EmployeeStatsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(ShowButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
@@ -565,7 +571,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         ShowRegisterPanel.setBackground(new java.awt.Color(225, 250, 225));
 
         ShowRegisterSortByComboBox.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ShowRegisterSortByComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sort By", "Inward No", "From No", "From Date", "From Name", "Subject", "To Date", "To Branch", "To Name", "Out Date", "Progress" }));
+        ShowRegisterSortByComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "क्रमाणे", "कार्यालयीन क्रमांक", "पत्र क्रमांक", "आवक दिनांक", "कोणाकडून आले", "विषय", "पाठवल्याचा दिनांक", "शाखा", "नाव", "जावक दिनांक", "प्रगती" }));
         ShowRegisterSortByComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ShowRegisterSortByComboBoxActionPerformed(evt);
@@ -608,7 +614,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         EmployeeStatsOptions.setBackground(new java.awt.Color(225, 250, 225));
 
         NameEmployeeStatsComboBox.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        NameEmployeeStatsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Name" }));
+        NameEmployeeStatsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "नाव निवडा" }));
         NameEmployeeStatsComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 NameEmployeeStatsComboBoxItemStateChanged(evt);
@@ -621,7 +627,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         });
 
         BranchEmployeeStatsComboBox.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        BranchEmployeeStatsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Branch" }));
+        BranchEmployeeStatsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "शाखा निवडा" }));
         BranchEmployeeStatsComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BranchEmployeeStatsComboBoxActionPerformed(evt);
@@ -629,7 +635,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         });
 
         SortByEmployeeStatsComboBox.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        SortByEmployeeStatsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Period", "Last Week", "Last Month", "Last Year" }));
+        SortByEmployeeStatsComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "काळ", "गेला  आठवडा", "गेला महिना", "गेला वर्ष" }));
         SortByEmployeeStatsComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SortByEmployeeStatsComboBoxActionPerformed(evt);
@@ -712,7 +718,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                     .addComponent(ToPeriodField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        ExportButton.setText("Export");
+        ExportButton.setText("निर्यात करा");
         ExportButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExportButtonActionPerformed(evt);
@@ -833,7 +839,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             .addGroup(EmployeeStatsPaneLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(EmployeeStatsPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EmployeeStatsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
+                    .addComponent(EmployeeStatsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
                     .addComponent(TasksScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
         );
         EmployeeStatsPaneLayout.setVerticalGroup(
@@ -854,7 +860,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TablePanelLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(TablesPane, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
+                .addComponent(TablesPane, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
                 .addGap(30, 30, 30))
         );
         TablePanelLayout.setVerticalGroup(
@@ -1024,10 +1030,10 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             initEmployeeStats();
             initTasks();
             
-            if (!BranchEmployeeStatsComboBox.getSelectedItem().equals("Select Branch") 
-                    && !NameEmployeeStatsComboBox.getSelectedItem().equals("Select Name")) {
+            if (!BranchEmployeeStatsComboBox.getSelectedItem().equals("शाखा निवडा") 
+                    && !NameEmployeeStatsComboBox.getSelectedItem().equals("नाव निवडा")) {
                 
-                if (SortByEmployeeStatsComboBox.getSelectedItem().equals("Select Period")) {
+                if (SortByEmployeeStatsComboBox.getSelectedItem().equals("काळ")) {
                     
                     if (FromPeriodField.getText().equals("dd-MM-yyyy") || ToPeriodField.getText().equals("dd-MM-yyyy")) {
                         initEmployeeStats();
@@ -1079,24 +1085,24 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         // TODO add your handling code here:
         String period = SortByEmployeeStatsComboBox.getSelectedItem().toString();
         
-        if (period.equals("Last Week")) {
+        if (period.equals("गेला  आठवडा")) {
             EmployeeStatsFilterPeriodPanel.setVisible(false);
             DefaultTableModel EmployeeStatsTableModel  = new DefaultTableModel();
             EmployeeStatsTable.setModel(EmployeeStatsTableModel);
-            EmployeeStatsTableModel.addColumn("Inward No");
-            EmployeeStatsTableModel.addColumn("Worksheet");        
-            EmployeeStatsTableModel.addColumn("From No");
-            EmployeeStatsTableModel.addColumn("From Date");
-            EmployeeStatsTableModel.addColumn("From Name");
-            EmployeeStatsTableModel.addColumn("Subject");
-            EmployeeStatsTableModel.addColumn("To Date");
-            EmployeeStatsTableModel.addColumn("Out Date");
-            EmployeeStatsTableModel.addColumn("Remark");
-            EmployeeStatsTableModel.addColumn("Progress");
+            EmployeeStatsTableModel.addColumn("क्रमांक");
+            EmployeeStatsTableModel.addColumn("कार्यपत्र");        
+            EmployeeStatsTableModel.addColumn("<html>पत्र \nक्रमांक</html>");
+            EmployeeStatsTableModel.addColumn("<html>आवक \nदिनांक</html>");
+            EmployeeStatsTableModel.addColumn("<html>कोणाकडून \nआले</html>");
+            EmployeeStatsTableModel.addColumn("विषय");
+            EmployeeStatsTableModel.addColumn("<html>पाठवल्याचा \nदिनांक</html>");
+            EmployeeStatsTableModel.addColumn("<html>जावक \nदिनांक</html>");
+            EmployeeStatsTableModel.addColumn("टिपणी");
+            EmployeeStatsTableModel.addColumn("प्रगती");
     //        EmployeeStatsTableModel.addColumn("Days");
 
-            ShowRegisterTable.getTableHeader().setPreferredSize(
-                new Dimension(ShowRegisterTable.getColumnModel().getTotalColumnWidth(), 28));
+            EmployeeStatsTable.getTableHeader().setPreferredSize(
+                new Dimension(EmployeeStatsTable.getColumnModel().getTotalColumnWidth(), 32));
 
             String branch = BranchEmployeeStatsComboBox.getSelectedItem().toString();
             String toName = NameEmployeeStatsComboBox.getSelectedItem().toString();
@@ -1134,24 +1140,24 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-        else if (period.equals("Last Month")) {
+        else if (period.equals("गेला महिना")) {
             EmployeeStatsFilterPeriodPanel.setVisible(false);
             DefaultTableModel EmployeeStatsTableModel  = new DefaultTableModel();
             EmployeeStatsTable.setModel(EmployeeStatsTableModel);
-            EmployeeStatsTableModel.addColumn("Inward No");
-            EmployeeStatsTableModel.addColumn("Worksheet");        
-            EmployeeStatsTableModel.addColumn("From No");
-            EmployeeStatsTableModel.addColumn("From Date");
-            EmployeeStatsTableModel.addColumn("From Name");
-            EmployeeStatsTableModel.addColumn("Subject");
-            EmployeeStatsTableModel.addColumn("To Date");
-            EmployeeStatsTableModel.addColumn("Out Date");
-            EmployeeStatsTableModel.addColumn("Remark");
-            EmployeeStatsTableModel.addColumn("Progress");
+            EmployeeStatsTableModel.addColumn("क्रमांक");
+            EmployeeStatsTableModel.addColumn("कार्यपत्र");        
+            EmployeeStatsTableModel.addColumn("<html>पत्र \nक्रमांक</html>");
+            EmployeeStatsTableModel.addColumn("<html>आवक \nदिनांक</html>");
+            EmployeeStatsTableModel.addColumn("<html>कोणाकडून \nआले</html>");
+            EmployeeStatsTableModel.addColumn("विषय");
+            EmployeeStatsTableModel.addColumn("<html>पाठवल्याचा \nदिनांक</html>");
+            EmployeeStatsTableModel.addColumn("<html>जावक \nदिनांक</html>");
+            EmployeeStatsTableModel.addColumn("टिपणी");
+            EmployeeStatsTableModel.addColumn("प्रगती");
     //        EmployeeStatsTableModel.addColumn("Days");
 
-            ShowRegisterTable.getTableHeader().setPreferredSize(
-                new Dimension(ShowRegisterTable.getColumnModel().getTotalColumnWidth(), 28));
+            EmployeeStatsTable.getTableHeader().setPreferredSize(
+                new Dimension(EmployeeStatsTable.getColumnModel().getTotalColumnWidth(), 32));
 
             String branch = BranchEmployeeStatsComboBox.getSelectedItem().toString();
             String toName = NameEmployeeStatsComboBox.getSelectedItem().toString();
@@ -1189,24 +1195,24 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-        else if (period.equals("Last Year")) {
+        else if (period.equals("गेला वर्ष")) {
             EmployeeStatsFilterPeriodPanel.setVisible(false);
             DefaultTableModel EmployeeStatsTableModel  = new DefaultTableModel();
             EmployeeStatsTable.setModel(EmployeeStatsTableModel);
-            EmployeeStatsTableModel.addColumn("Inward No");
-            EmployeeStatsTableModel.addColumn("Worksheet");        
-            EmployeeStatsTableModel.addColumn("From No");
-            EmployeeStatsTableModel.addColumn("From Date");
-            EmployeeStatsTableModel.addColumn("From Name");
-            EmployeeStatsTableModel.addColumn("Subject");
-            EmployeeStatsTableModel.addColumn("To Date");
-            EmployeeStatsTableModel.addColumn("Out Date");
-            EmployeeStatsTableModel.addColumn("Remark");
-            EmployeeStatsTableModel.addColumn("Progress");
+            EmployeeStatsTableModel.addColumn("क्रमांक");
+            EmployeeStatsTableModel.addColumn("कार्यपत्र");        
+            EmployeeStatsTableModel.addColumn("<html>पत्र \nक्रमांक</html>");
+            EmployeeStatsTableModel.addColumn("<html>आवक \nदिनांक</html>");
+            EmployeeStatsTableModel.addColumn("<html>कोणाकडून \nआले</html>");
+            EmployeeStatsTableModel.addColumn("विषय");
+            EmployeeStatsTableModel.addColumn("<html>पाठवल्याचा \nदिनांक</html>");
+            EmployeeStatsTableModel.addColumn("<html>जावक \nदिनांक</html>");
+            EmployeeStatsTableModel.addColumn("टिपणी");
+            EmployeeStatsTableModel.addColumn("प्रगती");
     //        EmployeeStatsTableModel.addColumn("Days");
 
-            ShowRegisterTable.getTableHeader().setPreferredSize(
-                new Dimension(ShowRegisterTable.getColumnModel().getTotalColumnWidth(), 28));
+            EmployeeStatsTable.getTableHeader().setPreferredSize(
+                new Dimension(EmployeeStatsTable.getColumnModel().getTotalColumnWidth(), 32));
 
             String branch = BranchEmployeeStatsComboBox.getSelectedItem().toString();
             String toName = NameEmployeeStatsComboBox.getSelectedItem().toString();
@@ -1259,34 +1265,37 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         String sortBy = ShowRegisterSortByComboBox.getSelectedItem().toString();
         updownArrowToggleButton.setVisible(true);
         
-        if (sortBy.equals("Inward No")) {
+        if (sortBy.equals("कार्यालयीन क्रमांक")) {
             sortRegister("InwardNo", "DESC");
         }
-        else if (sortBy.equals("From No")) {
+        else if (sortBy.equals("कार्यपत्र क्रमांक")) {
+            sortRegister("WorksheetNo", "DESC");
+        }
+        else if (sortBy.equals("पत्र क्रमांक")) {
             sortRegister("FromNo", "DESC");
         }
-        else if (sortBy.equals("From Date")) {
+        else if (sortBy.equals("आवक दिनांक")) {
             sortRegister("FromDateSent", "DESC");
         }
-        else if (sortBy.equals("From Name")) {
+        else if (sortBy.equals("कोणाकडून आले")) {
             sortRegister("FromName", "DESC");
         }
-        else if (sortBy.equals("Subject")) {
+        else if (sortBy.equals("विषय")) {
             sortRegister("Subject", "DESC");
         }
-        else if (sortBy.equals("To Date")) {
+        else if (sortBy.equals("पाठवल्याचा दिनांक")) {
             sortRegister("ToDateReceived", "DESC");
         }
-        else if (sortBy.equals("To Branch")) {
+        else if (sortBy.equals("शाखा")) {
             sortRegister("ToBranch", "DESC");
         }
-        else if (sortBy.equals("To Name")) {
+        else if (sortBy.equals("नाव")) {
             sortRegister("ToName", "DESC");
         }
-        else if (sortBy.equals("Out Date")) {
+        else if (sortBy.equals("जावक दिनांक")) {
             sortRegister("OutDate", "DESC");
         }
-        else if (sortBy.equals("Progress")) {
+        else if (sortBy.equals("प्रगती")) {
             sortRegister("Progress", "DESC");
         }
     }//GEN-LAST:event_ShowRegisterSortByComboBoxActionPerformed
@@ -1302,34 +1311,37 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             updownArrowToggleButton.setToolTipText("Ascending");
             String sortBy = ShowRegisterSortByComboBox.getSelectedItem().toString();
             
-            if (sortBy.equals("Inward No")) {
+            if (sortBy.equals("कार्यालयीन क्रमांक")) {
                 sortRegister("InwardNo", "ASC");
             }
-            else if (sortBy.equals("From No")) {
+            else if (sortBy.equals("कार्यपत्र क्रमांक")) {
+                sortRegister("WorksheetNo", "ASC");
+            }
+            else if (sortBy.equals("पत्र क्रमांक")) {
                 sortRegister("FromNo", "ASC");
             }
-            else if (sortBy.equals("From Date")) {
+            else if (sortBy.equals("आवक दिनांक")) {
                 sortRegister("FromDateSent", "ASC");
             }
-            else if (sortBy.equals("From Name")) {
+            else if (sortBy.equals("कोणाकडून आले")) {
                 sortRegister("FromName", "ASC");
             }
-            else if (sortBy.equals("Subject")) {
+            else if (sortBy.equals("विषय")) {
                 sortRegister("Subject", "ASC");
             }
-            else if (sortBy.equals("To Date")) {
+            else if (sortBy.equals("पाठवल्याचा दिनांक")) {
                 sortRegister("ToDateReceived", "ASC");
             }
-            else if (sortBy.equals("To Branch")) {
+            else if (sortBy.equals("शाखा")) {
                 sortRegister("ToBranch", "ASC");
             }
-            else if (sortBy.equals("To Name")) {
+            else if (sortBy.equals("नाव")) {
                 sortRegister("ToName", "ASC");
             }
-            else if (sortBy.equals("Out Date")) {
+            else if (sortBy.equals("जावक दिनांक")) {
                 sortRegister("OutDate", "ASC");
             }
-            else if (sortBy.equals("Progress")) {
+            else if (sortBy.equals("प्रगती")) {
                 sortRegister("Progress", "ASC");
             }
         }
@@ -1338,34 +1350,37 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             updownArrowToggleButton.setToolTipText("Descending");
             String sortBy = ShowRegisterSortByComboBox.getSelectedItem().toString();
 
-            if (sortBy.equals("Inward No")) {
+            if (sortBy.equals("कार्यालयीन क्रमांक")) {
                 sortRegister("InwardNo", "DESC");
             }
-            else if (sortBy.equals("From No")) {
+            else if (sortBy.equals("कार्यपत्र क्रमांक")) {
+                sortRegister("WorksheetNo", "DESC");
+            }
+            else if (sortBy.equals("पत्र क्रमांक")) {
                 sortRegister("FromNo", "DESC");
             }
-            else if (sortBy.equals("From Date")) {
+            else if (sortBy.equals("आवक दिनांक")) {
                 sortRegister("FromDateSent", "DESC");
             }
-            else if (sortBy.equals("From Name")) {
+            else if (sortBy.equals("कोणाकडून आले")) {
                 sortRegister("FromName", "DESC");
             }
-            else if (sortBy.equals("Subject")) {
+            else if (sortBy.equals("विषय")) {
                 sortRegister("Subject", "DESC");
             }
-            else if (sortBy.equals("To Date")) {
+            else if (sortBy.equals("पाठवल्याचा दिनांक")) {
                 sortRegister("ToDateReceived", "DESC");
             }
-            else if (sortBy.equals("To Branch")) {
+            else if (sortBy.equals("शाखा")) {
                 sortRegister("ToBranch", "DESC");
             }
-            else if (sortBy.equals("To Name")) {
+            else if (sortBy.equals("नाव")) {
                 sortRegister("ToName", "DESC");
             }
-            else if (sortBy.equals("Out Date")) {
+            else if (sortBy.equals("जावक दिनांक")) {
                 sortRegister("OutDate", "DESC");
             }
-            else if (sortBy.equals("Progress")) {
+            else if (sortBy.equals("प्रगती")) {
                 sortRegister("Progress", "DESC");
             }
         }
@@ -1505,31 +1520,39 @@ public class ClerkAddLetter extends javax.swing.JFrame {
 //            }
 //        }
     }//GEN-LAST:event_ExportButtonActionPerformed
+
+    private void EmployeeStatsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmployeeStatsButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EmployeeStatsButtonActionPerformed
     
     private void sortRegister(String parameter, String order) {
         DefaultTableModel ShowRegisterTableModel  = new DefaultTableModel();
         ShowRegisterTable.setModel(ShowRegisterTableModel);
-        ShowRegisterTableModel.addColumn("No");
-        ShowRegisterTableModel.addColumn("Worksheet");
-        ShowRegisterTableModel.addColumn("From No");
-        ShowRegisterTableModel.addColumn("From Date");
-        ShowRegisterTableModel.addColumn("From Name");
-        ShowRegisterTableModel.addColumn("Subject");
-        ShowRegisterTableModel.addColumn("To Date");
-        ShowRegisterTableModel.addColumn("To Branch");
-        ShowRegisterTableModel.addColumn("To Name");
-        ShowRegisterTableModel.addColumn("Out Date");
-        ShowRegisterTableModel.addColumn("Remark");
-        ShowRegisterTableModel.addColumn("Progress");
+        ShowRegisterTableModel.addColumn("क्रमांक");
+        ShowRegisterTableModel.addColumn("कार्यपत्र");
+        ShowRegisterTableModel.addColumn("<html>पत्र \nक्रमांक</html>");
+        ShowRegisterTableModel.addColumn("<html>आवक \nदिनांक</html>");
+        ShowRegisterTableModel.addColumn("<html>कोणाकडून \nआले</html>");
+        ShowRegisterTableModel.addColumn("विषय");
+        ShowRegisterTableModel.addColumn("<html>पाठवल्याचा \nदिनांक</html>");
+        ShowRegisterTableModel.addColumn("शाखा");
+        ShowRegisterTableModel.addColumn("नाव");
+        ShowRegisterTableModel.addColumn("<html>जावक \nदिनांक</html>");
+        ShowRegisterTableModel.addColumn("टिपणी");
+        ShowRegisterTableModel.addColumn("प्रगती");
         
         ShowRegisterTable.getTableHeader().setPreferredSize(
-            new Dimension(ShowRegisterTable.getColumnModel().getTotalColumnWidth(), 28));
+            new Dimension(ShowRegisterTable.getColumnModel().getTotalColumnWidth(), 32));
         
-        ShowRegisterTable.getColumnModel().getColumn(0).setPreferredWidth(30);
-        ShowRegisterTable.getColumnModel().getColumn(2).setPreferredWidth(50);
+        ShowRegisterTable.getColumnModel().getColumn(0).setPreferredWidth(35);
+        ShowRegisterTable.getColumnModel().getColumn(1).setPreferredWidth(40);
+        ShowRegisterTable.getColumnModel().getColumn(2).setPreferredWidth(35);
         
 //        DATES
         ShowRegisterTable.getColumnModel().getColumn(3).setPreferredWidth(60);
+        
+        ShowRegisterTable.getColumnModel().getColumn(4).setPreferredWidth(70);
+        
         ShowRegisterTable.getColumnModel().getColumn(6).setPreferredWidth(60);
         ShowRegisterTable.getColumnModel().getColumn(9).setPreferredWidth(60);
         
@@ -1739,27 +1762,31 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         
         DefaultTableModel ShowRegisterTableModel  = new DefaultTableModel();
         ShowRegisterTable.setModel(ShowRegisterTableModel);
-        ShowRegisterTableModel.addColumn("No");
-        ShowRegisterTableModel.addColumn("Worksheet");
-        ShowRegisterTableModel.addColumn("From No");
-        ShowRegisterTableModel.addColumn("From Date");
-        ShowRegisterTableModel.addColumn("From Name");
-        ShowRegisterTableModel.addColumn("Subject");
-        ShowRegisterTableModel.addColumn("To Date");
-        ShowRegisterTableModel.addColumn("To Branch");
-        ShowRegisterTableModel.addColumn("To Name");
-        ShowRegisterTableModel.addColumn("Out Date");
-        ShowRegisterTableModel.addColumn("Remark");
-        ShowRegisterTableModel.addColumn("Progress");
+        ShowRegisterTableModel.addColumn("क्रमांक");
+        ShowRegisterTableModel.addColumn("कार्यपत्र");
+        ShowRegisterTableModel.addColumn("<html>पत्र \nक्रमांक</html>");
+        ShowRegisterTableModel.addColumn("<html>आवक \nदिनांक</html>");
+        ShowRegisterTableModel.addColumn("<html>कोणाकडून \nआले</html>");
+        ShowRegisterTableModel.addColumn("विषय");
+        ShowRegisterTableModel.addColumn("<html>पाठवल्याचा \nदिनांक</html>");
+        ShowRegisterTableModel.addColumn("शाखा");
+        ShowRegisterTableModel.addColumn("नाव");
+        ShowRegisterTableModel.addColumn("<html>जावक \nदिनांक</html>");
+        ShowRegisterTableModel.addColumn("टिपणी");
+        ShowRegisterTableModel.addColumn("प्रगती");
         
         ShowRegisterTable.getTableHeader().setPreferredSize(
-            new Dimension(ShowRegisterTable.getColumnModel().getTotalColumnWidth(), 28));
+            new Dimension(ShowRegisterTable.getColumnModel().getTotalColumnWidth(), 32));
         
-        ShowRegisterTable.getColumnModel().getColumn(0).setPreferredWidth(30);
-        ShowRegisterTable.getColumnModel().getColumn(2).setPreferredWidth(50);
+        ShowRegisterTable.getColumnModel().getColumn(0).setPreferredWidth(35);
+        ShowRegisterTable.getColumnModel().getColumn(1).setPreferredWidth(40);
+        ShowRegisterTable.getColumnModel().getColumn(2).setPreferredWidth(35);
         
 //        DATES
         ShowRegisterTable.getColumnModel().getColumn(3).setPreferredWidth(60);
+        
+        ShowRegisterTable.getColumnModel().getColumn(4).setPreferredWidth(70);
+        
         ShowRegisterTable.getColumnModel().getColumn(6).setPreferredWidth(60);
         ShowRegisterTable.getColumnModel().getColumn(9).setPreferredWidth(60);
         
@@ -1848,20 +1875,21 @@ public class ClerkAddLetter extends javax.swing.JFrame {
     private DefaultTableModel initEmployeeStatsTableModel() {
         DefaultTableModel EmployeeStatsTableModel  = new DefaultTableModel();
         EmployeeStatsTable.setModel(EmployeeStatsTableModel);
-        EmployeeStatsTableModel.addColumn("Inward No");
-        EmployeeStatsTableModel.addColumn("Worksheet");        
-        EmployeeStatsTableModel.addColumn("From No");
-        EmployeeStatsTableModel.addColumn("From Date");
-        EmployeeStatsTableModel.addColumn("From Name");
-        EmployeeStatsTableModel.addColumn("Subject");
-        EmployeeStatsTableModel.addColumn("To Date");
-        EmployeeStatsTableModel.addColumn("Out Date");
-        EmployeeStatsTableModel.addColumn("Remark");
-        EmployeeStatsTableModel.addColumn("Progress");
+        
+        EmployeeStatsTableModel.addColumn("क्रमांक");
+        EmployeeStatsTableModel.addColumn("कार्यपत्र");        
+        EmployeeStatsTableModel.addColumn("<html>पत्र \nक्रमांक</html>");
+        EmployeeStatsTableModel.addColumn("<html>आवक \nदिनांक</html>");
+        EmployeeStatsTableModel.addColumn("<html>कोणाकडून \nआले</html>");
+        EmployeeStatsTableModel.addColumn("विषय");
+        EmployeeStatsTableModel.addColumn("<html>पाठवल्याचा \nदिनांक</html>");
+        EmployeeStatsTableModel.addColumn("<html>जावक \nदिनांक</html>");
+        EmployeeStatsTableModel.addColumn("टिपणी");
+        EmployeeStatsTableModel.addColumn("प्रगती");
 //        EmployeeStatsTableModel.addColumn("Days");
         
         EmployeeStatsTable.getTableHeader().setPreferredSize(
-            new Dimension(EmployeeStatsTable.getColumnModel().getTotalColumnWidth(), 28));
+            new Dimension(EmployeeStatsTable.getColumnModel().getTotalColumnWidth(), 32));
         
         return EmployeeStatsTableModel;
     }

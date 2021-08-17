@@ -824,7 +824,7 @@ public class BranchWorksheet extends javax.swing.JFrame {
             WorksheetPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(WorksheetPanelLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(WorksheetScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                .addComponent(WorksheetScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
         );
         WorksheetPanelLayout.setVerticalGroup(
@@ -838,7 +838,7 @@ public class BranchWorksheet extends javax.swing.JFrame {
         NewLettersPanel.setBackground(new java.awt.Color(225, 250, 225));
 
         NewReceivedLettersLabel.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        NewReceivedLettersLabel.setText("New Received Letters");
+        NewReceivedLettersLabel.setText("नवीन आलेले पत्र");
 
         NewReceivedLettersTablePanel.setBackground(new java.awt.Color(102, 255, 102));
 
@@ -913,9 +913,9 @@ public class BranchWorksheet extends javax.swing.JFrame {
 
         InwardRegisterNoLabel1.setBackground(new java.awt.Color(102, 255, 102));
         InwardRegisterNoLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        InwardRegisterNoLabel1.setText("Inward Register Number ");
+        InwardRegisterNoLabel1.setText("कार्यालयीन क्रमांक");
 
-        ShowLetterInfoButton.setText("Show");
+        ShowLetterInfoButton.setText("दाखवा");
         ShowLetterInfoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ShowLetterInfoButtonActionPerformed(evt);
@@ -955,26 +955,26 @@ public class BranchWorksheet extends javax.swing.JFrame {
         FromPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         FromDateLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        FromDateLabel1.setText("Date Sent");
+        FromDateLabel1.setText("आवक दिनांक");
         FromDateLabel1.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         FromDateLabel1.setMinimumSize(new java.awt.Dimension(100, 30));
         FromDateLabel1.setPreferredSize(new java.awt.Dimension(100, 30));
 
         FromNameLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        FromNameLabel1.setText("Name");
+        FromNameLabel1.setText("कोणाकडून आले");
         FromNameLabel1.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         FromNameLabel1.setMinimumSize(new java.awt.Dimension(100, 30));
         FromNameLabel1.setPreferredSize(new java.awt.Dimension(100, 30));
 
         FromLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         FromLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        FromLabel1.setText("FROM");
+        FromLabel1.setText("आवक");
         FromLabel1.setMaximumSize(new java.awt.Dimension(100, 262626));
         FromLabel1.setMinimumSize(new java.awt.Dimension(100, 30));
         FromLabel1.setPreferredSize(new java.awt.Dimension(110, 30));
 
         FromNumberLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        FromNumberLabel1.setText("Number");
+        FromNumberLabel1.setText("पत्र क्रमांक");
         FromNumberLabel1.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         FromNumberLabel1.setMinimumSize(new java.awt.Dimension(100, 30));
         FromNumberLabel1.setPreferredSize(new java.awt.Dimension(100, 30));
@@ -1000,12 +1000,13 @@ public class BranchWorksheet extends javax.swing.JFrame {
             FromPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FromPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(FromLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(FromPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(FromDateLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(FromNumberLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(FromNameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addComponent(FromLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(FromPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FromPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(FromDateLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(FromNumberLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(FromNameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(FromPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(FromDateField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1040,7 +1041,7 @@ public class BranchWorksheet extends javax.swing.JFrame {
         SubjectPanel1.setMinimumSize(new java.awt.Dimension(340, 48));
 
         SubjectLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        SubjectLabel1.setText("Subject");
+        SubjectLabel1.setText("विषय");
 
         SubjectField1.setBackground(new java.awt.Color(220, 219, 219));
         SubjectField1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
@@ -1055,8 +1056,8 @@ public class BranchWorksheet extends javax.swing.JFrame {
                 .addGap(73, 73, 73)
                 .addComponent(SubjectLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addComponent(SubjectField1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addComponent(SubjectField1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         SubjectPanel1Layout.setVerticalGroup(
             SubjectPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1072,7 +1073,7 @@ public class BranchWorksheet extends javax.swing.JFrame {
         ToPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         ToDateReceivedLabel3.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ToDateReceivedLabel3.setText("Date");
+        ToDateReceivedLabel3.setText("पाठवल्याचा दिनांक");
         ToDateReceivedLabel3.setMaximumSize(new java.awt.Dimension(100, 262626));
         ToDateReceivedLabel3.setMinimumSize(new java.awt.Dimension(100, 30));
         ToDateReceivedLabel3.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -1093,7 +1094,7 @@ public class BranchWorksheet extends javax.swing.JFrame {
 
         RemarkLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         RemarkLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        RemarkLabel.setText("Feedback");
+        RemarkLabel.setText("टिपणी");
         RemarkLabel.setMaximumSize(new java.awt.Dimension(100, 262626));
         RemarkLabel.setMinimumSize(new java.awt.Dimension(100, 30));
         RemarkLabel.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -1110,8 +1111,8 @@ public class BranchWorksheet extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(RemarkLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         RemarkPanelLayout.setVerticalGroup(
             RemarkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1134,12 +1135,12 @@ public class BranchWorksheet extends javax.swing.JFrame {
                     .addComponent(RemarkPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(ToPanel1Layout.createSequentialGroup()
                         .addComponent(ToLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(ToDateReceivedLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ToDateReceivedLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ToDatReceivedField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
         ToPanel1Layout.setVerticalGroup(
             ToPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1159,13 +1160,13 @@ public class BranchWorksheet extends javax.swing.JFrame {
         AddLetterFormPanel1.setLayout(AddLetterFormPanel1Layout);
         AddLetterFormPanel1Layout.setHorizontalGroup(
             AddLetterFormPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AddLetterFormPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddLetterFormPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(AddLetterFormPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(InwardRegisterNumberPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(FromPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ToPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(SubjectPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(InwardRegisterNumberPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ToPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, 0))
         );
         AddLetterFormPanel1Layout.setVerticalGroup(
@@ -1173,7 +1174,7 @@ public class BranchWorksheet extends javax.swing.JFrame {
             .addGroup(AddLetterFormPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(InwardRegisterNumberPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(FromPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(SubjectPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1202,11 +1203,16 @@ public class BranchWorksheet extends javax.swing.JFrame {
 
         ShowButton1.setBackground(new java.awt.Color(255, 255, 255));
         ShowButton1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ShowButton1.setText("Show");
+        ShowButton1.setText("दाखवा");
+        ShowButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowButton1ActionPerformed(evt);
+            }
+        });
 
         CompleteButton.setBackground(new java.awt.Color(102, 255, 102));
         CompleteButton.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        CompleteButton.setText("Complete");
+        CompleteButton.setText("पूर्ण करा");
         CompleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CompleteButtonActionPerformed(evt);
@@ -1243,31 +1249,26 @@ public class BranchWorksheet extends javax.swing.JFrame {
         EmployeeStatsOptions1.setBackground(new java.awt.Color(225, 250, 225));
 
         SortByEmployeeStatsLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        SortByEmployeeStatsLabel1.setText("Filter");
+        SortByEmployeeStatsLabel1.setText("काळ निवडा");
 
         SortByEmployeeStatsComboBox1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        SortByEmployeeStatsComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Period", "Last Week", "Last Month", "Last Year" }));
-
-        ShowRegisterSortByLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ShowRegisterSortByLabel1.setText("Sort by");
-
-        WorksheetSortComboBox.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        WorksheetSortComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sort By", "Inward No", "Worksheet No", "From No", "From Date", "From Name", "Subject", "To Date", "To Branch", "To Name", "Out Date", "Remark", "Progress" }));
-        WorksheetSortComboBox.addActionListener(new java.awt.event.ActionListener() {
+        SortByEmployeeStatsComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "काळ", "गेला  आठवडा", "गेला महिना", "गेला वर्ष" }));
+        SortByEmployeeStatsComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                WorksheetSortComboBoxActionPerformed(evt);
+                SortByEmployeeStatsComboBox1ActionPerformed(evt);
             }
         });
+
+        ShowRegisterSortByLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        ShowRegisterSortByLabel1.setText("वर्गीकरण");
+
+        WorksheetSortComboBox.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        WorksheetSortComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "क्रमाणे", "कार्यालयीन क्रमांक", "पत्र क्रमांक", "आवक दिनांक", "कोणाकडून आले", "विषय", "पाठवल्याचा दिनांक", "शाखा", "नाव", "जावक दिनांक", "प्रगती" }));
 
         updownArrowToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img-src/arrow-down.png"))); // NOI18N
         updownArrowToggleButton.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 updownArrowToggleButtonStateChanged(evt);
-            }
-        });
-        updownArrowToggleButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updownArrowToggleButtonActionPerformed(evt);
             }
         });
 
@@ -1278,7 +1279,7 @@ public class BranchWorksheet extends javax.swing.JFrame {
             .addGroup(EmployeeStatsOptions1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(EmployeeStatsOptions1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ShowRegisterSortByLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+                    .addComponent(ShowRegisterSortByLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(SortByEmployeeStatsLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(EmployeeStatsOptions1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1305,7 +1306,7 @@ public class BranchWorksheet extends javax.swing.JFrame {
         EmployeeStatsFilterPeriodPanel1.setBackground(new java.awt.Color(225, 250, 225));
 
         FromPeriodLabel1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        FromPeriodLabel1.setText("From");
+        FromPeriodLabel1.setText("पासून");
 
         FromPeriodField1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         FromPeriodField1.setMinimumSize(new java.awt.Dimension(110, 30));
@@ -1316,7 +1317,7 @@ public class BranchWorksheet extends javax.swing.JFrame {
         ToPeriodField1.setPreferredSize(new java.awt.Dimension(110, 30));
 
         ToPeriodLabel1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        ToPeriodLabel1.setText("To");
+        ToPeriodLabel1.setText("पर्यंत");
 
         javax.swing.GroupLayout EmployeeStatsFilterPeriodPanel1Layout = new javax.swing.GroupLayout(EmployeeStatsFilterPeriodPanel1);
         EmployeeStatsFilterPeriodPanel1.setLayout(EmployeeStatsFilterPeriodPanel1Layout);
@@ -1658,6 +1659,14 @@ public class BranchWorksheet extends javax.swing.JFrame {
             PreparedStatement st = con.c.prepareStatement(sql);
             int i = st.executeUpdate();
             
+            String sqlemployee = "UPDATE letteremployee SET "
+                    + "Pending = Pending - 1, "
+                    + "Completed = Completed + 1 "
+                    + "WHERE Name = '"+toName+"' AND "
+                    + "Branch = '"+branch+"'";
+            PreparedStatement stemployee = con.c.prepareStatement(sqlemployee);
+            int j = stemployee.executeUpdate();
+            
         } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
@@ -1675,88 +1684,6 @@ public class BranchWorksheet extends javax.swing.JFrame {
         RemarkTextArea.setText("");
     }//GEN-LAST:event_CompleteButtonActionPerformed
 
-    private void updownArrowToggleButtonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_updownArrowToggleButtonStateChanged
-        // TODO add your handling code here:
-        if (updownArrowToggleButton.isSelected()) {
-            updownArrowToggleButton.setIcon(new ImageIcon(getClass().getResource("/img-src/arrow-up.png")));
-            updownArrowToggleButton.setToolTipText("Ascending");
-            String sortBy = WorksheetSortComboBox.getSelectedItem().toString();
-
-            if (sortBy.equals("Inward No")) {
-                sortWorksheet("InwardNo", "ASC");
-            }
-            else if (sortBy.equals("From No")) {
-                sortWorksheet("FromNo", "ASC");
-            }
-            else if (sortBy.equals("From Date")) {
-                sortWorksheet("FromDateSent", "ASC");
-            }
-            else if (sortBy.equals("From Name")) {
-                sortWorksheet("FromName", "ASC");
-            }
-            else if (sortBy.equals("Subject")) {
-                sortWorksheet("Subject", "ASC");
-            }
-            else if (sortBy.equals("To Date")) {
-                sortWorksheet("ToDateReceived", "ASC");
-            }
-            else if (sortBy.equals("To Branch")) {
-                sortWorksheet("ToBranch", "ASC");
-            }
-            else if (sortBy.equals("To Name")) {
-                sortWorksheet("ToName", "ASC");
-            }
-            else if (sortBy.equals("Out Date")) {
-                sortWorksheet("OutDate", "ASC");
-            }
-            else if (sortBy.equals("Remark")) {
-                sortWorksheet("Remark", "DESC");
-            }
-            else if (sortBy.equals("Progress")) {
-                sortWorksheet("Progress", "ASC");
-            }
-        }
-        else {
-            updownArrowToggleButton.setIcon(new ImageIcon(getClass().getResource("/img-src/arrow-down.png")));
-            updownArrowToggleButton.setToolTipText("Descending");
-            String sortBy = ShowRegisterSortByComboBox.getSelectedItem().toString();
-
-            if (sortBy.equals("Inward No")) {
-                sortWorksheet("InwardNo", "DESC");
-            }
-            else if (sortBy.equals("From No")) {
-                sortWorksheet("FromNo", "DESC");
-            }
-            else if (sortBy.equals("From Date")) {
-                sortWorksheet("FromDateSent", "DESC");
-            }
-            else if (sortBy.equals("From Name")) {
-                sortWorksheet("FromName", "DESC");
-            }
-            else if (sortBy.equals("Subject")) {
-                sortWorksheet("Subject", "DESC");
-            }
-            else if (sortBy.equals("To Date")) {
-                sortWorksheet("ToDateReceived", "DESC");
-            }
-            else if (sortBy.equals("To Branch")) {
-                sortWorksheet("ToBranch", "DESC");
-            }
-            else if (sortBy.equals("To Name")) {
-                sortWorksheet("ToName", "DESC");
-            }
-            else if (sortBy.equals("Out Date")) {
-                sortWorksheet("OutDate", "DESC");
-            }
-            else if (sortBy.equals("Remark")) {
-                sortWorksheet("Remark", "DESC");
-            }
-            else if (sortBy.equals("Progress")) {
-                sortWorksheet("Progress", "DESC");
-            }
-        }
-    }//GEN-LAST:event_updownArrowToggleButtonStateChanged
-
     
     private void sortWorksheet(String parameter, String order) {
         
@@ -1769,8 +1696,6 @@ public class BranchWorksheet extends javax.swing.JFrame {
         WorksheetTableModel.addColumn("From Name");
         WorksheetTableModel.addColumn("Subject");
         WorksheetTableModel.addColumn("To Date");
-        WorksheetTableModel.addColumn("To Branch");
-        WorksheetTableModel.addColumn("To Name");
         WorksheetTableModel.addColumn("Out Date");
         WorksheetTableModel.addColumn("Remark");
         WorksheetTableModel.addColumn("Progress");
@@ -1784,9 +1709,9 @@ public class BranchWorksheet extends javax.swing.JFrame {
 //        DATES
         WorksheetTable.getColumnModel().getColumn(3).setPreferredWidth(60);
         WorksheetTable.getColumnModel().getColumn(6).setPreferredWidth(60);
-        WorksheetTable.getColumnModel().getColumn(9).setPreferredWidth(60);
+        WorksheetTable.getColumnModel().getColumn(7).setPreferredWidth(60);
         
-        WorksheetTable.getColumnModel().getColumn(11).setPreferredWidth(50);
+        WorksheetTable.getColumnModel().getColumn(9).setPreferredWidth(50);
         
         try {
             
@@ -1808,14 +1733,12 @@ public class BranchWorksheet extends javax.swing.JFrame {
                 String FromName = rs.getString("FromName");
                 String Subject = rs.getString("Subject");
                 String ToDateReceived = rs.getString("TDR");
-                String ToBranch = rs.getString("ToBranch");
-                String ToName = rs.getString("ToName");
                 String OutDate = rs.getString("OD");
                 String Remark = rs.getString("Remark");
                 String Progress = rs.getString("Progress");
                 
                 String tableData[] = {InwardNo, WorksheetNo, FromNo, FromDateSent, 
-                    FromName, Subject, ToDateReceived, ToBranch, ToName, OutDate, Remark, Progress};
+                    FromName, Subject, ToDateReceived, OutDate, Remark, Progress};
             
                 WorksheetTableModel.addRow(tableData);
                 
@@ -1828,12 +1751,8 @@ public class BranchWorksheet extends javax.swing.JFrame {
         }
     }
     
-    private void updownArrowToggleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updownArrowToggleButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_updownArrowToggleButtonActionPerformed
-
-    private void WorksheetSortComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WorksheetSortComboBoxActionPerformed
-        // TODO add your handling code here:
+    private void WorksheetSortBox() {
+        
         String sortBy = WorksheetSortComboBox.getSelectedItem().toString();
         
         if (sortBy.equals("Inward No")) {
@@ -1857,19 +1776,304 @@ public class BranchWorksheet extends javax.swing.JFrame {
         else if (sortBy.equals("To Date")) {
             sortWorksheet("ToDateReceived", "DESC");
         }
-        else if (sortBy.equals("To Branch")) {
-            sortWorksheet("ToBranch", "DESC");
-        }
-        else if (sortBy.equals("To Name")) {
-            sortWorksheet("ToName", "DESC");
-        }
         else if (sortBy.equals("Out Date")) {
             sortWorksheet("OutDate", "DESC");
         }
         else if (sortBy.equals("Progress")) {
             sortWorksheet("Progress", "DESC");
         }
-    }//GEN-LAST:event_WorksheetSortComboBoxActionPerformed
+    }
+    
+    
+    private void updownToggleButton () {
+        
+        String sortBy = WorksheetSortComboBox.getSelectedItem().toString();
+        if (updownArrowToggleButton.isSelected()) {
+            updownArrowToggleButton.setIcon(new ImageIcon(getClass().getResource("/img-src/arrow-up.png")));
+            updownArrowToggleButton.setToolTipText("Ascending");
+            
+
+            if (sortBy.equals("Inward No")) {
+                sortWorksheet("InwardNo", "ASC");
+            }
+            else if (sortBy.equals("From No")) {
+                sortWorksheet("FromNo", "ASC");
+            }
+            else if (sortBy.equals("From Date")) {
+                sortWorksheet("FromDateSent", "ASC");
+            }
+            else if (sortBy.equals("From Name")) {
+                sortWorksheet("FromName", "ASC");
+            }
+            else if (sortBy.equals("Subject")) {
+                sortWorksheet("Subject", "ASC");
+            }
+            else if (sortBy.equals("To Date")) {
+                sortWorksheet("ToDateReceived", "ASC");
+            }
+            else if (sortBy.equals("Out Date")) {
+                sortWorksheet("OutDate", "ASC");
+            }
+            else if (sortBy.equals("Remark")) {
+                sortWorksheet("Remark", "DESC");
+            }
+            else if (sortBy.equals("Progress")) {
+                sortWorksheet("Progress", "ASC");
+            }
+        }
+//        else if (updownArrowToggleButton.isSelected() == false) {
+        else {
+            updownArrowToggleButton.setIcon(new ImageIcon(getClass().getResource("/img-src/arrow-down.png")));
+            updownArrowToggleButton.setToolTipText("Descending");
+
+            if (sortBy.equals("Inward No")) {
+                sortWorksheet("InwardNo", "DESC");
+            }
+            else if (sortBy.equals("From No")) {
+                sortWorksheet("FromNo", "DESC");
+            }
+            else if (sortBy.equals("From Date")) {
+                sortWorksheet("FromDateSent", "DESC");
+            }
+            else if (sortBy.equals("From Name")) {
+                sortWorksheet("FromName", "DESC");
+            }
+            else if (sortBy.equals("Subject")) {
+                sortWorksheet("Subject", "DESC");
+            }
+            else if (sortBy.equals("To Date")) {
+                sortWorksheet("ToDateReceived", "DESC");
+            }
+            else if (sortBy.equals("Out Date")) {
+                sortWorksheet("OutDate", "DESC");
+            }
+            else if (sortBy.equals("Remark")) {
+                sortWorksheet("Remark", "DESC");
+            }
+            else if (sortBy.equals("Progress")) {
+                sortWorksheet("Progress", "DESC");
+            }
+        }
+        
+    }
+    
+    
+    private void SortByEmployeeStatsComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SortByEmployeeStatsComboBox1ActionPerformed
+        // TODO add your handling code here:
+        
+        periodComboBox();
+        
+    }//GEN-LAST:event_SortByEmployeeStatsComboBox1ActionPerformed
+
+    private void periodComboBox() {
+        
+        String period = SortByEmployeeStatsComboBox1.getSelectedItem().toString();
+        
+        if (period.equals("Last Week")) {
+            DefaultTableModel WorksheetTableModel  = new DefaultTableModel();
+            WorksheetTable.setModel(WorksheetTableModel);
+            WorksheetTableModel.addColumn("Inward No");
+            WorksheetTableModel.addColumn("Worksheet");        
+            WorksheetTableModel.addColumn("From No");
+            WorksheetTableModel.addColumn("From Date");
+            WorksheetTableModel.addColumn("From Name");
+            WorksheetTableModel.addColumn("Subject");
+            WorksheetTableModel.addColumn("To Date");
+            WorksheetTableModel.addColumn("Out Date");
+            WorksheetTableModel.addColumn("Remark");
+            WorksheetTableModel.addColumn("Progress");
+    //        EmployeeStatsTableModel.addColumn("Days");
+
+            WorksheetTable.getTableHeader().setPreferredSize(
+                new Dimension(WorksheetTable.getColumnModel().getTotalColumnWidth(), 28));
+
+            try {
+                
+//          >>  READING THE BRANCH AND STORING IT IN BRANCH AND TOEMPLOYEE VARIABLES  
+            BufferedReader br = new BufferedReader(new FileReader("login.txt"));
+            String text = br.readLine();
+//  branch:          
+            String branch = text.split(",")[0];
+//  toEmployee:          
+            String toName = text.split(",")[1];
+
+                ConnectionEstablish con = new ConnectionEstablish();
+                String sql = "SELECT *,date_format(FromDateSent,'%d-%m-%y') AS FDS, "
+                        + "date_format(ToDateReceived,'%d-%m-%y') AS TDR, "
+                        + "date_format(OutDate,'%d-%m-%y') AS OD "
+                        + "FROM letterinwardregister "
+                        + "WHERE ToBranch = '"+branch+"' AND "
+                        + "ToName = '"+toName+"' AND "
+                        + "Progress = 'Incomplete' OR Progress = 'Complete' AND "
+                        + "ToDateReceived> now() -  interval 7 day";
+                PreparedStatement st = con.c.prepareStatement(sql);
+                ResultSet rs = st.executeQuery();
+
+                while(rs.next()) {
+                    String InwardNo = rs.getString("InwardNo");
+                    String WorksheetNo = rs.getString("WorksheetNo");
+                    String FromNo = rs.getString("FromNo");
+                    String FromDateSent = rs.getString("FDS");
+                    String FromName = rs.getString("FromName");
+                    String Subject = rs.getString("Subject");
+                    String ToDateReceived = rs.getString("TDR");
+                    String OutDate = rs.getString("OD");
+                    String Remark = rs.getString("Remark");
+                    String Progress = rs.getString("Progress");
+    //                String Days = rs.getString("Days");
+
+                    String tableData[] = {InwardNo, WorksheetNo, FromNo, FromDateSent, FromName, 
+                        Subject, ToDateReceived, OutDate, Remark, Progress};
+
+                    WorksheetTableModel.addRow(tableData);
+                }
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else if (period.equals("Last Month")) {
+            
+            DefaultTableModel WorksheetTableModel  = new DefaultTableModel();
+            WorksheetTable.setModel(WorksheetTableModel);
+            WorksheetTableModel.addColumn("Inward No");
+            WorksheetTableModel.addColumn("Worksheet");        
+            WorksheetTableModel.addColumn("From No");
+            WorksheetTableModel.addColumn("From Date");
+            WorksheetTableModel.addColumn("From Name");
+            WorksheetTableModel.addColumn("Subject");
+            WorksheetTableModel.addColumn("To Date");
+            WorksheetTableModel.addColumn("Out Date");
+            WorksheetTableModel.addColumn("Remark");
+            WorksheetTableModel.addColumn("Progress");
+    //        EmployeeStatsTableModel.addColumn("Days");
+
+            WorksheetTable.getTableHeader().setPreferredSize(
+                new Dimension(WorksheetTable.getColumnModel().getTotalColumnWidth(), 28));
+
+            try {
+                
+//          >>  READING THE BRANCH AND STORING IT IN BRANCH AND TOEMPLOYEE VARIABLES  
+            BufferedReader br = new BufferedReader(new FileReader("login.txt"));
+            String text = br.readLine();
+//  branch:          
+            String branch = text.split(",")[0];
+//  toEmployee:          
+            String toName = text.split(",")[1];
+
+                ConnectionEstablish con = new ConnectionEstablish();
+                String sql = "SELECT *,date_format(FromDateSent,'%d-%m-%y') AS FDS, "
+                        + "date_format(ToDateReceived,'%d-%m-%y') AS TDR, "
+                        + "date_format(OutDate,'%d-%m-%y') AS OD "
+                        + "FROM letterinwardregister "
+                        + "WHERE ToBranch = '"+branch+"' AND "
+                        + "ToName = '"+toName+"' AND "
+                        + "Progress = 'Incomplete' OR Progress = 'Complete' AND "
+                        + "ToDateReceived> now() -  interval 31 day";
+                PreparedStatement st = con.c.prepareStatement(sql);
+                ResultSet rs = st.executeQuery();
+
+                while(rs.next()) {
+                    String InwardNo = rs.getString("InwardNo");
+                    String WorksheetNo = rs.getString("WorksheetNo");
+                    String FromNo = rs.getString("FromNo");
+                    String FromDateSent = rs.getString("FDS");
+                    String FromName = rs.getString("FromName");
+                    String Subject = rs.getString("Subject");
+                    String ToDateReceived = rs.getString("TDR");
+                    String OutDate = rs.getString("OD");
+                    String Remark = rs.getString("Remark");
+                    String Progress = rs.getString("Progress");
+    //                String Days = rs.getString("Days");
+
+                    String tableData[] = {InwardNo, WorksheetNo, FromNo, FromDateSent, FromName, 
+                        Subject, ToDateReceived, OutDate, Remark, Progress};
+
+                    WorksheetTableModel.addRow(tableData);
+                }
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else if (period.equals("Last Year")) {
+            DefaultTableModel WorksheetTableModel  = new DefaultTableModel();
+            WorksheetTable.setModel(WorksheetTableModel);
+            WorksheetTableModel.addColumn("Inward No");
+            WorksheetTableModel.addColumn("Worksheet");        
+            WorksheetTableModel.addColumn("From No");
+            WorksheetTableModel.addColumn("From Date");
+            WorksheetTableModel.addColumn("From Name");
+            WorksheetTableModel.addColumn("Subject");
+            WorksheetTableModel.addColumn("To Date");
+            WorksheetTableModel.addColumn("Out Date");
+            WorksheetTableModel.addColumn("Remark");
+            WorksheetTableModel.addColumn("Progress");
+    //        EmployeeStatsTableModel.addColumn("Days");
+
+            WorksheetTable.getTableHeader().setPreferredSize(
+                new Dimension(WorksheetTable.getColumnModel().getTotalColumnWidth(), 28));
+
+            try {
+                
+//          >>  READING THE BRANCH AND STORING IT IN BRANCH AND TOEMPLOYEE VARIABLES  
+            BufferedReader br = new BufferedReader(new FileReader("login.txt"));
+            String text = br.readLine();
+//  branch:          
+            String branch = text.split(",")[0];
+//  toEmployee:          
+            String toName = text.split(",")[1];
+
+                ConnectionEstablish con = new ConnectionEstablish();
+                String sql = "SELECT *,date_format(FromDateSent,'%d-%m-%y') AS FDS, "
+                        + "date_format(ToDateReceived,'%d-%m-%y') AS TDR, "
+                        + "date_format(OutDate,'%d-%m-%y') AS OD "
+                        + "FROM letterinwardregister "
+                        + "WHERE ToBranch = '"+branch+"' AND "
+                        + "ToName = '"+toName+"' AND "
+                        + "Progress = 'Incomplete' OR Progress = 'Complete' AND "
+                        + "ToDateReceived> now() -  interval 365 day";
+                PreparedStatement st = con.c.prepareStatement(sql);
+                ResultSet rs = st.executeQuery();
+
+                while(rs.next()) {
+                    String InwardNo = rs.getString("InwardNo");
+                    String WorksheetNo = rs.getString("WorksheetNo");
+                    String FromNo = rs.getString("FromNo");
+                    String FromDateSent = rs.getString("FDS");
+                    String FromName = rs.getString("FromName");
+                    String Subject = rs.getString("Subject");
+                    String ToDateReceived = rs.getString("TDR");
+                    String OutDate = rs.getString("OD");
+                    String Remark = rs.getString("Remark");
+                    String Progress = rs.getString("Progress");
+    //                String Days = rs.getString("Days");
+
+                    String tableData[] = {InwardNo, WorksheetNo, FromNo, FromDateSent, FromName, 
+                        Subject, ToDateReceived, OutDate, Remark, Progress};
+
+                    WorksheetTableModel.addRow(tableData);
+                }
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else if (period.equals("Select Period")) {
+        }
+        
+    }
+    
+    private void ShowButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        WorksheetSortBox();
+        
+        
+    }//GEN-LAST:event_ShowButton1ActionPerformed
+
+    private void updownArrowToggleButtonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_updownArrowToggleButtonStateChanged
+        // TODO add your handling code here:
+        
+        updownToggleButton();
+    }//GEN-LAST:event_updownArrowToggleButtonStateChanged
 
     /**
      * @param args the command line arguments
@@ -1889,6 +2093,7 @@ public class BranchWorksheet extends javax.swing.JFrame {
         initWorksheetTable();
         AcknowledgeButton.setVisible(false);
         CompleteButton.setVisible(false);
+        EmployeeStatsFilterPeriodPanel1.setVisible(false);
                 
     }
     
@@ -1997,7 +2202,8 @@ public class BranchWorksheet extends javax.swing.JFrame {
                     + "FROM letterinwardregister "
                     + "WHERE ToBranch = '"+branch+"' AND "
                     + "ToName = '"+toName+"' AND "
-                    + "Progress = 'Complete' OR Progress = 'Incomplete'";
+                    + "Progress = 'Complete' OR Progress = 'Incomplete' "
+                    + "ORDER BY WorksheetNo";
             PreparedStatement st = con.c.prepareStatement(sql);
             ResultSet rs = st.executeQuery(sql);
             

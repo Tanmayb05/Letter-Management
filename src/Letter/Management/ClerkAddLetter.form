@@ -204,7 +204,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="SubjectPanel" alignment="0" pref="516" max="32767" attributes="0"/>
+                          <Component id="SubjectPanel" alignment="0" pref="541" max="32767" attributes="0"/>
                           <Component id="InwardRegisterNumberPanel" alignment="0" max="32767" attributes="0"/>
                           <Component id="FromPanel" alignment="0" max="32767" attributes="0"/>
                           <Component id="ToPanel" alignment="0" max="32767" attributes="0"/>
@@ -276,7 +276,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SansSerif" size="16" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Inward Register Number "/>
+                    <Property name="text" type="java.lang.String" value="&#x915;&#x93e;&#x930;&#x94d;&#x92f;&#x93e;&#x932;&#x92f;&#x940;&#x928; &#x915;&#x94d;&#x930;&#x92e;&#x93e;&#x902;&#x915;"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="InwardRegsiterNumberField">
@@ -312,26 +312,26 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="ToDateReceivedLabel2" min="-2" pref="50" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="FromDateLabel" alignment="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="ToDateReceivedLabel2" min="-2" pref="42" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="FromLetterNoLabel" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
-                              <Component id="FromNameLabel" pref="0" max="32767" attributes="0"/>
+                              <Component id="FromDateLabel" min="-2" pref="88" max="-2" attributes="0"/>
+                              <Component id="FromNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="FromLetterNoField" max="32767" attributes="0"/>
                               <Component id="FromDateField" alignment="0" max="32767" attributes="0"/>
                               <Component id="FromNameComboBox" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Component id="FromLetterNoField" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="FromNameField" pref="201" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="DateSentShowTodayButton" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="DateSentShowTodayButton" min="-2" pref="124" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="FromNameField" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -373,7 +373,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SansSerif" size="16" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Number"/>
+                    <Property name="text" type="java.lang.String" value="&#x92a;&#x924;&#x94d;&#x930; &#x915;&#x94d;&#x930;&#x92e;&#x93e;&#x902;&#x915;"/>
                     <Property name="toolTipText" type="java.lang.String" value="From Number"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[2147483647, 2147483647]"/>
@@ -405,7 +405,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SansSerif" size="16" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Date Sent"/>
+                    <Property name="text" type="java.lang.String" value="&#x906;&#x935;&#x915; &#x926;&#x93f;&#x928;&#x93e;&#x902;&#x915;"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[2147483647, 2147483647]"/>
                     </Property>
@@ -435,7 +435,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SansSerif" size="16" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Name"/>
+                    <Property name="text" type="java.lang.String" value="&#x915;&#x94b;&#x923;&#x93e;&#x915;&#x921;&#x942;&#x928; &#x906;&#x932;&#x947;"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[2147483647, 2147483647]"/>
                     </Property>
@@ -452,7 +452,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SansSerif" size="16" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Today"/>
+                    <Property name="text" type="java.lang.String" value="&#x906;&#x91c;&#x91a;&#x93e; &#x926;&#x93f;&#x935;&#x938; "/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[2147483647, 2147483647]"/>
                     </Property>
@@ -474,7 +474,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="Select Name"/>
+                        <StringItem index="0" value="&#x928;&#x93e;&#x935; &#x928;&#x93f;&#x935;&#x921;&#x93e;"/>
                       </StringArray>
                     </Property>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -520,7 +520,7 @@
                       <Font name="SansSerif" size="16" style="0"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="FROM"/>
+                    <Property name="text" type="java.lang.String" value="&#x906;&#x935;&#x915;"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[100, 262626]"/>
                     </Property>
@@ -556,7 +556,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="73" max="32767" attributes="0"/>
+                          <EmptySpace pref="98" max="32767" attributes="0"/>
                           <Component id="SubjectLabel" min="-2" pref="80" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="SubjectField" min="-2" pref="345" max="-2" attributes="0"/>
@@ -583,7 +583,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SansSerif" size="16" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Subject"/>
+                    <Property name="text" type="java.lang.String" value="&#x935;&#x93f;&#x937;&#x92f;"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="SubjectField">
@@ -612,24 +612,26 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="ToDateReceivedLabel1" min="-2" pref="50" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="ToNameLabel" max="32767" attributes="0"/>
-                              <Component id="ToDateReceivedLabel" max="32767" attributes="0"/>
-                              <Component id="ToBranchLabel" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="ToDateReceivedLabel1" min="-2" pref="35" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="ToNameLabel" max="32767" attributes="0"/>
+                                  <Component id="ToBranchLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="ToDateReceivedLabel" min="-2" pref="120" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="ToDateReceivedField" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="DateReceivedShowTodayButton" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DateReceivedShowTodayButton" min="-2" pref="120" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="ToBranchComboBox" pref="0" max="32767" attributes="0"/>
-                              <Component id="ToNameComboBox" alignment="0" min="-2" pref="256" max="-2" attributes="0"/>
+                              <Component id="ToBranchComboBox" alignment="0" max="32767" attributes="0"/>
+                              <Component id="ToNameComboBox" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="58" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -668,7 +670,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SansSerif" size="16" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Name"/>
+                    <Property name="text" type="java.lang.String" value="&#x928;&#x93e;&#x935;"/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[100, 30]"/>
                     </Property>
@@ -682,7 +684,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SansSerif" size="16" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Branch"/>
+                    <Property name="text" type="java.lang.String" value="&#x936;&#x93e;&#x916;&#x93e;"/>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[100, 30]"/>
                     </Property>
@@ -696,7 +698,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SansSerif" size="16" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Date Received"/>
+                    <Property name="text" type="java.lang.String" value="&#x92a;&#x93e;&#x920;&#x935;&#x932;&#x94d;&#x92f;&#x93e;&#x91a;&#x93e; &#x926;&#x93f;&#x928;&#x93e;&#x902;&#x915;"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[100, 262626]"/>
                     </Property>
@@ -727,7 +729,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="SansSerif" size="16" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Today"/>
+                    <Property name="text" type="java.lang.String" value="&#x906;&#x91c;&#x91a;&#x93e; &#x926;&#x93f;&#x935;&#x938;"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[2147483647, 2147483647]"/>
                     </Property>
@@ -767,7 +769,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="Select Branch"/>
+                        <StringItem index="0" value="&#x936;&#x93e;&#x916;&#x93e; &#x928;&#x93f;&#x935;&#x921;&#x93e;"/>
                       </StringArray>
                     </Property>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -791,7 +793,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="Select Name"/>
+                        <StringItem index="0" value="&#x928;&#x93e;&#x935; &#x928;&#x93f;&#x935;&#x921;&#x93e;"/>
                       </StringArray>
                     </Property>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -822,13 +824,13 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="SignoutButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="24" max="32767" attributes="0"/>
                       <Component id="AddLetterButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="24" max="32767" attributes="0"/>
                       <Component id="ShowRegisterButton" min="-2" pref="137" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="EmployeeStatsButton" min="-2" pref="137" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="EmployeeStatsButton" min="-2" pref="140" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="32767" attributes="0"/>
                       <Component id="ShowButton" min="-2" pref="73" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
@@ -884,7 +886,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="SansSerif" size="16" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Show"/>
+                <Property name="text" type="java.lang.String" value="&#x926;&#x93e;&#x916;&#x935;&#x93e;"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ShowButtonActionPerformed"/>
@@ -895,7 +897,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="SansSerif" size="14" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Show Register"/>
+                <Property name="text" type="java.lang.String" value="&#x935;&#x939;&#x940; &#x926;&#x93e;&#x916;&#x935;&#x93e;"/>
               </Properties>
               <Events>
                 <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="ShowRegisterButtonStateChanged"/>
@@ -909,12 +911,13 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="SansSerif" size="14" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="EmployeeStats"/>
+                <Property name="text" type="java.lang.String" value="&#x915;&#x930;&#x94d;&#x92e;&#x91a;&#x93e;&#x930;&#x940; &#x906;&#x915;&#x921;&#x947;&#x935;&#x93e;&#x930;&#x940;"/>
               </Properties>
               <Events>
                 <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="EmployeeStatsButtonStateChanged"/>
                 <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="EmployeeStatsButtonMouseEntered"/>
                 <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="EmployeeStatsButtonMouseExited"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EmployeeStatsButtonActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -959,17 +962,17 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="11">
-                    <StringItem index="0" value="Sort By"/>
-                    <StringItem index="1" value="Inward No"/>
-                    <StringItem index="2" value="From No"/>
-                    <StringItem index="3" value="From Date"/>
-                    <StringItem index="4" value="From Name"/>
-                    <StringItem index="5" value="Subject"/>
-                    <StringItem index="6" value="To Date"/>
-                    <StringItem index="7" value="To Branch"/>
-                    <StringItem index="8" value="To Name"/>
-                    <StringItem index="9" value="Out Date"/>
-                    <StringItem index="10" value="Progress"/>
+                    <StringItem index="0" value="&#x915;&#x94d;&#x930;&#x92e;&#x93e;&#x923;&#x947;"/>
+                    <StringItem index="1" value="&#x915;&#x93e;&#x930;&#x94d;&#x92f;&#x93e;&#x932;&#x92f;&#x940;&#x928; &#x915;&#x94d;&#x930;&#x92e;&#x93e;&#x902;&#x915;"/>
+                    <StringItem index="2" value="&#x92a;&#x924;&#x94d;&#x930; &#x915;&#x94d;&#x930;&#x92e;&#x93e;&#x902;&#x915;"/>
+                    <StringItem index="3" value="&#x906;&#x935;&#x915; &#x926;&#x93f;&#x928;&#x93e;&#x902;&#x915;"/>
+                    <StringItem index="4" value="&#x915;&#x94b;&#x923;&#x93e;&#x915;&#x921;&#x942;&#x928; &#x906;&#x932;&#x947;"/>
+                    <StringItem index="5" value="&#x935;&#x93f;&#x937;&#x92f;"/>
+                    <StringItem index="6" value="&#x92a;&#x93e;&#x920;&#x935;&#x932;&#x94d;&#x92f;&#x93e;&#x91a;&#x93e; &#x926;&#x93f;&#x928;&#x93e;&#x902;&#x915;"/>
+                    <StringItem index="7" value="&#x936;&#x93e;&#x916;&#x93e;"/>
+                    <StringItem index="8" value="&#x928;&#x93e;&#x935;"/>
+                    <StringItem index="9" value="&#x91c;&#x93e;&#x935;&#x915; &#x926;&#x93f;&#x928;&#x93e;&#x902;&#x915;"/>
+                    <StringItem index="10" value="&#x92a;&#x94d;&#x930;&#x917;&#x924;&#x940;"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -1033,7 +1036,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="Select Name"/>
+                    <StringItem index="0" value="&#x928;&#x93e;&#x935; &#x928;&#x93f;&#x935;&#x921;&#x93e;"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -1052,7 +1055,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="Select Branch"/>
+                    <StringItem index="0" value="&#x936;&#x93e;&#x916;&#x93e; &#x928;&#x93f;&#x935;&#x921;&#x93e;"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -1070,10 +1073,10 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
-                    <StringItem index="0" value="Select Period"/>
-                    <StringItem index="1" value="Last Week"/>
-                    <StringItem index="2" value="Last Month"/>
-                    <StringItem index="3" value="Last Year"/>
+                    <StringItem index="0" value="&#x915;&#x93e;&#x933;"/>
+                    <StringItem index="1" value="&#x917;&#x947;&#x932;&#x93e;  &#x906;&#x920;&#x935;&#x921;&#x93e;"/>
+                    <StringItem index="2" value="&#x917;&#x947;&#x932;&#x93e; &#x92e;&#x939;&#x93f;&#x928;&#x93e;"/>
+                    <StringItem index="3" value="&#x917;&#x947;&#x932;&#x93e; &#x935;&#x930;&#x94d;&#x937;"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -1170,7 +1173,7 @@
         </Container>
         <Component class="javax.swing.JButton" name="ExportButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Export"/>
+            <Property name="text" type="java.lang.String" value="&#x928;&#x93f;&#x930;&#x94d;&#x92f;&#x93e;&#x924; &#x915;&#x930;&#x93e;"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExportButtonActionPerformed"/>
@@ -1195,7 +1198,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="TablesPane" pref="457" max="32767" attributes="0"/>
+                  <Component id="TablesPane" pref="432" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -1373,7 +1376,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="EmployeeStatsScrollPane" pref="442" max="32767" attributes="0"/>
+                              <Component id="EmployeeStatsScrollPane" pref="417" max="32767" attributes="0"/>
                               <Component id="TasksScrollPane" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
