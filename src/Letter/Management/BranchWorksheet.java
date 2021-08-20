@@ -10,12 +10,17 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 /**
@@ -124,7 +129,6 @@ public class BranchWorksheet extends javax.swing.JFrame {
         SubjectField1 = new javax.swing.JLabel();
         ToPanel1 = new javax.swing.JPanel();
         ToDateReceivedLabel3 = new javax.swing.JLabel();
-        ToLabel1 = new javax.swing.JLabel();
         ToDatReceivedField1 = new javax.swing.JLabel();
         RemarkPanel = new javax.swing.JPanel();
         RemarkLabel = new javax.swing.JLabel();
@@ -813,7 +817,7 @@ public class BranchWorksheet extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Inward No", "Worksheet", "From No", "From Date", "From Name", "Subject", "To Date", "Out Date", "Remark", "Progress"
+                "क्रमांक", "कार्यपत्र", "पत्र क्रमांक", "आवक दिनांक", "कोणाकडून आले ", "विषय", "पाठवल्याचा दिनांक", "जावक दिनांक", "टिपणी", "प्रगती"
             }
         ));
         WorksheetScrollPane.setViewportView(WorksheetTable);
@@ -850,7 +854,7 @@ public class BranchWorksheet extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Inward Number", "From Number", "From Date", "From Name", "Subject", "To Date", "Progress"
+                "क्रमांक", "पत्र क्रमांक", "आवक दिनांक", "कोणाकडून आले", "विषय", "पाठवल्याचा दिनांक", "प्रगती"
             }
         ));
         NewReceivedLettersTableScroll.setViewportView(NewReceivedLettersTable);
@@ -1078,13 +1082,6 @@ public class BranchWorksheet extends javax.swing.JFrame {
         ToDateReceivedLabel3.setMinimumSize(new java.awt.Dimension(100, 30));
         ToDateReceivedLabel3.setPreferredSize(new java.awt.Dimension(110, 30));
 
-        ToLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ToLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ToLabel1.setText("TO");
-        ToLabel1.setMaximumSize(new java.awt.Dimension(100, 262626));
-        ToLabel1.setMinimumSize(new java.awt.Dimension(100, 30));
-        ToLabel1.setPreferredSize(new java.awt.Dimension(110, 30));
-
         ToDatReceivedField1.setBackground(new java.awt.Color(220, 219, 219));
         ToDatReceivedField1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         ToDatReceivedField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -1094,7 +1091,7 @@ public class BranchWorksheet extends javax.swing.JFrame {
 
         RemarkLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         RemarkLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        RemarkLabel.setText("टिपणी");
+        RemarkLabel.setText("शेरा");
         RemarkLabel.setMaximumSize(new java.awt.Dimension(100, 262626));
         RemarkLabel.setMinimumSize(new java.awt.Dimension(100, 30));
         RemarkLabel.setPreferredSize(new java.awt.Dimension(110, 30));
@@ -1134,8 +1131,7 @@ public class BranchWorksheet extends javax.swing.JFrame {
                 .addGroup(ToPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(RemarkPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(ToPanel1Layout.createSequentialGroup()
-                        .addComponent(ToLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(0, 0, 0)
                         .addComponent(ToDateReceivedLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ToDatReceivedField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1148,9 +1144,7 @@ public class BranchWorksheet extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(ToPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ToDatReceivedField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(ToPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ToLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ToDateReceivedLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(ToDateReceivedLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(RemarkPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -1263,7 +1257,7 @@ public class BranchWorksheet extends javax.swing.JFrame {
         ShowRegisterSortByLabel1.setText("वर्गीकरण");
 
         WorksheetSortComboBox.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        WorksheetSortComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "क्रमाणे", "कार्यालयीन क्रमांक", "पत्र क्रमांक", "आवक दिनांक", "कोणाकडून आले", "विषय", "पाठवल्याचा दिनांक", "शाखा", "नाव", "जावक दिनांक", "प्रगती" }));
+        WorksheetSortComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "क्रमाणे", "कार्यालयीन क्रमांक", "पत्र क्रमांक", "आवक दिनांक", "कोणाकडून आले", "विषय", "पाठवल्याचा दिनांक", "जावक दिनांक", "प्रगती" }));
 
         updownArrowToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img-src/arrow-down.png"))); // NOI18N
         updownArrowToggleButton.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -1383,9 +1377,9 @@ public class BranchWorksheet extends javax.swing.JFrame {
         HeadingPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         HeadingLabel.setBackground(new java.awt.Color(147, 217, 163));
-        HeadingLabel.setFont(new java.awt.Font("Georgia", 1, 36)); // NOI18N
+        HeadingLabel.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
         HeadingLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        HeadingLabel.setText("WORKSHEET");
+        HeadingLabel.setText("कार्यविवरण पुस्तक");
 
         javax.swing.GroupLayout HeadingPanelLayout = new javax.swing.GroupLayout(HeadingPanel);
         HeadingPanel.setLayout(HeadingPanelLayout);
@@ -1397,7 +1391,7 @@ public class BranchWorksheet extends javax.swing.JFrame {
             HeadingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HeadingPanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(HeadingLabel)
+                .addComponent(HeadingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
 
@@ -1473,7 +1467,17 @@ public class BranchWorksheet extends javax.swing.JFrame {
 
     private void SignoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignoutButtonActionPerformed
         // TODO add your handling code here:
-        int a = JOptionPane.showConfirmDialog(null,"Are you sure?","Sign Out",JOptionPane.YES_NO_OPTION);
+        JLabel sure = new JLabel("बाहेर पडायचे आहे का?");
+        sure.setFont(new Font("SanSerif", Font.PLAIN, 18));
+        
+        UIManager.put("OptionPane.buttonFont", new Font("SanSerif", Font.PLAIN, 15));
+        
+        Object[] options = {"हो","नाही"};
+        int a = JOptionPane.showOptionDialog(null,
+                sure,
+                "साईन आउट",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,null,options,options[0]);
         if(a == JOptionPane.YES_OPTION){
             this.setVisible(false);
             new ClerkLogin().setVisible(true);
@@ -1520,10 +1524,20 @@ public class BranchWorksheet extends javax.swing.JFrame {
 
     private void SignoutButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignoutButton1ActionPerformed
         // TODO add your handling code here:
-        int a = JOptionPane.showConfirmDialog(null,"Are you sure?","Sign Out",JOptionPane.YES_NO_OPTION);
+        JLabel sure = new JLabel("बाहेर पडायचे आहे का?");
+        sure.setFont(new Font("SanSerif", Font.PLAIN, 18));
+        
+        UIManager.put("OptionPane.buttonFont", new Font("SanSerif", Font.PLAIN, 15));
+        
+        Object[] options = {"हो","नाही"};
+        int a = JOptionPane.showOptionDialog(null,
+                sure,
+                "साईन आउट",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,null,options,options[0]);
         if(a == JOptionPane.YES_OPTION){
             this.setVisible(false);
-            new ClerkLogin().setVisible(true);
+            new BranchLogin().setVisible(true);
         }
     }//GEN-LAST:event_SignoutButton1ActionPerformed
 
@@ -1561,10 +1575,10 @@ public class BranchWorksheet extends javax.swing.JFrame {
                 ToDatReceivedField1.setText(ToDateReceived);
                 RemarkTextArea.setText(Remark);
                
-                if (Progress.equals("Added")) {
+                if (Progress.equals("जोडलेले")) {
                     AcknowledgeButton.setVisible(true);
                 }
-                else if (Progress.equals("Incomplete")) {
+                else if (Progress.equals("अपूर्ण")) {
                     CompleteButton.setVisible(true);
                 }
                 
@@ -1605,7 +1619,7 @@ public class BranchWorksheet extends javax.swing.JFrame {
             }
             
             
-            String sql = "UPDATE letterinwardregister SET Progress ='Incomplete', "
+            String sql = "UPDATE letterinwardregister SET Progress ='अपूर्ण', "
                     + "WorksheetNo = '"+WorksheetNo+"' "
                     + "WHERE InwardNo ='"+InwardNo+"'";
             
@@ -1650,7 +1664,7 @@ public class BranchWorksheet extends javax.swing.JFrame {
             
             
             ConnectionEstablish con = new ConnectionEstablish();
-            String sql = "UPDATE letterinwardregister SET Progress ='Complete', "
+            String sql = "UPDATE letterinwardregister SET Progress ='पूर्ण', "
                     + "Remark = '"+Remark+"', "
                     + "OutDate = STR_TO_DATE('"+OutDate+"','%d-%m-%Y')"
                     + "WHERE InwardNo ='"+InwardNo+"'";
@@ -1689,19 +1703,19 @@ public class BranchWorksheet extends javax.swing.JFrame {
         
         DefaultTableModel WorksheetTableModel  = new DefaultTableModel();
         WorksheetTable.setModel(WorksheetTableModel);
-        WorksheetTableModel.addColumn("No");
-        WorksheetTableModel.addColumn("Worksheet");
-        WorksheetTableModel.addColumn("From No");
-        WorksheetTableModel.addColumn("From Date");
-        WorksheetTableModel.addColumn("From Name");
-        WorksheetTableModel.addColumn("Subject");
-        WorksheetTableModel.addColumn("To Date");
-        WorksheetTableModel.addColumn("Out Date");
-        WorksheetTableModel.addColumn("Remark");
-        WorksheetTableModel.addColumn("Progress");
+        WorksheetTableModel.addColumn("क्रमांक");
+        WorksheetTableModel.addColumn("कार्यपत्र");
+        WorksheetTableModel.addColumn("<html>पत्र \nक्रमांक</html>");
+        WorksheetTableModel.addColumn("<html>आवक \nदिनांक</html>");
+        WorksheetTableModel.addColumn("<html>कोणाकडून \nआले</html>");
+        WorksheetTableModel.addColumn("विषय");
+        WorksheetTableModel.addColumn("<html>पाठवल्याचा \nदिनांक</html>");
+        WorksheetTableModel.addColumn("<html>जावक \nदिनांक</html>");
+        WorksheetTableModel.addColumn("टिपणी");
+        WorksheetTableModel.addColumn("प्रगती");
         
         WorksheetTable.getTableHeader().setPreferredSize(
-            new Dimension(WorksheetTable.getColumnModel().getTotalColumnWidth(), 28));
+            new Dimension(WorksheetTable.getColumnModel().getTotalColumnWidth(), 32));
         
         WorksheetTable.getColumnModel().getColumn(0).setPreferredWidth(30);
         WorksheetTable.getColumnModel().getColumn(2).setPreferredWidth(50);
@@ -1755,33 +1769,34 @@ public class BranchWorksheet extends javax.swing.JFrame {
         
         String sortBy = WorksheetSortComboBox.getSelectedItem().toString();
         
-        if (sortBy.equals("Inward No")) {
+        if (sortBy.equals("कार्यालयीन क्रमांक")) {
             sortWorksheet("InwardNo", "DESC");
         }
-        else if (sortBy.equals("Worksheet No")) {
+        else if (sortBy.equals("कार्यपत्र क्रमांक")) {
             sortWorksheet("WorksheetNo", "DESC");
         }        
-        else if (sortBy.equals("From No")) {
+        else if (sortBy.equals("पत्र क्रमांक")) {
             sortWorksheet("FromNo", "DESC");
         }
-        else if (sortBy.equals("From Date")) {
+        else if (sortBy.equals("आवक दिनांक")) {
             sortWorksheet("FromDateSent", "DESC");
         }
-        else if (sortBy.equals("From Name")) {
+        else if (sortBy.equals("कोणाकडून आले")) {
             sortWorksheet("FromName", "DESC");
         }
-        else if (sortBy.equals("Subject")) {
+        else if (sortBy.equals("विषय")) {
             sortWorksheet("Subject", "DESC");
         }
-        else if (sortBy.equals("To Date")) {
+        else if (sortBy.equals("पाठवल्याचा दिनांक")) {
             sortWorksheet("ToDateReceived", "DESC");
         }
-        else if (sortBy.equals("Out Date")) {
+        else if (sortBy.equals("जावक दिनांक")) {
             sortWorksheet("OutDate", "DESC");
         }
-        else if (sortBy.equals("Progress")) {
+        else if (sortBy.equals("प्रगती")) {
             sortWorksheet("Progress", "DESC");
         }
+        
     }
     
     
@@ -1793,31 +1808,31 @@ public class BranchWorksheet extends javax.swing.JFrame {
             updownArrowToggleButton.setToolTipText("Ascending");
             
 
-            if (sortBy.equals("Inward No")) {
+            if (sortBy.equals("कार्यालयीन क्रमांक")) {
                 sortWorksheet("InwardNo", "ASC");
             }
-            else if (sortBy.equals("From No")) {
+            else if (sortBy.equals("कार्यपत्र क्रमांक")) {
+                sortWorksheet("WorksheetNo", "ASC");
+            }        
+            else if (sortBy.equals("पत्र क्रमांक")) {
                 sortWorksheet("FromNo", "ASC");
             }
-            else if (sortBy.equals("From Date")) {
+            else if (sortBy.equals("आवक दिनांक")) {
                 sortWorksheet("FromDateSent", "ASC");
             }
-            else if (sortBy.equals("From Name")) {
+            else if (sortBy.equals("कोणाकडून आले")) {
                 sortWorksheet("FromName", "ASC");
             }
-            else if (sortBy.equals("Subject")) {
+            else if (sortBy.equals("विषय")) {
                 sortWorksheet("Subject", "ASC");
             }
-            else if (sortBy.equals("To Date")) {
+            else if (sortBy.equals("पाठवल्याचा दिनांक")) {
                 sortWorksheet("ToDateReceived", "ASC");
             }
-            else if (sortBy.equals("Out Date")) {
+            else if (sortBy.equals("जावक दिनांक")) {
                 sortWorksheet("OutDate", "ASC");
             }
-            else if (sortBy.equals("Remark")) {
-                sortWorksheet("Remark", "DESC");
-            }
-            else if (sortBy.equals("Progress")) {
+            else if (sortBy.equals("प्रगती")) {
                 sortWorksheet("Progress", "ASC");
             }
         }
@@ -1826,31 +1841,31 @@ public class BranchWorksheet extends javax.swing.JFrame {
             updownArrowToggleButton.setIcon(new ImageIcon(getClass().getResource("/img-src/arrow-down.png")));
             updownArrowToggleButton.setToolTipText("Descending");
 
-            if (sortBy.equals("Inward No")) {
+            if (sortBy.equals("कार्यालयीन क्रमांक")) {
                 sortWorksheet("InwardNo", "DESC");
             }
-            else if (sortBy.equals("From No")) {
+            else if (sortBy.equals("कार्यपत्र क्रमांक")) {
+                sortWorksheet("WorksheetNo", "DESC");
+            }        
+            else if (sortBy.equals("पत्र क्रमांक")) {
                 sortWorksheet("FromNo", "DESC");
             }
-            else if (sortBy.equals("From Date")) {
+            else if (sortBy.equals("आवक दिनांक")) {
                 sortWorksheet("FromDateSent", "DESC");
             }
-            else if (sortBy.equals("From Name")) {
+            else if (sortBy.equals("कोणाकडून आले")) {
                 sortWorksheet("FromName", "DESC");
             }
-            else if (sortBy.equals("Subject")) {
+            else if (sortBy.equals("विषय")) {
                 sortWorksheet("Subject", "DESC");
             }
-            else if (sortBy.equals("To Date")) {
+            else if (sortBy.equals("पाठवल्याचा दिनांक")) {
                 sortWorksheet("ToDateReceived", "DESC");
             }
-            else if (sortBy.equals("Out Date")) {
+            else if (sortBy.equals("जावक दिनांक")) {
                 sortWorksheet("OutDate", "DESC");
             }
-            else if (sortBy.equals("Remark")) {
-                sortWorksheet("Remark", "DESC");
-            }
-            else if (sortBy.equals("Progress")) {
+            else if (sortBy.equals("प्रगती")) {
                 sortWorksheet("Progress", "DESC");
             }
         }
@@ -1869,19 +1884,19 @@ public class BranchWorksheet extends javax.swing.JFrame {
         
         String period = SortByEmployeeStatsComboBox1.getSelectedItem().toString();
         
-        if (period.equals("Last Week")) {
+        if (period.equals("गेला  आठवडा")) {
             DefaultTableModel WorksheetTableModel  = new DefaultTableModel();
             WorksheetTable.setModel(WorksheetTableModel);
-            WorksheetTableModel.addColumn("Inward No");
-            WorksheetTableModel.addColumn("Worksheet");        
-            WorksheetTableModel.addColumn("From No");
-            WorksheetTableModel.addColumn("From Date");
-            WorksheetTableModel.addColumn("From Name");
-            WorksheetTableModel.addColumn("Subject");
-            WorksheetTableModel.addColumn("To Date");
-            WorksheetTableModel.addColumn("Out Date");
-            WorksheetTableModel.addColumn("Remark");
-            WorksheetTableModel.addColumn("Progress");
+            WorksheetTableModel.addColumn("क्रमांक");
+            WorksheetTableModel.addColumn("कार्यपत्र");
+            WorksheetTableModel.addColumn("<html>पत्र \nक्रमांक</html>");
+            WorksheetTableModel.addColumn("<html>आवक \nदिनांक</html>");
+            WorksheetTableModel.addColumn("<html>कोणाकडून \nआले</html>");
+            WorksheetTableModel.addColumn("विषय");
+            WorksheetTableModel.addColumn("<html>पाठवल्याचा \nदिनांक</html>");
+            WorksheetTableModel.addColumn("<html>जावक \nदिनांक</html>");
+            WorksheetTableModel.addColumn("टिपणी");
+            WorksheetTableModel.addColumn("प्रगती");
     //        EmployeeStatsTableModel.addColumn("Days");
 
             WorksheetTable.getTableHeader().setPreferredSize(
@@ -1931,20 +1946,20 @@ public class BranchWorksheet extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-        else if (period.equals("Last Month")) {
+        else if (period.equals("गेला महिना")) {
             
             DefaultTableModel WorksheetTableModel  = new DefaultTableModel();
             WorksheetTable.setModel(WorksheetTableModel);
-            WorksheetTableModel.addColumn("Inward No");
-            WorksheetTableModel.addColumn("Worksheet");        
-            WorksheetTableModel.addColumn("From No");
-            WorksheetTableModel.addColumn("From Date");
-            WorksheetTableModel.addColumn("From Name");
-            WorksheetTableModel.addColumn("Subject");
-            WorksheetTableModel.addColumn("To Date");
-            WorksheetTableModel.addColumn("Out Date");
-            WorksheetTableModel.addColumn("Remark");
-            WorksheetTableModel.addColumn("Progress");
+            WorksheetTableModel.addColumn("क्रमांक");
+            WorksheetTableModel.addColumn("कार्यपत्र");
+            WorksheetTableModel.addColumn("<html>पत्र \nक्रमांक</html>");
+            WorksheetTableModel.addColumn("<html>आवक \nदिनांक</html>");
+            WorksheetTableModel.addColumn("<html>कोणाकडून \nआले</html>");
+            WorksheetTableModel.addColumn("विषय");
+            WorksheetTableModel.addColumn("<html>पाठवल्याचा \nदिनांक</html>");
+            WorksheetTableModel.addColumn("<html>जावक \nदिनांक</html>");
+            WorksheetTableModel.addColumn("टिपणी");
+            WorksheetTableModel.addColumn("प्रगती");
     //        EmployeeStatsTableModel.addColumn("Days");
 
             WorksheetTable.getTableHeader().setPreferredSize(
@@ -1994,19 +2009,19 @@ public class BranchWorksheet extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-        else if (period.equals("Last Year")) {
+        else if (period.equals("गेला वर्ष")) {
             DefaultTableModel WorksheetTableModel  = new DefaultTableModel();
             WorksheetTable.setModel(WorksheetTableModel);
-            WorksheetTableModel.addColumn("Inward No");
-            WorksheetTableModel.addColumn("Worksheet");        
-            WorksheetTableModel.addColumn("From No");
-            WorksheetTableModel.addColumn("From Date");
-            WorksheetTableModel.addColumn("From Name");
-            WorksheetTableModel.addColumn("Subject");
-            WorksheetTableModel.addColumn("To Date");
-            WorksheetTableModel.addColumn("Out Date");
-            WorksheetTableModel.addColumn("Remark");
-            WorksheetTableModel.addColumn("Progress");
+            WorksheetTableModel.addColumn("क्रमांक");
+            WorksheetTableModel.addColumn("कार्यपत्र");
+            WorksheetTableModel.addColumn("<html>पत्र \nक्रमांक</html>");
+            WorksheetTableModel.addColumn("<html>आवक \nदिनांक</html>");
+            WorksheetTableModel.addColumn("<html>कोणाकडून \nआले</html>");
+            WorksheetTableModel.addColumn("विषय");
+            WorksheetTableModel.addColumn("<html>पाठवल्याचा \nदिनांक</html>");
+            WorksheetTableModel.addColumn("<html>जावक \nदिनांक</html>");
+            WorksheetTableModel.addColumn("टिपणी");
+            WorksheetTableModel.addColumn("प्रगती");
     //        EmployeeStatsTableModel.addColumn("Days");
 
             WorksheetTable.getTableHeader().setPreferredSize(
@@ -2056,19 +2071,108 @@ public class BranchWorksheet extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-        else if (period.equals("Select Period")) {
+        else if (period.equals("काळ")) {
         }
         
     }
     
     private void ShowButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowButton1ActionPerformed
         // TODO add your handling code here:
-        
-        WorksheetSortBox();
-        
-        
+        if (SortByEmployeeStatsComboBox.getSelectedItem().equals("काळ")) {
+                    
+            if (FromPeriodField.getText().equals("dd-MM-yyyy") || ToPeriodField.getText().equals("dd-MM-yyyy")) {
+                WorksheetSortBox();
+            }
+            else {
+
+                System.out.println("Check1");
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                SimpleDateFormat sdfNew = new SimpleDateFormat("yyyy-MM-dd");
+                String from = null;
+                String to = null;
+
+                try {
+                    Date fromDate = sdf.parse(FromPeriodField1.getText());
+                    Date toDate = sdf.parse(ToPeriodField1.getText());
+                    from = sdfNew.format(fromDate);
+                    to = sdfNew.format(toDate);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+
+                initWorksheetPeriodTable(from, to);
+            } 
+        }
+        else {
+            WorksheetSortBox();
+        }
     }//GEN-LAST:event_ShowButton1ActionPerformed
 
+    private void initWorksheetPeriodTable (String from, String to) {
+        DefaultTableModel WorksheetTableModel  = new DefaultTableModel();
+            WorksheetTable.setModel(WorksheetTableModel);
+            WorksheetTableModel.addColumn("क्रमांक");
+            WorksheetTableModel.addColumn("कार्यपत्र");
+            WorksheetTableModel.addColumn("<html>पत्र \nक्रमांक</html>");
+            WorksheetTableModel.addColumn("<html>आवक \nदिनांक</html>");
+            WorksheetTableModel.addColumn("<html>कोणाकडून \nआले</html>");
+            WorksheetTableModel.addColumn("विषय");
+            WorksheetTableModel.addColumn("<html>पाठवल्याचा \nदिनांक</html>");
+            WorksheetTableModel.addColumn("<html>जावक \nदिनांक</html>");
+            WorksheetTableModel.addColumn("टिपणी");
+            WorksheetTableModel.addColumn("प्रगती");
+    //        EmployeeStatsTableModel.addColumn("Days");
+
+            WorksheetTable.getTableHeader().setPreferredSize(
+                new Dimension(WorksheetTable.getColumnModel().getTotalColumnWidth(), 28));
+
+            try {
+                
+//          >>  READING THE BRANCH AND STORING IT IN BRANCH AND TOEMPLOYEE VARIABLES  
+            BufferedReader br = new BufferedReader(new FileReader("login.txt"));
+            String text = br.readLine();
+//  branch:          
+            String branch = text.split(",")[0];
+//  toEmployee:          
+            String toName = text.split(",")[1];
+
+                ConnectionEstablish con = new ConnectionEstablish();
+                String sql = "SELECT *,date_format(FromDateSent,'%d-%m-%y') AS FDS, "
+                        + "date_format(ToDateReceived,'%d-%m-%y') AS TDR, "
+                        + "date_format(OutDate,'%d-%m-%y') AS OD "
+                        + "FROM letterinwardregister "
+                        + "WHERE ToBranch = '"+branch+"' AND "
+                        + "ToName = '"+toName+"' AND "
+                        + "Progress = 'Incomplete' OR Progress = 'Complete' AND "
+                        + "ToDateReceived BETWEEN '"+from+"' AND '"+to+"'";
+                PreparedStatement st = con.c.prepareStatement(sql);
+                ResultSet rs = st.executeQuery();
+
+                while(rs.next()) {
+                    String InwardNo = rs.getString("InwardNo");
+                    String WorksheetNo = rs.getString("WorksheetNo");
+                    String FromNo = rs.getString("FromNo");
+                    String FromDateSent = rs.getString("FDS");
+                    String FromName = rs.getString("FromName");
+                    String Subject = rs.getString("Subject");
+                    String ToDateReceived = rs.getString("TDR");
+                    String OutDate = rs.getString("OD");
+                    String Remark = rs.getString("Remark");
+                    String Progress = rs.getString("Progress");
+    //                String Days = rs.getString("Days");
+
+                    String tableData[] = {InwardNo, WorksheetNo, FromNo, FromDateSent, FromName, 
+                        Subject, ToDateReceived, OutDate, Remark, Progress};
+
+                    WorksheetTableModel.addRow(tableData);
+                }
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+    }
+    
+    
     private void updownArrowToggleButtonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_updownArrowToggleButtonStateChanged
         // TODO add your handling code here:
         
@@ -2087,13 +2191,13 @@ public class BranchWorksheet extends javax.swing.JFrame {
         // iconURL is null when not found
         ImageIcon icon = new ImageIcon(iconURL);
         setIconImage(icon.getImage());
-        setTitle("Water Resources Department, Government of Maharashtra, India");
+        setTitle("जलसंपदा विभाग, महाराष्ट्र शासन, भारत");
         
         initNewReceivedLetterTable();
         initWorksheetTable();
         AcknowledgeButton.setVisible(false);
         CompleteButton.setVisible(false);
-        EmployeeStatsFilterPeriodPanel1.setVisible(false);
+        EmployeeStatsFilterPeriodPanel1.setVisible(true);
                 
     }
     
@@ -2105,13 +2209,13 @@ public class BranchWorksheet extends javax.swing.JFrame {
         NewReceivedLettersTable.setModel(NewReceivedLettersTableModel);
         
 //      >>  ADDING THE COLUMNS
-        NewReceivedLettersTableModel.addColumn("Inward No");
-        NewReceivedLettersTableModel.addColumn("From No");
-        NewReceivedLettersTableModel.addColumn("From Date");
-        NewReceivedLettersTableModel.addColumn("From Name");
-        NewReceivedLettersTableModel.addColumn("Subject");
-        NewReceivedLettersTableModel.addColumn("To Date");
-        NewReceivedLettersTableModel.addColumn("Progress");
+        NewReceivedLettersTableModel.addColumn("कार्यालयीन क्रमांक");
+        NewReceivedLettersTableModel.addColumn("पत्र क्रमांक");
+        NewReceivedLettersTableModel.addColumn("आवक दिनांक");
+        NewReceivedLettersTableModel.addColumn("कोणाकडून आले");
+        NewReceivedLettersTableModel.addColumn("विषय");
+        NewReceivedLettersTableModel.addColumn("पाठवल्याचा दिनांक");
+        NewReceivedLettersTableModel.addColumn("प्रगती");
         
         
         NewReceivedLettersTable.getTableHeader().setPreferredSize(
@@ -2168,16 +2272,16 @@ public class BranchWorksheet extends javax.swing.JFrame {
         WorksheetTable.setModel(WorksheetTableModel);
         
 //      >>  ADDING THE COLUMNS
-        WorksheetTableModel.addColumn("Inward No");
-        WorksheetTableModel.addColumn("Worksheet No");
-        WorksheetTableModel.addColumn("From No");
-        WorksheetTableModel.addColumn("From Date");
-        WorksheetTableModel.addColumn("From Name");
-        WorksheetTableModel.addColumn("Subject");
-        WorksheetTableModel.addColumn("To Date");
-        WorksheetTableModel.addColumn("Out Date");
-        WorksheetTableModel.addColumn("Remark");
-        WorksheetTableModel.addColumn("Progress");
+        WorksheetTableModel.addColumn("क्रमांक");
+        WorksheetTableModel.addColumn("कार्यपत्र");
+        WorksheetTableModel.addColumn("<html>पत्र \nक्रमांक</html>");
+        WorksheetTableModel.addColumn("<html>आवक \nदिनांक</html>");
+        WorksheetTableModel.addColumn("<html>कोणाकडून \nआले</html>");
+        WorksheetTableModel.addColumn("विषय");
+        WorksheetTableModel.addColumn("<html>पाठवल्याचा \nदिनांक</html>");
+        WorksheetTableModel.addColumn("<html>जावक \nदिनांक</html>");
+        WorksheetTableModel.addColumn("टिपणी");
+        WorksheetTableModel.addColumn("प्रगती");
         
         
         WorksheetTable.getTableHeader().setPreferredSize(
@@ -2357,7 +2461,6 @@ public class BranchWorksheet extends javax.swing.JFrame {
     private javax.swing.JLabel ToDateReceivedLabel1;
     private javax.swing.JLabel ToDateReceivedLabel2;
     private javax.swing.JLabel ToDateReceivedLabel3;
-    private javax.swing.JLabel ToLabel1;
     private javax.swing.JComboBox<String> ToNameComboBox;
     private javax.swing.JLabel ToNameLabel;
     private javax.swing.JPanel ToPanel;

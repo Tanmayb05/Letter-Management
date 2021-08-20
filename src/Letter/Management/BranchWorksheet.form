@@ -1355,16 +1355,16 @@
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="10" rowCount="4">
-                        <Column editable="true" title="Inward No" type="java.lang.Object"/>
-                        <Column editable="true" title="Worksheet" type="java.lang.Object"/>
-                        <Column editable="true" title="From No" type="java.lang.Object"/>
-                        <Column editable="true" title="From Date" type="java.lang.Object"/>
-                        <Column editable="true" title="From Name" type="java.lang.Object"/>
-                        <Column editable="true" title="Subject" type="java.lang.Object"/>
-                        <Column editable="true" title="To Date" type="java.lang.Object"/>
-                        <Column editable="true" title="Out Date" type="java.lang.Object"/>
-                        <Column editable="true" title="Remark" type="java.lang.Object"/>
-                        <Column editable="true" title="Progress" type="java.lang.Object"/>
+                        <Column editable="true" title="&#x915;&#x94d;&#x930;&#x92e;&#x93e;&#x902;&#x915;" type="java.lang.Object"/>
+                        <Column editable="true" title="&#x915;&#x93e;&#x930;&#x94d;&#x92f;&#x92a;&#x924;&#x94d;&#x930;" type="java.lang.Object"/>
+                        <Column editable="true" title="&#x92a;&#x924;&#x94d;&#x930; &#x915;&#x94d;&#x930;&#x92e;&#x93e;&#x902;&#x915;" type="java.lang.Object"/>
+                        <Column editable="true" title="&#x906;&#x935;&#x915; &#x926;&#x93f;&#x928;&#x93e;&#x902;&#x915;" type="java.lang.Object"/>
+                        <Column editable="true" title="&#x915;&#x94b;&#x923;&#x93e;&#x915;&#x921;&#x942;&#x928; &#x906;&#x932;&#x947; " type="java.lang.Object"/>
+                        <Column editable="true" title="&#x935;&#x93f;&#x937;&#x92f;" type="java.lang.Object"/>
+                        <Column editable="true" title="&#x92a;&#x93e;&#x920;&#x935;&#x932;&#x94d;&#x92f;&#x93e;&#x91a;&#x93e; &#x926;&#x93f;&#x928;&#x93e;&#x902;&#x915;" type="java.lang.Object"/>
+                        <Column editable="true" title="&#x91c;&#x93e;&#x935;&#x915; &#x926;&#x93f;&#x928;&#x93e;&#x902;&#x915;" type="java.lang.Object"/>
+                        <Column editable="true" title="&#x91f;&#x93f;&#x92a;&#x923;&#x940;" type="java.lang.Object"/>
+                        <Column editable="true" title="&#x92a;&#x94d;&#x930;&#x917;&#x924;&#x940;" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -1504,13 +1504,13 @@
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="7" rowCount="4">
-                            <Column editable="true" title="Inward Number" type="java.lang.Object"/>
-                            <Column editable="true" title="From Number" type="java.lang.Object"/>
-                            <Column editable="true" title="From Date" type="java.lang.Object"/>
-                            <Column editable="true" title="From Name" type="java.lang.Object"/>
-                            <Column editable="true" title="Subject" type="java.lang.Object"/>
-                            <Column editable="true" title="To Date" type="java.lang.Object"/>
-                            <Column editable="true" title="Progress" type="java.lang.Object"/>
+                            <Column editable="true" title="&#x915;&#x94d;&#x930;&#x92e;&#x93e;&#x902;&#x915;" type="java.lang.Object"/>
+                            <Column editable="true" title="&#x92a;&#x924;&#x94d;&#x930; &#x915;&#x94d;&#x930;&#x92e;&#x93e;&#x902;&#x915;" type="java.lang.Object"/>
+                            <Column editable="true" title="&#x906;&#x935;&#x915; &#x926;&#x93f;&#x928;&#x93e;&#x902;&#x915;" type="java.lang.Object"/>
+                            <Column editable="true" title="&#x915;&#x94b;&#x923;&#x93e;&#x915;&#x921;&#x942;&#x928; &#x906;&#x932;&#x947;" type="java.lang.Object"/>
+                            <Column editable="true" title="&#x935;&#x93f;&#x937;&#x92f;" type="java.lang.Object"/>
+                            <Column editable="true" title="&#x92a;&#x93e;&#x920;&#x935;&#x932;&#x94d;&#x92f;&#x93e;&#x91a;&#x93e; &#x926;&#x93f;&#x928;&#x93e;&#x902;&#x915;" type="java.lang.Object"/>
+                            <Column editable="true" title="&#x92a;&#x94d;&#x930;&#x917;&#x924;&#x940;" type="java.lang.Object"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -1994,8 +1994,6 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="RemarkPanel" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="ToLabel1" min="-2" pref="35" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="ToDateReceivedLabel3" min="-2" pref="123" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="ToDatReceivedField1" min="-2" pref="200" max="-2" attributes="0"/>
@@ -2012,10 +2010,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="ToDatReceivedField1" alignment="0" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="ToLabel1" alignment="3" max="32767" attributes="0"/>
-                                  <Component id="ToDateReceivedLabel3" alignment="3" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="ToDateReceivedLabel3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="RemarkPanel" min="-2" pref="86" max="-2" attributes="0"/>
@@ -2031,24 +2026,6 @@
                       <Font name="SansSerif" size="16" style="0"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="&#x92a;&#x93e;&#x920;&#x935;&#x932;&#x94d;&#x92f;&#x93e;&#x91a;&#x93e; &#x926;&#x93f;&#x928;&#x93e;&#x902;&#x915;"/>
-                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[100, 262626]"/>
-                    </Property>
-                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[100, 30]"/>
-                    </Property>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[110, 30]"/>
-                    </Property>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="ToLabel1">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="SansSerif" size="16" style="0"/>
-                    </Property>
-                    <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="text" type="java.lang.String" value="TO"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[100, 262626]"/>
                     </Property>
@@ -2117,7 +2094,7 @@
                           <Font name="SansSerif" size="16" style="0"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value="&#x91f;&#x93f;&#x92a;&#x923;&#x940;"/>
+                        <Property name="text" type="java.lang.String" value="&#x936;&#x947;&#x930;&#x93e;"/>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[100, 262626]"/>
                         </Property>
@@ -2337,7 +2314,7 @@
                   <Font name="SansSerif" size="16" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="11">
+                  <StringArray count="9">
                     <StringItem index="0" value="&#x915;&#x94d;&#x930;&#x92e;&#x93e;&#x923;&#x947;"/>
                     <StringItem index="1" value="&#x915;&#x93e;&#x930;&#x94d;&#x92f;&#x93e;&#x932;&#x92f;&#x940;&#x928; &#x915;&#x94d;&#x930;&#x92e;&#x93e;&#x902;&#x915;"/>
                     <StringItem index="2" value="&#x92a;&#x924;&#x94d;&#x930; &#x915;&#x94d;&#x930;&#x92e;&#x93e;&#x902;&#x915;"/>
@@ -2345,10 +2322,8 @@
                     <StringItem index="4" value="&#x915;&#x94b;&#x923;&#x93e;&#x915;&#x921;&#x942;&#x928; &#x906;&#x932;&#x947;"/>
                     <StringItem index="5" value="&#x935;&#x93f;&#x937;&#x92f;"/>
                     <StringItem index="6" value="&#x92a;&#x93e;&#x920;&#x935;&#x932;&#x94d;&#x92f;&#x93e;&#x91a;&#x93e; &#x926;&#x93f;&#x928;&#x93e;&#x902;&#x915;"/>
-                    <StringItem index="7" value="&#x936;&#x93e;&#x916;&#x93e;"/>
-                    <StringItem index="8" value="&#x928;&#x93e;&#x935;"/>
-                    <StringItem index="9" value="&#x91c;&#x93e;&#x935;&#x915; &#x926;&#x93f;&#x928;&#x93e;&#x902;&#x915;"/>
-                    <StringItem index="10" value="&#x92a;&#x94d;&#x930;&#x917;&#x924;&#x940;"/>
+                    <StringItem index="7" value="&#x91c;&#x93e;&#x935;&#x915; &#x926;&#x93f;&#x928;&#x93e;&#x902;&#x915;"/>
+                    <StringItem index="8" value="&#x92a;&#x94d;&#x930;&#x917;&#x924;&#x940;"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -2503,7 +2478,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="HeadingLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="HeadingLabel" min="-2" pref="60" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -2516,10 +2491,10 @@
                   <Color blue="a3" green="d9" red="93" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Georgia" size="36" style="1"/>
+                  <Font name="SansSerif" size="36" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="WORKSHEET"/>
+                <Property name="text" type="java.lang.String" value="&#x915;&#x93e;&#x930;&#x94d;&#x92f;&#x935;&#x93f;&#x935;&#x930;&#x923; &#x92a;&#x941;&#x938;&#x94d;&#x924;&#x915;"/>
               </Properties>
             </Component>
           </SubComponents>

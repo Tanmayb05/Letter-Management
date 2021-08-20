@@ -190,16 +190,16 @@ public class AdminLogin extends javax.swing.JFrame {
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
         // TODO add your handling code here:
-        int flag = 0;
+//        int flag = 0;
         String password = (String) PasswordField.getText();
         
         if (password.equals("admin123")) {
-            JOptionPane.showMessageDialog(null,"Welcome");
+            JOptionPane.showMessageDialog(null,"स्वागत आहे");
             this.setVisible(false);
             new AdminHome().setVisible(true);
         }
         else {
-            JOptionPane.showMessageDialog(null,"Invalid Password");
+            JOptionPane.showMessageDialog(null,"चुकिचा पासवर्ड");
         }
         
     }//GEN-LAST:event_LoginButtonActionPerformed
@@ -212,7 +212,7 @@ public class AdminLogin extends javax.swing.JFrame {
         // iconURL is null when not found
         ImageIcon icon = new ImageIcon(iconURL);
         setIconImage(icon.getImage());
-        setTitle("Water Resources Department, Government of Maharashtra, India");
+        setTitle("जलसंपदा विभाग, महाराष्ट्र शासन, भारत");
                 
     }
     

@@ -2,6 +2,10 @@ package Letter.Management;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -12,6 +16,7 @@ import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;import java.sql.SQLException;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 import tb.ClerkHome;
 
@@ -206,26 +211,62 @@ public class BranchLogin extends javax.swing.JFrame {
         try {
             
             String password = (String) PasswordField.getText();
+            String branch = BranchComboBox.getSelectedItem().toString();
             ConnectionEstablish con = new ConnectionEstablish();
-            String sql = "SELECT * from letteremployee WHERE Password = '"+password+"'";
+            String sql = "SELECT * from letteremployee "
+                    + "WHERE Password = '"+password+"'"
+                    + "AND Branch = '"+branch+"'";
             PreparedStatement st = con.c.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             
             while(rs.next()) {
                 flag = 1;
-                JOptionPane.showMessageDialog(null,"Welcome");
+                
+                String tobranch = rs.getString("Branch");
+                String toname = rs.getString("Name");
+                create(tobranch,toname);
+                
+                JOptionPane.showMessageDialog(null,"स्वागत आहे");
                 this.setVisible(false);
-                new ClerkAddLetter().setVisible(true);
+                new BranchWorksheet().setVisible(true);
             }
             
             if (flag == 0)
-                JOptionPane.showMessageDialog(null,"Invalid Password");
+                JOptionPane.showMessageDialog(null,"चुकिचा पासवर्ड");
             
         } catch (Exception e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_LoginButtonActionPerformed
 
+    private void create(String branchArgument, String toArgument){
+        try {
+            FileWriter myWriter = new FileWriter("login.txt");
+            myWriter.write(branchArgument+","+toArgument);
+            myWriter.close();
+//            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+//            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+            
+            /*
+            try {
+                File myObjRead = new File("login.txt");
+                Scanner myReader = new Scanner(myObjRead);
+                while (myReader.hasNextLine()) {
+                  String data = myReader.nextLine();
+                  System.out.println(data);
+                }
+                myReader.close();
+            } catch (FileNotFoundException e) {
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+            }
+            */
+    }
+    
+    
     private void init() {
 //        setExtendedState(MAXIMIZED_BOTH);
         setUIFont (new javax.swing.plaf.FontUIResource("SansSerif",Font.PLAIN,12));
@@ -234,14 +275,14 @@ public class BranchLogin extends javax.swing.JFrame {
         // iconURL is null when not found
         ImageIcon icon = new ImageIcon(iconURL);
         setIconImage(icon.getImage());
-        setTitle("Water Resources Department, Government of Maharashtra, India");
+        setTitle("जलसंपदा विभाग, महाराष्ट्र शासन, भारत");
                 
     }
     
     private void initBranchComboBox() {
         
         BranchComboBox.removeAllItems();
-        BranchComboBox.addItem("Select Branch");
+        BranchComboBox.addItem("शाखा निवडा");
         
         try {
 

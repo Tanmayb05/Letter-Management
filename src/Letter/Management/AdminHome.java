@@ -19,7 +19,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import org.apache.poi.ss.usermodel.Cell;
@@ -94,7 +96,6 @@ public class AdminHome extends javax.swing.JFrame {
         ToDateReceivedLabel = new javax.swing.JLabel();
         ToDateReceivedField = new javax.swing.JTextField();
         DateReceivedShowTodayButton = new javax.swing.JButton();
-        ToDateReceivedLabel1 = new javax.swing.JLabel();
         ToBranchComboBox = new javax.swing.JComboBox<>();
         ToNameComboBox = new javax.swing.JComboBox<>();
         SubjectPanel = new javax.swing.JPanel();
@@ -139,9 +140,9 @@ public class AdminHome extends javax.swing.JFrame {
         HeadingPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         HeadingLabel.setBackground(new java.awt.Color(147, 217, 163));
-        HeadingLabel.setFont(new java.awt.Font("Georgia", 1, 36)); // NOI18N
+        HeadingLabel.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
         HeadingLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        HeadingLabel.setText("ADMIN");
+        HeadingLabel.setText("प्रशासक");
 
         javax.swing.GroupLayout HeadingPanelLayout = new javax.swing.GroupLayout(HeadingPanel);
         HeadingPanel.setLayout(HeadingPanelLayout);
@@ -546,13 +547,6 @@ public class AdminHome extends javax.swing.JFrame {
             }
         });
 
-        ToDateReceivedLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ToDateReceivedLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ToDateReceivedLabel1.setText("TO");
-        ToDateReceivedLabel1.setMaximumSize(new java.awt.Dimension(100, 262626));
-        ToDateReceivedLabel1.setMinimumSize(new java.awt.Dimension(100, 30));
-        ToDateReceivedLabel1.setPreferredSize(new java.awt.Dimension(110, 30));
-
         ToBranchComboBox.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         ToBranchComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "शाखा निवडा" }));
         ToBranchComboBox.setMinimumSize(new java.awt.Dimension(196, 32));
@@ -574,8 +568,6 @@ public class AdminHome extends javax.swing.JFrame {
             ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ToPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ToDateReceivedLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(ToNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -590,30 +582,27 @@ public class AdminHome extends javax.swing.JFrame {
                         .addComponent(ToDateReceivedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(DateReceivedShowTodayButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
         ToPanelLayout.setVerticalGroup(
             ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ToPanelLayout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(ToDateReceivedField, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(DateReceivedShowTodayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(ToDateReceivedLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ToDateReceivedLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ToBranchComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(ToPanelLayout.createSequentialGroup()
-                        .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(ToDateReceivedField, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addComponent(DateReceivedShowTodayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                            .addComponent(ToDateReceivedLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(ToBranchComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(ToPanelLayout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(ToBranchLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ToNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ToNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(1, 1, 1)
+                        .addComponent(ToBranchLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ToNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ToNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -879,7 +868,7 @@ public class AdminHome extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Inward Register", "Worksheet No", "From - Number", "From - Date", "From - Name", "Subject", "To - Date", "To - Branch", "To - Name", "Out Date", "Remark", "Progress"
+                "क्रमांक", "कार्यपत्र", "पत्र क्रमांक", "आवक दिनांक", "कोणाकडून आले", "विषय", "पाठवल्याचा दिनांक", "शाखा", "नाव", "जावक दिनांक", "टिपणी", "प्रगती"
             }
         ));
         ShowRegisterTable.setFillsViewportHeight(true);
@@ -1052,10 +1041,20 @@ public class AdminHome extends javax.swing.JFrame {
 
     private void SignoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignoutButtonActionPerformed
         // TODO add your handling code here:
-        int a = JOptionPane.showConfirmDialog(null,"Are you sure?","Sign Out",JOptionPane.YES_NO_OPTION);  
-        if(a == JOptionPane.YES_OPTION){  
+        JLabel sure = new JLabel("बाहेर पडायचे आहे का?");
+        sure.setFont(new Font("SanSerif", Font.PLAIN, 18));
+        
+        UIManager.put("OptionPane.buttonFont", new Font("SanSerif", Font.PLAIN, 15));
+        
+        Object[] options = {"हो","नाही"};
+        int a = JOptionPane.showOptionDialog(null,
+                sure,
+                "साईन आउट",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,null,options,options[0]);
+        if(a == JOptionPane.YES_OPTION){
             this.setVisible(false);
-            new ClerkLogin().setVisible(true); 
+            new AdminLogin().setVisible(true);
         }  
     }//GEN-LAST:event_SignoutButtonActionPerformed
 
@@ -1100,10 +1099,10 @@ public class AdminHome extends javax.swing.JFrame {
             initEmployeeStats();
             initTasks();
             
-            if (!BranchEmployeeStatsComboBox.getSelectedItem().equals("Select Branch") 
-                    && !NameEmployeeStatsComboBox.getSelectedItem().equals("Select Name")) {
+            if (!BranchEmployeeStatsComboBox.getSelectedItem().equals("शाखा निवडा") 
+                    && !NameEmployeeStatsComboBox.getSelectedItem().equals("नाव निवडा")) {
                 
-                if (SortByEmployeeStatsComboBox.getSelectedItem().equals("Select Period")) {
+                if (SortByEmployeeStatsComboBox.getSelectedItem().equals("काळ")) {
                     
                     if (FromPeriodField.getText().equals("dd-MM-yyyy") || ToPeriodField.getText().equals("dd-MM-yyyy")) {
                         initEmployeeStats();
@@ -1801,7 +1800,7 @@ public class AdminHome extends javax.swing.JFrame {
         // iconURL is null when not found
         ImageIcon icon = new ImageIcon(iconURL);
         setIconImage(icon.getImage());
-        setTitle("Water Resources Department, Government of Maharashtra, India");
+        setTitle("जलसंपदा विभाग, महाराष्ट्र शासन, भारत");
         
         TablesPane.setVisible(false);
         EmployeeStatsOptions.setVisible(false);
@@ -2039,7 +2038,8 @@ public class AdminHome extends javax.swing.JFrame {
             ConnectionEstablish con = new ConnectionEstablish();
             
             String sql = "SELECT *,date_format(FromDateSent,'%d-%m-%y') AS FDS, "
-                    + "date_format(ToDateReceived,'%d-%m-%y') AS TDR "
+                    + "date_format(ToDateReceived,'%d-%m-%y') AS TDR, "
+                    + "date_format(OutDate,'%d-%m-%y') AS OD "
                     + "FROM letterinwardregister "
                     + "WHERE ToBranch = '"+branch+"' AND "
                     + "ToName = '"+toName+"' AND "
@@ -2307,7 +2307,6 @@ public class AdminHome extends javax.swing.JFrame {
     private javax.swing.JLabel ToBranchLabel;
     private javax.swing.JTextField ToDateReceivedField;
     private javax.swing.JLabel ToDateReceivedLabel;
-    private javax.swing.JLabel ToDateReceivedLabel1;
     private javax.swing.JLabel ToDateReceivedLabel2;
     private javax.swing.JComboBox<String> ToNameComboBox;
     private javax.swing.JLabel ToNameLabel;

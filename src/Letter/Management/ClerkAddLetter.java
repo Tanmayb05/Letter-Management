@@ -83,7 +83,6 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         ToDateReceivedLabel = new javax.swing.JLabel();
         ToDateReceivedField = new javax.swing.JTextField();
         DateReceivedShowTodayButton = new javax.swing.JButton();
-        ToDateReceivedLabel1 = new javax.swing.JLabel();
         ToBranchComboBox = new javax.swing.JComboBox<>();
         ToNameComboBox = new javax.swing.JComboBox<>();
         ActionButtonsPanel = new javax.swing.JPanel();
@@ -127,9 +126,9 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         HeadingPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         HeadingLabel.setBackground(new java.awt.Color(147, 217, 163));
-        HeadingLabel.setFont(new java.awt.Font("Georgia", 1, 36)); // NOI18N
+        HeadingLabel.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
         HeadingLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        HeadingLabel.setText("INWARD REGISTER");
+        HeadingLabel.setText("आवक नोंदवही");
 
         javax.swing.GroupLayout HeadingPanelLayout = new javax.swing.GroupLayout(HeadingPanel);
         HeadingPanel.setLayout(HeadingPanelLayout);
@@ -376,13 +375,6 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             }
         });
 
-        ToDateReceivedLabel1.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ToDateReceivedLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        ToDateReceivedLabel1.setText("TO");
-        ToDateReceivedLabel1.setMaximumSize(new java.awt.Dimension(100, 262626));
-        ToDateReceivedLabel1.setMinimumSize(new java.awt.Dimension(100, 30));
-        ToDateReceivedLabel1.setPreferredSize(new java.awt.Dimension(110, 30));
-
         ToBranchComboBox.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         ToBranchComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "शाखा निवडा" }));
         ToBranchComboBox.setMinimumSize(new java.awt.Dimension(196, 32));
@@ -404,8 +396,6 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ToPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ToDateReceivedLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(ToNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -419,28 +409,25 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                         .addComponent(DateReceivedShowTodayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(ToBranchComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ToNameComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
         ToPanelLayout.setVerticalGroup(
             ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ToPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ToPanelLayout.createSequentialGroup()
-                        .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(ToDateReceivedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ToDateReceivedLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(DateReceivedShowTodayButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ToBranchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ToBranchComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ToNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ToNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(ToDateReceivedLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ToDateReceivedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ToDateReceivedLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DateReceivedShowTodayButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ToBranchLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ToBranchComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(ToPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ToNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ToNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout AddLetterFormPanelLayout = new javax.swing.GroupLayout(AddLetterFormPanel);
@@ -571,7 +558,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         ShowRegisterPanel.setBackground(new java.awt.Color(225, 250, 225));
 
         ShowRegisterSortByComboBox.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
-        ShowRegisterSortByComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "क्रमाणे", "कार्यालयीन क्रमांक", "पत्र क्रमांक", "आवक दिनांक", "कोणाकडून आले", "विषय", "पाठवल्याचा दिनांक", "शाखा", "नाव", "जावक दिनांक", "प्रगती" }));
+        ShowRegisterSortByComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "क्रमाणे", "कार्यालयीन क्रमांक", "पत्र क्रमांक", "आवक दिनांक", "कोणाकडून आले", "विषय", "पाठवल्याचा दिनांक", "शाखा", "नाव", "जावक दिनांक", "शेरा", "प्रगती" }));
         ShowRegisterSortByComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ShowRegisterSortByComboBoxActionPerformed(evt);
@@ -785,13 +772,13 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Inward Register", "Worksheet No", "From - Number", "From - Date", "From - Name", "Subject", "To - Date", "To - Branch", "To - Name", "Out Date", "Remark", "Progress"
+                "क्रमांक", "कार्यपत्र", "पत्र क्रमांक", "आवक दिनांक", "कोणाकडून आले", "विषय", "पाठवल्याचा दिनांक", "शाखा", "नाव", "जावक दिनांक", "टिपणी", "प्रगती"
             }
         ));
         ShowRegisterTable.setFillsViewportHeight(true);
         ShowRegisterTable.setInheritsPopupMenu(true);
         ShowRegisterTable.setNextFocusableComponent(SubjectField);
-        ShowRegisterTable.setRowHeight(25);
+        ShowRegisterTable.setRowHeight(30);
         ShowRegisterTable.setShowGrid(true);
         ShowRegisterTable.getTableHeader().setReorderingAllowed(false);
         ShowRegisterTable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -801,7 +788,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         });
         ShowDirectoryScrollPane.setViewportView(ShowRegisterTable);
 
-        TablesPane.addTab("Show Register", ShowDirectoryScrollPane);
+        TablesPane.addTab("वही दाखवा", ShowDirectoryScrollPane);
 
         EmployeeStatsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -852,7 +839,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                 .addGap(0, 0, 0))
         );
 
-        TablesPane.addTab("Employee Stats", EmployeeStatsPane);
+        TablesPane.addTab("कर्मचारी आकडेवारी", EmployeeStatsPane);
 
         javax.swing.GroupLayout TablePanelLayout = new javax.swing.GroupLayout(TablePanel);
         TablePanel.setLayout(TablePanelLayout);
@@ -978,8 +965,8 @@ public class ClerkAddLetter extends javax.swing.JFrame {
 
     private void FromNameComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FromNameComboBoxActionPerformed
         // TODO add your handling code here:
-        System.out.println(FromNameComboBox.getSelectedItem());
-        if (FromNameComboBox.getSelectedItem().equals("Other") && FromNameField.isVisible() == false) {
+        
+        if (FromNameComboBox.getSelectedItem().equals("नाव निवडा") && FromNameField.isVisible() == false) {
             FromNameField.setVisible(true);
 //            FromNameComboBoxFocusLost(evt);
         }
@@ -1250,7 +1237,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-        else if (period.equals("Select Period")) {
+        else if (period.equals("काळ")) {
             EmployeeStatsFilterPeriodPanel.setVisible(true);
         }
     }//GEN-LAST:event_SortByEmployeeStatsComboBoxActionPerformed
@@ -1632,7 +1619,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         // iconURL is null when not found
         ImageIcon icon = new ImageIcon(iconURL);
         setIconImage(icon.getImage());
-        setTitle("Water Resources Department, Government of Maharashtra, India");
+        setTitle("जलसंपदा विभाग, महाराष्ट्र शासन, भारत");
         
         initInwardRegisterNumber();
         TablesPane.setVisible(false);
@@ -1820,6 +1807,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                     FromName, Subject, ToDateReceived, ToBranch, ToName, OutDate, Remark, Progress};
             
                 ShowRegisterTableModel.addRow(tableData);
+//                ShowRegisterTableModel.getRowModel().getRow().setPreferredWidth(50);
                 
             }
             
@@ -2163,7 +2151,6 @@ public class ClerkAddLetter extends javax.swing.JFrame {
     private javax.swing.JLabel ToBranchLabel;
     private javax.swing.JTextField ToDateReceivedField;
     private javax.swing.JLabel ToDateReceivedLabel;
-    private javax.swing.JLabel ToDateReceivedLabel1;
     private javax.swing.JLabel ToDateReceivedLabel2;
     private javax.swing.JComboBox<String> ToNameComboBox;
     private javax.swing.JLabel ToNameLabel;

@@ -266,13 +266,13 @@ public class ClerkLogin extends javax.swing.JFrame {
             
             while(rs.next()) {
                 flag = 1;
-                JOptionPane.showMessageDialog(null,"Welcome");
+                JOptionPane.showMessageDialog(null,"स्वागत आहे");
                 this.setVisible(false);
                 new ClerkAddLetter().setVisible(true);
             }
             
             if (flag == 0)
-                JOptionPane.showMessageDialog(null,"Invalid Password");
+                JOptionPane.showMessageDialog(null,"चुकिचा पासवर्ड");
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -287,7 +287,7 @@ public class ClerkLogin extends javax.swing.JFrame {
         // iconURL is null when not found
         ImageIcon icon = new ImageIcon(iconURL);
         setIconImage(icon.getImage());
-        setTitle("Water Resources Department, Government of Maharashtra, India");
+        setTitle("जलसंपदा विभाग, महाराष्ट्र शासन, भारत");
                 
     }
     
