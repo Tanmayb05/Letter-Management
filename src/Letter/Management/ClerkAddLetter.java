@@ -16,7 +16,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import org.apache.poi.ss.usermodel.Cell;
@@ -43,6 +45,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         initFromNameComboBox();
         initToBranchComboBox();
         initShowRegister();
+        ShowRegisterButton.setSelected(true);
         
         AutoCompleteDecorator.decorate(FromNameComboBox);
     }
@@ -249,6 +252,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
 
         FromNameField.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         FromNameField.setDragEnabled(true);
+        FromNameField.setEnabled(false);
         FromNameField.setMargin(new java.awt.Insets(1, 1, 1, 1));
         FromNameField.setMinimumSize(new java.awt.Dimension(196, 34));
         FromNameField.setNextFocusableComponent(SubjectField);
@@ -317,6 +321,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         SubjectLabel.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         SubjectLabel.setText("विषय");
 
+        SubjectField.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         SubjectField.setNextFocusableComponent(ToDateReceivedField);
 
         javax.swing.GroupLayout SubjectPanelLayout = new javax.swing.GroupLayout(SubjectPanel);
@@ -324,19 +329,19 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         SubjectPanelLayout.setHorizontalGroup(
             SubjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SubjectPanelLayout.createSequentialGroup()
-                .addContainerGap(98, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(SubjectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SubjectField, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SubjectField)
                 .addContainerGap())
         );
         SubjectPanelLayout.setVerticalGroup(
             SubjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SubjectPanelLayout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+                .addContainerGap(35, Short.MAX_VALUE)
                 .addGroup(SubjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SubjectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SubjectField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SubjectField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -890,8 +895,8 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         String FromLetterNo = FromLetterNoField.getText();
         String FromDate = FromDateField.getText();
         String FromName;
-        if (FromNameComboBox.getSelectedItem() == "Other") {
-            FromName = FromNameField.getText();
+        if (FromNameComboBox.getSelectedItem() == "अन्य") {
+            FromName = FromNameField.getText();            
         }
         else {
             FromName = FromNameComboBox.getSelectedItem().toString();
@@ -899,22 +904,28 @@ public class ClerkAddLetter extends javax.swing.JFrame {
         
         String Subject = SubjectField.getText();
         
+        
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String ToDateReceivedOriginal = LocalDate.now().format(formatter);        
         String ToDateReceived = ToDateReceivedField.getText();
         String ToBranch = ToBranchComboBox.getSelectedItem().toString();
         String ToName = ToNameComboBox.getSelectedItem().toString();
         
         String EmpID = getEmployeeID();
-        String Progress = "Added";
-        
+        String Progress = "नवीन";
+//            
+//          ADD
+//        
         try {
             ConnectionEstablish con = new ConnectionEstablish();
             String sql = "INSERT INTO letterinwardregister"
                         + "(InwardNo, "
                         + "FromNo, FromDateSent, FromName, "
-                        + "Subject, "
+                        + "Subject, ToDateReceivedOriginal, "
                         + "ToDateReceived, ToBranch, ToName, "
                         + "EmpID, Progress) "
-                        + "values(?, ?, STR_TO_DATE(?,'%d-%m-%Y'), ?, ?, STR_TO_DATE(?,'%d-%m-%Y'), ?, ?, ?, ?)";
+                        + "values(?, ?, STR_TO_DATE(?,'%d-%m-%Y'), ?, ?, "
+                    + "STR_TO_DATE(?,'%d-%m-%Y'), STR_TO_DATE(?,'%d-%m-%Y'), ?, ?, ?, ?)";
                         PreparedStatement st = con.c.prepareStatement(sql);
                         
                         st.setString(1, InwardRegisterNo);
@@ -922,11 +933,12 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                         st.setString(3, FromDate);
                         st.setString(4, FromName);
                         st.setString(5, Subject);
-                        st.setString(6, ToDateReceived);
-                        st.setString(7, ToBranch);
-                        st.setString(8, ToName);
-                        st.setString(9, EmpID);
-                        st.setString(10, Progress);
+                        st.setString(6, ToDateReceivedOriginal);
+                        st.setString(7, ToDateReceived);
+                        st.setString(8, ToBranch);
+                        st.setString(9, ToName);
+                        st.setString(10, EmpID);
+                        st.setString(11, Progress);
                         
                         
                         
@@ -934,15 +946,77 @@ public class ClerkAddLetter extends javax.swing.JFrame {
                         if (i > 0){
                             JOptionPane.showMessageDialog(null, "Successfully Created");
                         }
-            
+                        
+//            
+//          LETTER EMPLOYEE TABLE PENDING AND TOTAL COLUMNS UPDATE
+//            
                         
             String sqlPending= "UPDATE letteremployee "
                         + "SET Pending = Pending + 1,"
                         + "Total = Total + 1 "
                         + "WHERE ID='"+EmpID+"'";
                         PreparedStatement stPending = con.c.prepareStatement(sqlPending);
-                        stPending.executeUpdate();
+                        stPending.executeUpdate();                      
+                 
+//            
+//          START FROM TABLE PENDING AND TOTAL COLUMNS UPDATE
+//
+                        
+            if (FromNameComboBox.getSelectedItem() == "अन्य") {
+                FromName = FromNameField.getText();
+                int FromSrNo = 0;
+                try {
+                    
+                    String sqlFromInit = "SELECT COUNT(*) FROM letter.fromtable";
+                    PreparedStatement stFromInit = con.c.prepareStatement(sqlFromInit);
+                    ResultSet rsFrom = stFromInit.executeQuery();
 
+                    while(rsFrom.next()){
+                        FromSrNo = rsFrom.getInt("COUNT(*)") + 1;
+                    }
+
+                    String sqlSrNo = "INSERT INTO letter.fromtable "
+                            + "VALUES('"+String.valueOf(FromSrNo)+"','"+FromName+"','0','0','0')";
+                    PreparedStatement stSrNo = con.c.prepareStatement(sqlSrNo);
+
+                    stSrNo.executeUpdate();
+                    
+                    
+                    String sqlFrom= "UPDATE fromtable "
+                                + "SET Pending = Pending + 1,"
+                                + "Total = Total + 1 "
+                                + "WHERE Name ='"+FromName+"'";
+                                PreparedStatement stFrom = con.c.prepareStatement(sqlFrom);
+                                stFrom.executeUpdate();            
+                } catch(SQLException esql){
+                    esql.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Please Enter Inward Register Number.");
+                } catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
+            else {
+                FromName = FromNameComboBox.getSelectedItem().toString();
+                try {
+                    
+                    String sqlFrom= "UPDATE fromtable "
+                                + "SET Pending = Pending + 1,"
+                                + "Total = Total + 1 "
+                                + "WHERE Name ='"+FromName+"'";
+                                PreparedStatement stFrom = con.c.prepareStatement(sqlFrom);
+                                stFrom.executeUpdate();
+                } catch(SQLException esql){
+                    esql.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Please Enter Inward Register Number.");
+                } catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
+            
+//            
+//          END FROM TABLE PENDING AND TOTAL COLUMNS UPDATE
+//            
+            
             this.setVisible(false);
             new ClerkAddLetter().setVisible(true);
                         
@@ -956,22 +1030,32 @@ public class ClerkAddLetter extends javax.swing.JFrame {
 
     private void SignoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignoutButtonActionPerformed
         // TODO add your handling code here:
-        int a = JOptionPane.showConfirmDialog(null,"Are you sure?","Sign Out",JOptionPane.YES_NO_OPTION);  
-        if(a == JOptionPane.YES_OPTION){  
+        JLabel sure = new JLabel("बाहेर पडायचे आहे का?");
+        sure.setFont(new Font("SanSerif", Font.PLAIN, 18));
+        
+        UIManager.put("OptionPane.buttonFont", new Font("SanSerif", Font.PLAIN, 15));
+        
+        Object[] options = {"हो","नाही"};
+        int a = JOptionPane.showOptionDialog(null,
+                sure,
+                "साईन आउट",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,null,options,options[0]);
+        if(a == JOptionPane.YES_OPTION){
             this.setVisible(false);
-            new ClerkLogin().setVisible(true); 
-        }  
+            new ClerkLogin().setVisible(true);
+        }
     }//GEN-LAST:event_SignoutButtonActionPerformed
 
     private void FromNameComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FromNameComboBoxActionPerformed
         // TODO add your handling code here:
         
-        if (FromNameComboBox.getSelectedItem().equals("नाव निवडा") && FromNameField.isVisible() == false) {
-            FromNameField.setVisible(true);
+        if (FromNameComboBox.getSelectedItem().equals("अन्य") && FromNameField.isEnabled() == false) {
+            FromNameField.setEnabled(true);
 //            FromNameComboBoxFocusLost(evt);
         }
         else {
-            FromNameField.setVisible(false);
+            FromNameField.setEnabled(false);
         }
         
     }//GEN-LAST:event_FromNameComboBoxActionPerformed
@@ -1646,8 +1730,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
     }
     
     private void initFromNameComboBox() {
-
-        FromNameField.setVisible(false);
+        
         try {
 
             // SQL command data stored in String datatype
@@ -1661,7 +1744,7 @@ public class ClerkAddLetter extends javax.swing.JFrame {
             while (rs.next()) {
                 FromNameComboBox.addItem(rs.getString("Name"));
             }
-            FromNameComboBox.addItem("Other");
+            FromNameComboBox.addItem("अन्य");
             
         }   catch (SQLException e) {
             // Print exception pop-up on screen
