@@ -1268,6 +1268,11 @@ public class BranchWorksheet extends javax.swing.JFrame {
 
         WorksheetSortComboBox.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
         WorksheetSortComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "क्रमाणे", "कार्यालयीन क्रमांक", "पत्र क्रमांक", "आवक दिनांक", "कोणाकडून आले", "विषय", "पाठवल्याचा दिनांक", "जावक दिनांक", "प्रगती" }));
+        WorksheetSortComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                WorksheetSortComboBoxActionPerformed(evt);
+            }
+        });
 
         updownArrowToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img-src/arrow-down.png"))); // NOI18N
         updownArrowToggleButton.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -2192,7 +2197,13 @@ public class BranchWorksheet extends javax.swing.JFrame {
     private void RefreshShowRegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshShowRegisterButtonActionPerformed
         // TODO add your handling code here:
         initWorksheetTable();
+        initNewReceivedLetterTable();
+        
     }//GEN-LAST:event_RefreshShowRegisterButtonActionPerformed
+
+    private void WorksheetSortComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WorksheetSortComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_WorksheetSortComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
